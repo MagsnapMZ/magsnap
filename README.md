@@ -1,13 +1,13 @@
 # MAGSNAP Website Redesign
 
-Mobile-first website prototype for MAGSNAP.
+Minimal product-understanding page for MAGSNAP.
 
 MAGSNAP is positioned as a founder-built, head-worn magnetic playground for creators, outdoor users, FPV/drone people, makers, and hardware tinkerers.
 
 ## Files
 
-- `index.html` - mobile vertical story deck, designed for phone-first browsing.
-- `mobile_story.html` - same mobile story deck kept as an explicit file.
+- `index.html` - poster-style product understanding page.
+- `mobile_story.html` - same product page kept as an explicit file.
 - `desktop.html` - earlier desktop-style homepage prototype.
 - `website_redesign_brief.md` - strategy and content brief.
 - `mobile_story_preview.png` - phone-width preview screenshot.
@@ -19,4 +19,6 @@ Built as my daily toy.
 
 Snap. Mount. Go.
 
-Camera by day. Light by night. One base platform.
+One eyewear base. Many magnetic modules.
+
+Camera by day. Light by night.

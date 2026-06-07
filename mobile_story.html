@@ -813,6 +813,42 @@
       line-height: 1.5;
     }
 
+    .warning-stack {
+      display: grid;
+      gap: 8px;
+    }
+
+    .warning-card {
+      padding: 12px;
+      border: 1px solid rgba(210, 164, 109, 0.28);
+      border-radius: 5px;
+      background:
+        linear-gradient(90deg, rgba(210, 164, 109, 0.12), rgba(255, 255, 255, 0.035)),
+        rgba(255, 255, 255, 0.04);
+    }
+
+    .warning-card strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--paper-soft);
+      font-size: 14px;
+    }
+
+    .warning-card span {
+      color: #c9b9a2;
+      font-size: 12px;
+      line-height: 1.46;
+    }
+
+    .disclaimer-note {
+      padding: 13px;
+      border-left: 3px solid var(--paper);
+      background: rgba(0, 0, 0, 0.24);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
     .final-card {
       padding: 20px;
       border: 1px solid rgba(210, 164, 109, 0.42);
@@ -940,7 +976,7 @@
     </div>
 
     <div class="progress" aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
 
     <div class="slides">
@@ -1057,6 +1093,23 @@
           <div class="safety-card"><strong>No Helmet Strap</strong><span>Designed for everyday carry.</span></div>
           <div class="safety-card"><strong>No Battery Base</strong><span>Electronics stay in the modules.</span></div>
         </div>
+      </section>
+
+      <section class="slide" id="safety" style="--glow-x: 22%; --glow-y: 18%; --glow: rgba(210, 164, 109, 0.16);">
+        <div class="slide-head">
+          <div class="kicker">Safety / Warning</div>
+          <h2>Use it like real gear.</h2>
+          <p class="lead">Early builder hardware needs clear limits.</p>
+        </div>
+
+        <div class="warning-stack">
+          <div class="warning-card"><strong>Vision First</strong><span>No prism, display, or lens sits in front of your eye. Stop use if you feel eye strain, double vision, headache, dizziness, or blocked vision.</span></div>
+          <div class="warning-card"><strong>Module Limits</strong><span>Use only tested lightweight modules and mounting positions. Do not attach heavy, sharp, hot, or unverified objects.</span></div>
+          <div class="warning-card"><strong>Magnet Warning</strong><span>Keep magnets away from pacemakers, implanted medical devices, magnetic cards, and sensitive electronics.</span></div>
+          <div class="warning-card"><strong>Battery Modules</strong><span>The base glasses contain no battery. Battery safety for removable modules, including the Light Module, must be tested separately.</span></div>
+        </div>
+
+        <div class="disclaimer-note">MAGSNAP is not protective eyewear, medical equipment, or a promise of safe use in every activity. Do not use it where distraction, impact, blocked vision, heat, water, or module failure could create risk.</div>
       </section>
 
       <section class="slide" style="--glow-x: 76%; --glow-y: 12%; --glow: rgba(210, 164, 109, 0.13);">

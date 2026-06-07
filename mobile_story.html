@@ -1,26 +1,32 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MAGSNAP | Mobile Story Deck</title>
-  <meta name="description" content="MAGSNAP mobile story deck: a founder-built head-worn magnetic playground for cameras, lights, AI pods, and community-built modules.">
+  <title>MAGSNAP | Wearable Magnetic Ecosystem</title>
+  <meta name="description" content="MAGSNAP is a founder-built wearable magnetic ecosystem: one eyewear base for snap-on camera, light, audio, AI, and future modules.">
+  <meta property="og:title" content="MAGSNAP | Wearable Magnetic Ecosystem">
+  <meta property="og:description" content="Built as my daily toy. One magnetic eyewear base. Camera, light, audio, AI, and future modules.">
+  <meta property="og:image" content="assets/magsnap-founder-playground-concept.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
   <style>
     :root {
-      --bg: #07090d;
-      --bg-2: #0c111a;
-      --card: rgba(255, 255, 255, 0.07);
-      --card-strong: rgba(255, 255, 255, 0.12);
-      --text: #f7f8fb;
-      --muted: #9aa5b7;
-      --line: rgba(255, 255, 255, 0.14);
-      --orange: #ffb000;
-      --orange-2: #ff7a1a;
-      --cyan: #69e6ff;
-      --green: #9cff73;
-      --pink: #ff6eb4;
+      --bg: #050505;
+      --bg-2: #101010;
+      --paper: #d2a46d;
+      --paper-dark: #9e6c38;
+      --paper-soft: #ead8bf;
+      --card: rgba(255, 255, 255, 0.075);
+      --card-strong: rgba(255, 255, 255, 0.13);
+      --text: #f5f1eb;
+      --muted: #a79c8f;
+      --line: rgba(245, 241, 235, 0.16);
+      --orange: #c99155;
+      --orange-2: #e1b06f;
+      --green: #d8c29c;
       --shadow: 0 28px 90px rgba(0, 0, 0, 0.55);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+      font-family: "Avenir Next", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
     }
 
     * {
@@ -37,8 +43,8 @@
       min-height: 100%;
       margin: 0;
       background:
-        radial-gradient(circle at 50% 0%, rgba(105, 230, 255, 0.16), transparent 30%),
-        radial-gradient(circle at 80% 10%, rgba(255, 176, 0, 0.12), transparent 28%),
+        radial-gradient(circle at 58% 0%, rgba(210, 164, 109, 0.16), transparent 30%),
+        linear-gradient(90deg, #050505 0 28%, rgba(210, 164, 109, 0.08) 48%, #050505 74%),
         #020305;
       color: var(--text);
     }
@@ -53,7 +59,7 @@
       min-height: 100svh;
       margin: 0 auto;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0)),
+        linear-gradient(180deg, rgba(210, 164, 109, 0.09), rgba(255, 255, 255, 0)),
         var(--bg);
       box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 0 80px rgba(0, 0, 0, 0.9);
       overflow: hidden;
@@ -71,7 +77,7 @@
       align-items: center;
       justify-content: space-between;
       padding: calc(12px + env(safe-area-inset-top)) 18px 12px;
-      background: linear-gradient(180deg, rgba(7, 9, 13, 0.88), rgba(7, 9, 13, 0.42), transparent);
+      background: linear-gradient(180deg, rgba(5, 5, 5, 0.92), rgba(5, 5, 5, 0.46), transparent);
       pointer-events: none;
     }
 
@@ -81,15 +87,15 @@
       gap: 9px;
       font-size: 12px;
       font-weight: 900;
-      letter-spacing: 0.12em;
+      letter-spacing: 0;
     }
 
     .logo-dot {
       width: 23px;
       height: 23px;
       border-radius: 50%;
-      background: radial-gradient(circle at 32% 28%, #fff5c4 0 10%, var(--orange) 42%, #704200 100%);
-      box-shadow: 0 0 22px rgba(255, 176, 0, 0.5);
+      background: radial-gradient(circle at 32% 28%, #fff7dd 0 10%, var(--paper) 44%, #704922 100%);
+      box-shadow: 0 0 22px rgba(210, 164, 109, 0.48);
     }
 
     .deck-label {
@@ -97,7 +103,7 @@
       color: var(--muted);
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 0.08em;
+      letter-spacing: 0;
       text-transform: uppercase;
     }
 
@@ -106,19 +112,21 @@
       overflow-y: auto;
       scroll-snap-type: y mandatory;
       -webkit-overflow-scrolling: touch;
+      counter-reset: story;
     }
 
     .slide {
       position: relative;
       min-height: 100svh;
-      padding: calc(62px + env(safe-area-inset-top)) 22px calc(22px + env(safe-area-inset-bottom));
+      padding: calc(56px + env(safe-area-inset-top)) 22px calc(18px + env(safe-area-inset-bottom));
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
       scroll-snap-align: start;
       overflow: hidden;
       isolation: isolate;
+      counter-increment: story;
     }
 
     .slide::before {
@@ -127,8 +135,8 @@
       inset: 0;
       z-index: -2;
       background:
-        radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 22%), var(--glow, rgba(255, 176, 0, 0.2)), transparent 36%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0));
+        radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 22%), var(--glow, rgba(210, 164, 109, 0.18)), transparent 36%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.032), rgba(255, 255, 255, 0));
     }
 
     .slide::after {
@@ -142,8 +150,32 @@
     }
 
     .slide-head {
+      position: relative;
       display: grid;
       gap: 14px;
+      padding-left: 46px;
+    }
+
+    .slide-head::before {
+      content: counter(story, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--paper-soft);
+      font-family: "Arial Black", "Avenir Next Condensed", sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .slide-head::after {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 27px;
+      width: 1px;
+      height: 42px;
+      background: rgba(245, 241, 235, 0.46);
     }
 
     .kicker {
@@ -153,12 +185,12 @@
       gap: 8px;
       padding: 7px 10px;
       border: 1px solid var(--line);
-      border-radius: 999px;
+      border-radius: 4px;
       background: rgba(255, 255, 255, 0.06);
-      color: var(--cyan);
+      color: var(--paper-soft);
       font-size: 11px;
       font-weight: 900;
-      letter-spacing: 0.08em;
+      letter-spacing: 0;
       text-transform: uppercase;
     }
 
@@ -174,24 +206,26 @@
     h1,
     h2 {
       margin: 0;
-      letter-spacing: -0.065em;
-      line-height: 0.94;
+      font-family: "Arial Black", "Avenir Next Condensed", "Helvetica Neue", sans-serif;
+      letter-spacing: 0;
+      line-height: 0.95;
+      text-transform: uppercase;
     }
 
     h1 {
       max-width: 360px;
-      font-size: clamp(42px, 12.7vw, 56px);
+      font-size: 52px;
     }
 
     h2 {
       max-width: 360px;
-      font-size: clamp(38px, 11.4vw, 52px);
+      font-size: 44px;
     }
 
     .lead {
       margin: 0;
       max-width: 360px;
-      color: #cbd5e5;
+      color: #ded6cb;
       font-size: 16.5px;
       line-height: 1.45;
       font-weight: 650;
@@ -205,7 +239,7 @@
     }
 
     .gradient {
-      background: linear-gradient(94deg, #fff, #d9fbff 42%, #ffd05e 82%);
+      background: linear-gradient(94deg, #fff, #f6ead6 45%, #d2a46d 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -213,13 +247,13 @@
 
     .hero-visual {
       position: relative;
-      min-height: 300px;
+      min-height: 260px;
       border: 1px solid var(--line);
       border-radius: 34px;
       overflow: hidden;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01)),
-        #10141c;
+        linear-gradient(180deg, rgba(210, 164, 109, 0.13), rgba(255, 255, 255, 0.01)),
+        #101010;
       box-shadow: var(--shadow);
     }
 
@@ -232,15 +266,23 @@
     }
 
     .hero-visual img {
-      opacity: 0.88;
-      filter: saturate(1.08) contrast(1.05);
+      opacity: 0.9;
+      filter: saturate(0.9) contrast(1.08);
+    }
+
+    .hero-visual.product-shot img {
+      object-fit: contain;
+      padding: 30px 24px 86px;
+      background:
+        radial-gradient(circle at 55% 42%, rgba(255, 255, 255, 0.86), transparent 32%),
+        linear-gradient(145deg, #e7e0d5, #b8864d 66%, #17110b 100%);
     }
 
     .hero-visual .shade {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, transparent 0 48%, rgba(5, 7, 10, 0.88) 100%),
+        linear-gradient(180deg, transparent 0 48%, rgba(5, 5, 5, 0.9) 100%),
         radial-gradient(circle at 58% 42%, transparent 0 24%, rgba(0, 0, 0, 0.22) 70%);
     }
 
@@ -260,7 +302,7 @@
       display: block;
       margin-bottom: 5px;
       font-size: 18px;
-      letter-spacing: -0.03em;
+      letter-spacing: 0;
     }
 
     .hero-note span {
@@ -280,13 +322,13 @@
       min-height: 44px;
       align-items: center;
       justify-content: center;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 176, 0, 0.45);
+      border-radius: 4px;
+      border: 1px solid rgba(210, 164, 109, 0.5);
       background: linear-gradient(135deg, var(--orange), var(--orange-2));
-      color: #180f00;
+      color: #130d07;
       font-size: 13px;
       font-weight: 900;
-      box-shadow: 0 16px 36px rgba(255, 176, 0, 0.2);
+      box-shadow: 0 16px 36px rgba(210, 164, 109, 0.18);
     }
 
     .button.ghost {
@@ -299,21 +341,21 @@
     .big-card {
       padding: 20px;
       border: 1px solid var(--line);
-      border-radius: 30px;
+      border-radius: 6px;
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035)),
+        linear-gradient(180deg, rgba(210, 164, 109, 0.13), rgba(255, 255, 255, 0.035)),
         rgba(255, 255, 255, 0.04);
       box-shadow: var(--shadow);
     }
 
     .platform-graphic {
       position: relative;
-      height: 310px;
+      height: 270px;
       margin-top: 6px;
-      border-radius: 26px;
+      border-radius: 5px;
       background:
-        radial-gradient(circle at 50% 48%, rgba(105, 230, 255, 0.18), transparent 34%),
-        radial-gradient(circle at 50% 50%, rgba(255, 176, 0, 0.1), transparent 46%),
+        radial-gradient(circle at 50% 48%, rgba(245, 241, 235, 0.12), transparent 34%),
+        radial-gradient(circle at 50% 50%, rgba(210, 164, 109, 0.16), transparent 46%),
         rgba(0, 0, 0, 0.22);
       overflow: hidden;
     }
@@ -334,8 +376,8 @@
       height: 52px;
       border: 4px solid rgba(245, 248, 255, 0.88);
       border-radius: 30px 30px 34px 34px;
-      background: linear-gradient(145deg, rgba(105, 230, 255, 0.2), rgba(255, 255, 255, 0.04));
-      box-shadow: inset 0 0 26px rgba(105, 230, 255, 0.1), 0 0 16px rgba(255, 255, 255, 0.08);
+      background: linear-gradient(145deg, rgba(245, 241, 235, 0.14), rgba(255, 255, 255, 0.04));
+      box-shadow: inset 0 0 26px rgba(210, 164, 109, 0.08), 0 0 16px rgba(255, 255, 255, 0.08);
     }
 
     .lens.left {
@@ -382,8 +424,8 @@
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      background: radial-gradient(circle, #fff8cf 0 18%, var(--orange) 46%, rgba(255, 176, 0, 0.2) 70%);
-      box-shadow: 0 0 22px rgba(255, 176, 0, 0.8);
+      background: radial-gradient(circle, #fff8cf 0 18%, var(--orange) 46%, rgba(210, 164, 109, 0.2) 70%);
+      box-shadow: 0 0 22px rgba(210, 164, 109, 0.76);
     }
 
     .magnet-point.left {
@@ -401,7 +443,7 @@
       width: 78px;
       height: 78px;
       border: 1px solid var(--line);
-      border-radius: 24px;
+      border-radius: 5px;
       background: rgba(255, 255, 255, 0.1);
       color: var(--text);
       font-size: 11px;
@@ -425,21 +467,21 @@
     .module-chip.ai {
       left: 38px;
       bottom: 20px;
-      color: #d7fbff;
+      color: #ead8bf;
     }
 
     .module-chip.maker {
       right: 38px;
       bottom: 20px;
-      color: #dcffc9;
+      color: #ead8bf;
     }
 
     .snap-line {
       position: absolute;
       height: 1px;
       width: 78px;
-      background: linear-gradient(90deg, transparent, rgba(255, 176, 0, 0.8), transparent);
-      box-shadow: 0 0 12px rgba(255, 176, 0, 0.5);
+      background: linear-gradient(90deg, transparent, rgba(210, 164, 109, 0.8), transparent);
+      box-shadow: 0 0 12px rgba(210, 164, 109, 0.46);
       opacity: 0.86;
     }
 
@@ -478,7 +520,7 @@
       min-height: 74px;
       padding: 13px;
       border: 1px solid var(--line);
-      border-radius: 20px;
+      border-radius: 5px;
       background: rgba(0, 0, 0, 0.2);
     }
 
@@ -496,9 +538,9 @@
 
     .photo-card {
       position: relative;
-      min-height: 330px;
+      min-height: 260px;
       border: 1px solid var(--line);
-      border-radius: 32px;
+      border-radius: 5px;
       overflow: hidden;
       background: #111;
       box-shadow: var(--shadow);
@@ -510,7 +552,7 @@
       inset: 0;
       background:
         linear-gradient(180deg, transparent 0 42%, rgba(0, 0, 0, 0.86) 100%),
-        radial-gradient(circle at 76% 15%, rgba(255, 176, 0, 0.18), transparent 32%);
+        radial-gradient(circle at 76% 15%, rgba(210, 164, 109, 0.18), transparent 32%);
     }
 
     .photo-caption {
@@ -525,23 +567,23 @@
       display: block;
       margin-bottom: 6px;
       font-size: 22px;
-      letter-spacing: -0.04em;
+      letter-spacing: 0;
     }
 
     .photo-caption span {
-      color: #cbd5e5;
+      color: #ded6cb;
       font-size: 14px;
       line-height: 1.55;
     }
 
     .light-stage {
       position: relative;
-      min-height: 340px;
-      border: 1px solid rgba(255, 176, 0, 0.28);
-      border-radius: 34px;
+      min-height: 270px;
+      border: 1px solid rgba(210, 164, 109, 0.3);
+      border-radius: 5px;
       background:
-        radial-gradient(ellipse at 50% 24%, rgba(255, 210, 105, 0.72), rgba(255, 176, 0, 0.18) 32%, transparent 54%),
-        linear-gradient(180deg, #0a0d12, #030405);
+        radial-gradient(ellipse at 50% 24%, rgba(234, 216, 191, 0.62), rgba(210, 164, 109, 0.18) 32%, transparent 54%),
+        linear-gradient(180deg, #101010, #030303);
       overflow: hidden;
       box-shadow: var(--shadow);
     }
@@ -553,7 +595,7 @@
       width: 250px;
       height: 250px;
       transform: translateX(-50%);
-      background: radial-gradient(ellipse at center, rgba(255, 230, 151, 0.92), rgba(255, 176, 0, 0.22) 42%, transparent 68%);
+      background: radial-gradient(ellipse at center, rgba(255, 230, 151, 0.86), rgba(210, 164, 109, 0.24) 42%, transparent 68%);
       filter: blur(4px);
       opacity: 0.74;
     }
@@ -566,9 +608,9 @@
       height: 64px;
       transform: translateX(-50%);
       border: 1px solid rgba(255, 255, 255, 0.28);
-      border-radius: 22px;
+      border-radius: 5px;
       background: linear-gradient(180deg, #222935, #0f131b);
-      box-shadow: 0 0 34px rgba(255, 176, 0, 0.4);
+      box-shadow: 0 0 34px rgba(210, 164, 109, 0.38);
     }
 
     .light-module::before {
@@ -579,8 +621,8 @@
       width: 34px;
       height: 34px;
       border-radius: 50%;
-      background: radial-gradient(circle, #fff 0 12%, #ffe390 26%, #ffb000 54%, #2b1c00 100%);
-      box-shadow: 0 0 28px rgba(255, 176, 0, 0.9);
+      background: radial-gradient(circle, #fff 0 12%, #ffe390 26%, #d2a46d 54%, #2b1c00 100%);
+      box-shadow: 0 0 28px rgba(210, 164, 109, 0.8);
     }
 
     .night-glasses {
@@ -595,7 +637,7 @@
 
     .module-list {
       display: grid;
-      gap: 10px;
+      gap: 8px;
     }
 
     .module-row {
@@ -603,9 +645,9 @@
       grid-template-columns: 46px 1fr auto;
       gap: 12px;
       align-items: center;
-      padding: 13px;
+      padding: 11px;
       border: 1px solid var(--line);
-      border-radius: 20px;
+      border-radius: 5px;
       background: rgba(255, 255, 255, 0.055);
     }
 
@@ -615,7 +657,7 @@
       width: 46px;
       height: 46px;
       border-radius: 16px;
-      background: rgba(255, 176, 0, 0.13);
+      background: rgba(210, 164, 109, 0.15);
       color: var(--orange);
       font-weight: 900;
     }
@@ -634,7 +676,7 @@
     .status {
       padding: 5px 8px;
       border-radius: 999px;
-      background: rgba(156, 255, 115, 0.14);
+      background: rgba(210, 164, 109, 0.16);
       color: var(--green);
       font-size: 10px;
       font-weight: 900;
@@ -642,8 +684,8 @@
     }
 
     .status.next {
-      background: rgba(105, 230, 255, 0.13);
-      color: var(--cyan);
+      background: rgba(255, 255, 255, 0.09);
+      color: var(--paper-soft);
     }
 
     .status.lab {
@@ -653,8 +695,8 @@
 
     .kit-stack {
       display: grid;
-      gap: 11px;
-      margin-top: 18px;
+      gap: 9px;
+      margin-top: 14px;
     }
 
     .kit-item {
@@ -662,9 +704,9 @@
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      padding: 16px;
+      padding: 12px;
       border: 1px solid var(--line);
-      border-radius: 22px;
+      border-radius: 5px;
       background: rgba(0, 0, 0, 0.22);
     }
 
@@ -684,8 +726,8 @@
       place-items: center;
       width: 42px;
       height: 42px;
-      border-radius: 50%;
-      background: rgba(255, 176, 0, 0.14);
+      border-radius: 4px;
+      background: rgba(210, 164, 109, 0.16);
       color: var(--orange);
       font-size: 13px;
       font-weight: 900;
@@ -693,46 +735,46 @@
 
     .community-loop {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
       margin-top: 16px;
     }
 
     .loop-card {
-      padding: 18px;
+      padding: 12px;
       border: 1px solid var(--line);
-      border-radius: 24px;
+      border-radius: 5px;
       background: rgba(255, 255, 255, 0.06);
     }
 
     .loop-card strong {
       display: block;
       margin-bottom: 6px;
-      font-size: 26px;
-      letter-spacing: -0.05em;
+      font-size: 18px;
+      letter-spacing: 0;
     }
 
     .loop-card span {
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.55;
+      font-size: 11px;
+      line-height: 1.35;
     }
 
     .quote-card {
-      padding: 22px;
-      border: 1px solid rgba(105, 230, 255, 0.26);
-      border-radius: 30px;
+      padding: 18px;
+      border: 1px solid rgba(210, 164, 109, 0.32);
+      border-radius: 5px;
       background:
-        radial-gradient(circle at 18% 16%, rgba(105, 230, 255, 0.14), transparent 36%),
+        radial-gradient(circle at 18% 16%, rgba(210, 164, 109, 0.14), transparent 36%),
         rgba(255, 255, 255, 0.06);
       box-shadow: var(--shadow);
     }
 
     .quote-card p {
       margin: 0;
-      font-size: 27px;
+      font-size: 24px;
       line-height: 1.12;
-      letter-spacing: -0.055em;
+      letter-spacing: 0;
       font-weight: 900;
     }
 
@@ -747,15 +789,15 @@
     .safety-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 8px;
       margin-top: 16px;
     }
 
     .safety-card {
-      padding: 15px;
-      min-height: 120px;
+      padding: 12px;
+      min-height: 98px;
       border: 1px solid var(--line);
-      border-radius: 22px;
+      border-radius: 5px;
       background: rgba(255, 255, 255, 0.055);
     }
 
@@ -772,11 +814,11 @@
     }
 
     .final-card {
-      padding: 24px;
-      border: 1px solid rgba(255, 176, 0, 0.36);
-      border-radius: 34px;
+      padding: 20px;
+      border: 1px solid rgba(210, 164, 109, 0.42);
+      border-radius: 5px;
       background:
-        radial-gradient(circle at 80% 8%, rgba(255, 176, 0, 0.18), transparent 38%),
+        radial-gradient(circle at 80% 8%, rgba(210, 164, 109, 0.18), transparent 38%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
       box-shadow: var(--shadow);
     }
@@ -829,7 +871,7 @@
       color: var(--muted);
       font-size: 11px;
       font-weight: 800;
-      letter-spacing: 0.04em;
+      letter-spacing: 0;
       text-transform: uppercase;
     }
 
@@ -850,17 +892,17 @@
       .phone-shell {
         min-height: calc(100svh - 48px);
         border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 34px;
+        border-radius: 8px;
       }
 
       .slides {
         height: calc(100svh - 48px);
-        border-radius: 34px;
+        border-radius: 8px;
       }
 
       .topbar {
         top: 24px;
-        border-radius: 34px 34px 0 0;
+        border-radius: 8px 8px 0 0;
       }
     }
 
@@ -869,6 +911,24 @@
         padding-left: 18px;
         padding-right: 18px;
       }
+
+      h1 {
+        font-size: 46px;
+      }
+
+      h2 {
+        font-size: 39px;
+      }
+    }
+
+    @media (max-width: 370px) {
+      h1 {
+        font-size: 40px;
+      }
+
+      h2 {
+        font-size: 35px;
+      }
     }
   </style>
 </head>
@@ -876,50 +936,50 @@
   <main class="phone-shell">
     <div class="topbar">
       <div class="logo"><span class="logo-dot"></span>MAGSNAP</div>
-      <div class="deck-label">Mobile Story</div>
+      <div class="deck-label">Founding 900</div>
     </div>
 
     <div class="progress" aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
 
     <div class="slides">
-      <section class="slide" style="--glow-x: 78%; --glow-y: 12%; --glow: rgba(255, 176, 0, 0.2);">
+      <section class="slide" style="--glow-x: 78%; --glow-y: 12%; --glow: rgba(210, 164, 109, 0.18);">
         <div class="slide-head">
-          <div class="kicker">Founder Built</div>
-          <h1><span class="gradient">Built as my daily toy.</span><br>Open for everyone to build.</h1>
-          <p class="lead">我不是先做一家公司。我先做了一个自己每天都愿意戴的大玩具。</p>
+          <div class="kicker">MAGSNAP</div>
+          <h1><span class="gradient">Built as my daily toy.</span></h1>
+          <p class="lead">Wearable Magnetic Ecosystem</p>
         </div>
 
-        <div class="hero-visual">
-          <img src="assets/magsnap-founder-playground-concept.png" alt="MAGSNAP founder-built magnetic playground concept">
+        <div class="hero-visual product-shot">
+          <img src="assets/product-camera-module.jpg" alt="MAGSNAP magnetic eyewear base prototype">
           <div class="shade"></div>
           <div class="hero-note">
-            <strong>No investors. Just build.</strong>
-            <span>A head-worn magnetic playground for people who actually use gear.</span>
+            <strong>Snap. Mount. Go.</strong>
+            <span>One eyewear base. Camera, light, audio, AI, and future modules.</span>
           </div>
         </div>
 
         <div class="cta-row">
-          <a class="button" href="#platform">See the platform</a>
-          <a class="button ghost" href="#community">Join the build</a>
+          <a class="button" href="#platform">See System</a>
+          <a class="button ghost" href="#founding">Founding 900</a>
         </div>
         <div class="swipe">Swipe down</div>
       </section>
 
-      <section class="slide" id="platform" style="--glow-x: 50%; --glow-y: 42%; --glow: rgba(105, 230, 255, 0.16);">
+      <section class="slide" id="platform" style="--glow-x: 50%; --glow-y: 42%; --glow: rgba(210, 164, 109, 0.14);">
         <div class="slide-head">
-          <div class="kicker">Not Smart Glasses</div>
-          <h2>It is a <span class="gradient">magnetic base platform</span> for your head.</h2>
-          <p class="lead">眼镜只是第一块底座。真正的东西，是一个戴在头上的磁吸接口。</p>
+          <div class="kicker">One System</div>
+          <h2>One system.<br><span class="gradient">Multiple modules.</span></h2>
+          <p class="lead">The glasses are the base. The magnetic interface is the product.</p>
         </div>
 
         <div class="big-card">
           <div class="platform-graphic" aria-label="MAGSNAP magnetic platform diagram">
-            <div class="module-chip camera">Camera<br>Module</div>
-            <div class="module-chip light">Light<br>Module</div>
-            <div class="module-chip ai">AI / Audio<br>Pod</div>
-            <div class="module-chip maker">Maker<br>Module</div>
+            <div class="module-chip camera">Camera<br>Ready</div>
+            <div class="module-chip light">Light<br>Ready</div>
+            <div class="module-chip ai">Audio / AI<br>Testing</div>
+            <div class="module-chip maker">Maker<br>Open</div>
             <span class="snap-line one"></span>
             <span class="snap-line two"></span>
             <span class="snap-line three"></span>
@@ -935,35 +995,46 @@
             </div>
           </div>
           <div class="pill-grid">
-            <div class="pill"><strong>100% Magnetic</strong><span>No screws. No tools. Snap and go.</span></div>
-            <div class="pill"><strong>0% Electric Base</strong><span>No battery, processor, camera, or mic in the glasses.</span></div>
+            <div class="pill"><strong>100% Magnetic</strong><span>No screws. No tools.</span></div>
+            <div class="pill"><strong>0% Electric Base</strong><span>No battery in the glasses.</span></div>
           </div>
         </div>
       </section>
 
-      <section class="slide" style="--glow-x: 26%; --glow-y: 16%; --glow: rgba(105, 230, 255, 0.14);">
+      <section class="slide" style="--glow-x: 28%; --glow-y: 14%; --glow: rgba(210, 164, 109, 0.12);">
         <div class="slide-head">
-          <div class="kicker">Morning</div>
-          <h2>Camera in the morning.</h2>
-          <p class="lead">白天，它是最轻的第一视角相机底座。</p>
+          <div class="kicker">First Modules</div>
+          <h2>Camera by day.<br>Light by night.</h2>
+          <p class="lead">Same base. Different moment.</p>
         </div>
 
         <div class="photo-card">
-          <img src="assets/product-camera-module.jpg" alt="MAGSNAP product with camera module">
+          <img src="assets/product-camera-module.jpg" alt="MAGSNAP camera module prototype">
           <div class="photo-caption">
             <strong>POV without the helmet.</strong>
-            <span>For kitesurfing, FPV, cycling, travel, repair work, and everyday creator shots.</span>
+            <span>Built for creator shots, travel, repair work, and field testing.</span>
           </div>
         </div>
 
-        <p class="copy">这一屏只卖一个感觉：想拍的时候，一秒吸上；不拍的时候，马上拿下。</p>
+        <div class="module-list">
+          <div class="module-row">
+            <div class="module-icon">CAM</div>
+            <div><strong>Camera Module</strong><span>POV video and action moments</span></div>
+            <span class="status">Ready</span>
+          </div>
+          <div class="module-row">
+            <div class="module-icon">LED</div>
+            <div><strong>Light Module</strong><span>Night walking, repair, camp</span></div>
+            <span class="status">Ready</span>
+          </div>
+        </div>
       </section>
 
-      <section class="slide" style="--glow-x: 50%; --glow-y: 20%; --glow: rgba(255, 176, 0, 0.24);">
+      <section class="slide" style="--glow-x: 50%; --glow-y: 20%; --glow: rgba(210, 164, 109, 0.2);">
         <div class="slide-head">
-          <div class="kicker">Night</div>
-          <h2>Light at night.</h2>
-          <p class="lead">晚上，它不是眼镜，它变成头灯平台。</p>
+          <div class="kicker">Real Life</div>
+          <h2>Built for real life.</h2>
+          <p class="lead">Lightweight base. Fast snap. No head strap.</p>
         </div>
 
         <div class="light-stage">
@@ -980,130 +1051,66 @@
           </div>
         </div>
 
-        <div class="big-card">
-          <p class="lead">Camera in the morning. Light at night. One base platform.</p>
-          <p class="copy">这就是网站第一版最应该打穿的用户理解：不是买眼镜，是买一个可玩的头戴底座。</p>
+        <div class="safety-grid">
+          <div class="safety-card"><strong>Clear Sightline</strong><span>No screen or prism in front of your eye.</span></div>
+          <div class="safety-card"><strong>Quick Snap</strong><span>Attach and remove modules fast.</span></div>
+          <div class="safety-card"><strong>No Helmet Strap</strong><span>Designed for everyday carry.</span></div>
+          <div class="safety-card"><strong>No Battery Base</strong><span>Electronics stay in the modules.</span></div>
         </div>
       </section>
 
-      <section class="slide" style="--glow-x: 84%; --glow-y: 22%; --glow: rgba(156, 255, 115, 0.13);">
+      <section class="slide" style="--glow-x: 76%; --glow-y: 12%; --glow: rgba(210, 164, 109, 0.13);">
         <div class="slide-head">
-          <div class="kicker">Modules</div>
-          <h2>Snap on what you need.</h2>
-          <p class="lead">先从相机和头灯开始，未来让玩家一起把模块做出来。</p>
-        </div>
-
-        <div class="module-list">
-          <div class="module-row">
-            <div class="module-icon">CAM</div>
-            <div><strong>Camera Module</strong><span>POV video, travel, action sports</span></div>
-            <span class="status">Ready</span>
-          </div>
-          <div class="module-row">
-            <div class="module-icon">LED</div>
-            <div><strong>Light Module</strong><span>Night riding, repair, camping</span></div>
-            <span class="status">Ready</span>
-          </div>
-          <div class="module-row">
-            <div class="module-icon">MIC</div>
-            <div><strong>Audio Module</strong><span>Mic, voice notes, field recording</span></div>
-            <span class="status next">Next</span>
-          </div>
-          <div class="module-row">
-            <div class="module-icon">AI</div>
-            <div><strong>AI Pod</strong><span>Assistant, translation, summaries</span></div>
-            <span class="status lab">Lab</span>
-          </div>
-          <div class="module-row">
-            <div class="module-icon">DIY</div>
-            <div><strong>Maker Module</strong><span>3D printed ideas from the community</span></div>
-            <span class="status lab">Open</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide" style="--glow-x: 20%; --glow-y: 12%; --glow: rgba(255, 176, 0, 0.16);">
-        <div class="slide-head">
-          <div class="kicker">Founding 900</div>
-          <h2>The first 900 are not mass market.</h2>
-          <p class="lead">它们是第一批玩家共创版。不是铺货，是找真正会用、会拍、会改的人。</p>
-        </div>
-
-        <div class="big-card">
-          <div class="kit-stack">
-            <div class="kit-item">
-              <div><strong>Base Glasses</strong><br><span>Lightweight magnetic base platform</span></div>
-              <div class="number">01</div>
-            </div>
-            <div class="kit-item">
-              <div><strong>Camera Mount</strong><br><span>The first real use case</span></div>
-              <div class="number">02</div>
-            </div>
-            <div class="kit-item">
-              <div><strong>Light Module</strong><br><span>Turns the product into a platform</span></div>
-              <div class="number">03</div>
-            </div>
-            <div class="kit-item">
-              <div><strong>Founding Player Card</strong><br><span>Name, number, test story, module ideas</span></div>
-              <div class="number">900</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="slide" id="community" style="--glow-x: 78%; --glow-y: 10%; --glow: rgba(255, 110, 180, 0.13);">
-        <div class="slide-head">
-          <div class="kicker">Community Lab</div>
-          <h2>Built by players, for players.</h2>
-          <p class="lead">我不需要一开始找代理。我需要先找到一批真的会玩的 Founding Builders。</p>
-        </div>
-
-        <div class="community-loop">
-          <div class="loop-card"><strong>Snap</strong><span>把相机、灯、AI Pod、麦克风先吸上去，马上用。</span></div>
-          <div class="loop-card"><strong>Test</strong><span>风冲、FPV、骑行、旅行、夜间维修，拍真实反馈。</span></div>
-          <div class="loop-card"><strong>Modify</strong><span>玩家提交 3D 打印件、模块想法、视频和改装方案。</span></div>
-        </div>
-      </section>
-
-      <section class="slide" style="--glow-x: 28%; --glow-y: 18%; --glow: rgba(105, 230, 255, 0.14);">
-        <div class="slide-head">
-          <div class="kicker">Founder Proof</div>
-          <h2>I wear it every day.</h2>
-          <p class="lead">这个项目最强的信任，不是广告，是你自己戴了一年多。</p>
+          <div class="kicker">Founder Built</div>
+          <h2>Built for myself.<br><span class="gradient">Shared with the world.</span></h2>
+          <p class="lead">Founder-worn for more than a year.</p>
         </div>
 
         <div class="quote-card">
           <p>“If it made me uncomfortable, I would have stopped wearing it long ago.”</p>
-          <small>Visual comfort, magnet position, weight, and daily use should be explained through founder testing and real user trials.</small>
+          <small>- MZ</small>
         </div>
 
-        <div class="safety-grid">
-          <div class="safety-card"><strong>Visual Comfort</strong><span>No claim of medical effect. Show real testing and usage distance.</span></div>
-          <div class="safety-card"><strong>Magnet Safety</strong><span>Clear warnings for pacemakers, implants, and sensitive devices.</span></div>
-          <div class="safety-card"><strong>Module Limits</strong><span>Only tested modules, weights, and mounting positions.</span></div>
-          <div class="safety-card"><strong>Real Feedback</strong><span>Use founder story plus community tests, not empty promises.</span></div>
+        <div class="community-loop">
+          <div class="loop-card"><strong>Snap</strong><span>Use the module.</span></div>
+          <div class="loop-card"><strong>Test</strong><span>Bring back real feedback.</span></div>
+          <div class="loop-card"><strong>Modify</strong><span>Improve the next build.</span></div>
         </div>
       </section>
 
-      <section class="slide" style="--glow-x: 50%; --glow-y: 10%; --glow: rgba(255, 176, 0, 0.2);">
+      <section class="slide" id="founding" style="--glow-x: 50%; --glow-y: 10%; --glow: rgba(210, 164, 109, 0.18);">
         <div class="slide-head">
-          <div class="kicker">Join The Playground</div>
-          <h2>One base platform. Many ways to play.</h2>
-          <p class="lead">先把 900 套交给真正懂它的人，再让这个品牌长出来。</p>
+          <div class="kicker">Founding 900</div>
+          <h2>Not mass market.<br>First builders only.</h2>
+          <p class="lead">Base glasses, camera mount, Light Module, and numbered founding card.</p>
         </div>
 
         <div class="final-card">
-          <h2><span class="gradient">No investors. No pitch deck. Just build.</span></h2>
-          <p class="copy">MAGSNAP is for people who look at gear and immediately think: “I can make this better.”</p>
+          <h2><span class="gradient">MAGSNAP</span></h2>
+          <p class="copy">Snap. Mount. Go.</p>
+          <div class="kit-stack">
+            <div class="kit-item">
+              <div><strong>Base Eyewear</strong><br><span>Wearable magnetic platform</span></div>
+              <div class="number">01</div>
+            </div>
+            <div class="kit-item">
+              <div><strong>Camera Mount</strong><br><span>First POV use case</span></div>
+              <div class="number">02</div>
+            </div>
+            <div class="kit-item">
+              <div><strong>Light Module</strong><br><span>Proves the ecosystem</span></div>
+              <div class="number">03</div>
+            </div>
+          </div>
           <div class="cta-row">
-            <a class="button" href="mailto:hello@magsnap.example">Become a Builder</a>
+            <a class="button" href="mailto:max@magsnap.me?subject=MAGSNAP%20Founding%20900">Join Founding 900</a>
             <a class="button ghost" href="#platform">Replay</a>
           </div>
         </div>
 
         <div class="footer-line">
           <span>MAGSNAP / Founding 900</span>
-          <span>Snap • Test • Modify</span>
+          <span>Snap · Test · Modify</span>
         </div>
       </section>
     </div>

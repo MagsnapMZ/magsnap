@@ -15,7 +15,8 @@ MAGSNAP is positioned as a founder-built, head-worn magnetic playground for crea
 
 ## Core Message
 
-Built as my daily toy.  
-Open for everyone to build.
+Built as my daily toy.
 
-Camera in the morning. Light at night. One base platform.
+Snap. Mount. Go.
+
+Camera by day. Light by night. One base platform.

@@ -2,6 +2,10 @@
 
 Date: 2026-06-05
 
+Status: historical brief. Current requirements live in `MAGSNAP_SOURCE_OF_TRUTH.md`.
+
+Important: this document contains older Founding 900, signup, and CTA ideas that are now deprecated for the current homepage. Do not use this file as the final source of truth without checking `MAGSNAP_SOURCE_OF_TRUTH.md`.
+
 ## New Website Objective
 
 The website must reposition MAGSNAP from:

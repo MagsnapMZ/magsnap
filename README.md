@@ -1,28 +1,22 @@
-# MAGSNAP V2 Homepage
+# MAGSNAP Website
 
-Minimal product-understanding homepage for MAGSNAP v2.
+Clean, premium, mobile-first landing page for MAGSNAP.
 
-Use `MAGSNAP_SOURCE_OF_TRUTH.md` as the active project reference before changing copy, structure, positioning, CTAs, warnings, or founder wording.
-
-Use `MAGSNAP_ALIGNMENT_MAP.md` to see which local MAGSNAP knowledge-base files have been read and how conflicts are resolved.
-
-MAGSNAP is positioned as a founder-built, head-worn magnetic playground for creators, outdoor users, FPV/drone people, makers, and hardware tinkerers.
+Use `MAGSNAP_SOURCE_OF_TRUTH.md` as the active project reference before changing copy, structure, positioning, warnings, founder wording, or assets.
 
 ## Files
 
-- `index.html` - MAGSNAP v2 homepage.
-- `mobile_story.html` - redirects to the current v2 homepage.
-- `MAGSNAP_SOURCE_OF_TRUTH.md` - active requirements and banned/deprecated wording.
-- `MAGSNAP_ALIGNMENT_MAP.md` - local ChatGPT/knowledge-base alignment map and conflict rules.
-- `desktop.html` - earlier desktop-style homepage prototype.
-- `website_redesign_brief.md` - strategy and content brief.
-- `mobile_story_preview.png` - phone-width preview screenshot.
-- `assets/` - local visual assets used by the prototypes.
+- `index.html` - live MAGSNAP homepage.
+- `disclaimer.html` - Safety, Warranty, Disclaimer, and Privacy page.
+- `mobile_story.html` - legacy path redirecting to the homepage.
+- `desktop.html` - legacy path redirecting to the homepage.
+- `assets/site/` - real MAGSNAP assets prepared for the current homepage.
+- `MAGSNAP_SOURCE_OF_TRUTH.md` - active Final Spec V1.0 reference.
 
 ## Core Message
 
-The Wearable Magnetic Ecosystem.
+MAGSNAP is the Wearable Magnetic Ecosystem.
 
-One eyewear base. Many magnetic modules.
+The glasses are only the first product.
 
-Snap. Use. Remove.
+Snap. Mount. Go.

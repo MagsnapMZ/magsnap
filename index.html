@@ -3,24 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MAGSNAP | Wearable Magnetic Ecosystem</title>
+  <title>MAGSNAP | The Wearable Magnetic Ecosystem</title>
   <meta name="description" content="MAGSNAP is a wearable magnetic ecosystem: one eyewear base for snap-on camera, light, audio, AI, and future modules.">
-  <meta property="og:title" content="MAGSNAP | Wearable Magnetic Ecosystem">
-  <meta property="og:description" content="One eyewear base. Many magnetic modules. Built as a daily-use product experiment.">
+  <meta property="og:title" content="MAGSNAP | The Wearable Magnetic Ecosystem">
+  <meta property="og:description" content="Snap. Use. Remove. One eyewear base for many magnetic modules.">
   <meta property="og:image" content="assets/product-camera-module.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <style>
     :root {
       --black: #050505;
-      --ink: #11100e;
-      --white: #f7f4ee;
-      --muted: #8e8376;
-      --paper: #d2a46d;
-      --paper-deep: #a57542;
-      --paper-light: #ead8bf;
-      --line-dark: rgba(17, 16, 14, 0.18);
-      --line-light: rgba(247, 244, 238, 0.18);
+      --ink: #11100d;
+      --white: #f7f3eb;
+      --soft-white: #e6ded2;
+      --kraft: #cf9f65;
+      --kraft-dark: #8b5b30;
+      --kraft-light: #ead5b7;
+      --pink: #ff6f9f;
+      --muted: #8d8275;
+      --line-dark: rgba(17, 16, 13, 0.2);
+      --line-light: rgba(247, 243, 235, 0.18);
       --max: 1180px;
       font-family: "Avenir Next", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
     }
@@ -45,23 +47,29 @@
       text-decoration: none;
     }
 
-    img,
-    video {
-      display: block;
-      width: 100%;
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      opacity: 0.08;
+      pointer-events: none;
+      background-image:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px);
+      background-size: 7px 11px;
+      mix-blend-mode: soft-light;
     }
 
     .site-header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 30;
+      inset: 0 0 auto;
+      z-index: 40;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 18px;
       padding: 18px clamp(18px, 5vw, 64px);
-      background: linear-gradient(180deg, rgba(5, 5, 5, 0.88), rgba(5, 5, 5, 0));
+      background: linear-gradient(180deg, rgba(5, 5, 5, 0.86), rgba(5, 5, 5, 0));
       pointer-events: none;
     }
 
@@ -69,102 +77,110 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
+      color: var(--white);
       font-weight: 900;
-      letter-spacing: 0;
+      pointer-events: auto;
     }
 
     .brand-dot {
       width: 26px;
       height: 26px;
       border-radius: 50%;
-      background: radial-gradient(circle at 33% 30%, #fff3d2 0 12%, var(--paper) 48%, #6a431e 100%);
-      box-shadow: 0 0 24px rgba(210, 164, 109, 0.4);
+      background: radial-gradient(circle at 34% 28%, #fff2d0 0 12%, var(--kraft) 48%, #6d421b 100%);
+      box-shadow: 0 0 24px rgba(207, 159, 101, 0.35);
     }
 
-    .mini-nav {
+    .nav {
       display: flex;
-      gap: 18px;
-      color: rgba(247, 244, 238, 0.72);
+      gap: 17px;
+      color: rgba(247, 243, 235, 0.68);
       font-size: 12px;
       font-weight: 800;
       pointer-events: auto;
     }
 
-    .poster {
+    .nav a:hover {
+      color: var(--pink);
+    }
+
+    .section {
       position: relative;
-      min-height: auto;
-      padding: clamp(78px, 8vw, 104px) clamp(18px, 5vw, 64px) clamp(38px, 5vw, 64px);
+      min-height: 100svh;
+      padding: clamp(86px, 8vw, 112px) clamp(18px, 5vw, 64px) clamp(42px, 5vw, 72px);
       overflow: hidden;
     }
 
-    .poster-inner {
+    .inner {
       width: min(100%, var(--max));
       margin: 0 auto;
     }
 
-    .poster-number {
+    .number {
       display: grid;
       grid-template-columns: auto 1fr;
       gap: 12px;
       align-items: start;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       font-weight: 900;
     }
 
-    .poster-number span {
-      color: inherit;
+    .number span {
       font-size: 15px;
       line-height: 1;
     }
 
-    .poster-number::after {
+    .number::after {
       content: "";
       width: 1px;
-      height: 48px;
+      height: 46px;
       background: currentColor;
-      opacity: 0.5;
+      opacity: 0.45;
     }
 
     .kicker {
       margin: 0 0 12px;
-      color: var(--paper);
+      color: var(--kraft);
       font-size: 13px;
       font-weight: 900;
       text-transform: uppercase;
     }
 
     h1,
-    h2 {
+    h2,
+    h3 {
       margin: 0;
       font-family: "Arial Black", "Avenir Next Condensed", "Helvetica Neue", sans-serif;
       font-weight: 900;
       letter-spacing: 0;
-      line-height: 0.94;
+      line-height: 0.93;
       text-transform: uppercase;
     }
 
     h1 {
-      max-width: 760px;
-      font-size: 92px;
+      font-size: 94px;
     }
 
     h2 {
-      max-width: 760px;
-      font-size: 78px;
+      max-width: 900px;
+      font-size: 76px;
+    }
+
+    h3 {
+      font-size: 34px;
+      line-height: 0.98;
     }
 
     .lead {
-      max-width: 660px;
-      margin: 22px 0 0;
-      color: rgba(247, 244, 238, 0.82);
-      font-size: 26px;
+      max-width: 680px;
+      margin: 20px 0 0;
+      color: rgba(247, 243, 235, 0.82);
+      font-size: 24px;
       font-weight: 800;
-      line-height: 1.24;
+      line-height: 1.25;
     }
 
-    .small-copy {
-      max-width: 560px;
-      margin: 18px 0 0;
+    .copy {
+      max-width: 590px;
       color: var(--muted);
       font-size: 15px;
       line-height: 1.6;
@@ -172,566 +188,578 @@
 
     .hero {
       display: grid;
-      align-items: end;
-      min-height: 94svh;
+      place-items: center;
       background:
-        linear-gradient(90deg, rgba(5, 5, 5, 0.96) 0 38%, rgba(5, 5, 5, 0.3) 64%, rgba(5, 5, 5, 0.98) 100%),
-        #080807;
+        radial-gradient(circle at 74% 22%, rgba(255, 111, 159, 0.16), transparent 18%),
+        linear-gradient(90deg, #050505 0 48%, rgba(207, 159, 101, 0.1) 72%, #050505 100%);
+      text-align: center;
     }
 
-    .hero-grid {
+    .hero .inner {
       display: grid;
-      grid-template-columns: minmax(0, 0.88fr) minmax(320px, 1.12fr);
-      gap: clamp(28px, 6vw, 78px);
-      align-items: end;
+      justify-items: center;
     }
 
-    .hero-grid > * {
-      min-width: 0;
+    .hero-title {
+      font-size: 118px;
+      line-height: 0.88;
     }
 
-    .video-stage {
-      position: relative;
-      min-height: min(56svh, 560px);
-      border: 1px solid var(--line-light);
-      background:
-        linear-gradient(135deg, #ece7df 0, #c8ad86 42%, #12100d 100%);
-      overflow: hidden;
-    }
-
-    .video-stage video {
-      height: min(56svh, 560px);
-      object-fit: contain;
-      padding: clamp(22px, 4vw, 54px);
-      filter: contrast(1.04) saturate(0.92);
-    }
-
-    .video-label {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding-top: 14px;
-      border-top: 1px solid rgba(17, 16, 14, 0.18);
-      color: rgba(17, 16, 14, 0.72);
-      font-size: 12px;
+    .hero-subtitle {
+      margin: 22px 0 0;
+      color: var(--kraft-light);
+      font-size: 22px;
       font-weight: 900;
       text-transform: uppercase;
     }
 
-    .paper {
+    .enter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 132px;
+      min-height: 48px;
+      margin-top: 46px;
+      border: 1px solid var(--kraft);
+      background: var(--kraft);
+      color: var(--ink);
+      font-weight: 950;
+      text-transform: uppercase;
+      transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+    }
+
+    .enter:hover {
+      transform: translateY(-2px);
+      background: var(--pink);
+      border-color: var(--pink);
+    }
+
+    .black {
+      background: #050505;
+      color: var(--white);
+    }
+
+    .kraft {
       background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 28%),
-        linear-gradient(180deg, #ddb47b, #c99a5f);
+        linear-gradient(90deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 32%),
+        linear-gradient(180deg, #d9ae75, #c79559);
       color: var(--ink);
     }
 
-    .paper .kicker,
-    .paper .small-copy {
-      color: #5e4127;
+    .kraft .kicker,
+    .kraft .copy {
+      color: #614125;
     }
 
-    .paper .lead {
-      color: rgba(17, 16, 14, 0.76);
-    }
-
-    .photo-board {
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 14px;
-      margin-top: 36px;
-    }
-
-    .photo-panel {
-      min-height: 360px;
-      border: 1px solid var(--line-dark);
-      background: rgba(255, 255, 255, 0.18);
-      overflow: hidden;
-    }
-
-    .photo-panel img {
-      height: 100%;
-      object-fit: cover;
-      filter: saturate(0.92) contrast(1.06);
-    }
-
-    .photo-panel.product img {
-      object-fit: contain;
-      padding: 32px;
-      background: #ece9e3;
-    }
-
-    .photo-caption {
-      display: grid;
-      gap: 10px;
-      align-content: end;
-      padding: 22px;
-      border: 1px solid var(--line-dark);
-      background: rgba(17, 16, 14, 0.08);
-      min-height: 190px;
-    }
-
-    .photo-caption strong {
-      display: block;
-      font-family: "Arial Black", "Avenir Next Condensed", sans-serif;
-      font-size: 28px;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .photo-caption span {
-      color: #5e4127;
-      line-height: 1.55;
+    .kraft .lead {
+      color: rgba(17, 16, 13, 0.74);
     }
 
     .white {
-      background: #f4f1ea;
+      background: #f5f0e7;
       color: var(--ink);
     }
 
     .white .kicker,
-    .white .small-copy {
-      color: #756a5e;
+    .white .copy {
+      color: #776a5c;
     }
 
     .white .lead {
-      color: rgba(17, 16, 14, 0.74);
+      color: rgba(17, 16, 13, 0.72);
     }
 
-    .steps {
+    .use-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       margin-top: 48px;
-      border: 1px solid var(--line-dark);
-      background: var(--line-dark);
-    }
-
-    .step {
-      min-height: 220px;
-      padding: clamp(18px, 3vw, 32px);
-      background: #f4f1ea;
-    }
-
-    .step strong {
-      display: block;
-      margin-bottom: 16px;
-      color: var(--paper-deep);
-      font-family: "Arial Black", "Avenir Next Condensed", sans-serif;
-      font-size: 40px;
-      line-height: 0.98;
-      text-transform: uppercase;
-    }
-
-    .step span {
-      color: #756a5e;
-      line-height: 1.55;
-    }
-
-    .black {
-      background:
-        linear-gradient(180deg, #080807, #020202);
-      color: var(--white);
-    }
-
-    .design-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(340px, 1.05fr);
-      gap: clamp(26px, 5vw, 70px);
-      align-items: end;
-      margin-top: 40px;
-    }
-
-    .design-photo {
-      border: 1px solid var(--line-light);
-      background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(210, 164, 109, 0.14)),
-        #050505;
-      min-height: 430px;
-      overflow: hidden;
-    }
-
-    .design-photo img {
-      height: 100%;
-      object-fit: contain;
-      padding: 42px;
-      filter: contrast(1.08) saturate(0.86);
-    }
-
-    .details {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-
-    .detail {
-      min-height: 132px;
-      padding: 18px;
-      border: 1px solid var(--line-light);
-      background: rgba(255, 255, 255, 0.035);
-    }
-
-    .detail strong {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--paper-light);
-      font-size: 16px;
-      font-weight: 900;
-    }
-
-    .detail span {
-      color: rgba(247, 244, 238, 0.66);
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .notes-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
-      gap: clamp(24px, 5vw, 64px);
-      align-items: start;
-      margin-top: 44px;
-    }
-
-    .note-stack {
-      display: grid;
-      gap: 10px;
-    }
-
-    .note {
-      padding: 15px 0;
-      border-top: 1px solid var(--line-dark);
-    }
-
-    .note:last-child {
-      border-bottom: 1px solid var(--line-dark);
-    }
-
-    .note strong {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 15px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .note span {
-      color: #665846;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .route {
-      display: grid;
-      gap: 12px;
-      padding: 22px;
-      border: 1px solid var(--line-dark);
-      background: rgba(17, 16, 14, 0.07);
-    }
-
-    .route-row {
-      display: grid;
-      grid-template-columns: 76px 1fr;
-      gap: 14px;
-      align-items: baseline;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(17, 16, 14, 0.13);
-    }
-
-    .route-row:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .route-row b {
-      color: var(--paper-deep);
-      font-family: "Arial Black", "Avenir Next Condensed", sans-serif;
-      font-size: 18px;
-    }
-
-    .route-row span {
-      color: #5e4127;
-      line-height: 1.45;
-    }
-
-    .safety {
-      min-height: auto;
-      padding-top: clamp(54px, 7vw, 84px);
-      padding-bottom: clamp(54px, 7vw, 84px);
-      background: #050505;
-      color: var(--white);
-    }
-
-    .safety-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      margin-top: 28px;
       border: 1px solid var(--line-light);
       background: var(--line-light);
     }
 
-    .safety-item {
-      padding: 16px;
-      background: #050505;
+    .use-card {
+      min-height: 420px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0)),
+        #050505;
     }
 
-    .safety-item strong {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--paper-light);
-      font-size: 13px;
+    .motion-box {
+      min-height: 230px;
+      border: 1px solid rgba(247, 243, 235, 0.16);
+      background:
+        repeating-linear-gradient(90deg, rgba(247, 243, 235, 0.05) 0 1px, transparent 1px 24px),
+        radial-gradient(circle at 50% 50%, rgba(207, 159, 101, 0.18), transparent 42%),
+        #0a0a0a;
+      display: grid;
+      place-items: center;
+      color: rgba(247, 243, 235, 0.42);
+      font-size: 11px;
+      font-weight: 900;
       text-transform: uppercase;
+      overflow: hidden;
     }
 
-    .safety-item span {
-      color: rgba(247, 244, 238, 0.66);
-      font-size: 12px;
+    .motion-box::before {
+      content: attr(data-gif);
+      display: inline-flex;
+      padding: 8px 10px;
+      border: 1px solid rgba(255, 111, 159, 0.45);
+      color: var(--pink);
+    }
+
+    .use-card p {
+      color: rgba(247, 243, 235, 0.62);
       line-height: 1.5;
     }
 
-    .site-footer {
+    .real-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(310px, 0.9fr);
+      gap: clamp(24px, 5vw, 70px);
+      align-items: end;
+      margin-top: 44px;
+    }
+
+    .wide-gif {
+      min-height: 430px;
+      border: 1px solid var(--line-dark);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(17, 16, 13, 0.05)),
+        rgba(255, 255, 255, 0.13);
+      display: grid;
+      place-items: center;
+      color: #5d3d20;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .wide-gif::before {
+      content: attr(data-gif);
+      padding: 9px 12px;
+      border: 1px solid rgba(17, 16, 13, 0.2);
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .real-list {
+      display: grid;
+      gap: 1px;
+      border: 1px solid var(--line-dark);
+      background: var(--line-dark);
+    }
+
+    .real-list div {
       display: flex;
       justify-content: space-between;
       gap: 18px;
-      padding: 22px clamp(18px, 5vw, 64px);
-      background: #050505;
-      border-top: 1px solid var(--line-light);
-      color: rgba(247, 244, 238, 0.5);
-      font-size: 12px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.12);
+      font-weight: 900;
     }
 
-    @media (max-width: 860px) {
-      .mini-nav {
+    .carry-grid,
+    .frames-grid,
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 46px;
+      border: 1px solid var(--line-dark);
+      background: var(--line-dark);
+    }
+
+    .carry-item,
+    .frame-item,
+    .lab-item {
+      min-height: 220px;
+      padding: 18px;
+      background: #f5f0e7;
+    }
+
+    .carry-item strong,
+    .frame-item strong,
+    .lab-item strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--kraft-dark);
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .carry-item span,
+    .frame-item span,
+    .lab-item span {
+      color: #766756;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .frame-item {
+      background: #050505;
+      border-color: var(--line-light);
+    }
+
+    .frame-item strong {
+      color: var(--kraft-light);
+    }
+
+    .frame-item span {
+      color: rgba(247, 243, 235, 0.62);
+    }
+
+    .lab-grid {
+      border-color: var(--line-light);
+      background: var(--line-light);
+    }
+
+    .lab-item {
+      background: #050505;
+    }
+
+    .lab-item strong {
+      color: var(--pink);
+    }
+
+    .lab-item span {
+      color: rgba(247, 243, 235, 0.64);
+    }
+
+    .origin-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.86fr);
+      gap: clamp(26px, 5vw, 72px);
+      align-items: start;
+      margin-top: 44px;
+    }
+
+    .origin-card {
+      padding: 24px;
+      border: 1px solid var(--line-dark);
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .origin-card strong {
+      display: block;
+      margin-bottom: 12px;
+      font-family: "Arial Black", "Avenir Next Condensed", sans-serif;
+      font-size: 30px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .origin-card p {
+      color: #604326;
+      line-height: 1.62;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(17, 16, 13, 0.18);
+    }
+
+    .timeline-row b {
+      color: var(--kraft-dark);
+      font-family: "Arial Black", "Avenir Next Condensed", sans-serif;
+    }
+
+    .timeline-row span {
+      color: #604326;
+      line-height: 1.48;
+    }
+
+    .contact {
+      min-height: auto;
+      padding-top: clamp(72px, 8vw, 110px);
+      padding-bottom: clamp(72px, 8vw, 110px);
+    }
+
+    .contact-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 28px;
+      color: var(--kraft-light);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .contact-note {
+      max-width: 760px;
+      margin-top: 26px;
+      color: rgba(247, 243, 235, 0.58);
+      line-height: 1.6;
+    }
+
+    .safety-note {
+      margin-top: 46px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line-light);
+      color: rgba(247, 243, 235, 0.52);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 920px) {
+      .nav {
         display: none;
       }
 
-      .poster {
+      .section {
         min-height: auto;
         padding-top: 88px;
       }
 
       .hero {
-        min-height: 94svh;
+        min-height: 100svh;
       }
 
-      .hero-grid,
-      .design-grid,
-      .notes-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .video-stage,
-      .video-stage video {
-        min-height: 310px;
-        height: 38svh;
-      }
-
-      .photo-board {
-        grid-template-columns: 1fr;
-      }
-
-      .photo-panel {
-        min-height: 280px;
-      }
-
-      .steps,
-      .details,
-      .safety-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .step {
-        min-height: 150px;
-      }
-
-      .design-photo {
-        min-height: 300px;
-      }
-
-      .site-footer {
-        display: grid;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .poster {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      .poster-number {
-        margin-bottom: 18px;
+      .hero-title {
+        font-size: 66px;
       }
 
       h1 {
-        font-size: 46px;
+        font-size: 56px;
       }
 
       h2 {
-        font-size: 38px;
+        font-size: 44px;
       }
 
       .lead {
         font-size: 18px;
       }
 
-      .step strong {
-        font-size: 30px;
+      .use-grid,
+      .real-layout,
+      .origin-wrap {
+        grid-template-columns: 1fr;
       }
 
-      .video-label {
-        display: grid;
+      .carry-grid,
+      .frames-grid,
+      .lab-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .use-card {
+        min-height: 330px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .site-header {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .section {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero-title {
+        font-size: 48px;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      h2 {
+        font-size: 38px;
+      }
+
+      h3 {
+        font-size: 28px;
+      }
+
+      .carry-grid,
+      .frames-grid,
+      .lab-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .motion-box {
+        min-height: 190px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="grain" aria-hidden="true"></div>
+
   <header class="site-header">
     <a class="brand" href="#top" aria-label="MAGSNAP home"><span class="brand-dot"></span>MAGSNAP</a>
-    <nav class="mini-nav" aria-label="Page sections">
-      <a href="#what">What</a>
-      <a href="#works">How</a>
-      <a href="#design">Design</a>
-      <a href="#notes">Notes</a>
+    <nav class="nav" aria-label="MAGSNAP sections">
+      <a href="#use">Use</a>
+      <a href="#real-world">Real World</a>
+      <a href="#carry">Carry</a>
+      <a href="#frames">Frames</a>
+      <a href="#lab">Lab</a>
+      <a href="#origin">Origin</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="poster hero">
-      <div class="poster-inner hero-grid">
-        <div>
-          <div class="poster-number"><span>01</span></div>
-          <p class="kicker">Wearable Magnetic Ecosystem</p>
-          <h1>Built as my daily toy.</h1>
-          <p class="lead">One eyewear base for magnetic camera, light, audio, AI, and future modules.</p>
-        </div>
+    <section class="section hero" aria-label="MAGSNAP v2 entry">
+      <div class="inner">
+        <h1 class="hero-title">MAGSNAP</h1>
+        <p class="hero-subtitle">The Wearable Magnetic Ecosystem</p>
+        <a class="enter" href="#use">Enter</a>
+      </div>
+    </section>
 
-        <div class="video-stage" aria-label="MAGSNAP hero video area">
-          <video poster="assets/product-camera-module.jpg" muted playsinline preload="metadata" aria-label="MAGSNAP product video">
-            Your browser does not support video playback.
-          </video>
-          <div class="video-label">
-            <span>Product film</span>
-            <span>Snap. Mount. Go.</span>
+    <section class="section black" id="use">
+      <div class="inner">
+        <div class="number"><span>01</span></div>
+        <p class="kicker">Product use first</p>
+        <h2>Snap. Use. Remove.</h2>
+        <p class="lead">The product should be understood before the story begins.</p>
+
+        <div class="use-grid">
+          <article class="use-card">
+            <div class="motion-box" data-gif="snap.gif"></div>
+            <div>
+              <h3>Snap</h3>
+              <p>Attach a tested module to the magnetic interface.</p>
+            </div>
+          </article>
+          <article class="use-card">
+            <div class="motion-box" data-gif="use.gif"></div>
+            <div>
+              <h3>Use</h3>
+              <p>Wear the base for camera, light, audio, AI, or field tasks.</p>
+            </div>
+          </article>
+          <article class="use-card">
+            <div class="motion-box" data-gif="remove.gif"></div>
+            <div>
+              <h3>Remove</h3>
+              <p>Take the module off when the moment changes.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section kraft" id="real-world">
+      <div class="inner">
+        <div class="number"><span>02</span></div>
+        <p class="kicker">Real World</p>
+        <h2>Made to leave the desk.</h2>
+        <p class="lead">MAGSNAP is explained through real wearing, real switching, and real environments.</p>
+
+        <div class="real-layout">
+          <div class="wide-gif" data-gif="real-world.gif"></div>
+          <div class="real-list">
+            <div><span>Walking</span><span>light</span></div>
+            <div><span>Travel</span><span>camera</span></div>
+            <div><span>Repair</span><span>hands free</span></div>
+            <div><span>Outdoor</span><span>wind / sand</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="poster paper" id="what">
-      <div class="poster-inner">
-        <div class="poster-number"><span>02</span></div>
-        <p class="kicker">What it is</p>
-        <h2>One base. Many modules.</h2>
-        <p class="lead">Camera by day. Light by night. Same magnetic interface.</p>
-        <p class="small-copy">MAGSNAP is not another pair of smart glasses. The glasses stay simple. The modules change with the moment.</p>
+    <section class="section white" id="carry">
+      <div class="inner">
+        <div class="number"><span>03</span></div>
+        <p class="kicker">What Can It Carry</p>
+        <h2>Small modules. Clear limits.</h2>
+        <p class="lead">The base is a platform, but the limits matter as much as the possibilities.</p>
 
-        <div class="photo-board">
-          <div class="photo-panel product">
-            <img src="assets/product-camera-module.jpg" alt="MAGSNAP eyewear base prototype">
+        <div class="carry-grid">
+          <div class="carry-item"><strong>Camera</strong><span>Small POV cameras and lightweight mounts.</span></div>
+          <div class="carry-item"><strong>Light</strong><span>Low-profile lighting for walking, repair, and camp use.</span></div>
+          <div class="carry-item"><strong>Audio</strong><span>Microphone and voice capture concepts for testing.</span></div>
+          <div class="carry-item"><strong>AI / Sensor</strong><span>Future pods only after battery, heat, weight, and software improve.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section black" id="frames">
+      <div class="inner">
+        <div class="number"><span>04</span></div>
+        <p class="kicker">Frames</p>
+        <h2>The frame is part of the system.</h2>
+        <p class="lead">The large frame, wide temples, and horizontal top line are deliberate product decisions.</p>
+
+        <div class="frames-grid">
+          <div class="frame-item"><strong>Large front</strong><span>More visual coverage and a stronger base for outdoor use.</span></div>
+          <div class="frame-item"><strong>Wide temples</strong><span>Designed with wind and sand in mind.</span></div>
+          <div class="frame-item"><strong>Flat top line</strong><span>Better compatibility with helmets and head-worn gear.</span></div>
+          <div class="frame-item"><strong>Module zone</strong><span>Positioned outside the normal line of sight.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section kraft" id="lab">
+      <div class="inner">
+        <div class="number"><span>05</span></div>
+        <p class="kicker">The Lab</p>
+        <h2>Test what is beautiful and what is broken.</h2>
+        <p class="lead">The lab exists to record feedback, optical questions, failures, and better versions.</p>
+
+        <div class="lab-grid">
+          <div class="lab-item"><strong>Optical grab</strong><span>Track when it appears, why it happens, and how the next frame changes.</span></div>
+          <div class="lab-item"><strong>Comfort</strong><span>Fit, pressure, and module weight are part of the test log.</span></div>
+          <div class="lab-item"><strong>Battery modules</strong><span>Heat, runtime, charging, and safety are tested per module.</span></div>
+          <div class="lab-item"><strong>Field feedback</strong><span>Real users matter more than clean product claims.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="origin">
+      <div class="inner">
+        <div class="number"><span>06</span></div>
+        <p class="kicker">Origin</p>
+        <h2>From daily use to a magnetic platform.</h2>
+
+        <div class="origin-wrap">
+          <div class="origin-card">
+            <strong>MZ</strong>
+            <p>MZ worked in DJI Europe sales and project management. MAGSNAP grew from daily product use, field testing, and a simple question: what if the eyewear base stayed simple while modules kept changing?</p>
           </div>
-          <div class="photo-caption">
-            <strong>Real product range</strong>
-            <span>Use real photos for colors, shapes, and prototype versions. The page should explain the product without pretending the final catalog is fixed.</span>
+
+          <div class="timeline">
+            <div class="timeline-row"><b>01</b><span>Prototype frame and magnetic interface.</span></div>
+            <div class="timeline-row"><b>02</b><span>Daily wearing and camera/light use.</span></div>
+            <div class="timeline-row"><b>03</b><span>Frame, comfort, and optical feedback loop.</span></div>
+            <div class="timeline-row"><b>04</b><span>Public explanation page and marketplace-ready communication.</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="poster white" id="works">
-      <div class="poster-inner">
-        <div class="poster-number"><span>03</span></div>
-        <p class="kicker">How it works</p>
-        <h2>Wear. Snap. Switch.</h2>
-        <p class="lead">The full explanation should fit into three moves.</p>
-
-        <div class="steps">
-          <div class="step">
-            <strong>Wear</strong>
-            <span>Put on the eyewear base. No battery or processor is built into the base glasses.</span>
-          </div>
-          <div class="step">
-            <strong>Snap</strong>
-            <span>Attach a tested lightweight module to the magnetic interface.</span>
-          </div>
-          <div class="step">
-            <strong>Switch</strong>
-            <span>Camera, light, audio, or future module. The base stays the same.</span>
-          </div>
+    <section class="section black contact" id="contact">
+      <div class="inner">
+        <div class="number"><span>07</span></div>
+        <p class="kicker">Contact</p>
+        <h2>For product questions and collaboration.</h2>
+        <div class="contact-line">
+          <span>MAGSNAP</span>
+          <span>magsnap.me</span>
+          <span>max@magsnap.me</span>
         </div>
-      </div>
-    </section>
-
-    <section class="poster black" id="design">
-      <div class="poster-inner">
-        <div class="poster-number"><span>04</span></div>
-        <p class="kicker">Design intelligence</p>
-        <h2>Built for real use.</h2>
-        <p class="lead">The shape is not decoration. The frame, temples, top line, and module position all carry design intent.</p>
-
-        <div class="design-grid">
-          <div class="design-photo">
-            <img src="assets/product-camera-module.jpg" alt="MAGSNAP wide frame and magnetic module area">
-          </div>
-
-          <div class="details">
-            <div class="detail"><strong>Large frame</strong><span>Designed with more visual coverage and a stronger physical presence.</span></div>
-            <div class="detail"><strong>Wide temples</strong><span>Built with wind, sand, and outdoor use in mind.</span></div>
-            <div class="detail"><strong>Flat top line</strong><span>Better fit with helmets and head-worn gear.</span></div>
-            <div class="detail"><strong>Module position</strong><span>The module sits outside the normal line of sight.</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="poster paper" id="notes">
-      <div class="poster-inner">
-        <div class="poster-number"><span>05</span></div>
-        <p class="kicker">Testing notes</p>
-        <h2>Feedback matters.</h2>
-        <p class="lead">The page should show that this is tested hardware, not a perfect marketing render.</p>
-
-        <div class="notes-layout">
-          <div class="note-stack">
-            <div class="note"><strong>Optical grab</strong><span>Track the optical grab issue openly: when it appears, what causes it, and what changed in the next prototype.</span></div>
-            <div class="note"><strong>Comfort</strong><span>Founder-worn for long periods, but comfort still depends on fit, module weight, and activity.</span></div>
-            <div class="note"><strong>Module testing</strong><span>Every module needs limits for weight, heat, battery behavior, and mounting position.</span></div>
-          </div>
-
-          <div class="route">
-            <div class="route-row"><b>01</b><span>Hand-built prototype</span></div>
-            <div class="route-row"><b>02</b><span>Daily wear and field use</span></div>
-            <div class="route-row"><b>03</b><span>Camera and Light Module validation</span></div>
-            <div class="route-row"><b>04</b><span>Public product explanation</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="poster safety" id="safety">
-      <div class="poster-inner">
-        <div class="poster-number"><span>06</span></div>
-        <p class="kicker">Safety notes</p>
-        <h2>Use only tested lightweight modules.</h2>
-        <p class="small-copy">MAGSNAP is not protective eyewear, medical equipment, or a promise of safe use in every activity.</p>
-
-        <div class="safety-grid">
-          <div class="safety-item"><strong>Vision</strong><span>Stop use if you feel eye strain, double vision, headache, dizziness, or blocked vision.</span></div>
-          <div class="safety-item"><strong>Magnets</strong><span>Keep magnets away from pacemakers, implanted medical devices, cards, and sensitive electronics.</span></div>
-          <div class="safety-item"><strong>Modules</strong><span>Do not attach heavy, sharp, hot, or unverified objects.</span></div>
-          <div class="safety-item"><strong>Battery</strong><span>The base has no battery. Battery modules must be tested separately.</span></div>
-        </div>
+        <p class="contact-note">This page is for understanding the product. Product details may vary by marketplace, region, and prototype stage.</p>
+        <p class="safety-note">Safety notes: use only tested lightweight modules. Stop use if vision is blocked or discomfort occurs. Keep magnets away from pacemakers, implanted medical devices, magnetic cards, and sensitive electronics. Battery modules must be tested separately from the eyewear base.</p>
       </div>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <span>MAGSNAP / Product Understanding Page</span>
-    <span>Product details may differ by channel and prototype stage.</span>
-  </footer>
 </body>
 </html>

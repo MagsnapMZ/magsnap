@@ -9,7 +9,7 @@ MAGSNAP is positioned as a founder-built, head-worn magnetic playground for crea
 ## Files
 
 - `index.html` - MAGSNAP v2 homepage.
-- `mobile_story.html` - same v2 page kept as an explicit file.
+- `mobile_story.html` - redirects to the current v2 homepage.
 - `MAGSNAP_SOURCE_OF_TRUTH.md` - active requirements and banned/deprecated wording.
 - `desktop.html` - earlier desktop-style homepage prototype.
 - `website_redesign_brief.md` - strategy and content brief.

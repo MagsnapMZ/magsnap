@@ -2,7 +2,17 @@
 
 Updated: 2026-06-07
 
-This file is the active project reference for the MAGSNAP website. When older briefs, old commits, screenshots, or previous chat outputs conflict with this file, this file wins.
+This file is the active project reference for the MAGSNAP website. When older briefs, old commits, screenshots, local knowledge-base files, or previous chat outputs conflict with this file, this file wins.
+
+For source alignment details, see `MAGSNAP_ALIGNMENT_MAP.md`.
+
+## Source Priority
+
+1. The user's latest direct instruction in the current working thread.
+2. This file.
+3. `MAGSNAP_ALIGNMENT_MAP.md`.
+4. Active local MAGSNAP knowledge-base files listed in the alignment map.
+5. Historical briefs, old prototypes, old website copy, and old commits.
 
 ## Current Version
 
@@ -32,6 +42,14 @@ MAGSNAP is a lightweight eyewear base with a standardized magnetic interface for
 
 The glasses are the base. The magnetic interface is the product.
 
+Long-term positioning:
+
+> MAGSNAP is a Wearable Magnetic Ecosystem.
+
+Current sharp market expression:
+
+> For lightweight POV/action-camera users and mobile creators, MAGSNAP makes mounting, using, removing, and switching small head-worn modules faster and more natural.
+
 The base should stay simple:
 
 - No battery in the base glasses.
@@ -55,6 +73,8 @@ The first understandable use case is product use:
 - Use real photos or GIFs when assets are available.
 - The first page video will be provided later.
 - Future product images after the second page should become GIF-based motion assets when the GIF files are provided.
+
+The current homepage should be ready to accept real videos and GIFs later. It should not depend on polished concept renders as the main proof.
 
 ## Founder Wording
 
@@ -86,6 +106,8 @@ Required warning ideas:
 - The base glasses contain no battery.
 - Battery safety for removable modules must be tested separately.
 - Do not use where distraction, impact, blocked vision, heat, water, or module failure could create risk.
+- Users with a history of strabismus, amblyopia, binocular vision disorders, double vision, or other eye conditions should consult an eye-care professional before use.
+- MAGSNAP is not recommended for children as a first target user group.
 
 ## Section Notes
 
@@ -118,6 +140,13 @@ Explain small module categories without overpromising:
 
 Use limits and testing language. Do not imply anything can be attached safely.
 
+Module maturity rule:
+
+- Camera and light are the easiest first modules for public understanding.
+- Audio, radio, tracker, and AI modules can be shown as ecosystem directions.
+- AI pod concepts may be discussed as validated concept direction, but current third-party AI pod products should not be described as mature.
+- Battery modules require separate safety, charging, heat, shipping, and support evaluation.
+
 ### Frames
 
 Explain the frame design choices:
@@ -137,6 +166,16 @@ Include the idea that prototypes are tested, problems are found, and the next bu
 Known issue topic to preserve:
 
 - Optical Grab problem / optical comfort feedback should be discussed when exact wording is ready.
+
+Relevant lab topics:
+
+- One-second understanding test.
+- First-time setup test.
+- Founder daily carry.
+- Objection lab.
+- Field tests.
+- Partner proof.
+- Module Lab.
 
 ### Origin
 
@@ -162,6 +201,7 @@ Do not use these on the current homepage:
 - Not mass market. First builders only.
 - Any direct purchase CTA.
 - Any crowdfunding CTA.
+- Claims such as "100% safe", "never falls off", "never blocks vision", "doctor certified safe", or "all sports safe".
 
 ## Old Documents
 
@@ -170,3 +210,11 @@ Older files may contain useful historical thinking, but they are not automatical
 - `website_redesign_brief.md` contains older Founding 900 and CTA language that is now deprecated.
 - `desktop.html` redirects to the current V2 homepage.
 - Current public homepage is `index.html`.
+
+## Business Strategy Versus Website Scope
+
+Some local strategy files discuss price, Founding 900, paid testing, clubs, creators, and partner channels. These can remain business strategy background.
+
+They do not automatically become homepage copy.
+
+The current homepage must stay focused on understanding the product. It should not ask visitors to buy, join, back, register, or become agents unless the user explicitly changes the website scope.

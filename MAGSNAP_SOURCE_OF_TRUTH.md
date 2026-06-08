@@ -68,10 +68,20 @@ Do not use generic AI outdoor photos.
    - Demonstrate native magnetic mounting
    - No adapters
 
-3. What's In The Box
-   - Show actual components
-   - Use an exploded layout
-   - Include Frame, Arms, Lenses, Nose Pad, Safety Cord, Wave Buckle, Storage Bag, Packaging Tube
+3. What's Included
+   - Show actual included components.
+   - Do not list CSPL lens as a separate accessory.
+   - CSPL lens is part of `MAGSNAP™ GLASSES` and should only appear in Specifications.
+   - Include:
+     - `MAGSNAP™ GLASSES` / 磁吸眼镜 - Magnetic wearable platform with CSPL lens installed
+     - `MAGNOSE` / 磁鼻托 - Magnetic face support
+     - `ZENLOOP` / 禅环绳 - Beaded retention cord
+     - `SAFE STRAP` / 安全绳 - Camera safety tether
+     - `SNAPDOCK` / 磁吸基座 - Magnetic mounting plate
+     - `N52 CORE SET ×4` / N52磁芯套装 - Spare magnetic cores
+     - `OPTICAL TEST CARD` / 光学测试卡 - UV400 & Polarization verification
+     - `MagWIPE` / 磁镜布 - Self-adhesive cleaning cloth
+     - `FOUNDERS STICKER` / 创始人贴纸 - Limited edition sticker
 
 4. Choose Your Style
    - Show all 3 versions

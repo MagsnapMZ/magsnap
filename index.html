@@ -349,13 +349,14 @@
     }
 
     .part {
-      min-height: 88px;
+      min-height: 126px;
       border: 1px solid rgba(0, 0, 0, 0.18);
       background: rgba(255, 255, 255, 0.38);
       padding: 14px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 8px;
+      justify-content: flex-start;
     }
 
     .part-num {
@@ -364,45 +365,25 @@
       font-weight: 950;
     }
 
-    .part strong {
+    .part-title {
       font-size: clamp(16px, 2.3vw, 24px);
       font-family: "Arial Black", Impact, sans-serif;
       line-height: 0.94;
-      text-transform: uppercase;
     }
 
-    .component-strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 10px;
+    .part-cn {
+      color: rgba(16, 13, 9, 0.62);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1;
     }
 
-    .component-photo {
-      position: relative;
-      overflow: hidden;
-      min-height: 220px;
-      border: 1px solid rgba(0, 0, 0, 0.18);
-      background: rgba(255, 255, 255, 0.36);
-    }
-
-    .component-photo img {
-      width: 100%;
-      height: 100%;
-      min-height: inherit;
-      object-fit: cover;
-    }
-
-    .component-photo span {
-      position: absolute;
-      left: 12px;
-      bottom: 12px;
-      background: rgba(0, 0, 0, 0.68);
-      color: var(--paper);
-      padding: 8px 10px;
-      font-size: 11px;
-      font-weight: 950;
-      text-transform: uppercase;
+    .part-desc {
+      margin-top: auto;
+      color: rgba(16, 13, 9, 0.68);
+      font-size: 13px;
+      font-weight: 750;
+      line-height: 1.28;
     }
 
     .style {
@@ -779,7 +760,6 @@
 
       .style-row,
       .parts-grid,
-      .component-strip,
       .life-grid {
         grid-template-columns: 1fr;
       }
@@ -813,7 +793,7 @@
     </a>
     <nav class="nav" aria-label="Sections">
       <a href="#system">System</a>
-      <a href="#box">Box</a>
+      <a href="#box">Included</a>
       <a href="#style">Style</a>
       <a href="#life">POV Life</a>
       <a href="#disclaimer-link">Safety</a>
@@ -861,36 +841,68 @@
     <section class="section box" id="box">
       <div class="wrap">
         <div class="section-mark">03</div>
-        <p class="eyebrow">What's In The Box</p>
+        <p class="eyebrow">What's Included</p>
         <h2>Actual Components</h2>
-        <p class="body-copy">Exploded product parts, lenses, cord, storage, and packaging from existing MagSnap production assets.</p>
+        <p class="body-copy">The magnetic platform, support, retention, safety, mounting, spare cores, optical verification, cleaning, and founder detail.</p>
         <div class="box-layout">
           <div class="box-hero">
-            <img src="assets/site/box-components.jpg" alt="Actual MagSnap frame and lens components">
+            <img src="assets/site/box-components.jpg" alt="Actual MagSnap included components">
           </div>
-          <div class="parts-grid" aria-label="Box components">
-            <div class="part"><span class="part-num">01</span><strong>Frame</strong></div>
-            <div class="part"><span class="part-num">02</span><strong>Arms</strong></div>
-            <div class="part"><span class="part-num">03</span><strong>Lenses</strong></div>
-            <div class="part"><span class="part-num">04</span><strong>Nose Pad</strong></div>
-            <div class="part"><span class="part-num">05</span><strong>Safety Cord</strong></div>
-            <div class="part"><span class="part-num">06</span><strong>Wave Buckle</strong></div>
-            <div class="part"><span class="part-num">07</span><strong>Storage Bag</strong></div>
-            <div class="part"><span class="part-num">08</span><strong>Packaging Tube</strong></div>
-          </div>
-        </div>
-        <div class="component-strip" aria-label="Additional real components">
-          <div class="component-photo">
-            <img src="assets/site/box-frame.jpg" alt="Actual MagSnap frame">
-            <span>Frame</span>
-          </div>
-          <div class="component-photo">
-            <img src="assets/site/safety-cord.jpg" alt="Actual MagSnap safety cord">
-            <span>Safety Cord</span>
-          </div>
-          <div class="component-photo">
-            <img src="assets/site/packaging-tube.jpg" alt="Actual MagSnap packaging">
-            <span>Packaging</span>
+          <div class="parts-grid" aria-label="Included components">
+            <div class="part">
+              <span class="part-num">01</span>
+              <strong class="part-title">MAGSNAP™ GLASSES</strong>
+              <span class="part-cn">磁吸眼镜</span>
+              <span class="part-desc">Magnetic wearable platform with CSPL lens installed</span>
+            </div>
+            <div class="part">
+              <span class="part-num">02</span>
+              <strong class="part-title">MAGNOSE</strong>
+              <span class="part-cn">磁鼻托</span>
+              <span class="part-desc">Magnetic face support</span>
+            </div>
+            <div class="part">
+              <span class="part-num">03</span>
+              <strong class="part-title">ZENLOOP</strong>
+              <span class="part-cn">禅环绳</span>
+              <span class="part-desc">Beaded retention cord</span>
+            </div>
+            <div class="part">
+              <span class="part-num">04</span>
+              <strong class="part-title">SAFE STRAP</strong>
+              <span class="part-cn">安全绳</span>
+              <span class="part-desc">Camera safety tether</span>
+            </div>
+            <div class="part">
+              <span class="part-num">05</span>
+              <strong class="part-title">SNAPDOCK</strong>
+              <span class="part-cn">磁吸基座</span>
+              <span class="part-desc">Magnetic mounting plate</span>
+            </div>
+            <div class="part">
+              <span class="part-num">06</span>
+              <strong class="part-title">N52 CORE SET ×4</strong>
+              <span class="part-cn">N52磁芯套装</span>
+              <span class="part-desc">Spare magnetic cores</span>
+            </div>
+            <div class="part">
+              <span class="part-num">07</span>
+              <strong class="part-title">OPTICAL TEST CARD</strong>
+              <span class="part-cn">光学测试卡</span>
+              <span class="part-desc">UV400 &amp; Polarization verification</span>
+            </div>
+            <div class="part">
+              <span class="part-num">08</span>
+              <strong class="part-title">MagWIPE</strong>
+              <span class="part-cn">磁镜布</span>
+              <span class="part-desc">Self-adhesive cleaning cloth</span>
+            </div>
+            <div class="part">
+              <span class="part-num">09</span>
+              <strong class="part-title">FOUNDERS STICKER</strong>
+              <span class="part-cn">创始人贴纸</span>
+              <span class="part-desc">Limited edition sticker</span>
+            </div>
           </div>
         </div>
       </div>

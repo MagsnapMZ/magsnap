@@ -8,6 +8,7 @@ This file is the active project reference for the MAGSNAP website. When older br
 
 - Project: MAGSNAP
 - Domain: magsnap.me
+- Contact email: `info@magsnap.me`
 - Mission: replace the current website with a clean, premium, mobile-first landing page.
 - Primary purpose: help visitors quickly understand the product.
 - The site is not for checkout, signup, crowdfunding, or direct purchase.

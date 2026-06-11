@@ -307,6 +307,73 @@
       text-transform: uppercase;
     }
 
+    .snap {
+      background:
+        linear-gradient(180deg, #090806 0%, #000 100%);
+    }
+
+    .snap-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: clamp(34px, 5vw, 60px);
+    }
+
+    .snap-card {
+      min-height: 182px;
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
+        #0c0a08;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .snap-thumb {
+      width: 58px;
+      height: 58px;
+      border: 1px solid rgba(200, 169, 126, 0.38);
+      display: grid;
+      place-items: center;
+      background: rgba(200, 169, 126, 0.08);
+      color: var(--kraft);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 15px;
+      font-weight: 950;
+      line-height: 0.92;
+      text-align: center;
+    }
+
+    .snap-card strong {
+      font-size: 16px;
+      font-weight: 950;
+      line-height: 1.06;
+    }
+
+    .snap-status {
+      width: max-content;
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      padding: 6px 8px;
+      color: rgba(245, 239, 230, 0.64);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .snap-card.verified .snap-status {
+      color: var(--kraft);
+      border-color: rgba(200, 169, 126, 0.44);
+    }
+
+    .snap-card.soon .snap-status {
+      color: var(--pink);
+      border-color: rgba(255, 92, 154, 0.36);
+    }
+
     .box {
       background: var(--kraft);
       color: #100d09;
@@ -504,6 +571,57 @@
       background: linear-gradient(180deg, transparent 48%, rgba(0, 0, 0, 0.68));
     }
 
+    .lab {
+      background:
+        linear-gradient(180deg, #0b0907 0%, #000 100%);
+    }
+
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: clamp(34px, 5vw, 60px);
+    }
+
+    .lab-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      background: #0d0b09;
+    }
+
+    .lab-card video,
+    .lab-card img {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: cover;
+      opacity: 0.78;
+      filter: saturate(0.84) contrast(1.08);
+    }
+
+    .lab-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.82));
+    }
+
+    .lab-card span {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 2;
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      line-height: 1.14;
+      text-transform: uppercase;
+    }
+
     .founder {
       background: #f3eadf;
       color: #080706;
@@ -600,6 +718,93 @@
       text-transform: uppercase;
     }
 
+    .contact {
+      background: #f4efe7;
+      color: #080706;
+    }
+
+    .contact .section-mark,
+    .contact .eyebrow {
+      color: #080706;
+    }
+
+    .contact .lead {
+      color: #080706;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: clamp(34px, 5vw, 60px);
+    }
+
+    .contact-card {
+      min-height: 188px;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      background: rgba(255, 255, 255, 0.44);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    a.contact-card:hover {
+      border-color: rgba(255, 92, 154, 0.42);
+    }
+
+    .contact-card strong {
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(22px, 2.7vw, 34px);
+      font-weight: 950;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .contact-card span {
+      color: rgba(8, 7, 6, 0.62);
+      font-size: 13px;
+      font-weight: 850;
+      line-height: 1.32;
+    }
+
+    .contact-mark {
+      width: 72px;
+      height: 72px;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.12) 1px, transparent 1px),
+        linear-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1px),
+        rgba(200, 169, 126, 0.2);
+      background-size: 12px 12px;
+      color: #080706;
+      font-size: 11px;
+      font-weight: 950;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .contact-qr {
+      align-self: center;
+      width: min(100%, 180px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      background: #fff;
+      object-fit: cover;
+    }
+
+    .contact-avatar {
+      align-self: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      object-fit: cover;
+    }
+
     .site-footer {
       border-top: 1px solid var(--line);
       padding: 30px clamp(18px, 5vw, 64px) 92px;
@@ -644,6 +849,25 @@
       box-shadow: 0 18px 48px rgba(0, 0, 0, 0.56), inset 0 0 24px rgba(200, 169, 126, 0.12);
       cursor: pointer;
       animation: breathe 3.4s ease-in-out infinite;
+    }
+
+    .mz-chat-float {
+      position: fixed;
+      left: clamp(16px, 4vw, 30px);
+      bottom: clamp(16px, 4vw, 30px);
+      z-index: 90;
+      min-height: 52px;
+      border: 1px solid rgba(255, 92, 154, 0.52);
+      background: var(--pink);
+      color: #080706;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
     }
 
     @keyframes breathe {
@@ -736,7 +960,10 @@
         grid-template-columns: 1fr;
       }
 
-      .life-grid {
+      .snap-grid,
+      .life-grid,
+      .lab-grid,
+      .contact-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -760,7 +987,10 @@
 
       .style-row,
       .parts-grid,
-      .life-grid {
+      .snap-grid,
+      .life-grid,
+      .lab-grid,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
@@ -769,7 +999,10 @@
       .box-hero img,
       .life-tile,
       .life-tile video,
-      .life-tile img {
+      .life-tile img,
+      .lab-card,
+      .lab-card video,
+      .lab-card img {
         min-height: 310px;
       }
 
@@ -782,6 +1015,11 @@
         width: 62px;
         height: 62px;
       }
+
+      .mz-chat-float {
+        min-height: 46px;
+        padding: 0 14px;
+      }
     }
   </style>
 </head>
@@ -793,10 +1031,12 @@
     </a>
     <nav class="nav" aria-label="Sections">
       <a href="#system">System</a>
+      <a href="#snap">Snap</a>
       <a href="#box">Included</a>
       <a href="#style">Style</a>
+      <a href="#lab">Lab</a>
       <a href="#life">POV Life</a>
-      <a href="#disclaimer-link">Safety</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
@@ -809,7 +1049,7 @@
         <div class="section-mark">01</div>
         <h1>MAGSNAP</h1>
         <p class="hero-subtitle">Wearable Magnetic Ecosystem</p>
-        <p class="hero-tagline">Snap. Mount. Go.</p>
+        <p class="hero-tagline">100% Magnetic · 0% Electric</p>
       </div>
     </section>
 
@@ -834,6 +1074,65 @@
           <video autoplay muted loop playsinline poster="assets/site/box-frame.jpg">
             <source src="assets/site/native-mount.mp4" type="video/mp4">
           </video>
+        </div>
+      </div>
+    </section>
+
+    <section class="section snap" id="snap">
+      <div class="wrap">
+        <p class="eyebrow">Compatibility</p>
+        <h2>WHAT CAN YOU SNAP?</h2>
+        <div class="snap-grid" aria-label="Compatible and upcoming snap modules">
+          <article class="snap-card verified">
+            <div class="snap-thumb">GO<br>3</div>
+            <span class="snap-status">Verified</span>
+            <strong>Insta360 GO 3</strong>
+          </article>
+          <article class="snap-card verified">
+            <div class="snap-thumb">GO<br>3S</div>
+            <span class="snap-status">Verified</span>
+            <strong>Insta360 GO 3S</strong>
+          </article>
+          <article class="snap-card verified">
+            <div class="snap-thumb">DJI</div>
+            <span class="snap-status">Verified</span>
+            <strong>DJI Nano</strong>
+          </article>
+          <article class="snap-card verified">
+            <div class="snap-thumb">MIC</div>
+            <span class="snap-status">Verified</span>
+            <strong>DJI Mini Mic</strong>
+          </article>
+          <article class="snap-card verified">
+            <div class="snap-thumb">LED</div>
+            <span class="snap-status">Verified</span>
+            <strong>Headlamp</strong>
+          </article>
+          <article class="snap-card diy">
+            <div class="snap-thumb">318</div>
+            <span class="snap-status">DIY / Extra Magnets Recommended</span>
+            <strong>318 Walkie Talkie</strong>
+          </article>
+          <article class="snap-card diy">
+            <div class="snap-thumb">MAG</div>
+            <span class="snap-status">DIY / Extra Magnets Recommended</span>
+            <strong>MagSafe Wallet</strong>
+          </article>
+          <article class="snap-card diy">
+            <div class="snap-thumb">TAG</div>
+            <span class="snap-status">DIY / Extra Magnets Recommended</span>
+            <strong>AirTag</strong>
+          </article>
+          <article class="snap-card soon">
+            <div class="snap-thumb">AI</div>
+            <span class="snap-status">Coming Soon</span>
+            <strong>AI Module</strong>
+          </article>
+          <article class="snap-card soon">
+            <div class="snap-thumb">MIC</div>
+            <span class="snap-status">Coming Soon</span>
+            <strong>Microphone Module</strong>
+          </article>
         </div>
       </div>
     </section>
@@ -916,15 +1215,15 @@
         <div class="style-row">
           <article class="style-card">
             <img src="assets/site/style-clear-pink.jpg" alt="MagSnap clear frame with pink lenses">
-            <div class="style-label"><span>Version 01</span><span>Clear</span></div>
+            <div class="style-label"><span>甲01</span><span>BLACK / CLEAR / WHITE</span></div>
           </article>
           <article class="style-card">
             <img src="assets/site/style-black-yellow.jpg" alt="MagSnap black frame with yellow lenses">
-            <div class="style-label"><span>Version 02</span><span>Black</span></div>
+            <div class="style-label"><span>乙02</span><span>BLACK / CLEAR / WHITE</span></div>
           </article>
           <article class="style-card">
             <img src="assets/site/style-clear-smoke.jpg" alt="MagSnap clear frame with smoke lenses">
-            <div class="style-label"><span>Version 03</span><span>Smoke</span></div>
+            <div class="style-label"><span>丙03</span><span>BLACK / CLEAR / WHITE</span></div>
           </article>
         </div>
       </div>
@@ -979,6 +1278,69 @@
       </div>
     </section>
 
+    <section class="section lab" id="lab">
+      <div class="wrap">
+        <p class="eyebrow">Prototype Evidence</p>
+        <h2>MAGSNAP LAB</h2>
+        <div class="lab-grid" aria-label="MagSnap lab test videos">
+          <article class="lab-card">
+            <video autoplay muted loop playsinline>
+              <source src="assets/site/native-mount.mp4" type="video/mp4">
+            </video>
+            <span>Magnet Strength Test</span>
+          </article>
+          <article class="lab-card">
+            <video autoplay muted loop playsinline>
+              <source src="assets/site/pov-sailing.mp4" type="video/mp4">
+            </video>
+            <span>Lens Saltwater Resistance Test</span>
+          </article>
+          <article class="lab-card">
+            <video autoplay muted loop playsinline>
+              <source src="assets/site/carry-go3.mp4" type="video/mp4">
+            </video>
+            <span>Camera Magnetic Mount Strength Test</span>
+          </article>
+          <article class="lab-card">
+            <video autoplay muted loop playsinline>
+              <source src="assets/site/carry-go3.mp4" type="video/mp4">
+            </video>
+            <span>Insta360 GO 3S Mount Test</span>
+          </article>
+          <article class="lab-card">
+            <video autoplay muted loop playsinline>
+              <source src="assets/site/native-mount.mp4" type="video/mp4">
+            </video>
+            <span>DJI Nano Mount Test</span>
+          </article>
+          <article class="lab-card">
+            <video autoplay muted loop playsinline>
+              <source src="assets/site/pov-travel.mp4" type="video/mp4">
+            </video>
+            <span>318 Walkie Talkie DIY Test</span>
+          </article>
+          <article class="lab-card">
+            <video autoplay muted loop playsinline>
+              <source src="assets/site/pov-beach.mp4" type="video/mp4">
+            </video>
+            <span>Comfort Test</span>
+          </article>
+          <article class="lab-card">
+            <video autoplay muted loop playsinline>
+              <source src="assets/site/pov-sailing.mp4" type="video/mp4">
+            </video>
+            <span>Rust Resistance Test</span>
+          </article>
+          <article class="lab-card">
+            <video autoplay muted loop playsinline>
+              <source src="assets/site/pov-kitesurf.mp4" type="video/mp4">
+            </video>
+            <span>Extreme Movement Test</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section founder" id="founder">
       <div class="wrap founder-grid">
         <div>
@@ -1013,6 +1375,37 @@
         </div>
       </div>
     </section>
+
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <div class="section-mark">09</div>
+        <p class="eyebrow">Contact</p>
+        <h2>Talk to the Founder</h2>
+        <p class="lead">Chat directly with MZ.</p>
+        <div class="contact-grid" aria-label="Founder contact methods">
+          <a class="contact-card" href="assets/site/wechat-qr.jpg" target="_blank" rel="noopener">
+            <img class="contact-qr" src="assets/site/wechat-qr.jpg" alt="MZ WeChat QR code">
+            <strong>WeChat QR</strong>
+            <span>Scan to add 马峥 MZ.</span>
+          </a>
+          <a class="contact-card" href="assets/site/whatsapp-qr.jpg" target="_blank" rel="noopener">
+            <img class="contact-qr" src="assets/site/whatsapp-qr.jpg" alt="MZ WhatsApp QR code">
+            <strong>WhatsApp</strong>
+            <span>Scan to start a WhatsApp chat.</span>
+          </a>
+          <a class="contact-card" href="https://www.instagram.com/mzmagsnap/" target="_blank" rel="noopener">
+            <img class="contact-avatar" src="assets/site/mz-instagram-avatar.jpg" alt="MZ Instagram profile image">
+            <strong>Instagram</strong>
+            <span>@mzmagsnap</span>
+          </a>
+          <a class="contact-card" href="mailto:info@magsnap.me">
+            <div class="contact-mark">@</div>
+            <strong>Email</strong>
+            <span>info@magsnap.me</span>
+          </a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer" id="disclaimer-link">
@@ -1028,6 +1421,7 @@
     </div>
   </footer>
 
+  <a class="mz-chat-float" href="#contact">Chat with MZ</a>
   <button class="mag-float" type="button" aria-label="Open MAG assistant" aria-expanded="false">
     <img src="assets/site/panda-logo.jpg" alt="">
   </button>

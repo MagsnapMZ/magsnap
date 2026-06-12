@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MAGSNAP | Founder Registry</title>
+  <meta name="description" content="Public MAGSNAP Founder Registry for the first 1,000 Founders.">
+  <link rel="stylesheet" href="../assets/founder/founder.css">
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="../">
+      <img src="../assets/site/panda-logo.jpg" alt="Official MAGSNAP Panda Logo">
+      <span>MAGSNAP</span>
+    </a>
+    <nav class="nav" aria-label="Founder pages">
+      <a href="../">Home</a>
+      <a href="../founder/">Activate</a>
+      <a href="mailto:info@magsnap.me">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="mark">02</div>
+        <p class="eyebrow">Public Registry</p>
+        <h1>Founder Registry</h1>
+        <p class="lead">The first 1,000 Founders are the foundation of the MagSnap network.</p>
+        <p class="plain">This public page shows only Founder Number, Name/Nickname, Country, and Sport/Activity Tags.</p>
+      </div>
+      <aside class="founder-card" aria-label="Founder registry example">
+        <div>
+          <p class="eyebrow">Public Format</p>
+          <p class="founder-number">#0083</p>
+        </div>
+        <p class="plain">Vietnam / Kitesurf</p>
+      </aside>
+    </section>
+
+    <section class="registry-shell" aria-label="Founder registry list">
+      <div class="status" data-status></div>
+      <table class="registry-table">
+        <thead>
+          <tr>
+            <th>Founder</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Sport / Activity</th>
+          </tr>
+        </thead>
+        <tbody data-registry-body>
+          <tr>
+            <td colspan="4">Loading Founder Registry...</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="empty-state">
+        Private contact fields are hidden and visible only to MAGSNAP administrators.
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>MAGSNAP / Founder Network</span>
+    <span>info@magsnap.me</span>
+  </footer>
+
+  <script src="../assets/founder/supabase-config.js"></script>
+  <script src="../assets/founder/founder.js"></script>
+</body>
+</html>

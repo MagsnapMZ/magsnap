@@ -112,6 +112,36 @@ Do not use generic AI outdoor photos.
    - Name: MAG
    - Purpose: answer Compatibility, Installation, Warranty, Shipping, FAQ, Disclaimer
 
+9. Founder Activation
+   - Route: `/founder`
+   - Phase 1 default: show the Founder Activation form to all visitors.
+   - Users enter the Founder Number printed on the physical Founder Card.
+   - No QR token, login, membership, points, ranking, forum, social network, or app.
+   - Founder Number must be between `0001` and `1000`.
+   - Duplicate Founder Numbers cannot be activated twice.
+
+10. Founder Registry
+   - Route: `/registry`
+   - Public page.
+   - Show only Founder Number, Name/Nickname, Country, and Sport/Activity Tags.
+   - Do not show Email, Phone, WhatsApp, Telegram, WeChat, Instagram, contact notes, or private admin notes.
+
+## Founder Network
+
+MAGSNAP is not only a product. It is a global network of players, creators, explorers, athletes, founders, and early adopters.
+
+The glasses are the first product.
+
+The Founder Network is the long-term asset.
+
+Each physical MagSnap package contains a randomly assigned Founder Number from `#0001` to `#1000`.
+
+Founder Number is not linked to product serial number, purchase order, or purchase date.
+
+Founder identity is permanent. Product versions may change. Founder identity never changes.
+
+The goal is collecting and organizing the first 1,000 Founders, not building a customer database or loyalty program.
+
 ## Footer
 
 Footer must include:

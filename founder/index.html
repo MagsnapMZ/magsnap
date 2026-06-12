@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MAGSNAP | Founder Activation</title>
+  <meta name="description" content="Activate your MAGSNAP Founder Number and join the first 1,000 Founders.">
+  <link rel="stylesheet" href="../assets/founder/founder.css">
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="../">
+      <img src="../assets/site/panda-logo.jpg" alt="Official MAGSNAP Panda Logo">
+      <span>MAGSNAP</span>
+    </a>
+    <nav class="nav" aria-label="Founder pages">
+      <a href="../">Home</a>
+      <a href="../registry/">Registry</a>
+      <a href="mailto:info@magsnap.me">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="mark">01</div>
+        <p class="eyebrow">Founder Activation</p>
+        <h1>First 1,000 Founders</h1>
+        <p class="lead">Enter the Founder Number printed on your physical Founder Card.</p>
+        <p class="plain">Founder identity is permanent. Product versions may change. Founder identity never changes.</p>
+      </div>
+      <aside class="founder-card" aria-label="Founder card example">
+        <div>
+          <p class="eyebrow">Example</p>
+          <p class="founder-number">#0083</p>
+        </div>
+        <p class="plain">One of the First 1,000</p>
+      </aside>
+    </section>
+
+    <section class="form-shell" aria-label="Founder registration form">
+      <div class="status" data-status></div>
+      <form class="activation-form" data-founder-form>
+        <div class="form-grid">
+          <div class="field">
+            <label for="founder-number">Founder Number *</label>
+            <input id="founder-number" name="founder_number" inputmode="numeric" autocomplete="off" placeholder="0083" required>
+          </div>
+          <div class="field">
+            <label for="display-name">Name or Nickname *</label>
+            <input id="display-name" name="display_name" autocomplete="name" placeholder="MZ" required>
+          </div>
+          <div class="field">
+            <label for="country">Country *</label>
+            <input id="country" name="country" autocomplete="country-name" placeholder="Vietnam" required>
+          </div>
+          <div class="field">
+            <label for="city">City *</label>
+            <input id="city" name="city" autocomplete="address-level2" placeholder="Da Nang" required>
+          </div>
+        </div>
+
+        <div class="tag-group" aria-label="Primary sport or activity">
+          <p class="group-label">Primary Sport / Activity *</p>
+          <div class="tags">
+            <label class="tag"><input type="checkbox" name="sport_tags" value="FPV"><span>FPV</span></label>
+            <label class="tag"><input type="checkbox" name="sport_tags" value="Kitesurf"><span>Kitesurf</span></label>
+            <label class="tag"><input type="checkbox" name="sport_tags" value="Sailing"><span>Sailing</span></label>
+            <label class="tag"><input type="checkbox" name="sport_tags" value="Moto"><span>Moto</span></label>
+            <label class="tag"><input type="checkbox" name="sport_tags" value="Snow"><span>Snow</span></label>
+            <label class="tag"><input type="checkbox" name="sport_tags" value="Fishing"><span>Fishing</span></label>
+            <label class="tag"><input type="checkbox" name="sport_tags" value="Creator"><span>Creator</span></label>
+            <label class="tag"><input type="checkbox" name="sport_tags" value="Hiking"><span>Hiking</span></label>
+            <label class="tag"><input type="checkbox" name="sport_tags" value="Other"><span>Other</span></label>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="industry">Industry</label>
+            <input id="industry" name="industry" placeholder="Creator, marine, aviation, outdoor...">
+          </div>
+          <div class="field">
+            <label for="contact-method">Preferred Contact Method</label>
+            <select id="contact-method" name="contact_method">
+              <option value="">Select one</option>
+              <option>Email</option>
+              <option>WhatsApp</option>
+              <option>WeChat</option>
+              <option>Instagram</option>
+              <option>Telegram</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="contact-detail">Contact Detail</label>
+            <input id="contact-detail" name="contact_detail" placeholder="Private. Visible only to MAGSNAP.">
+          </div>
+          <div class="field">
+            <label for="social-media">Social Media</label>
+            <input id="social-media" name="social_media" placeholder="@username or profile link">
+          </div>
+          <div class="field full">
+            <label for="profile-photo-url">Profile Photo Link</label>
+            <input id="profile-photo-url" name="profile_photo_url" type="url" placeholder="https://...">
+          </div>
+        </div>
+
+        <div class="tag-group" aria-label="Device used">
+          <p class="group-label">Device Used</p>
+          <div class="tags">
+            <label class="tag"><input type="checkbox" name="device_tags" value="Insta360 GO3"><span>Insta360 GO3</span></label>
+            <label class="tag"><input type="checkbox" name="device_tags" value="Insta360 GO3S"><span>Insta360 GO3S</span></label>
+            <label class="tag"><input type="checkbox" name="device_tags" value="DJI Nano"><span>DJI Nano</span></label>
+            <label class="tag"><input type="checkbox" name="device_tags" value="DJI Mic"><span>DJI Mic</span></label>
+            <label class="tag"><input type="checkbox" name="device_tags" value="AirTag"><span>AirTag</span></label>
+            <label class="tag"><input type="checkbox" name="device_tags" value="Walkie Talkie"><span>Walkie Talkie</span></label>
+            <label class="tag"><input type="checkbox" name="device_tags" value="Other"><span>Other</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="short-intro">Short Introduction</label>
+          <textarea id="short-intro" name="short_intro" placeholder="One or two lines about what you do and how you use MAGSNAP."></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="button" type="submit">Activate Founder Number</button>
+          <a class="button secondary" href="../registry/">View Registry</a>
+        </div>
+        <p class="privacy-note">Public Registry only shows Founder Number, Name/Nickname, Country, and Sport/Activity Tags. Contact information remains private and visible only to MAGSNAP administrators.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>MAGSNAP / Founder Network</span>
+    <span>info@magsnap.me</span>
+  </footer>
+
+  <script src="../assets/founder/supabase-config.js"></script>
+  <script src="../assets/founder/founder.js"></script>
+</body>
+</html>

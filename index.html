@@ -312,6 +312,133 @@
         linear-gradient(180deg, #090806 0%, #000 100%);
     }
 
+    .ecosystem {
+      min-height: auto;
+      padding-top: clamp(56px, 8vw, 94px);
+      padding-bottom: clamp(56px, 8vw, 94px);
+    }
+
+    .ecosystem .section-mark {
+      margin-bottom: 20px;
+    }
+
+    .ecosystem-header {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr);
+      gap: clamp(22px, 4vw, 56px);
+      align-items: end;
+    }
+
+    .ecosystem-note {
+      color: rgba(245, 239, 230, 0.58);
+      font-size: clamp(14px, 1.3vw, 16px);
+      font-weight: 750;
+      line-height: 1.55;
+    }
+
+    .ecosystem-panel {
+      margin-top: clamp(26px, 4vw, 42px);
+      border-top: 1px solid rgba(245, 239, 230, 0.16);
+      border-bottom: 1px solid rgba(245, 239, 230, 0.12);
+      padding: 20px 0;
+      display: grid;
+      gap: 18px;
+    }
+
+    .ecosystem-columns {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: clamp(18px, 3vw, 34px);
+    }
+
+    .ecosystem-group {
+      min-width: 0;
+    }
+
+    .ecosystem-kicker {
+      margin-bottom: 12px;
+      color: var(--kraft);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(82px, 1fr));
+      gap: 8px;
+    }
+
+    .eco-item {
+      min-height: 92px;
+      border: 1px solid rgba(245, 239, 230, 0.12);
+      background: rgba(255, 255, 255, 0.035);
+      padding: 10px 8px;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 7px;
+      text-align: center;
+    }
+
+    .eco-icon {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .eco-name {
+      color: var(--paper);
+      font-size: 11px;
+      font-weight: 950;
+      line-height: 1.12;
+    }
+
+    .eco-meta {
+      color: rgba(245, 239, 230, 0.46);
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .eco-item.soon .eco-meta {
+      color: var(--pink);
+    }
+
+    .lab-thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .lab-thumb {
+      border: 1px solid rgba(245, 239, 230, 0.12);
+      background: rgba(255, 255, 255, 0.035);
+      padding: 8px;
+      display: grid;
+      gap: 7px;
+    }
+
+    .lab-thumb img {
+      width: 100%;
+      max-width: 120px;
+      aspect-ratio: 120 / 68;
+      object-fit: cover;
+      justify-self: center;
+      filter: saturate(0.86) contrast(1.04);
+    }
+
+    .lab-thumb span {
+      color: rgba(245, 239, 230, 0.72);
+      font-size: 10px;
+      font-weight: 900;
+      line-height: 1.16;
+      text-align: center;
+    }
+
     .snap-grid {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -1026,10 +1153,16 @@
       }
 
       .system-grid,
+      .ecosystem-header,
+      .ecosystem-columns,
       .box-layout,
       .founder-grid,
       .mag-grid {
         grid-template-columns: 1fr;
+      }
+
+      .icon-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
       .snap-grid,
@@ -1059,11 +1192,31 @@
 
       .style-row,
       .parts-grid,
+      .ecosystem-header,
+      .ecosystem-columns,
       .snap-grid,
       .life-grid,
       .lab-grid,
       .contact-grid {
         grid-template-columns: 1fr;
+      }
+
+      .icon-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .lab-thumb-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .eco-item {
+        min-height: 84px;
+        padding: 9px 6px;
+      }
+
+      .eco-icon {
+        width: 42px;
+        height: 42px;
       }
 
       .media-frame video,
@@ -1151,143 +1304,136 @@
       </div>
     </section>
 
-    <section class="section snap" id="snap">
+    <section class="section snap ecosystem" id="snap">
       <div class="wrap">
-        <p class="eyebrow">Compatibility</p>
-        <h2>WHAT CAN YOU SNAP?</h2>
-        <div class="snap-grid" aria-label="Compatible and upcoming snap modules">
-          <article class="snap-card verified">
-            <div class="snap-thumb"><img src="assets/product-camera-module.jpg" alt="Insta360 GO 3 compatible magnetic module"></div>
-            <span class="snap-status">Verified</span>
-            <strong>Insta360 GO 3</strong>
-            <span class="snap-desc">Verified compact camera mounting on the magnetic interface.</span>
-          </article>
-          <article class="snap-card verified">
-            <div class="snap-thumb"><img src="assets/product-camera-module.jpg" alt="Insta360 GO 3S compatible magnetic module"></div>
-            <span class="snap-status">Verified</span>
-            <strong>Insta360 GO 3S</strong>
-            <span class="snap-desc">Verified POV camera setup for daily and sport use.</span>
-          </article>
-          <article class="snap-card verified">
-            <div class="snap-thumb"><img src="assets/site/box-frame.jpg" alt="DJI Nano compatible magnetic position"></div>
-            <span class="snap-status">Verified</span>
-            <strong>DJI Nano</strong>
-            <span class="snap-desc">Verified lightweight camera module direction.</span>
-          </article>
-          <article class="snap-card verified">
-            <div class="snap-thumb"><img src="assets/founder-camera-module.jpg" alt="DJI Mic compatible audio module slot"></div>
-            <span class="snap-status">Verified</span>
-            <strong>DJI Mic</strong>
-            <span class="snap-desc">Verified audio carry concept for creator recording.</span>
-          </article>
-          <article class="snap-card verified">
-            <div class="snap-thumb"><img src="assets/site/hero-poster.jpg" alt="Headlamp magnetic carry concept"></div>
-            <span class="snap-status">Verified</span>
-            <strong>Headlamp</strong>
-            <span class="snap-desc">Verified light module direction for night and repair use.</span>
-          </article>
-          <article class="snap-card diy">
-            <div class="snap-thumb"><img src="assets/site/style-group-sand.jpg" alt="318 Walkie Talkie DIY magnetic carry slot"></div>
-            <span class="snap-status">DIY / Extra Magnets Recommended</span>
-            <strong>318 Walkie Talkie</strong>
-            <span class="snap-desc">DIY test path. Extra magnets recommended for secure use.</span>
-          </article>
-          <article class="snap-card diy">
-            <div class="snap-thumb"><img src="assets/site/panda-logo.jpg" alt="AirTag tracker magnetic carry slot"></div>
-            <span class="snap-status">DIY / Extra Magnets Recommended</span>
-            <strong>AirTag</strong>
-            <span class="snap-desc">Tracker carry experiment for everyday object finding.</span>
-          </article>
-          <article class="snap-card soon">
-            <div class="snap-thumb">AI</div>
-            <span class="snap-status">Coming Soon</span>
-            <strong>AI Module</strong>
-            <span class="snap-desc">Future expansion direction for wearable AI devices.</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section box" id="box">
-      <div class="wrap">
-        <div class="section-mark">03</div>
-        <p class="eyebrow">What's Included</p>
-        <h2>Actual Components</h2>
-        <p class="body-copy">The magnetic platform, support, retention, safety, mounting, spare cores, optical verification, cleaning, founder detail, and kraft cylinder packaging.</p>
-        <div class="box-layout">
-          <div class="box-hero">
-            <img src="assets/site/box-components.jpg" alt="Actual MagSnap included components">
+        <div class="ecosystem-header">
+          <div>
+            <div class="section-mark">03</div>
+            <p class="eyebrow">Ecosystem</p>
+            <h2>Compact Magnetic Index</h2>
           </div>
-          <div class="parts-grid" aria-label="Included components">
-            <div class="part">
-              <div class="part-media"><img src="assets/site/box-frame.jpg" alt="MAGSNAP glasses component slot"></div>
-              <span class="part-num">01</span>
-              <strong class="part-title">MAGSNAP™ GLASSES</strong>
-              <span class="part-cn">磁吸眼镜</span>
-              <span class="part-desc">Magnetic wearable platform with CSPL lens installed</span>
+          <p class="ecosystem-note">Compatible devices, included accessories, and lab evidence are shown as compact indicators. Icons explain the ecosystem without turning this page into a product catalog.</p>
+        </div>
+
+        <div class="ecosystem-panel">
+          <div class="ecosystem-columns">
+            <div class="ecosystem-group" aria-label="Compatible devices">
+              <p class="ecosystem-kicker">Compatible Devices</p>
+              <div class="icon-grid">
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-go3-go3s.png" alt="GO3 and GO3S icon">
+                  <span class="eco-name">GO3 / GO3S</span>
+                  <span class="eco-meta">Verified</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-dji-nano.png" alt="DJI Nano icon">
+                  <span class="eco-name">DJI Nano</span>
+                  <span class="eco-meta">Verified</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-dji-mic.png" alt="DJI Mic icon">
+                  <span class="eco-name">DJI Mic</span>
+                  <span class="eco-meta">Verified</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-318-walkie.png" alt="318 Walkie-Talkie icon">
+                  <span class="eco-name">318 Walkie-Talkie</span>
+                  <span class="eco-meta">DIY</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-airtag.png" alt="AirTag icon">
+                  <span class="eco-name">AirTag</span>
+                  <span class="eco-meta">Tracker</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-headlamp.png" alt="Headlamp icon">
+                  <span class="eco-name">Headlamp</span>
+                  <span class="eco-meta">Light</span>
+                </div>
+                <div class="eco-item soon">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-ai-module.png" alt="AI Module icon">
+                  <span class="eco-name">AI Module</span>
+                  <span class="eco-meta">Coming Soon</span>
+                </div>
+              </div>
             </div>
-            <div class="part">
-              <div class="part-media"><img src="assets/site/box-components.jpg" alt="MAGNOSE component slot"></div>
-              <span class="part-num">02</span>
-              <strong class="part-title">MAGNOSE</strong>
-              <span class="part-cn">磁鼻托</span>
-              <span class="part-desc">Magnetic face support</span>
+
+            <div class="ecosystem-group" id="box" aria-label="Accessories">
+              <p class="ecosystem-kicker">Accessories</p>
+              <div class="icon-grid">
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-magsnap-frame.png" alt="MagSnap Frame icon">
+                  <span class="eco-name">MagSnap Frame</span>
+                  <span class="eco-meta">Base</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-facehuger-nose-pad.png" alt="FaceHuger Nose Pad icon">
+                  <span class="eco-name">FaceHuger Nose Pad</span>
+                  <span class="eco-meta">Support</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-safe-strap.png" alt="Safe Strap icon">
+                  <span class="eco-name">Safe Strap</span>
+                  <span class="eco-meta">Tether</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-magdock.png" alt="MagDock icon">
+                  <span class="eco-name">MagDock</span>
+                  <span class="eco-meta">Mount</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-zenloop.png" alt="ZenLoop icon">
+                  <span class="eco-name">ZenLoop</span>
+                  <span class="eco-meta">Cord</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-magwipe.png" alt="MagWipe icon">
+                  <span class="eco-name">MagWipe</span>
+                  <span class="eco-meta">Cloth</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-optical-test-card.png" alt="Optical Test Card icon">
+                  <span class="eco-name">Optical Test Card</span>
+                  <span class="eco-meta">Verify</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-n52-diy-magnet-set.png" alt="N52 DIY Magnet Set icon">
+                  <span class="eco-name">N52 DIY Magnet Set</span>
+                  <span class="eco-meta">DIY</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-founder-sticker.png" alt="Founder Sticker icon">
+                  <span class="eco-name">Founder Sticker</span>
+                  <span class="eco-meta">Founder</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-magsnap-box.png" alt="MagSnap Box icon">
+                  <span class="eco-name">MagSnap Box</span>
+                  <span class="eco-meta">Package</span>
+                </div>
+              </div>
             </div>
-            <div class="part">
-              <div class="part-media"><img src="assets/site/safety-cord.jpg" alt="ZENLOOP component slot"></div>
-              <span class="part-num">03</span>
-              <strong class="part-title">ZENLOOP</strong>
-              <span class="part-cn">禅环绳</span>
-              <span class="part-desc">Beaded retention cord</span>
-            </div>
-            <div class="part">
-              <div class="part-media"><img src="assets/site/safety-cord.jpg" alt="SAFE STRAP component slot"></div>
-              <span class="part-num">04</span>
-              <strong class="part-title">SAFE STRAP</strong>
-              <span class="part-cn">安全绳</span>
-              <span class="part-desc">Camera safety tether</span>
-            </div>
-            <div class="part">
-              <div class="part-media"><img src="assets/site/box-frame.jpg" alt="SNAPDOCK component slot"></div>
-              <span class="part-num">05</span>
-              <strong class="part-title">SNAPDOCK</strong>
-              <span class="part-cn">磁吸基座</span>
-              <span class="part-desc">Magnetic mounting plate</span>
-            </div>
-            <div class="part">
-              <div class="part-media"><img src="assets/site/box-components.jpg" alt="N52 CORE SET component slot"></div>
-              <span class="part-num">06</span>
-              <strong class="part-title">N52 CORE SET ×4</strong>
-              <span class="part-cn">N52磁芯套装</span>
-              <span class="part-desc">Spare magnetic cores</span>
-            </div>
-            <div class="part">
-              <div class="part-media"><img src="assets/site/packaging-tube.jpg" alt="OPTICAL TEST CARD component slot"></div>
-              <span class="part-num">07</span>
-              <strong class="part-title">OPTICAL TEST CARD</strong>
-              <span class="part-cn">光学测试卡</span>
-              <span class="part-desc">UV400 &amp; Polarization verification</span>
-            </div>
-            <div class="part">
-              <div class="part-media"><img src="assets/site/style-group-sand.jpg" alt="MagWIPE component slot"></div>
-              <span class="part-num">08</span>
-              <strong class="part-title">MagWIPE</strong>
-              <span class="part-cn">磁镜布</span>
-              <span class="part-desc">Self-adhesive cleaning cloth</span>
-            </div>
-            <div class="part">
-              <div class="part-media"><img src="assets/site/panda-logo.jpg" alt="FOUNDERS STICKER component slot"></div>
-              <span class="part-num">09</span>
-              <strong class="part-title">FOUNDERS STICKER</strong>
-              <span class="part-cn">创始人贴纸</span>
-              <span class="part-desc">Limited edition sticker</span>
-            </div>
-            <div class="part">
-              <div class="part-media"><img src="assets/site/packaging-tube.jpg" alt="MAGSNAP BOX component slot"></div>
-              <span class="part-num">10</span>
-              <strong class="part-title">MAGSNAP BOX</strong>
-              <span class="part-cn">牛皮纸包装筒</span>
-              <span class="part-desc">Kraft paper cylinder packaging</span>
+          </div>
+
+          <div class="ecosystem-group" id="lab" aria-label="MagSnap Lab thumbnails">
+            <p class="ecosystem-kicker">MAGSNAP LAB</p>
+            <div class="lab-thumb-grid">
+              <div class="lab-thumb">
+                <img src="assets/site/lab-thumbs/magnetic-strength.jpg" alt="Magnetic Strength Test thumbnail">
+                <span>Magnetic Strength Test</span>
+              </div>
+              <div class="lab-thumb">
+                <img src="assets/site/lab-thumbs/magnetic-gauss.jpg" alt="Magnetic Gauss Test thumbnail">
+                <span>Magnetic Gauss Test</span>
+              </div>
+              <div class="lab-thumb">
+                <img src="assets/site/lab-thumbs/seawater-test.jpg" alt="Seawater Test thumbnail">
+                <span>Seawater Test</span>
+              </div>
+              <div class="lab-thumb">
+                <img src="assets/site/lab-thumbs/lens-test.jpg" alt="Lens Test thumbnail">
+                <span>Lens Test</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1379,69 +1525,6 @@
             </video>
             <span>Sailing</span>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section lab" id="lab">
-      <div class="wrap">
-        <p class="eyebrow">Prototype Evidence</p>
-        <h2>MAGSNAP LAB</h2>
-        <div class="lab-grid" aria-label="MagSnap lab test videos">
-          <article class="lab-card">
-            <video autoplay muted loop playsinline data-media-slot="lab-magnet-strength">
-              <source src="assets/site/native-mount.mp4" type="video/mp4">
-            </video>
-            <span>Magnet Strength Test</span>
-          </article>
-          <article class="lab-card">
-            <video autoplay muted loop playsinline data-media-slot="lab-saltwater-resistance">
-              <source src="assets/site/pov-sailing.mp4" type="video/mp4">
-            </video>
-            <span>Lens Saltwater Resistance Test</span>
-          </article>
-          <article class="lab-card">
-            <video autoplay muted loop playsinline data-media-slot="lab-camera-mount-strength">
-              <source src="assets/site/carry-go3.mp4" type="video/mp4">
-            </video>
-            <span>Camera Magnetic Mount Strength Test</span>
-          </article>
-          <article class="lab-card">
-            <video autoplay muted loop playsinline data-media-slot="lab-go3s-mount">
-              <source src="assets/site/carry-go3.mp4" type="video/mp4">
-            </video>
-            <span>Insta360 GO 3S Mount Test</span>
-          </article>
-          <article class="lab-card">
-            <video autoplay muted loop playsinline data-media-slot="lab-dji-nano-mount">
-              <source src="assets/site/native-mount.mp4" type="video/mp4">
-            </video>
-            <span>DJI Nano Mount Test</span>
-          </article>
-          <article class="lab-card">
-            <video autoplay muted loop playsinline data-media-slot="lab-walkie-diy">
-              <source src="assets/site/pov-travel.mp4" type="video/mp4">
-            </video>
-            <span>318 Walkie Talkie DIY Test</span>
-          </article>
-          <article class="lab-card">
-            <video autoplay muted loop playsinline data-media-slot="lab-comfort">
-              <source src="assets/site/pov-beach.mp4" type="video/mp4">
-            </video>
-            <span>Comfort Test</span>
-          </article>
-          <article class="lab-card">
-            <video autoplay muted loop playsinline data-media-slot="lab-rust-resistance">
-              <source src="assets/site/pov-sailing.mp4" type="video/mp4">
-            </video>
-            <span>Rust Resistance Test</span>
-          </article>
-          <article class="lab-card">
-            <video autoplay muted loop playsinline data-media-slot="lab-extreme-movement">
-              <source src="assets/site/pov-kitesurf.mp4" type="video/mp4">
-            </video>
-            <span>Extreme Movement Test</span>
-          </article>
         </div>
       </div>
     </section>

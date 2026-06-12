@@ -320,7 +320,7 @@
     }
 
     .snap-card {
-      min-height: 182px;
+      min-height: 246px;
       border: 1px solid rgba(245, 239, 230, 0.14);
       background:
         linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
@@ -328,23 +328,30 @@
       padding: 14px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       gap: 14px;
     }
 
     .snap-thumb {
-      width: 58px;
-      height: 58px;
+      width: 100%;
+      aspect-ratio: 1 / 0.74;
       border: 1px solid rgba(200, 169, 126, 0.38);
+      overflow: hidden;
       display: grid;
       place-items: center;
       background: rgba(200, 169, 126, 0.08);
       color: var(--kraft);
       font-family: "Arial Black", Impact, sans-serif;
-      font-size: 15px;
+      font-size: 18px;
       font-weight: 950;
       line-height: 0.92;
       text-align: center;
+    }
+
+    .snap-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.86) contrast(1.06);
     }
 
     .snap-card strong {
@@ -353,14 +360,24 @@
       line-height: 1.06;
     }
 
+    .snap-desc {
+      margin-top: auto;
+      color: rgba(245, 239, 230, 0.58);
+      font-size: 12px;
+      font-weight: 750;
+      line-height: 1.32;
+    }
+
     .snap-status {
-      width: max-content;
+      width: fit-content;
+      max-width: 100%;
       border: 1px solid rgba(245, 239, 230, 0.14);
       padding: 6px 8px;
       color: rgba(245, 239, 230, 0.64);
       font-size: 10px;
       font-weight: 950;
       letter-spacing: 0.06em;
+      line-height: 1.18;
       text-transform: uppercase;
     }
 
@@ -416,7 +433,7 @@
     }
 
     .part {
-      min-height: 126px;
+      min-height: 218px;
       border: 1px solid rgba(0, 0, 0, 0.18);
       background: rgba(255, 255, 255, 0.38);
       padding: 14px;
@@ -424,6 +441,21 @@
       flex-direction: column;
       gap: 8px;
       justify-content: flex-start;
+    }
+
+    .part-media {
+      width: 100%;
+      aspect-ratio: 1 / 0.62;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      background: rgba(16, 13, 9, 0.08);
+    }
+
+    .part-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      mix-blend-mode: multiply;
     }
 
     .part-num {
@@ -485,6 +517,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
       gap: 16px;
       min-height: 68px;
       padding: 18px;
@@ -492,6 +525,45 @@
       font-size: 14px;
       font-weight: 950;
       text-transform: uppercase;
+    }
+
+    .style-label span {
+      color: rgba(8, 7, 6, 0.56);
+      font-size: 11px;
+      line-height: 1.2;
+      text-align: right;
+    }
+
+    .style-label strong {
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 18px;
+      line-height: 0.95;
+    }
+
+    .style-colors {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      background: rgba(0, 0, 0, 0.12);
+    }
+
+    .color-button {
+      min-height: 42px;
+      border: 0;
+      background: #fbfaf7;
+      color: rgba(8, 7, 6, 0.62);
+      font: inherit;
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .color-button.active,
+    .color-button:hover {
+      background: #080706;
+      color: var(--kraft);
     }
 
     .why {
@@ -1036,7 +1108,7 @@
       <a href="#style">Style</a>
       <a href="#lab">Lab</a>
       <a href="#life">POV Life</a>
-      <a href="founder/">Founder</a>
+      <a href="founder/">Activate</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -1060,7 +1132,7 @@
           <div class="section-mark">02</div>
           <p class="eyebrow">One System</p>
           <h2>For Camera, Audio and AI</h2>
-          <p class="body-copy">MAGSNAP is not just glasses. It is a head-mounted expansion system — a way to add camera, audio, AI, tracker, and communication modules to your head.</p>
+          <p class="body-copy">MAGSNAP is not just glasses. It is a head-mounted expansion system — a wearable base for camera, audio, AI, tracker, and communication modules.</p>
           <div class="chips" aria-label="Compatibility">
             <span class="chip">Insta360 GO3</span>
             <span class="chip">GO3S</span>
@@ -1069,7 +1141,7 @@
             <span class="chip">AirTag</span>
             <span class="chip">Walkie Talkie</span>
           </div>
-          <p class="native-note">Native magnetic mounting.<br>No adapters.</p>
+          <p class="native-note">Native magnetic mounting.<br>No adapters.<br>脑袋外挂系统</p>
         </div>
         <div class="media-frame" aria-label="Native mounting demo">
           <video autoplay muted loop playsinline poster="assets/site/box-frame.jpg">
@@ -1085,49 +1157,52 @@
         <h2>WHAT CAN YOU SNAP?</h2>
         <div class="snap-grid" aria-label="Compatible and upcoming snap modules">
           <article class="snap-card verified">
-            <div class="snap-thumb">GO<br>3</div>
+            <div class="snap-thumb"><img src="assets/product-camera-module.jpg" alt="Insta360 GO 3 compatible magnetic module"></div>
             <span class="snap-status">Verified</span>
             <strong>Insta360 GO 3</strong>
+            <span class="snap-desc">Verified compact camera mounting on the magnetic interface.</span>
           </article>
           <article class="snap-card verified">
-            <div class="snap-thumb">GO<br>3S</div>
+            <div class="snap-thumb"><img src="assets/product-camera-module.jpg" alt="Insta360 GO 3S compatible magnetic module"></div>
             <span class="snap-status">Verified</span>
             <strong>Insta360 GO 3S</strong>
+            <span class="snap-desc">Verified POV camera setup for daily and sport use.</span>
           </article>
           <article class="snap-card verified">
-            <div class="snap-thumb">DJI</div>
+            <div class="snap-thumb"><img src="assets/site/box-frame.jpg" alt="DJI Nano compatible magnetic position"></div>
             <span class="snap-status">Verified</span>
             <strong>DJI Nano</strong>
+            <span class="snap-desc">Verified lightweight camera module direction.</span>
           </article>
           <article class="snap-card verified">
-            <div class="snap-thumb">MIC</div>
+            <div class="snap-thumb"><img src="assets/founder-camera-module.jpg" alt="DJI Mic compatible audio module slot"></div>
             <span class="snap-status">Verified</span>
-            <strong>DJI Mini Mic</strong>
+            <strong>DJI Mic</strong>
+            <span class="snap-desc">Verified audio carry concept for creator recording.</span>
           </article>
           <article class="snap-card verified">
-            <div class="snap-thumb">LED</div>
+            <div class="snap-thumb"><img src="assets/site/hero-poster.jpg" alt="Headlamp magnetic carry concept"></div>
             <span class="snap-status">Verified</span>
             <strong>Headlamp</strong>
+            <span class="snap-desc">Verified light module direction for night and repair use.</span>
           </article>
           <article class="snap-card diy">
-            <div class="snap-thumb">318</div>
+            <div class="snap-thumb"><img src="assets/site/style-group-sand.jpg" alt="318 Walkie Talkie DIY magnetic carry slot"></div>
             <span class="snap-status">DIY / Extra Magnets Recommended</span>
             <strong>318 Walkie Talkie</strong>
+            <span class="snap-desc">DIY test path. Extra magnets recommended for secure use.</span>
           </article>
           <article class="snap-card diy">
-            <div class="snap-thumb">MAG</div>
-            <span class="snap-status">DIY / Extra Magnets Recommended</span>
-            <strong>MagSafe Wallet</strong>
-          </article>
-          <article class="snap-card diy">
-            <div class="snap-thumb">TAG</div>
+            <div class="snap-thumb"><img src="assets/site/panda-logo.jpg" alt="AirTag tracker magnetic carry slot"></div>
             <span class="snap-status">DIY / Extra Magnets Recommended</span>
             <strong>AirTag</strong>
+            <span class="snap-desc">Tracker carry experiment for everyday object finding.</span>
           </article>
           <article class="snap-card soon">
             <div class="snap-thumb">AI</div>
             <span class="snap-status">Coming Soon</span>
             <strong>AI Module</strong>
+            <span class="snap-desc">Future expansion direction for wearable AI devices.</span>
           </article>
         </div>
       </div>
@@ -1138,65 +1213,81 @@
         <div class="section-mark">03</div>
         <p class="eyebrow">What's Included</p>
         <h2>Actual Components</h2>
-        <p class="body-copy">The magnetic platform, support, retention, safety, mounting, spare cores, optical verification, cleaning, and founder detail.</p>
+        <p class="body-copy">The magnetic platform, support, retention, safety, mounting, spare cores, optical verification, cleaning, founder detail, and kraft cylinder packaging.</p>
         <div class="box-layout">
           <div class="box-hero">
             <img src="assets/site/box-components.jpg" alt="Actual MagSnap included components">
           </div>
           <div class="parts-grid" aria-label="Included components">
             <div class="part">
+              <div class="part-media"><img src="assets/site/box-frame.jpg" alt="MAGSNAP glasses component slot"></div>
               <span class="part-num">01</span>
               <strong class="part-title">MAGSNAP™ GLASSES</strong>
               <span class="part-cn">磁吸眼镜</span>
               <span class="part-desc">Magnetic wearable platform with CSPL lens installed</span>
             </div>
             <div class="part">
+              <div class="part-media"><img src="assets/site/box-components.jpg" alt="MAGNOSE component slot"></div>
               <span class="part-num">02</span>
               <strong class="part-title">MAGNOSE</strong>
               <span class="part-cn">磁鼻托</span>
               <span class="part-desc">Magnetic face support</span>
             </div>
             <div class="part">
+              <div class="part-media"><img src="assets/site/safety-cord.jpg" alt="ZENLOOP component slot"></div>
               <span class="part-num">03</span>
               <strong class="part-title">ZENLOOP</strong>
               <span class="part-cn">禅环绳</span>
               <span class="part-desc">Beaded retention cord</span>
             </div>
             <div class="part">
+              <div class="part-media"><img src="assets/site/safety-cord.jpg" alt="SAFE STRAP component slot"></div>
               <span class="part-num">04</span>
               <strong class="part-title">SAFE STRAP</strong>
               <span class="part-cn">安全绳</span>
               <span class="part-desc">Camera safety tether</span>
             </div>
             <div class="part">
+              <div class="part-media"><img src="assets/site/box-frame.jpg" alt="SNAPDOCK component slot"></div>
               <span class="part-num">05</span>
               <strong class="part-title">SNAPDOCK</strong>
               <span class="part-cn">磁吸基座</span>
               <span class="part-desc">Magnetic mounting plate</span>
             </div>
             <div class="part">
+              <div class="part-media"><img src="assets/site/box-components.jpg" alt="N52 CORE SET component slot"></div>
               <span class="part-num">06</span>
               <strong class="part-title">N52 CORE SET ×4</strong>
               <span class="part-cn">N52磁芯套装</span>
               <span class="part-desc">Spare magnetic cores</span>
             </div>
             <div class="part">
+              <div class="part-media"><img src="assets/site/packaging-tube.jpg" alt="OPTICAL TEST CARD component slot"></div>
               <span class="part-num">07</span>
               <strong class="part-title">OPTICAL TEST CARD</strong>
               <span class="part-cn">光学测试卡</span>
               <span class="part-desc">UV400 &amp; Polarization verification</span>
             </div>
             <div class="part">
+              <div class="part-media"><img src="assets/site/style-group-sand.jpg" alt="MagWIPE component slot"></div>
               <span class="part-num">08</span>
               <strong class="part-title">MagWIPE</strong>
               <span class="part-cn">磁镜布</span>
               <span class="part-desc">Self-adhesive cleaning cloth</span>
             </div>
             <div class="part">
+              <div class="part-media"><img src="assets/site/panda-logo.jpg" alt="FOUNDERS STICKER component slot"></div>
               <span class="part-num">09</span>
               <strong class="part-title">FOUNDERS STICKER</strong>
               <span class="part-cn">创始人贴纸</span>
               <span class="part-desc">Limited edition sticker</span>
+            </div>
+            <div class="part">
+              <div class="part-media"><img src="assets/site/packaging-tube.jpg" alt="MAGSNAP BOX component slot"></div>
+              <span class="part-num">10</span>
+              <strong class="part-title">MAGSNAP BOX</strong>
+              <span class="part-cn">牛皮纸包装筒</span>
+              <span class="part-desc">Kraft paper cylinder packaging</span>
             </div>
           </div>
         </div>
@@ -1207,19 +1298,37 @@
       <div class="wrap">
         <div class="section-mark">04</div>
         <p class="eyebrow">Choose Your Style</p>
-        <h2>Three Versions</h2>
+        <h2>Three Frame Styles</h2>
         <div class="style-row">
           <article class="style-card">
-            <img src="assets/site/style-clear-pink.jpg" alt="MagSnap clear frame with pink lenses">
-            <div class="style-label"><span>甲01</span><span>BLACK / CLEAR / WHITE</span></div>
+            <img data-style-image src="assets/site/style-black-yellow.jpg" alt="TYPE A MagSnap frame with black lens option">
+            <div class="style-label"><strong>TYPE A</strong><span>BLACK / BLUE / PINK / SMOKE</span></div>
+            <div class="style-colors" aria-label="TYPE A lens colors">
+              <button class="color-button active" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE A MagSnap frame with black lens option">Black</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE A MagSnap frame with blue lens option">Blue</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE A MagSnap frame with pink lens option">Pink</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE A MagSnap frame with smoke lens option">Smoke</button>
+            </div>
           </article>
           <article class="style-card">
-            <img src="assets/site/style-black-yellow.jpg" alt="MagSnap black frame with yellow lenses">
-            <div class="style-label"><span>乙02</span><span>BLACK / CLEAR / WHITE</span></div>
+            <img data-style-image src="assets/site/style-clear-pink.jpg" alt="TYPE B MagSnap frame with pink lens option">
+            <div class="style-label"><strong>TYPE B</strong><span>BLACK / BLUE / PINK / SMOKE</span></div>
+            <div class="style-colors" aria-label="TYPE B lens colors">
+              <button class="color-button" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE B MagSnap frame with black lens option">Black</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE B MagSnap frame with blue lens option">Blue</button>
+              <button class="color-button active" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE B MagSnap frame with pink lens option">Pink</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE B MagSnap frame with smoke lens option">Smoke</button>
+            </div>
           </article>
           <article class="style-card">
-            <img src="assets/site/style-clear-smoke.jpg" alt="MagSnap clear frame with smoke lenses">
-            <div class="style-label"><span>丙03</span><span>BLACK / CLEAR / WHITE</span></div>
+            <img data-style-image src="assets/site/style-clear-smoke.jpg" alt="TYPE C MagSnap frame with smoke lens option">
+            <div class="style-label"><strong>TYPE C</strong><span>BLACK / BLUE / PINK / SMOKE</span></div>
+            <div class="style-colors" aria-label="TYPE C lens colors">
+              <button class="color-button" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE C MagSnap frame with black lens option">Black</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE C MagSnap frame with blue lens option">Blue</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE C MagSnap frame with pink lens option">Pink</button>
+              <button class="color-button active" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE C MagSnap frame with smoke lens option">Smoke</button>
+            </div>
           </article>
         </div>
       </div>
@@ -1241,31 +1350,31 @@
         <p class="body-copy">Kitesurfing, beach lifestyle, DJ, travel, and product use from existing MagSnap media.</p>
         <div class="life-grid">
           <div class="life-tile">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="pov-kitesurf">
               <source src="assets/site/pov-kitesurf.mp4" type="video/mp4">
             </video>
             <span>Kitesurfing</span>
           </div>
           <div class="life-tile">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="pov-beach">
               <source src="assets/site/pov-beach.mp4" type="video/mp4">
             </video>
             <span>Beach Lifestyle</span>
           </div>
           <div class="life-tile">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="pov-dj">
               <source src="assets/site/pov-dj.mp4" type="video/mp4">
             </video>
             <span>DJ</span>
           </div>
           <div class="life-tile">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="pov-travel">
               <source src="assets/site/pov-travel.mp4" type="video/mp4">
             </video>
             <span>Travel</span>
           </div>
           <div class="life-tile">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="pov-sailing">
               <source src="assets/site/pov-sailing.mp4" type="video/mp4">
             </video>
             <span>Sailing</span>
@@ -1280,55 +1389,55 @@
         <h2>MAGSNAP LAB</h2>
         <div class="lab-grid" aria-label="MagSnap lab test videos">
           <article class="lab-card">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="lab-magnet-strength">
               <source src="assets/site/native-mount.mp4" type="video/mp4">
             </video>
             <span>Magnet Strength Test</span>
           </article>
           <article class="lab-card">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="lab-saltwater-resistance">
               <source src="assets/site/pov-sailing.mp4" type="video/mp4">
             </video>
             <span>Lens Saltwater Resistance Test</span>
           </article>
           <article class="lab-card">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="lab-camera-mount-strength">
               <source src="assets/site/carry-go3.mp4" type="video/mp4">
             </video>
             <span>Camera Magnetic Mount Strength Test</span>
           </article>
           <article class="lab-card">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="lab-go3s-mount">
               <source src="assets/site/carry-go3.mp4" type="video/mp4">
             </video>
             <span>Insta360 GO 3S Mount Test</span>
           </article>
           <article class="lab-card">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="lab-dji-nano-mount">
               <source src="assets/site/native-mount.mp4" type="video/mp4">
             </video>
             <span>DJI Nano Mount Test</span>
           </article>
           <article class="lab-card">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="lab-walkie-diy">
               <source src="assets/site/pov-travel.mp4" type="video/mp4">
             </video>
             <span>318 Walkie Talkie DIY Test</span>
           </article>
           <article class="lab-card">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="lab-comfort">
               <source src="assets/site/pov-beach.mp4" type="video/mp4">
             </video>
             <span>Comfort Test</span>
           </article>
           <article class="lab-card">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="lab-rust-resistance">
               <source src="assets/site/pov-sailing.mp4" type="video/mp4">
             </video>
             <span>Rust Resistance Test</span>
           </article>
           <article class="lab-card">
-            <video autoplay muted loop playsinline>
+            <video autoplay muted loop playsinline data-media-slot="lab-extreme-movement">
               <source src="assets/site/pov-kitesurf.mp4" type="video/mp4">
             </video>
             <span>Extreme Movement Test</span>
@@ -1343,6 +1452,7 @@
           <div class="section-mark">07</div>
           <p class="eyebrow">Founder</p>
           <p class="founder-quote">Built for myself.<span>Shared with the world.</span></p>
+          <p class="body-copy">MAGSNAP started as MZ's own head-mounted expansion system — 脑袋外挂系统 — and is becoming a registry for players, creators, explorers, and early founders.</p>
         </div>
         <div class="founder-photo">
           <img src="assets/site/founder.jpg" alt="Real founder wearing MagSnap">
@@ -1412,7 +1522,7 @@
         <a href="disclaimer.html#warranty">Warranty</a>
         <a href="disclaimer.html#disclaimer">Disclaimer</a>
         <a href="disclaimer.html#privacy">Privacy</a>
-        <a href="founder/">Founder</a>
+        <a href="founder/">Activate</a>
         <a href="registry/">Registry</a>
         <a href="mailto:info@magsnap.me">info@magsnap.me</a>
       </div>
@@ -1446,7 +1556,7 @@
       installation: "Snap the module to the magnetic interface, check alignment by hand, then test gently before real use.",
       warranty: "Warranty information depends on the purchase channel and batch. Keep purchase proof and inspect magnets before each use. Contact info@magsnap.me if needed.",
       shipping: "Shipping is handled by the sales platform or channel where the product is purchased. Contact info@magsnap.me if needed.",
-      faq: "MAGSNAP is not just glasses. It is a head-mounted expansion system — a wearable base for camera, audio, AI, tracker, and communication modules.",
+      faq: "MAGSNAP is not just glasses. It is a head-mounted expansion system — a wearable base for camera, audio, AI, tracker, and communication modules. Chinese concept: 脑袋外挂系统.",
       disclaimer: "Magnetic devices may detach. High speed, heavy impact, and improper use increase risk. User is responsible for attached devices."
     };
 
@@ -1458,6 +1568,17 @@
     document.querySelectorAll("[data-answer]").forEach((button) => {
       button.addEventListener("click", () => {
         answer.textContent = answers[button.dataset.answer];
+      });
+    });
+
+    document.querySelectorAll(".color-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".style-card");
+        const image = card.querySelector("[data-style-image]");
+        card.querySelectorAll(".color-button").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        image.src = button.dataset.styleSrc;
+        image.alt = button.dataset.styleAlt;
       });
     });
   </script>

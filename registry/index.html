@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MAGSNAP | Founder Registry</title>
-  <meta name="description" content="Public MAGSNAP Founder Registry for the first 1,000 Founders.">
+  <title>MAGSNAP | Registry</title>
+  <meta name="description" content="Public MAGSNAP Registry for product identity, founder archive, and player network records.">
   <link rel="stylesheet" href="../assets/founder/founder.css">
 </head>
 <body>
@@ -13,10 +13,9 @@
       <img src="../assets/site/panda-logo.jpg" alt="Official MAGSNAP Panda Logo">
       <span>MAGSNAP</span>
     </a>
-    <nav class="nav" aria-label="Founder pages">
+    <nav class="nav" aria-label="Registry pages">
       <a href="../">Home</a>
       <a href="../founder/">Activate</a>
-      <a href="mailto:info@magsnap.me">Contact</a>
     </nav>
   </header>
 
@@ -24,49 +23,63 @@
     <section class="hero">
       <div>
         <div class="mark">02</div>
-        <p class="eyebrow">Public Registry</p>
-        <h1>Founder Registry</h1>
-        <p class="lead">The first 1,000 Founders are the foundation of the MagSnap network.</p>
-        <p class="plain">This public page shows only Founder Number, Name/Nickname, Country, and Sport/Activity Tags.</p>
+        <p class="eyebrow">Public Product Passport</p>
+        <h1>MAGSNAP REGISTRY</h1>
+        <p class="lead">A product registry, founder archive, and player network foundation.</p>
+        <p class="plain">Registry Numbers come from physical QC/Test Cards. They do not follow registration order, purchase order, or purchase date.</p>
       </div>
-      <aside class="founder-card" aria-label="Founder registry example">
+      <aside class="founder-card" aria-label="Registry record example">
         <div>
-          <p class="eyebrow">Public Format</p>
-          <p class="founder-number">#0083</p>
+          <p class="eyebrow">Origin Record</p>
+          <p class="founder-number">0171</p>
         </div>
-        <p class="plain">Vietnam / Kitesurf</p>
+        <p class="plain">MZ / Founder / Origin</p>
       </aside>
     </section>
 
-    <section class="registry-shell" aria-label="Founder registry list">
+    <section class="registry-shell" aria-label="MAGSNAP registry search and public records">
+      <div class="registry-search">
+        <div>
+          <p class="eyebrow">Search by Card Number</p>
+          <p class="plain">Try 0171. Public results show only non-private record fields.</p>
+        </div>
+        <form class="search-form" data-registry-search>
+          <input name="registry_query" inputmode="numeric" autocomplete="off" placeholder="0171" aria-label="Registry Number">
+          <button class="button" type="submit">Search</button>
+        </form>
+      </div>
       <div class="status" data-status></div>
+      <div class="registry-result" data-registry-result></div>
       <table class="registry-table">
         <thead>
           <tr>
-            <th>Founder</th>
-            <th>Name</th>
+            <th>Registry</th>
+            <th>Display Name</th>
             <th>Country</th>
-            <th>Sport / Activity</th>
+            <th>Role</th>
+            <th>Configuration</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody data-registry-body>
           <tr>
-            <td colspan="4">Loading Founder Registry...</td>
+            <td colspan="6">Loading MAGSNAP REGISTRY...</td>
           </tr>
         </tbody>
       </table>
       <div class="empty-state">
-        Private contact fields are hidden and visible only to MAGSNAP administrators.
+        Public records hide phone, email, address, tracking number, and private notes.
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <span>MAGSNAP / Founder Network</span>
+    <span>MAGSNAP / Product Registry</span>
     <span>info@magsnap.me</span>
   </footer>
 
   <script src="../assets/founder/supabase-config.js"></script>
+  <script src="../assets/founder/registry-data.js"></script>
   <script src="../assets/founder/founder.js"></script>
 </body>
 </html>

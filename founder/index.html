@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MAGSNAP | Founder Activation</title>
-  <meta name="description" content="Activate your MAGSNAP Founder Number and join the first 1,000 Founders.">
+  <title>MAGSNAP | Registry Activation</title>
+  <meta name="description" content="Activate your MAGSNAP Registry Number from the QC/Test Card.">
   <link rel="stylesheet" href="../assets/founder/founder.css">
 </head>
 <body>
@@ -13,10 +13,9 @@
       <img src="../assets/site/panda-logo.jpg" alt="Official MAGSNAP Panda Logo">
       <span>MAGSNAP</span>
     </a>
-    <nav class="nav" aria-label="Founder pages">
+    <nav class="nav" aria-label="Registry pages">
       <a href="../">Home</a>
       <a href="../registry/">Registry</a>
-      <a href="mailto:info@magsnap.me">Contact</a>
     </nav>
   </header>
 
@@ -24,44 +23,58 @@
     <section class="hero">
       <div>
         <div class="mark">01</div>
-        <p class="eyebrow">Founder Activation</p>
-        <h1>First 1,000 Founders</h1>
-        <p class="lead">Enter the Founder Number printed on your physical Founder Card.</p>
-        <p class="plain">Founder identity is permanent. Product versions may change. Founder identity never changes.</p>
+        <p class="eyebrow">Registry Activation</p>
+        <h1>MAGSNAP REGISTRY</h1>
+        <p class="lead">Every product has a unique identity from the QC/Test Card.</p>
+        <p class="plain">The Registry Number is not the purchase order, not the registration order, and not a product serial number. It follows the physical card included with the product.</p>
       </div>
-      <aside class="founder-card" aria-label="Founder card example">
+      <aside class="founder-card" aria-label="Registry card example">
         <div>
           <p class="eyebrow">Example</p>
-          <p class="founder-number">#0083</p>
+          <p class="founder-number">0171</p>
         </div>
-        <p class="plain">One of the First 1,000</p>
+        <p class="plain">Registry ID from the QC/Test Card</p>
       </aside>
     </section>
 
-    <section class="form-shell" aria-label="Founder registration form">
+    <section class="form-shell" aria-label="MAGSNAP registry activation form">
       <div class="status" data-status></div>
-      <form class="activation-form" data-founder-form>
+      <form class="activation-form" data-registry-form>
         <div class="form-grid">
           <div class="field">
-            <label for="founder-number">Founder Number *</label>
-            <input id="founder-number" name="founder_number" inputmode="numeric" autocomplete="off" placeholder="0083" required>
+            <label for="registry-number">Registry Number *</label>
+            <input id="registry-number" name="registry_number" inputmode="numeric" autocomplete="off" placeholder="0171" required>
           </div>
           <div class="field">
-            <label for="display-name">Name or Nickname *</label>
+            <label for="display-name">Display Name *</label>
             <input id="display-name" name="display_name" autocomplete="name" placeholder="MZ" required>
           </div>
           <div class="field">
             <label for="country">Country *</label>
-            <input id="country" name="country" autocomplete="country-name" placeholder="Vietnam" required>
+            <input id="country" name="country" autocomplete="country-name" placeholder="China" required>
           </div>
           <div class="field">
             <label for="city">City *</label>
-            <input id="city" name="city" autocomplete="address-level2" placeholder="Da Nang" required>
+            <input id="city" name="city" autocomplete="address-level2" placeholder="Shenzhen" required>
+          </div>
+          <div class="field">
+            <label for="role">Role *</label>
+            <select id="role" name="role" required>
+              <option>Founder</option>
+              <option>Player</option>
+              <option>Creator</option>
+              <option>Explorer</option>
+              <option>Athlete</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="configuration">Configuration *</label>
+            <input id="configuration" name="configuration" placeholder="Type A / Blue Lens" required>
           </div>
         </div>
 
         <div class="tag-group" aria-label="Primary sport or activity">
-          <p class="group-label">Primary Sport / Activity *</p>
+          <p class="group-label">Primary Sport / Activity</p>
           <div class="tags">
             <label class="tag"><input type="checkbox" name="sport_tags" value="FPV"><span>FPV</span></label>
             <label class="tag"><input type="checkbox" name="sport_tags" value="Kitesurf"><span>Kitesurf</span></label>
@@ -125,16 +138,16 @@
         </div>
 
         <div class="actions">
-          <button class="button" type="submit">Activate Founder Number</button>
+          <button class="button" type="submit">Activate Registry ID</button>
           <a class="button secondary" href="../registry/">View Registry</a>
         </div>
-        <p class="privacy-note">Public Registry only shows Founder Number, Name/Nickname, Country, and Sport/Activity Tags. Contact information remains private and visible only to MAGSNAP administrators.</p>
+        <p class="privacy-note">Public Registry shows only Registry Number, Display Name, Country, Role, Configuration, and Status. Contact details, address, tracking number, and notes remain private.</p>
       </form>
     </section>
   </main>
 
   <footer class="footer">
-    <span>MAGSNAP / Founder Network</span>
+    <span>MAGSNAP / Product Registry</span>
     <span>info@magsnap.me</span>
   </footer>
 

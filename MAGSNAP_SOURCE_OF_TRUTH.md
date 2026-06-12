@@ -112,35 +112,35 @@ Do not use generic AI outdoor photos.
    - Name: MAG
    - Purpose: answer Compatibility, Installation, Warranty, Shipping, FAQ, Disclaimer
 
-9. Founder Activation
+9. Registry Activation
    - Route: `/founder`
-   - Phase 1 default: show the Founder Activation form to all visitors.
-   - Users enter the Founder Number printed on the physical Founder Card.
+   - Phase 1 default: show the Registry Activation form to all visitors.
+   - Users enter the Registry Number printed on the physical QC/Test Card.
    - No QR token, login, membership, points, ranking, forum, social network, or app.
-   - Founder Number must be between `0001` and `1000`.
-   - Duplicate Founder Numbers cannot be activated twice.
+   - Registry Number is normalized to four digits, for example `0171`.
+   - Duplicate Registry Numbers cannot be activated twice.
 
-10. Founder Registry
+10. MAGSNAP REGISTRY
    - Route: `/registry`
    - Public page.
-   - Show only Founder Number, Name/Nickname, Country, and Sport/Activity Tags.
-   - Do not show Email, Phone, WhatsApp, Telegram, WeChat, Instagram, contact notes, or private admin notes.
+   - Show only Registry Number, Display Name, Country, Role, Configuration, and Status.
+   - Do not show phone, email, address, tracking number, contact details, social media, private notes, or private admin notes.
 
-## Founder Network
+## Registry / Founder Network
 
-MAGSNAP is not only a product. It is a global network of players, creators, explorers, athletes, founders, and early adopters.
+MAGSNAP is no longer only a product website. It is becoming a Product Website, Product Registry, Founder Archive, and Player Network.
 
 The glasses are the first product.
 
-The Founder Network is the long-term asset.
+The Founder Network is the long-term asset, but the primary system name is MAGSNAP REGISTRY.
 
-Each physical MagSnap package contains a randomly assigned Founder Number from `#0001` to `#1000`.
+Every product has a unique Registry Number from the physical QC/Test Card.
 
-Founder Number is not linked to product serial number, purchase order, or purchase date.
+Registry Number is not linked to product serial number, purchase order, purchase date, or registration order.
 
-Founder identity is permanent. Product versions may change. Founder identity never changes.
+Registry identity is permanent. Product versions may change. Registry identity never changes.
 
-The goal is collecting and organizing the first 1,000 Founders, not building a customer database or loyalty program.
+The goal is collecting and organizing real MagSnap owners, founders, players, creators, explorers, and athletes, not building a customer database or loyalty program.
 
 ## Footer
 

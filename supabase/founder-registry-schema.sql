@@ -1,83 +1,98 @@
--- MAGSNAP Founder Registry Phase 1
+-- MAGSNAP REGISTRY V1.3
 -- Run this once in Supabase SQL Editor.
+-- Registry Numbers come from physical QC/Test Cards, not order numbers or registration order.
 
-create table if not exists public.founder_profiles (
-  founder_number integer primary key check (founder_number between 1 and 1000),
+create table if not exists public.registry_records (
+  registry_number text primary key check (registry_number ~ '^[0-9]{4}$'),
   display_name text not null check (char_length(trim(display_name)) between 1 and 80),
   country text not null check (char_length(trim(country)) between 1 and 80),
-  city text not null check (char_length(trim(city)) between 1 and 80),
-  sport_tags text[] not null default '{}',
-  industry text,
-  device_tags text[] not null default '{}',
-  profile_photo_url text,
-  short_intro text,
-  status text not null default 'active' check (status in ('active', 'hidden')),
-  activated_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
-);
-
-create table if not exists public.founder_private_contacts (
-  founder_number integer primary key references public.founder_profiles(founder_number) on delete cascade,
-  contact_method text,
-  contact_detail text,
-  social_media text,
-  admin_notes text,
+  role text not null default 'Player' check (role in ('Founder', 'Player', 'Creator', 'Explorer', 'Athlete')),
+  configuration text not null check (char_length(trim(configuration)) between 1 and 120),
+  status text not null default 'Active' check (status in ('Origin', 'Manufactured', 'Assigned', 'Shipped', 'Activated', 'Active', 'Legacy', 'Hidden')),
+  activated_at timestamptz,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
 
-alter table public.founder_profiles enable row level security;
-alter table public.founder_private_contacts enable row level security;
+create table if not exists public.registry_private_details (
+  registry_number text primary key references public.registry_records(registry_number) on delete cascade,
+  city text,
+  industry text,
+  sport_tags text[] not null default '{}',
+  device_tags text[] not null default '{}',
+  contact_method text,
+  contact_detail text,
+  social_media text,
+  profile_photo_url text,
+  short_intro text,
+  phone text,
+  email text,
+  address text,
+  tracking_number text,
+  private_notes text,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
 
-drop view if exists public.public_founder_registry;
-create view public.public_founder_registry as
+alter table public.registry_records enable row level security;
+alter table public.registry_private_details enable row level security;
+
+drop view if exists public.public_registry_records;
+create view public.public_registry_records as
 select
-  founder_number,
+  registry_number,
   display_name,
   country,
-  sport_tags,
-  activated_at
-from public.founder_profiles
-where status = 'active'
-order by founder_number asc;
+  role,
+  configuration,
+  status
+from public.registry_records
+where status <> 'Hidden'
+order by registry_number asc;
 
-revoke all on public.founder_profiles from anon, authenticated;
-revoke all on public.founder_private_contacts from anon, authenticated;
-grant select on public.public_founder_registry to anon, authenticated;
+revoke all on public.registry_records from anon, authenticated;
+revoke all on public.registry_private_details from anon, authenticated;
+grant select on public.public_registry_records to anon, authenticated;
 
-create or replace function public.activate_founder(registration jsonb)
+create or replace function public.activate_registry_record(registration jsonb)
 returns jsonb
 language plpgsql
 security definer
 set search_path = public
 as $$
 declare
-  founder_digits text;
-  founder_no integer;
+  registry_digits text;
+  registry_no integer;
+  registry_id text;
   sports text[];
   devices text[];
   display_name_clean text;
   country_clean text;
   city_clean text;
+  role_clean text;
+  configuration_clean text;
 begin
-  founder_digits := regexp_replace(coalesce(registration->>'founder_number', ''), '[^0-9]', '', 'g');
+  registry_digits := regexp_replace(coalesce(registration->>'registry_number', ''), '[^0-9]', '', 'g');
 
-  if founder_digits = '' then
-    raise exception 'Founder Number is required.';
+  if registry_digits = '' then
+    raise exception 'Registry Number is required.';
   end if;
 
-  founder_no := founder_digits::integer;
+  registry_no := registry_digits::integer;
 
-  if founder_no < 1 or founder_no > 1000 then
-    raise exception 'Founder Number must be between 0001 and 1000.';
+  if registry_no < 1 or registry_no > 9999 then
+    raise exception 'Registry Number must be a four-digit QC/Test Card number.';
   end if;
 
+  registry_id := lpad(registry_no::text, 4, '0');
   display_name_clean := nullif(trim(coalesce(registration->>'display_name', '')), '');
   country_clean := nullif(trim(coalesce(registration->>'country', '')), '');
   city_clean := nullif(trim(coalesce(registration->>'city', '')), '');
+  role_clean := nullif(trim(coalesce(registration->>'role', '')), '');
+  configuration_clean := nullif(trim(coalesce(registration->>'configuration', '')), '');
 
   if display_name_clean is null then
-    raise exception 'Name or Nickname is required.';
+    raise exception 'Display Name is required.';
   end if;
 
   if country_clean is null then
@@ -88,63 +103,95 @@ begin
     raise exception 'City is required.';
   end if;
 
+  if role_clean is null then
+    raise exception 'Role is required.';
+  end if;
+
+  if configuration_clean is null then
+    raise exception 'Configuration is required.';
+  end if;
+
   select coalesce(array_agg(value), '{}')
   into sports
   from jsonb_array_elements_text(coalesce(registration->'sport_tags', '[]'::jsonb)) as value;
-
-  if array_length(sports, 1) is null then
-    raise exception 'Select at least one sport or activity.';
-  end if;
 
   select coalesce(array_agg(value), '{}')
   into devices
   from jsonb_array_elements_text(coalesce(registration->'device_tags', '[]'::jsonb)) as value;
 
-  insert into public.founder_profiles (
-    founder_number,
+  insert into public.registry_records (
+    registry_number,
     display_name,
     country,
+    role,
+    configuration,
+    status,
+    activated_at
+  )
+  values (
+    registry_id,
+    display_name_clean,
+    country_clean,
+    role_clean,
+    configuration_clean,
+    'Active',
+    now()
+  );
+
+  insert into public.registry_private_details (
+    registry_number,
     city,
-    sport_tags,
     industry,
+    sport_tags,
     device_tags,
+    contact_method,
+    contact_detail,
+    social_media,
     profile_photo_url,
     short_intro
   )
   values (
-    founder_no,
-    display_name_clean,
-    country_clean,
+    registry_id,
     city_clean,
-    sports,
     nullif(trim(coalesce(registration->>'industry', '')), ''),
+    sports,
     devices,
+    nullif(trim(coalesce(registration->>'contact_method', '')), ''),
+    nullif(trim(coalesce(registration->>'contact_detail', '')), ''),
+    nullif(trim(coalesce(registration->>'social_media', '')), ''),
     nullif(trim(coalesce(registration->>'profile_photo_url', '')), ''),
     nullif(trim(coalesce(registration->>'short_intro', '')), '')
   );
 
-  insert into public.founder_private_contacts (
-    founder_number,
-    contact_method,
-    contact_detail,
-    social_media
-  )
-  values (
-    founder_no,
-    nullif(trim(coalesce(registration->>'contact_method', '')), ''),
-    nullif(trim(coalesce(registration->>'contact_detail', '')), ''),
-    nullif(trim(coalesce(registration->>'social_media', '')), '')
-  );
-
   return jsonb_build_object(
-    'founder_number', '#' || lpad(founder_no::text, 4, '0'),
-    'status', 'activated'
+    'registry_number', registry_id,
+    'status', 'Active'
   );
 exception
   when unique_violation then
-    raise exception 'This Founder Number has already been activated.';
+    raise exception 'This Registry Number has already been activated.';
 end;
 $$;
 
-revoke all on function public.activate_founder(jsonb) from public;
-grant execute on function public.activate_founder(jsonb) to anon, authenticated;
+revoke all on function public.activate_registry_record(jsonb) from public;
+grant execute on function public.activate_registry_record(jsonb) to anon, authenticated;
+
+insert into public.registry_records (
+  registry_number,
+  display_name,
+  country,
+  role,
+  configuration,
+  status,
+  activated_at
+)
+values (
+  '0171',
+  'MZ',
+  'China',
+  'Founder',
+  'Type A / Blue Lens',
+  'Origin',
+  now()
+)
+on conflict (registry_number) do nothing;

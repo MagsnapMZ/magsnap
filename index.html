@@ -366,15 +366,16 @@
 
     .icon-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(82px, 1fr));
-      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 12px;
     }
 
     .eco-item {
-      min-height: 92px;
+      min-height: 120px;
       border: 1px solid rgba(245, 239, 230, 0.12);
-      background: rgba(255, 255, 255, 0.035);
-      padding: 10px 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 12px 8px;
       display: grid;
       place-items: center;
       align-content: center;
@@ -383,9 +384,10 @@
     }
 
     .eco-icon {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
     }
 
     .eco-name {
@@ -422,7 +424,7 @@
       gap: 7px;
     }
 
-    .lab-thumb img {
+    .lab-thumb video {
       width: 100%;
       max-width: 120px;
       aspect-ratio: 120 / 68;
@@ -1210,13 +1212,13 @@
       }
 
       .eco-item {
-        min-height: 84px;
-        padding: 9px 6px;
+        min-height: 100px;
+        padding: 10px 6px;
       }
 
       .eco-icon {
-        width: 42px;
-        height: 42px;
+        width: 64px;
+        height: 64px;
       }
 
       .media-frame video,
@@ -1397,7 +1399,7 @@
                   <span class="eco-meta">Verify</span>
                 </div>
                 <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-n52-diy-magnet-set.png" alt="N52 DIY Magnet Set icon">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-n52-core-set.png" alt="N52 DIY Magnet Set icon">
                   <span class="eco-name">N52 DIY Magnet Set</span>
                   <span class="eco-meta">DIY</span>
                 </div>
@@ -1415,23 +1417,31 @@
             </div>
           </div>
 
-          <div class="ecosystem-group" id="lab" aria-label="MagSnap Lab thumbnails">
+          <div class="ecosystem-group" id="lab" aria-label="MagSnap Lab videos">
             <p class="ecosystem-kicker">MAGSNAP LAB</p>
             <div class="lab-thumb-grid">
               <div class="lab-thumb">
-                <img src="assets/site/lab-thumbs/magnetic-strength.jpg" alt="Magnetic Strength Test thumbnail">
+                <video autoplay muted loop playsinline>
+                  <source src="assets/site/lab-thumbs/magnetic-strength.mp4" type="video/mp4">
+                </video>
                 <span>Magnetic Strength Test</span>
               </div>
               <div class="lab-thumb">
-                <img src="assets/site/lab-thumbs/magnetic-gauss.jpg" alt="Magnetic Gauss Test thumbnail">
+                <video autoplay muted loop playsinline>
+                  <source src="assets/site/lab-thumbs/magnetic-gauss.mp4" type="video/mp4">
+                </video>
                 <span>Magnetic Gauss Test</span>
               </div>
               <div class="lab-thumb">
-                <img src="assets/site/lab-thumbs/seawater-test.jpg" alt="Seawater Test thumbnail">
+                <video autoplay muted loop playsinline>
+                  <source src="assets/site/lab-thumbs/seawater-test.mp4" type="video/mp4">
+                </video>
                 <span>Seawater Test</span>
               </div>
               <div class="lab-thumb">
-                <img src="assets/site/lab-thumbs/lens-test.jpg" alt="Lens Test thumbnail">
+                <video autoplay muted loop playsinline>
+                  <source src="assets/site/lab-thumbs/lens-test.mp4" type="video/mp4">
+                </video>
                 <span>Lens Test</span>
               </div>
             </div>

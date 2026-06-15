@@ -146,6 +146,37 @@
         <div class="dir-empty" id="dir-empty">No founders yet. Be the first. / 还没有创始人。成为第一个。</div>
       </section>
 
+      <!-- Feedback -->
+      <section class="feedback-section" id="feedback">
+        <h2>Feedback · 反馈</h2>
+        <p class="fb-sub">Share your experience, ideas, or issues. Text, images, and videos are all welcome.<br>分享你的使用体验、想法或问题。文字、图片、视频都可以。</p>
+
+        <form class="feedback-form" id="feedback-form">
+          <div class="field full">
+            <label for="fb-name">Founder Name / 创始人姓名 *</label>
+            <input id="fb-name" name="fb_name" required placeholder="Your name as it appeared in the directory">
+          </div>
+          <div class="field full">
+            <label for="fb-message">Message / 内容 *</label>
+            <textarea id="fb-message" name="fb_message" required placeholder="What worked, what didn't, what would you change? / 什么好用、什么不好、想改进什么？"></textarea>
+          </div>
+          <div class="field full">
+            <label for="fb-image">Image / 图片</label>
+            <input id="fb-image" name="fb_image" type="file" accept="image/*">
+            <div class="fb-preview" id="fb-image-preview"></div>
+          </div>
+          <div class="field full">
+            <label for="fb-video">Video / 视频</label>
+            <input id="fb-video" name="fb_video" type="file" accept="video/*">
+            <div class="fb-preview" id="fb-video-preview"></div>
+          </div>
+          <div class="form-actions">
+            <button class="button" type="submit">Submit Feedback · 提交反馈</button>
+          </div>
+          <div class="form-status" id="fb-status"></div>
+        </form>
+      </section>
+
     </div>
   </main>
 

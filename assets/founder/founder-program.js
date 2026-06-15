@@ -1,8 +1,9 @@
 /* ===== MAGSNAP Founder Program JS ===== */
 
-const STORAGE_KEY = 'magsnap_founder_applications';
+const APP_KEY = 'magsnap_founder_applications';
+const FB_KEY = 'magsnap_founder_feedback';
 
-// --- Form ---
+// ===== Application Form =====
 const form = document.getElementById('founder-form');
 const statusEl = document.getElementById('form-status');
 
@@ -25,39 +26,125 @@ if (form) {
     };
 
     if (!data.name || !data.phone || !data.country || !data.address || !data.profession) {
-      showStatus('Please fill in all required fields (*).', 'error');
+      showStatus('Please fill in all required fields (*).', 'error', statusEl);
       return;
     }
 
-    // Load existing
-    const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    const existing = JSON.parse(localStorage.getItem(APP_KEY) || '[]');
     existing.push(data);
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+    localStorage.setItem(APP_KEY, JSON.stringify(existing));
 
-    showStatus('Application submitted. We\'ll review and get back to you.', 'success');
+    showStatus('Application submitted. We\'ll review and get back to you. / 已提交，我们会审核并联系你。', 'success', statusEl);
     form.reset();
   });
 }
 
-function showStatus(msg, type) {
-  statusEl.textContent = msg;
-  statusEl.className = 'form-status ' + type;
-  statusEl.style.display = 'block';
+function showStatus(msg, type, el) {
+  el.textContent = msg;
+  el.className = 'form-status ' + type;
+  el.style.display = 'block';
 }
 
-// --- Directory ---
+// ===== File Preview =====
+function setupFilePreview(inputId, previewId) {
+  const input = document.getElementById(inputId);
+  const preview = document.getElementById(previewId);
+  if (!input || !preview) return;
+
+  input.addEventListener('change', function () {
+    preview.innerHTML = '';
+    for (const file of this.files) {
+      const p = document.createElement('p');
+      p.className = 'fb-name';
+      p.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + 'KB)';
+      preview.appendChild(p);
+
+      if (file.type.startsWith('image/')) {
+        const img = document.createElement('img');
+        img.file = file;
+        preview.appendChild(img);
+        const reader = new FileReader();
+        reader.onload = function (e) { img.src = e.target.result; };
+        reader.readAsDataURL(file);
+      } else if (file.type.startsWith('video/')) {
+        const vid = document.createElement('video');
+        vid.file = file;
+        vid.controls = true;
+        preview.appendChild(vid);
+        const reader = new FileReader();
+        reader.onload = function (e) { vid.src = e.target.result; };
+        reader.readAsDataURL(file);
+      }
+    }
+  });
+}
+
+setupFilePreview('fb-image', 'fb-image-preview');
+setupFilePreview('fb-video', 'fb-video-preview');
+
+// ===== Feedback Form =====
+const fbForm = document.getElementById('feedback-form');
+const fbStatus = document.getElementById('fb-status');
+
+if (fbForm) {
+  fbForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    fbStatus.className = 'form-status';
+    fbStatus.style.display = 'none';
+
+    const name = fbForm.fb_name.value.trim();
+    const msg = fbForm.fb_message.value.trim();
+    if (!name || !msg) {
+      showStatus('Name and message are required. / 姓名和内容为必填。', 'error', fbStatus);
+      return;
+    }
+
+    // Read files as base64
+    const imgFile = document.getElementById('fb-image').files[0];
+    const vidFile = document.getElementById('fb-video').files[0];
+
+    const collect = function (imgData, vidData) {
+      const entry = {
+        id: 'FB' + String(Date.now()).slice(-6),
+        name: name,
+        message: msg,
+        image: imgData || null,
+        video: vidData || null,
+        submitted: new Date().toISOString()
+      };
+      const all = JSON.parse(localStorage.getItem(FB_KEY) || '[]');
+      all.push(entry);
+      localStorage.setItem(FB_KEY, JSON.stringify(all));
+      showStatus('Feedback submitted. Thank you! / 反馈已提交，感谢！', 'success', fbStatus);
+      fbForm.reset();
+      document.getElementById('fb-image-preview').innerHTML = '';
+      document.getElementById('fb-video-preview').innerHTML = '';
+    };
+
+    // Read files if present
+    const promises = [];
+    if (imgFile) {
+      promises.push(new Promise(r => { const rd = new FileReader(); rd.onload = e => r(e.target.result); rd.readAsDataURL(imgFile); }));
+    } else { promises.push(Promise.resolve(null)); }
+    if (vidFile) {
+      promises.push(new Promise(r => { const rd = new FileReader(); rd.onload = e => r(e.target.result); rd.readAsDataURL(vidFile); }));
+    } else { promises.push(Promise.resolve(null)); }
+
+    Promise.all(promises).then(([img, vid]) => collect(img, vid));
+  });
+}
+
+// ===== Directory =====
 const dirBody = document.getElementById('dir-body');
 const dirEmpty = document.getElementById('dir-empty');
 
 function renderDirectory(records) {
   if (!dirBody || !dirEmpty) return;
-
   if (!records || records.length === 0) {
     dirBody.innerHTML = '';
     dirEmpty.style.display = 'block';
     return;
   }
-
   dirEmpty.style.display = 'none';
   dirBody.innerHTML = records.map(r => `
     <tr>
@@ -76,7 +163,6 @@ function escapeHtml(str) {
   return d.innerHTML;
 }
 
-// Load directory
 fetch('./founders.json')
   .then(r => r.json())
   .then(data => renderDirectory(data))

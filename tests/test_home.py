@@ -14,7 +14,7 @@ def test_system_section(page):
 
 def test_creators_rig_text(page):
     content = page.content()
-    assert "Creators Rig" in content
+    assert "Wearable Magnetic Ecosystem" in content
 
 def test_chat_button(page):
     btn = page.locator("text=CHAT WITH MZ")

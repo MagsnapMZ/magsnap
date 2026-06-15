@@ -1,0 +1,17 @@
+[
+  "tests/test_ecosystem.py::test_accessory_names",
+  "tests/test_ecosystem.py::test_device_cards",
+  "tests/test_ecosystem.py::test_device_names",
+  "tests/test_ecosystem.py::test_ecosystem_header",
+  "tests/test_ecosystem.py::test_ecosystem_section",
+  "tests/test_ecosystem.py::test_lab_section",
+  "tests/test_home.py::test_chat_button",
+  "tests/test_home.py::test_creators_rig_text",
+  "tests/test_home.py::test_hero_video",
+  "tests/test_home.py::test_system_section",
+  "tests/test_home.py::test_title",
+  "tests/test_mobile.py::test_all_images_load",
+  "tests/test_mobile.py::test_mobile_grid_columns",
+  "tests/test_mobile.py::test_mobile_nav_hidden",
+  "tests/test_mobile.py::test_viewport_meta"
+]

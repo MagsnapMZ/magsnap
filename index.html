@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MAGSNAP | Magnetic Eyewear Platform</title>
-  <meta name="description" content="MagSnap is a magnetic eyewear platform that mounts cameras, microphones, trackers and tools directly onto your glasses. No batteries. No charging. No electronics. Only magnets.">
-  <meta property="og:title" content="MAGSNAP | Only Magnetic. No Electric.">
-  <meta property="og:description" content="MagSnap is a magnetic eyewear platform. Only magnets. No electronics.">
+  <title>MAGSNAP | Wearable Magnetic Ecosystem</title>
+  <meta name="description" content="MAGSNAP is a wearable magnetic ecosystem for camera, audio, AI, and communication devices. Snap. Mount. Go.">
+  <meta property="og:title" content="MAGSNAP | Wearable Magnetic Ecosystem">
+  <meta property="og:description" content="A wearable magnetic ecosystem. The glasses are only the first product.">
   <meta property="og:image" content="assets/site/style-group-sand.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -114,26 +114,6 @@
 
     .nav a:hover {
       color: var(--pink);
-    }
-
-    .nav-lang {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-left: 10px;
-      padding-left: 10px;
-      border-left: 1px solid rgba(245, 239, 230, 0.2);
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .nav-lang a {
-      color: rgba(245, 239, 230, 0.5);
-    }
-
-    .nav-lang a.active {
-      color: var(--paper);
     }
 
     .section {
@@ -274,57 +254,12 @@
       font-weight: 950;
     }
 
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 28px;
-      padding: 16px 32px;
-      border: 2px solid var(--kraft);
-      background: transparent;
-      color: var(--paper);
-      font-size: 13px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
+    .system {
+      background:
+        linear-gradient(180deg, #000 0%, #090806 100%);
     }
 
-    .btn-primary:hover {
-      background: var(--kraft);
-      color: var(--near);
-    }
-
-    .btn-dark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 28px;
-      padding: 16px 32px;
-      border: 2px solid var(--near);
-      background: var(--near);
-      color: var(--paper);
-      font-size: 13px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .btn-dark:hover {
-      background: var(--kraft);
-      border-color: var(--kraft);
-      color: var(--near);
-    }
-
-    /* What is MagSnap */
-    .what {
-      background: linear-gradient(180deg, #000 0%, #090806 100%);
-    }
-
-    .what-grid {
+    .system-grid {
       display: grid;
       grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
       gap: clamp(28px, 5vw, 72px);
@@ -346,7 +281,38 @@
       object-fit: cover;
     }
 
-    /* Ecosystem section */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .chip {
+      border: 1px solid rgba(245, 239, 230, 0.2);
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(245, 239, 230, 0.82);
+      padding: 10px 12px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .native-note {
+      margin-top: 30px;
+      color: var(--kraft);
+      font-size: clamp(22px, 3vw, 42px);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-weight: 950;
+      line-height: 0.98;
+      text-transform: uppercase;
+    }
+
+    .snap {
+      background:
+        linear-gradient(180deg, #090806 0%, #000 100%);
+    }
+
     .ecosystem {
       min-height: auto;
       padding-top: clamp(56px, 8vw, 94px);
@@ -362,6 +328,13 @@
       grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr);
       gap: clamp(22px, 4vw, 56px);
       align-items: end;
+    }
+
+    .ecosystem-note {
+      color: rgba(245, 239, 230, 0.58);
+      font-size: clamp(14px, 1.3vw, 16px);
+      font-weight: 750;
+      line-height: 1.55;
     }
 
     .ecosystem-panel {
@@ -440,132 +413,605 @@
       color: var(--pink);
     }
 
-    /* What's Inside */
-    .inside {
+    .lab-thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .lab-thumb {
+      border: 1px solid rgba(245, 239, 230, 0.12);
+      background: rgba(255, 255, 255, 0.035);
+      padding: 8px;
+      display: grid;
+      gap: 7px;
+    }
+
+    .lab-thumb video {
+      width: 100%;
+      max-width: 120px;
+      aspect-ratio: 120 / 68;
+      object-fit: cover;
+      justify-self: center;
+      filter: saturate(0.86) contrast(1.04);
+    }
+
+    .lab-thumb span {
+      color: rgba(245, 239, 230, 0.72);
+      font-size: 10px;
+      font-weight: 900;
+      line-height: 1.16;
+      text-align: center;
+    }
+
+    .snap-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: clamp(34px, 5vw, 60px);
+    }
+
+    .snap-card {
+      min-height: 246px;
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
+        #0c0a08;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .snap-thumb {
+      width: 100%;
+      aspect-ratio: 1 / 0.74;
+      border: 1px solid rgba(200, 169, 126, 0.38);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background: rgba(200, 169, 126, 0.08);
+      color: var(--kraft);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 18px;
+      font-weight: 950;
+      line-height: 0.92;
+      text-align: center;
+    }
+
+    .snap-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.86) contrast(1.06);
+    }
+
+    .snap-card strong {
+      font-size: 16px;
+      font-weight: 950;
+      line-height: 1.06;
+    }
+
+    .snap-desc {
+      margin-top: auto;
+      color: rgba(245, 239, 230, 0.58);
+      font-size: 12px;
+      font-weight: 750;
+      line-height: 1.32;
+    }
+
+    .snap-status {
+      width: fit-content;
+      max-width: 100%;
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      padding: 6px 8px;
+      color: rgba(245, 239, 230, 0.64);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      line-height: 1.18;
+      text-transform: uppercase;
+    }
+
+    .snap-card.verified .snap-status {
+      color: var(--kraft);
+      border-color: rgba(200, 169, 126, 0.44);
+    }
+
+    .snap-card.soon .snap-status {
+      color: var(--pink);
+      border-color: rgba(255, 92, 154, 0.36);
+    }
+
+    .box {
+      background: var(--kraft);
+      color: #100d09;
+    }
+
+    .box .section-mark,
+    .box .eyebrow {
+      color: #100d09;
+    }
+
+    .box .body-copy {
+      color: rgba(16, 13, 9, 0.74);
+    }
+
+    .box-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr);
+      gap: clamp(22px, 4vw, 44px);
+      align-items: stretch;
+      margin-top: clamp(32px, 5vw, 58px);
+    }
+
+    .box-hero {
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.28);
+    }
+
+    .box-hero img {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: cover;
+    }
+
+    .parts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .part {
+      min-height: 218px;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      background: rgba(255, 255, 255, 0.38);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: flex-start;
+    }
+
+    .part-media {
+      width: 100%;
+      aspect-ratio: 1 / 0.62;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      background: rgba(16, 13, 9, 0.08);
+    }
+
+    .part-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      mix-blend-mode: multiply;
+    }
+
+    .part-num {
+      color: rgba(16, 13, 9, 0.42);
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .part-title {
+      font-size: clamp(16px, 2.3vw, 24px);
+      font-family: "Arial Black", Impact, sans-serif;
+      line-height: 0.94;
+    }
+
+    .part-cn {
+      color: rgba(16, 13, 9, 0.62);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .part-desc {
+      margin-top: auto;
+      color: rgba(16, 13, 9, 0.68);
+      font-size: 13px;
+      font-weight: 750;
+      line-height: 1.28;
+    }
+
+    .style {
       background: #f4efe7;
       color: #050403;
     }
 
-    .inside .section-mark,
-    .inside .eyebrow {
+    .style .section-mark,
+    .style .eyebrow {
       color: #050403;
     }
 
-    .inside .section-mark::after {
-      background: #050403;
-    }
-
-    .inside-grid {
+    .style-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
       margin-top: clamp(34px, 5vw, 58px);
+      background: rgba(0, 0, 0, 0.14);
     }
 
-    .inside-item {
-      border: 1px solid rgba(0, 0, 0, 0.14);
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 12px;
-      padding: 14px 10px;
-      display: grid;
-      place-items: center;
-      align-content: center;
-      gap: 10px;
-      text-align: center;
+    .style-card {
+      background: #fbfaf7;
     }
 
-    .inside-icon {
+    .style-card img {
       width: 100%;
-      max-width: 160px;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 4 / 5;
       object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      background: rgba(255, 255, 255, 0.6);
     }
 
-    .inside-name {
-      font-size: 13px;
+    .style-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      min-height: 68px;
+      padding: 18px;
+      color: #080706;
+      font-size: 14px;
       font-weight: 950;
       text-transform: uppercase;
-      line-height: 1.1;
-      color: #050403;
     }
 
-    /* Founder Program */
-    .founder-program {
+    .style-label span {
+      color: rgba(8, 7, 6, 0.56);
+      font-size: 11px;
+      line-height: 1.2;
+      text-align: right;
+    }
+
+    .style-label strong {
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 18px;
+      line-height: 0.95;
+    }
+
+    .style-colors {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      background: rgba(0, 0, 0, 0.12);
+    }
+
+    .color-button {
+      min-height: 42px;
+      border: 0;
+      background: #fbfaf7;
+      color: rgba(8, 7, 6, 0.62);
+      font: inherit;
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .color-button.active,
+    .color-button:hover {
+      background: #080706;
+      color: var(--kraft);
+    }
+
+    .why {
+      display: grid;
+      min-height: 92svh;
+      place-items: center;
       background: #000;
     }
 
-    .founder-program-inner {
+    .why-lines {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+    }
+
+    .why-lines p {
+      margin: 0;
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(54px, 12vw, 166px);
+      font-weight: 950;
+      line-height: 0.88;
+      text-transform: uppercase;
+    }
+
+    .why-lines p:nth-child(2) {
+      color: var(--kraft);
+    }
+
+    .why-lines p:nth-child(3) {
+      color: var(--pink);
+    }
+
+    .life {
+      background:
+        linear-gradient(180deg, #000 0%, #0b0907 100%);
+    }
+
+    .life-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: clamp(34px, 5vw, 60px);
+    }
+
+    .life-tile {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      background: #0d0b09;
+    }
+
+    .life-tile video,
+    .life-tile img {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: cover;
+    }
+
+    .life-tile span {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      z-index: 2;
+      color: var(--paper);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.74);
+    }
+
+    .life-tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 48%, rgba(0, 0, 0, 0.68));
+    }
+
+    .lab {
+      background:
+        linear-gradient(180deg, #0b0907 0%, #000 100%);
+    }
+
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: clamp(34px, 5vw, 60px);
+    }
+
+    .lab-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      background: #0d0b09;
+    }
+
+    .lab-card video,
+    .lab-card img {
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+      object-fit: cover;
+      opacity: 0.78;
+      filter: saturate(0.84) contrast(1.08);
+    }
+
+    .lab-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.82));
+    }
+
+    .lab-card span {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 2;
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      line-height: 1.14;
+      text-transform: uppercase;
+    }
+
+    .founder {
+      background: #f3eadf;
+      color: #080706;
+    }
+
+    .founder .section-mark,
+    .founder .eyebrow {
+      color: #080706;
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+      gap: clamp(28px, 6vw, 80px);
+      align-items: center;
+    }
+
+    .founder-photo {
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      background: #fff;
+    }
+
+    .founder-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 24%;
+    }
+
+    .founder-quote {
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(46px, 8vw, 112px);
+      font-weight: 950;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .founder-quote span {
+      display: block;
+      color: var(--kraft-2);
+    }
+
+    .mag-section {
+      min-height: 76svh;
+      display: grid;
+      align-items: center;
+      background: #000;
+    }
+
+    .mag-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 420px);
+      gap: clamp(28px, 6vw, 80px);
+      align-items: center;
+    }
+
+    .mag-disc-large {
+      justify-self: center;
+      width: min(64vw, 340px);
+      aspect-ratio: 1;
+      border-radius: 50%;
       display: grid;
       place-items: center;
-      text-align: center;
-      padding: clamp(40px, 6vw, 80px) 0;
+      background:
+        linear-gradient(145deg, #171411, #020202 62%, #2b2118);
+      border: 1px solid rgba(200, 169, 126, 0.5);
+      box-shadow: inset 0 0 54px rgba(255, 255, 255, 0.06), 0 26px 90px rgba(0, 0, 0, 0.65);
     }
 
-    .founder-program-inner h2 {
-      max-width: 800px;
+    .mag-disc-large img,
+    .mag-float img {
+      width: 54%;
+      height: 54%;
+      border-radius: 50%;
+      background: var(--white);
+      padding: 12%;
+      object-fit: contain;
     }
 
-    .founder-tags {
+    .mag-topics {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 10px;
-      margin-top: 24px;
+      margin-top: 28px;
     }
 
-    .founder-tag {
+    .mag-topic {
       border: 1px solid rgba(200, 169, 126, 0.36);
       color: rgba(245, 239, 230, 0.8);
-      padding: 10px 14px;
+      padding: 10px 12px;
       font-size: 12px;
       font-weight: 900;
       text-transform: uppercase;
     }
 
-    /* Founder Wall */
-    .founder-wall {
-      background: var(--near);
+    .contact {
+      background: #f4efe7;
+      color: #080706;
     }
 
-    .founder-wall-grid {
+    .contact .section-mark,
+    .contact .eyebrow {
+      color: #080706;
+    }
+
+    .contact .lead {
+      color: #080706;
+    }
+
+    .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-      margin-top: clamp(34px, 5vw, 58px);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: clamp(34px, 5vw, 60px);
     }
 
-    .founder-card {
-      border: 1px solid rgba(245, 239, 230, 0.12);
-      background: rgba(255, 255, 255, 0.04);
-      border-radius: 12px;
-      padding: 18px 14px;
-      display: grid;
-      place-items: center;
-      gap: 6px;
-      text-align: center;
+    .contact-card {
+      min-height: 188px;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      background: rgba(255, 255, 255, 0.44);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
     }
 
-    .founder-card-num {
-      color: var(--kraft);
-      font-size: 28px;
-      font-weight: 950;
+    a.contact-card:hover {
+      border-color: rgba(255, 92, 154, 0.42);
+    }
+
+    .contact-card strong {
       font-family: "Arial Black", Impact, sans-serif;
-      line-height: 1;
+      font-size: clamp(22px, 2.7vw, 34px);
+      font-weight: 950;
+      line-height: 0.92;
+      text-transform: uppercase;
     }
 
-    .founder-card-loc {
-      color: var(--muted);
+    .contact-card span {
+      color: rgba(8, 7, 6, 0.62);
       font-size: 13px;
       font-weight: 850;
+      line-height: 1.32;
     }
 
-    /* Footer */
+    .contact-mark {
+      width: 72px;
+      height: 72px;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.12) 1px, transparent 1px),
+        linear-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1px),
+        rgba(200, 169, 126, 0.2);
+      background-size: 12px 12px;
+      color: #080706;
+      font-size: 11px;
+      font-weight: 950;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .contact-qr {
+      align-self: center;
+      width: min(100%, 180px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      background: #fff;
+      object-fit: cover;
+    }
+
+    .contact-avatar {
+      align-self: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      object-fit: cover;
+    }
+
     .site-footer {
       border-top: 1px solid var(--line);
-      padding: 30px clamp(18px, 5vw, 64px) 46px;
+      padding: 30px clamp(18px, 5vw, 64px) 92px;
       background: #000;
       color: rgba(245, 239, 230, 0.72);
     }
@@ -592,32 +1038,147 @@
       color: var(--pink);
     }
 
-    .footer-social {
-      display: flex;
-      gap: 14px;
-      font-size: 11px;
+    .mag-float {
+      position: fixed;
+      right: clamp(16px, 4vw, 30px);
+      bottom: clamp(16px, 4vw, 30px);
+      z-index: 90;
+      width: 70px;
+      height: 70px;
+      border: 1px solid rgba(200, 169, 126, 0.52);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #050403;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.56), inset 0 0 24px rgba(200, 169, 126, 0.12);
+      cursor: pointer;
+      animation: breathe 3.4s ease-in-out infinite;
+    }
+
+    .mz-chat-float {
+      position: fixed;
+      left: clamp(16px, 4vw, 30px);
+      bottom: clamp(16px, 4vw, 30px);
+      z-index: 90;
+      min-height: 52px;
+      border: 1px solid rgba(255, 92, 154, 0.52);
+      background: var(--pink);
+      color: #080706;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
       font-weight: 950;
       text-transform: uppercase;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
     }
 
-    .footer-social a:hover {
-      color: var(--pink);
+    @keyframes breathe {
+      0%,
+      100% {
+        transform: scale(1);
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.56), 0 0 0 rgba(255, 92, 154, 0);
+      }
+      50% {
+        transform: scale(1.04);
+        box-shadow: 0 20px 56px rgba(0, 0, 0, 0.62), 0 0 0 8px rgba(255, 92, 154, 0.08);
+      }
     }
 
-    /* Responsive */
+    .mag-panel {
+      position: fixed;
+      right: clamp(16px, 4vw, 30px);
+      bottom: 106px;
+      z-index: 89;
+      width: min(calc(100vw - 32px), 360px);
+      border: 1px solid rgba(200, 169, 126, 0.4);
+      background: rgba(5, 4, 3, 0.96);
+      color: var(--paper);
+      padding: 18px;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity 160ms ease, transform 160ms ease;
+    }
+
+    .mag-panel.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .mag-panel h2 {
+      font-size: 30px;
+    }
+
+    .mag-panel p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .mag-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .mag-buttons button {
+      min-height: 42px;
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--paper);
+      font: inherit;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .mag-buttons button:hover {
+      border-color: var(--pink);
+    }
+
+    .mag-answer {
+      min-height: 88px;
+      margin-top: 12px;
+      border-top: 1px solid rgba(245, 239, 230, 0.12);
+      padding-top: 12px;
+      color: rgba(245, 239, 230, 0.76);
+      font-size: 13px;
+      line-height: 1.48;
+    }
+
     @media (max-width: 940px) {
       .nav {
         display: none;
       }
 
-      .what-grid,
+      .system-grid,
       .ecosystem-header,
-      .ecosystem-columns {
+      .ecosystem-columns,
+      .box-layout,
+      .founder-grid,
+      .mag-grid {
         grid-template-columns: 1fr;
       }
 
       .icon-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .snap-grid,
+      .life-grid,
+      .lab-grid,
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .life-tile:first-child {
+        grid-column: 1 / -1;
       }
     }
 
@@ -634,8 +1195,23 @@
         font-size: clamp(58px, 19vw, 92px);
       }
 
+      .style-row,
+      .parts-grid,
+      .ecosystem-header,
+      .ecosystem-columns,
+      .snap-grid,
+      .life-grid,
+      .lab-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
       .icon-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .lab-thumb-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .eco-item {
@@ -651,7 +1227,14 @@
       }
 
       .media-frame video,
-      .media-frame img {
+      .media-frame img,
+      .box-hero img,
+      .life-tile,
+      .life-tile video,
+      .life-tile img,
+      .lab-card,
+      .lab-card video,
+      .lab-card img {
         min-height: 310px;
       }
 
@@ -660,12 +1243,14 @@
         flex-direction: column;
       }
 
-      .inside-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+      .mag-float {
+        width: 62px;
+        height: 62px;
       }
 
-      .founder-wall-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .mz-chat-float {
+        min-height: 46px;
+        padding: 0 14px;
       }
     }
   </style>
@@ -677,19 +1262,18 @@
       <span>MAGSNAP</span>
     </a>
     <nav class="nav" aria-label="Sections">
-      <a href="#what">What is MagSnap</a>
-      <a href="#devices">Devices</a>
-      <a href="#inside">Inside</a>
-      <a href="#founder">Founder</a>
-      <span class="nav-lang">
-        <a href="#" class="active">EN</a>
-        <a href="#">中文</a>
-      </span>
+      <a href="#system">System</a>
+      <a href="#snap">Snap</a>
+      <a href="#box">Included</a>
+      <a href="#style">Style</a>
+      <a href="#lab">Lab</a>
+      <a href="#life">POV Life</a>
+      <a href="founder/#apply">Become a Founder</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="section hero" id="hero" aria-label="MAGSNAP hero video">
       <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="/images/hero-poster.jpg">
         <source src="assets/site/hero-pov.mp4" type="video/mp4">
@@ -697,31 +1281,37 @@
       <div class="wrap">
         <div class="section-mark">01</div>
         <h1>MAGSNAP</h1>
-        <p class="hero-tagline">Only Magnetic. No Electric.</p>
-        <a class="btn-primary" href="founder/#apply">Founder Apply</a>
+        <p class="hero-subtitle">Wearable Magnetic Ecosystem</p>
+        <p class="hero-tagline">100% Magnetic · 0% Electric</p>
       </div>
     </section>
 
-    <!-- WHAT IS MAGSNAP -->
-    <section class="section what" id="what">
-      <div class="wrap what-grid">
+    <section class="section system" id="system">
+      <div class="wrap system-grid">
+        <div>
+          <div class="section-mark">02</div>
+          <p class="eyebrow">One System</p>
+          <h2>For Camera, Audio and AI</h2>
+          <p class="body-copy">MAGSNAP is not just glasses. It is a head-mounted expansion system — a wearable base for camera, audio, AI, tracker, and communication modules.</p>
+          <div class="chips" aria-label="Compatibility">
+            <span class="chip">Insta360 GO3</span>
+            <span class="chip">GO3S</span>
+            <span class="chip">DJI Nano</span>
+            <span class="chip">DJI Mic</span>
+            <span class="chip">AirTag</span>
+            <span class="chip">Walkie Talkie</span>
+          </div>
+          <p class="native-note">Native magnetic mounting.<br>No adapters.<br>脑袋外挂系统</p>
+        </div>
         <div class="media-frame" aria-label="Native mounting demo">
           <video autoplay muted loop playsinline poster="assets/site/box-frame.jpg">
             <source src="assets/site/native-mount.mp4" type="video/mp4">
           </video>
         </div>
-        <div>
-          <div class="section-mark">02</div>
-          <p class="eyebrow">What is MagSnap</p>
-          <h2>What is MagSnap?</h2>
-          <p class="body-copy">MagSnap is a magnetic eyewear platform that mounts cameras, microphones, trackers and tools directly onto your glasses. No batteries. No charging. No electronics. Only magnets.</p>
-          <a class="btn-primary" href="founder/#apply">Founder Apply</a>
-        </div>
       </div>
     </section>
 
-    <!-- COMPATIBLE DEVICES + ACCESSORIES -->
-    <section class="section ecosystem" id="devices">
+    <section class="section snap ecosystem" id="snap">
       <div class="wrap">
         <div class="ecosystem-header">
           <div>
@@ -774,7 +1364,7 @@
               </div>
             </div>
 
-            <div class="ecosystem-group" aria-label="Accessories">
+            <div class="ecosystem-group" id="box" aria-label="Accessories">
               <p class="ecosystem-kicker">Accessories</p>
               <div class="icon-grid">
                 <div class="eco-item">
@@ -830,105 +1420,241 @@
               </div>
             </div>
           </div>
+
+          <div class="ecosystem-group" id="lab" aria-label="MagSnap Lab videos">
+            <p class="ecosystem-kicker">MAGSNAP LAB</p>
+            <div class="lab-thumb-grid">
+              <div class="lab-thumb">
+                <video autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/site/lab-thumbs/magnetic-strength.mp4" type="video/mp4">
+                </video>
+                <span>Magnetic Strength Test</span>
+              </div>
+              <div class="lab-thumb">
+                <video autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/site/lab-thumbs/magnetic-gauss.mp4" type="video/mp4">
+                </video>
+                <span>Magnetic Gauss Test</span>
+              </div>
+              <div class="lab-thumb">
+                <video autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/site/lab-thumbs/seawater-test.mp4" type="video/mp4">
+                </video>
+                <span>Seawater Test</span>
+              </div>
+              <div class="lab-thumb">
+                <video autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/site/lab-thumbs/lens-test.mp4" type="video/mp4">
+                </video>
+                <span>Lens Test</span>
+              </div>
+              <div class="lab-thumb">
+                <video autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/site/lab-thumbs/wear-test-feedback.mp4" type="video/mp4">
+                </video>
+                <span>Wear Test Feedback</span>
+              </div>
+              <div class="lab-thumb">
+                <video autoplay muted loop playsinline preload="metadata">
+                  <source src="assets/site/lab-thumbs/wear-demo.mp4" type="video/mp4">
+                </video>
+                <span>Product Demo</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- WHAT'S INSIDE -->
-    <section class="section inside" id="inside">
+    <section class="section style" id="style">
       <div class="wrap">
         <div class="section-mark">04</div>
-        <p class="eyebrow">Included</p>
-        <h2>What's Inside</h2>
-        <div class="inside-grid">
-          <div class="inside-item">
-            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Lens">
-            <span class="inside-name">Lens</span>
-          </div>
-          <div class="inside-item">
-            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Magnetic Leg">
-            <span class="inside-name">Magnetic Leg</span>
-          </div>
-          <div class="inside-item">
-            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Safety Cord">
-            <span class="inside-name">Safety Cord</span>
-          </div>
-          <div class="inside-item">
-            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Clip">
-            <span class="inside-name">Clip</span>
-          </div>
-          <div class="inside-item">
-            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Nose Pad">
-            <span class="inside-name">Nose Pad</span>
-          </div>
-          <div class="inside-item">
-            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Magnet">
-            <span class="inside-name">Magnet</span>
-          </div>
-          <div class="inside-item">
-            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Case">
-            <span class="inside-name">Case</span>
-          </div>
+        <p class="eyebrow">Choose Your Style</p>
+        <h2>Three Frame Styles</h2>
+        <div class="style-row">
+          <article class="style-card">
+            <img data-style-image src="assets/site/style-black-yellow.jpg" alt="TYPE A MagSnap frame with black lens option">
+            <div class="style-label"><strong>TYPE A</strong><span>BLACK / BLUE / PINK / SMOKE</span></div>
+            <div class="style-colors" aria-label="TYPE A lens colors">
+              <button class="color-button active" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE A MagSnap frame with black lens option">Black</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE A MagSnap frame with blue lens option">Blue</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE A MagSnap frame with pink lens option">Pink</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE A MagSnap frame with smoke lens option">Smoke</button>
+            </div>
+          </article>
+          <article class="style-card">
+            <img data-style-image src="assets/site/style-clear-pink.jpg" alt="TYPE B MagSnap frame with pink lens option">
+            <div class="style-label"><strong>TYPE B</strong><span>BLACK / BLUE / PINK / SMOKE</span></div>
+            <div class="style-colors" aria-label="TYPE B lens colors">
+              <button class="color-button" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE B MagSnap frame with black lens option">Black</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE B MagSnap frame with blue lens option">Blue</button>
+              <button class="color-button active" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE B MagSnap frame with pink lens option">Pink</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE B MagSnap frame with smoke lens option">Smoke</button>
+            </div>
+          </article>
+          <article class="style-card">
+            <img data-style-image src="assets/site/style-clear-smoke.jpg" alt="TYPE C MagSnap frame with smoke lens option">
+            <div class="style-label"><strong>TYPE C</strong><span>BLACK / BLUE / PINK / SMOKE</span></div>
+            <div class="style-colors" aria-label="TYPE C lens colors">
+              <button class="color-button" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE C MagSnap frame with black lens option">Black</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE C MagSnap frame with blue lens option">Blue</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE C MagSnap frame with pink lens option">Pink</button>
+              <button class="color-button active" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE C MagSnap frame with smoke lens option">Smoke</button>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- FOUNDER PROGRAM -->
-    <section class="section founder-program" id="founder">
-      <div class="wrap founder-program-inner">
-        <div class="section-mark">05</div>
-        <p class="eyebrow">Founder Program</p>
-        <h2>Become a Founder</h2>
-        <div class="founder-tags">
-          <span class="founder-tag">First 1000 Founders</span>
-          <span class="founder-tag">Early Access</span>
-          <span class="founder-tag">Future Modules</span>
-          <span class="founder-tag">Community Participation</span>
-        </div>
-        <a class="btn-primary" href="founder/">Apply Now</a>
+    <section class="section why" id="why" aria-label="Why MagSnap">
+      <div class="why-lines">
+        <p>Only Magnetic</p>
+        <p>No Electric</p>
+        <p>Nothing else.</p>
       </div>
     </section>
 
-    <!-- FOUNDER WALL -->
-    <section class="section founder-wall">
+    <section class="section life" id="life">
       <div class="wrap">
         <div class="section-mark">06</div>
-        <p class="eyebrow">Founders</p>
-        <h2>Global Founder Wall</h2>
-        <div class="founder-wall-grid">
-          <div class="founder-card">
-            <span class="founder-card-num">#001</span>
-            <span class="founder-card-loc">USA</span>
+        <p class="eyebrow">POV Life</p>
+        <h2>Real MagSnap Footage</h2>
+        <p class="body-copy">Kitesurfing, beach lifestyle, DJ, travel, and product use from existing MagSnap media.</p>
+        <div class="life-grid">
+          <div class="life-tile">
+            <video autoplay muted loop playsinline data-media-slot="pov-kitesurf">
+              <source src="assets/site/pov-kitesurf.mp4" type="video/mp4">
+            </video>
+            <span>Kitesurfing</span>
           </div>
-          <div class="founder-card">
-            <span class="founder-card-num">#002</span>
-            <span class="founder-card-loc">Vietnam</span>
+          <div class="life-tile">
+            <video autoplay muted loop playsinline data-media-slot="pov-beach">
+              <source src="assets/site/pov-beach.mp4" type="video/mp4">
+            </video>
+            <span>Beach Lifestyle</span>
           </div>
-          <div class="founder-card">
-            <span class="founder-card-num">#003</span>
-            <span class="founder-card-loc">Singapore</span>
+          <div class="life-tile">
+            <video autoplay muted loop playsinline data-media-slot="pov-dj">
+              <source src="assets/site/pov-dj.mp4" type="video/mp4">
+            </video>
+            <span>DJ</span>
           </div>
-          <div class="founder-card">
-            <span class="founder-card-num">#004</span>
-            <span class="founder-card-loc">Germany</span>
+          <div class="life-tile">
+            <video autoplay muted loop playsinline data-media-slot="pov-travel">
+              <source src="assets/site/pov-travel.mp4" type="video/mp4">
+            </video>
+            <span>Travel</span>
           </div>
+          <div class="life-tile">
+            <video autoplay muted loop playsinline data-media-slot="pov-sailing">
+              <source src="assets/site/pov-sailing.mp4" type="video/mp4">
+            </video>
+            <span>Sailing</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section founder" id="founder">
+      <div class="wrap founder-grid">
+        <div>
+          <div class="section-mark">07</div>
+          <p class="eyebrow">Founder</p>
+          <p class="founder-quote">Built for myself.<span>Shared with the world.</span></p>
+          <p class="body-copy">MAGSNAP started as MZ's own head-mounted expansion system — 脑袋外挂系统 — and is becoming a registry for players, creators, explorers, and early founders.</p>
+        </div>
+        <div class="founder-photo">
+          <img src="assets/site/founder.jpg" alt="Real founder wearing MagSnap">
+        </div>
+      </div>
+    </section>
+
+    <section class="section mag-section" id="mag">
+      <div class="wrap mag-grid">
+        <div>
+          <div class="section-mark">08</div>
+          <p class="eyebrow">MAG AI</p>
+          <h2>MAG</h2>
+          <p class="lead">Persistent floating assistant.</p>
+          <div class="mag-topics" aria-label="MAG topics">
+            <span class="mag-topic">Compatibility</span>
+            <span class="mag-topic">Installation</span>
+            <span class="mag-topic">Warranty</span>
+            <span class="mag-topic">Shipping</span>
+            <span class="mag-topic">FAQ</span>
+            <span class="mag-topic">Disclaimer</span>
+          </div>
+        </div>
+        <div class="mag-disc-large" aria-hidden="true">
+          <img src="assets/site/panda-logo.jpg" alt="">
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <div class="section-mark">09</div>
+        <p class="eyebrow">Contact</p>
+        <h2>Talk to the Founder</h2>
+        <p class="lead">Chat directly with MZ.</p>
+        <div class="contact-grid" aria-label="Founder contact methods">
+          <a class="contact-card" href="assets/site/wechat-qr.jpg" target="_blank" rel="noopener">
+            <img class="contact-qr" src="assets/site/wechat-qr.jpg" alt="MZ WeChat QR code">
+            <strong>WeChat QR</strong>
+            <span>Scan to add 马峥 MZ.</span>
+          </a>
+          <a class="contact-card" href="assets/site/whatsapp-qr.jpg" target="_blank" rel="noopener">
+            <img class="contact-qr" src="assets/site/whatsapp-qr.jpg" alt="MZ WhatsApp QR code">
+            <strong>WhatsApp</strong>
+            <span>Scan to start a WhatsApp chat.</span>
+          </a>
+          <a class="contact-card" href="https://www.instagram.com/mzmagsnap/" target="_blank" rel="noopener">
+            <img class="contact-avatar" src="assets/site/mz-instagram-avatar.jpg" alt="MZ Instagram profile image">
+            <strong>Instagram</strong>
+            <span>@mzmagsnap</span>
+          </a>
+          <a class="contact-card" href="mailto:info@magsnap.me">
+            <div class="contact-mark">@</div>
+            <strong>Email</strong>
+            <span>info@magsnap.me</span>
+          </a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" id="disclaimer-link">
     <div class="footer-inner">
-      <span>MAGSNAP / Magnetic Eyewear Platform</span>
+      <span>MAGSNAP / Wearable Magnetic Ecosystem</span>
       <div class="footer-links">
-        <div class="footer-social">
-          <a href="https://www.instagram.com/mzmagsnap/" target="_blank" rel="noopener">Instagram</a>
-          <a href="mailto:info@magsnap.me">Email</a>
-        </div>
+        <a href="disclaimer.html#safety">Safety</a>
+        <a href="disclaimer.html#warranty">Warranty</a>
+        <a href="disclaimer.html#disclaimer">Disclaimer</a>
+        <a href="disclaimer.html#privacy">Privacy</a>
+        <a href="founder/">Activate</a>
+        <a href="registry/">Registry</a>
         <a href="mailto:info@magsnap.me">info@magsnap.me</a>
       </div>
     </div>
   </footer>
+
+  <a class="mz-chat-float" href="#contact">Chat with MZ</a>
+  <button class="mag-float" type="button" aria-label="Open MAG assistant" aria-expanded="false">
+    <img src="assets/site/panda-logo.jpg" alt="">
+  </button>
+  <aside class="mag-panel" aria-label="MAG assistant">
+    <h2>MAG</h2>
+    <p>Ask about compatibility, installation, warranty, shipping, FAQ, or disclaimer.</p>
+    <div class="mag-buttons">
+      <button type="button" data-answer="compatibility">Compatibility</button>
+      <button type="button" data-answer="installation">Installation</button>
+      <button type="button" data-answer="warranty">Warranty</button>
+      <button type="button" data-answer="shipping">Shipping</button>
+      <button type="button" data-answer="faq">FAQ</button>
+      <button type="button" data-answer="disclaimer">Disclaimer</button>
+    </div>
+    <div class="mag-answer" id="mag-answer">Tap a topic. MAG gives the short answer first.</div>
+  </aside>
 
   <script>
     const heroVideo = document.querySelector(".hero-video");
@@ -952,6 +1678,40 @@
 
     document.addEventListener("visibilitychange", () => {
       if (!document.hidden) playHeroVideo();
+    });
+
+    const floatButton = document.querySelector(".mag-float");
+    const panel = document.querySelector(".mag-panel");
+    const answer = document.querySelector("#mag-answer");
+    const answers = {
+      compatibility: "MAGSNAP is designed around native magnetic mounting for lightweight camera, audio, AI, tracker, and communication modules.",
+      installation: "Snap the module to the magnetic interface, check alignment by hand, then test gently before real use.",
+      warranty: "Warranty information depends on the purchase channel and batch. Keep purchase proof and inspect magnets before each use. Contact info@magsnap.me if needed.",
+      shipping: "Shipping is handled by the sales platform or channel where the product is purchased. Contact info@magsnap.me if needed.",
+      faq: "MAGSNAP is not just glasses. It is a head-mounted expansion system — a wearable base for camera, audio, AI, tracker, and communication modules. Chinese concept: 脑袋外挂系统.",
+      disclaimer: "Magnetic devices may detach. High speed, heavy impact, and improper use increase risk. User is responsible for attached devices."
+    };
+
+    floatButton.addEventListener("click", () => {
+      const open = panel.classList.toggle("open");
+      floatButton.setAttribute("aria-expanded", String(open));
+    });
+
+    document.querySelectorAll("[data-answer]").forEach((button) => {
+      button.addEventListener("click", () => {
+        answer.textContent = answers[button.dataset.answer];
+      });
+    });
+
+    document.querySelectorAll(".color-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".style-card");
+        const image = card.querySelector("[data-style-image]");
+        card.querySelectorAll(".color-button").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        image.src = button.dataset.styleSrc;
+        image.alt = button.dataset.styleAlt;
+      });
     });
   </script>
 </body>

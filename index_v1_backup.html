@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MAGSNAP | Magnetic Eyewear Platform</title>
+  <meta name="description" content="MagSnap is a magnetic eyewear platform that mounts cameras, microphones, trackers and tools directly onto your glasses. No batteries. No charging. No electronics. Only magnets.">
+  <meta property="og:title" content="MAGSNAP | Only Magnetic. No Electric.">
+  <meta property="og:description" content="MagSnap is a magnetic eyewear platform. Only magnets. No electronics.">
+  <meta property="og:image" content="assets/site/style-group-sand.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --black: #000000;
+      --near: #080706;
+      --paper: #f5efe6;
+      --white: #ffffff;
+      --kraft: #c8a97e;
+      --kraft-2: #9f7d55;
+      --pink: #ff5c9a;
+      --muted: rgba(245, 239, 230, 0.66);
+      --line: rgba(245, 239, 230, 0.16);
+      --dark-line: rgba(0, 0, 0, 0.14);
+      --max: 1180px;
+      color-scheme: dark;
+      font-family: Inter, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--black);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--paper);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      pointer-events: none;
+      opacity: 0.045;
+      background-image:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.35) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+      background-size: 8px 12px;
+      mix-blend-mode: screen;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 70;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px clamp(18px, 4vw, 56px);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0));
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-size: 13px;
+      font-weight: 950;
+      letter-spacing: 0.02em;
+    }
+
+    .brand img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--white);
+      padding: 5px;
+      object-fit: contain;
+    }
+
+    .brand span {
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(10px, 2vw, 22px);
+      color: rgba(245, 239, 230, 0.7);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .nav a:hover {
+      color: var(--pink);
+    }
+
+    .nav-lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 10px;
+      padding-left: 10px;
+      border-left: 1px solid rgba(245, 239, 230, 0.2);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .nav-lang a {
+      color: rgba(245, 239, 230, 0.5);
+    }
+
+    .nav-lang a.active {
+      color: var(--paper);
+    }
+
+    .section {
+      position: relative;
+      min-height: 100svh;
+      padding: clamp(86px, 9vw, 128px) clamp(18px, 5vw, 64px) clamp(62px, 8vw, 96px);
+      overflow: hidden;
+    }
+
+    .wrap {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+    }
+
+    .section-mark {
+      display: grid;
+      grid-template-columns: auto 1px;
+      align-items: start;
+      gap: 14px;
+      width: max-content;
+      margin-bottom: clamp(28px, 5vw, 50px);
+      color: var(--paper);
+      font-size: 16px;
+      font-weight: 950;
+    }
+
+    .section-mark::after {
+      content: "";
+      width: 1px;
+      height: 58px;
+      background: currentColor;
+      opacity: 0.42;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--kraft);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Arial Black", Impact, "Avenir Next Condensed", sans-serif;
+      font-weight: 950;
+      letter-spacing: 0;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(62px, 15vw, 168px);
+    }
+
+    h2 {
+      font-size: clamp(42px, 8.5vw, 104px);
+    }
+
+    h3 {
+      font-size: clamp(28px, 4.2vw, 52px);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .lead {
+      max-width: 780px;
+      margin-top: 20px;
+      color: var(--paper);
+      font-size: clamp(22px, 3vw, 38px);
+      font-weight: 900;
+      line-height: 1.13;
+    }
+
+    .body-copy {
+      max-width: 660px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height: 1.58;
+    }
+
+    .hero {
+      display: grid;
+      min-height: 100svh;
+      place-items: end start;
+      padding-top: clamp(96px, 10vw, 132px);
+      background: var(--black);
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background: #000 url("/images/hero-poster.jpg") center / cover no-repeat;
+      opacity: 0.58;
+      filter: saturate(0.78) contrast(1.08);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.78) 72%, #000 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.12) 56%, rgba(0, 0, 0, 0.7));
+    }
+
+    .hero .wrap {
+      position: relative;
+      z-index: 2;
+      padding-bottom: clamp(64px, 10vw, 110px);
+    }
+
+    .hero h1 {
+      max-width: 980px;
+    }
+
+    .hero-subtitle {
+      margin-top: 18px;
+      color: var(--paper);
+      font-size: clamp(25px, 4vw, 58px);
+      font-weight: 950;
+      line-height: 1.03;
+    }
+
+    .hero-tagline {
+      margin-top: 14px;
+      color: var(--kraft);
+      font-size: clamp(20px, 2.6vw, 34px);
+      font-weight: 950;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 28px;
+      padding: 16px 32px;
+      border: 2px solid var(--kraft);
+      background: transparent;
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--kraft);
+      color: var(--near);
+    }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 28px;
+      padding: 16px 32px;
+      border: 2px solid var(--near);
+      background: var(--near);
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-dark:hover {
+      background: var(--kraft);
+      border-color: var(--kraft);
+      color: var(--near);
+    }
+
+    /* What is MagSnap */
+    .what {
+      background: linear-gradient(180deg, #000 0%, #090806 100%);
+    }
+
+    .what-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: center;
+    }
+
+    .media-frame {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(200, 169, 126, 0.35);
+      background: #11100e;
+    }
+
+    .media-frame video,
+    .media-frame img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+    }
+
+    /* Ecosystem section */
+    .ecosystem {
+      min-height: auto;
+      padding-top: clamp(56px, 8vw, 94px);
+      padding-bottom: clamp(56px, 8vw, 94px);
+    }
+
+    .ecosystem .section-mark {
+      margin-bottom: 20px;
+    }
+
+    .ecosystem-header {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr);
+      gap: clamp(22px, 4vw, 56px);
+      align-items: end;
+    }
+
+    .ecosystem-panel {
+      margin-top: clamp(26px, 4vw, 42px);
+      border-top: 1px solid rgba(245, 239, 230, 0.16);
+      border-bottom: 1px solid rgba(245, 239, 230, 0.12);
+      padding: 20px 0;
+      display: grid;
+      gap: 18px;
+    }
+
+    .ecosystem-columns {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: clamp(18px, 3vw, 34px);
+    }
+
+    .ecosystem-group {
+      min-width: 0;
+    }
+
+    .ecosystem-kicker {
+      margin-bottom: 12px;
+      color: var(--kraft);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 12px;
+    }
+
+    .eco-item {
+      min-height: 120px;
+      border: 1px solid rgba(245, 239, 230, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 12px 8px;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 7px;
+      text-align: center;
+    }
+
+    .eco-icon {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      padding: 6px;
+    }
+
+    .eco-name {
+      color: var(--paper);
+      font-size: 11px;
+      font-weight: 950;
+      line-height: 1.12;
+    }
+
+    .eco-meta {
+      color: rgba(245, 239, 230, 0.46);
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .eco-item.soon .eco-meta {
+      color: var(--pink);
+    }
+
+    /* What's Inside */
+    .inside {
+      background: #f4efe7;
+      color: #050403;
+    }
+
+    .inside .section-mark,
+    .inside .eyebrow {
+      color: #050403;
+    }
+
+    .inside .section-mark::after {
+      background: #050403;
+    }
+
+    .inside-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: clamp(34px, 5vw, 58px);
+    }
+
+    .inside-item {
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 12px;
+      padding: 14px 10px;
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 10px;
+      text-align: center;
+    }
+
+    .inside-icon {
+      width: 100%;
+      max-width: 160px;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .inside-name {
+      font-size: 13px;
+      font-weight: 950;
+      text-transform: uppercase;
+      line-height: 1.1;
+      color: #050403;
+    }
+
+    /* Founder Program */
+    .founder-program {
+      background: #000;
+    }
+
+    .founder-program-inner {
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: clamp(40px, 6vw, 80px) 0;
+    }
+
+    .founder-program-inner h2 {
+      max-width: 800px;
+    }
+
+    .founder-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .founder-tag {
+      border: 1px solid rgba(200, 169, 126, 0.36);
+      color: rgba(245, 239, 230, 0.8);
+      padding: 10px 14px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    /* Founder Wall */
+    .founder-wall {
+      background: var(--near);
+    }
+
+    .founder-wall-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: clamp(34px, 5vw, 58px);
+    }
+
+    .founder-card {
+      border: 1px solid rgba(245, 239, 230, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 12px;
+      padding: 18px 14px;
+      display: grid;
+      place-items: center;
+      gap: 6px;
+      text-align: center;
+    }
+
+    .founder-card-num {
+      color: var(--kraft);
+      font-size: 28px;
+      font-weight: 950;
+      font-family: "Arial Black", Impact, sans-serif;
+      line-height: 1;
+    }
+
+    .founder-card-loc {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 30px clamp(18px, 5vw, 64px) 46px;
+      background: #000;
+      color: rgba(245, 239, 230, 0.72);
+    }
+
+    .footer-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .footer-links a:hover {
+      color: var(--pink);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 14px;
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .footer-social a:hover {
+      color: var(--pink);
+    }
+
+    /* Responsive */
+    @media (max-width: 940px) {
+      .nav {
+        display: none;
+      }
+
+      .what-grid,
+      .ecosystem-header,
+      .ecosystem-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .icon-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .section {
+        min-height: auto;
+      }
+
+      .hero {
+        min-height: 100svh;
+      }
+
+      .hero h1 {
+        font-size: clamp(58px, 19vw, 92px);
+      }
+
+      .icon-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .eco-item {
+        min-height: 100px;
+        padding: 10px 6px;
+      }
+
+      .eco-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 10px;
+        padding: 4px;
+      }
+
+      .media-frame video,
+      .media-frame img {
+        min-height: 310px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .inside-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .founder-wall-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" aria-label="MAGSNAP">
+    <a class="brand" href="#hero" aria-label="MAGSNAP home">
+      <img src="assets/site/panda-logo.jpg" alt="Official MAGSNAP Panda Logo">
+      <span>MAGSNAP</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#what">What is MagSnap</a>
+      <a href="#devices">Devices</a>
+      <a href="#inside">Inside</a>
+      <a href="#founder">Founder</a>
+      <span class="nav-lang">
+        <a href="#" class="active">EN</a>
+        <a href="#">中文</a>
+      </span>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="section hero" id="hero" aria-label="MAGSNAP hero video">
+      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="/images/hero-poster.jpg">
+        <source src="assets/site/hero-pov.mp4" type="video/mp4">
+      </video>
+      <div class="wrap">
+        <div class="section-mark">01</div>
+        <h1>MAGSNAP</h1>
+        <p class="hero-tagline">Only Magnetic. No Electric.</p>
+        <a class="btn-primary" href="founder/#apply">Founder Apply</a>
+      </div>
+    </section>
+
+    <!-- WHAT IS MAGSNAP -->
+    <section class="section what" id="what">
+      <div class="wrap what-grid">
+        <div class="media-frame" aria-label="Native mounting demo">
+          <video autoplay muted loop playsinline poster="assets/site/box-frame.jpg">
+            <source src="assets/site/native-mount.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div>
+          <div class="section-mark">02</div>
+          <p class="eyebrow">What is MagSnap</p>
+          <h2>What is MagSnap?</h2>
+          <p class="body-copy">MagSnap is a magnetic eyewear platform that mounts cameras, microphones, trackers and tools directly onto your glasses. No batteries. No charging. No electronics. Only magnets.</p>
+          <a class="btn-primary" href="founder/#apply">Founder Apply</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPATIBLE DEVICES + ACCESSORIES -->
+    <section class="section ecosystem" id="devices">
+      <div class="wrap">
+        <div class="ecosystem-header">
+          <div>
+            <div class="section-mark">03</div>
+            <p class="eyebrow">Ecosystem</p>
+            <h2>Compact Magnetic Index</h2>
+          </div>
+        </div>
+
+        <div class="ecosystem-panel">
+          <div class="ecosystem-columns">
+            <div class="ecosystem-group" aria-label="Compatible devices">
+              <p class="ecosystem-kicker">Compatible Devices</p>
+              <div class="icon-grid">
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-go3-go3s.png?v=3" alt="GO3 and GO3S icon">
+                  <span class="eco-name">GO3 / GO3S</span>
+                  <span class="eco-meta">Verified</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-dji-nano.png?v=3" alt="DJI Nano icon">
+                  <span class="eco-name">DJI Nano</span>
+                  <span class="eco-meta">Verified</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-dji-mic.png?v=3" alt="DJI Mic icon">
+                  <span class="eco-name">DJI Mic</span>
+                  <span class="eco-meta">Verified</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-318-walkie.png?v=3" alt="318 Walkie-Talkie icon">
+                  <span class="eco-name">318 Walkie-Talkie</span>
+                  <span class="eco-meta">DIY</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-airtag.png?v=3" alt="AirTag icon">
+                  <span class="eco-name">AirTag</span>
+                  <span class="eco-meta">Tracker</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-headlamp.png?v=3" alt="Headlamp icon">
+                  <span class="eco-name">Headlamp</span>
+                  <span class="eco-meta">Light</span>
+                </div>
+                <div class="eco-item soon">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-ai-module.png?v=3" alt="AI Module icon">
+                  <span class="eco-name">AI Module</span>
+                  <span class="eco-meta">Coming Soon</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="ecosystem-group" aria-label="Accessories">
+              <p class="ecosystem-kicker">Accessories</p>
+              <div class="icon-grid">
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-magsnap-frame.png?v=3" alt="MagSnap Frame icon">
+                  <span class="eco-name">MagSnap Frame</span>
+                  <span class="eco-meta">Base</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-face-hugger-nose-pad.png?v=3" alt="Face Hugger Nose Pad icon">
+                  <span class="eco-name">Face Hugger Nose Pad</span>
+                  <span class="eco-meta">Support</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-safe-strap.png?v=3" alt="Safe Strap icon">
+                  <span class="eco-name">Safe Strap</span>
+                  <span class="eco-meta">Tether</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-magdock.png?v=3" alt="MagDock icon">
+                  <span class="eco-name">MagDock</span>
+                  <span class="eco-meta">Mount</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-zenloop.png?v=3" alt="ZenLoop icon">
+                  <span class="eco-name">ZenLoop</span>
+                  <span class="eco-meta">Cord</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-magwipe.png?v=3" alt="MagWipe icon">
+                  <span class="eco-name">MagWipe</span>
+                  <span class="eco-meta">Cloth</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-optical-test-card.png?v=3" alt="Optical Test Card icon">
+                  <span class="eco-name">Optical Test Card</span>
+                  <span class="eco-meta">Verify</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-n52-core-set.png?v=3" alt="N52 DIY Magnet Set icon">
+                  <span class="eco-name">N52 DIY Magnet Set</span>
+                  <span class="eco-meta">DIY</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-founder-sticker.png?v=3" alt="Founder Sticker icon">
+                  <span class="eco-name">Founder Sticker</span>
+                  <span class="eco-meta">Founder</span>
+                </div>
+                <div class="eco-item">
+                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-magsnap-box.png?v=3" alt="MagSnap Box icon">
+                  <span class="eco-name">MagSnap Box</span>
+                  <span class="eco-meta">Package</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT'S INSIDE -->
+    <section class="section inside" id="inside">
+      <div class="wrap">
+        <div class="section-mark">04</div>
+        <p class="eyebrow">Included</p>
+        <h2>What's Inside</h2>
+        <div class="inside-grid">
+          <div class="inside-item">
+            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Lens">
+            <span class="inside-name">Lens</span>
+          </div>
+          <div class="inside-item">
+            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Magnetic Leg">
+            <span class="inside-name">Magnetic Leg</span>
+          </div>
+          <div class="inside-item">
+            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Safety Cord">
+            <span class="inside-name">Safety Cord</span>
+          </div>
+          <div class="inside-item">
+            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Clip">
+            <span class="inside-name">Clip</span>
+          </div>
+          <div class="inside-item">
+            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Nose Pad">
+            <span class="inside-name">Nose Pad</span>
+          </div>
+          <div class="inside-item">
+            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Magnet">
+            <span class="inside-name">Magnet</span>
+          </div>
+          <div class="inside-item">
+            <img class="inside-icon" src="assets/site/box-frame.jpg" alt="Case">
+            <span class="inside-name">Case</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUNDER PROGRAM -->
+    <section class="section founder-program" id="founder">
+      <div class="wrap founder-program-inner">
+        <div class="section-mark">05</div>
+        <p class="eyebrow">Founder Program</p>
+        <h2>Become a Founder</h2>
+        <div class="founder-tags">
+          <span class="founder-tag">First 1000 Founders</span>
+          <span class="founder-tag">Early Access</span>
+          <span class="founder-tag">Future Modules</span>
+          <span class="founder-tag">Community Participation</span>
+        </div>
+        <a class="btn-primary" href="founder/">Apply Now</a>
+      </div>
+    </section>
+
+    <!-- FOUNDER WALL -->
+    <section class="section founder-wall">
+      <div class="wrap">
+        <div class="section-mark">06</div>
+        <p class="eyebrow">Founders</p>
+        <h2>Global Founder Wall</h2>
+        <div class="founder-wall-grid">
+          <div class="founder-card">
+            <span class="founder-card-num">#001</span>
+            <span class="founder-card-loc">USA</span>
+          </div>
+          <div class="founder-card">
+            <span class="founder-card-num">#002</span>
+            <span class="founder-card-loc">Vietnam</span>
+          </div>
+          <div class="founder-card">
+            <span class="founder-card-num">#003</span>
+            <span class="founder-card-loc">Singapore</span>
+          </div>
+          <div class="founder-card">
+            <span class="founder-card-num">#004</span>
+            <span class="founder-card-loc">Germany</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>MAGSNAP / Magnetic Eyewear Platform</span>
+      <div class="footer-links">
+        <div class="footer-social">
+          <a href="https://www.instagram.com/mzmagsnap/" target="_blank" rel="noopener">Instagram</a>
+          <a href="mailto:info@magsnap.me">Email</a>
+        </div>
+        <a href="mailto:info@magsnap.me">info@magsnap.me</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const heroVideo = document.querySelector(".hero-video");
+    const playHeroVideo = () => {
+      if (!heroVideo) return;
+      heroVideo.muted = true;
+      heroVideo.playsInline = true;
+      heroVideo.setAttribute("muted", "");
+      heroVideo.setAttribute("playsinline", "");
+      const playback = heroVideo.play();
+      if (playback && typeof playback.catch === "function") {
+        playback.catch(() => {});
+      }
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", playHeroVideo, { once: true });
+    } else {
+      playHeroVideo();
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) playHeroVideo();
+    });
+  </script>
+</body>
+</html>

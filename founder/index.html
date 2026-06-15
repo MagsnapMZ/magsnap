@@ -3,155 +3,150 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MAGSNAP | Registry Activation</title>
-  <meta name="description" content="Activate your MAGSNAP Registry Number from the QC/Test Card.">
-  <link rel="stylesheet" href="../assets/founder/founder.css">
+  <title>MAGSNAP | Founder Program</title>
+  <meta name="description" content="Join the MAGSNAP Founder Program. Limited to 1000 founders worldwide. Apply now.">
+  <link rel="stylesheet" href="../assets/founder/founder-program.css">
 </head>
 <body>
-  <header class="header">
-    <a class="brand" href="../">
+
+  <header class="site-header" aria-label="MAGSNAP">
+    <a class="brand" href="../" aria-label="MAGSNAP home">
       <img src="../assets/site/panda-logo.jpg" alt="Official MAGSNAP Panda Logo">
       <span>MAGSNAP</span>
     </a>
-    <nav class="nav" aria-label="Registry pages">
+    <nav class="nav" aria-label="Founder pages">
       <a href="../">Home</a>
       <a href="../registry/">Registry</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <div>
-        <div class="mark">01</div>
-        <p class="eyebrow">Registry Activation</p>
-        <h1>MAGSNAP REGISTRY</h1>
-        <p class="lead">Every product has a unique identity from the QC/Test Card.</p>
-        <p class="plain">The Registry Number is not the purchase order, not the registration order, and not a product serial number. It follows the physical card included with the product.</p>
-      </div>
-      <aside class="founder-card" aria-label="Registry card example">
-        <div>
-          <p class="eyebrow">Example</p>
-          <p class="founder-number">0171</p>
-        </div>
-        <p class="plain">Registry ID from the QC/Test Card</p>
-      </aside>
-    </section>
+    <div class="founder-wrap">
 
-    <section class="form-shell" aria-label="MAGSNAP registry activation form">
-      <div class="status" data-status></div>
-      <form class="activation-form" data-registry-form>
-        <div class="form-grid">
-          <div class="field">
-            <label for="registry-number">Registry Number *</label>
-            <input id="registry-number" name="registry_number" inputmode="numeric" autocomplete="off" placeholder="0171" required>
+      <!-- Hero -->
+      <section class="founder-hero">
+        <div class="section-mark">01</div>
+        <h1>Founder Program</h1>
+        <p class="subtitle">First in line. Last to leave.</p>
+        <p class="description">
+          MAGSNAP Founder Program is an application-based membership limited to the first 1,000 individuals worldwide.
+          Founders receive early access, exclusive product drops, direct input into product direction, and a permanent place in the MAGSNAP public directory.
+        </p>
+        <div class="range-badge">
+          FOUNDER <strong>#0001</strong> &mdash; <strong>#1000</strong>
+        </div>
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-number">1,000</div>
+            <div class="stat-label">Founder Limit</div>
           </div>
+          <div class="stat-item">
+            <div class="stat-number">Application</div>
+            <div class="stat-label">Membership Type</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">Global</div>
+            <div class="stat-label">Community</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefits -->
+      <h2 class="section-title">Why Become a Founder</h2>
+      <p class="section-sub">Founders are more than customers. They shape the product, the ecosystem, and the culture.</p>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>Early Access</h3>
+          <p>Be the first to receive new products, limited editions, and prototype drops before public release.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Direct Input</h3>
+          <p>Founder feedback goes straight to product design. Your use cases shape the next iteration.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Permanent Record</h3>
+          <p>Your name and profile are permanently listed in the MAGSNAP Founder Directory. Each founder has a unique number from #0001 to #1000.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Global Network</h3>
+          <p>Connect with a community of athletes, creators, engineers, and explorers who wear MAGSNAP in the field.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Exclusive Drops</h3>
+          <p>Founder-only colorways, collabs, and gear that never go to public sale.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Founder Badge</h3>
+          <p>Physical founder credential and digital badge for your profiles and content.</p>
+        </div>
+      </div>
+
+      <!-- Application Form -->
+      <section class="apply-section" id="apply">
+        <h2>Apply</h2>
+        <p class="form-sub">Applications are reviewed individually. Tell us who you are and why MAGSNAP fits your world.</p>
+
+        <form class="founder-form" id="founder-form">
           <div class="field">
-            <label for="display-name">Display Name *</label>
-            <input id="display-name" name="display_name" autocomplete="name" placeholder="MZ" required>
+            <label for="name">Name *</label>
+            <input id="name" name="name" required placeholder="Your full name">
           </div>
           <div class="field">
             <label for="country">Country *</label>
-            <input id="country" name="country" autocomplete="country-name" placeholder="China" required>
+            <input id="country" name="country" required placeholder="Country of residence">
           </div>
           <div class="field">
-            <label for="city">City *</label>
-            <input id="city" name="city" autocomplete="address-level2" placeholder="Shenzhen" required>
+            <label for="profession">Profession *</label>
+            <input id="profession" name="profession" required placeholder="What do you do?">
           </div>
           <div class="field">
-            <label for="role">Role *</label>
-            <select id="role" name="role" required>
-              <option>Founder</option>
-              <option>Player</option>
-              <option>Creator</option>
-              <option>Explorer</option>
-              <option>Athlete</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="configuration">Configuration *</label>
-            <input id="configuration" name="configuration" placeholder="Type A / Blue Lens" required>
-          </div>
-        </div>
-
-        <div class="tag-group" aria-label="Primary sport or activity">
-          <p class="group-label">Primary Sport / Activity</p>
-          <div class="tags">
-            <label class="tag"><input type="checkbox" name="sport_tags" value="FPV"><span>FPV</span></label>
-            <label class="tag"><input type="checkbox" name="sport_tags" value="Kitesurf"><span>Kitesurf</span></label>
-            <label class="tag"><input type="checkbox" name="sport_tags" value="Sailing"><span>Sailing</span></label>
-            <label class="tag"><input type="checkbox" name="sport_tags" value="Moto"><span>Moto</span></label>
-            <label class="tag"><input type="checkbox" name="sport_tags" value="Snow"><span>Snow</span></label>
-            <label class="tag"><input type="checkbox" name="sport_tags" value="Fishing"><span>Fishing</span></label>
-            <label class="tag"><input type="checkbox" name="sport_tags" value="Creator"><span>Creator</span></label>
-            <label class="tag"><input type="checkbox" name="sport_tags" value="Hiking"><span>Hiking</span></label>
-            <label class="tag"><input type="checkbox" name="sport_tags" value="Other"><span>Other</span></label>
-          </div>
-        </div>
-
-        <div class="form-grid">
-          <div class="field">
-            <label for="industry">Industry</label>
-            <input id="industry" name="industry" placeholder="Creator, marine, aviation, outdoor...">
-          </div>
-          <div class="field">
-            <label for="contact-method">Preferred Contact Method</label>
-            <select id="contact-method" name="contact_method">
-              <option value="">Select one</option>
-              <option>Email</option>
-              <option>WhatsApp</option>
-              <option>WeChat</option>
-              <option>Instagram</option>
-              <option>Telegram</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="contact-detail">Contact Detail</label>
-            <input id="contact-detail" name="contact_detail" placeholder="Private. Visible only to MAGSNAP.">
-          </div>
-          <div class="field">
-            <label for="social-media">Social Media</label>
-            <input id="social-media" name="social_media" placeholder="@username or profile link">
+            <label for="sports">Sports / Hobby</label>
+            <input id="sports" name="sports" placeholder="FPV, kitesurf, moto, diving...">
           </div>
           <div class="field full">
-            <label for="profile-photo-url">Profile Photo Link</label>
-            <input id="profile-photo-url" name="profile_photo_url" type="url" placeholder="https://...">
+            <label for="reason">Why do you want to join MagSnap?</label>
+            <textarea id="reason" name="reason" placeholder="Tell us about your use case, environment, and what you'd build with MAGSNAP."></textarea>
           </div>
-        </div>
 
-        <div class="tag-group" aria-label="Device used">
-          <p class="group-label">Device Used</p>
-          <div class="tags">
-            <label class="tag"><input type="checkbox" name="device_tags" value="Insta360 GO3"><span>Insta360 GO3</span></label>
-            <label class="tag"><input type="checkbox" name="device_tags" value="Insta360 GO3S"><span>Insta360 GO3S</span></label>
-            <label class="tag"><input type="checkbox" name="device_tags" value="DJI Nano"><span>DJI Nano</span></label>
-            <label class="tag"><input type="checkbox" name="device_tags" value="DJI Mic"><span>DJI Mic</span></label>
-            <label class="tag"><input type="checkbox" name="device_tags" value="AirTag"><span>AirTag</span></label>
-            <label class="tag"><input type="checkbox" name="device_tags" value="Walkie Talkie"><span>Walkie Talkie</span></label>
-            <label class="tag"><input type="checkbox" name="device_tags" value="Other"><span>Other</span></label>
+          <div class="form-actions">
+            <button class="button" type="submit">Submit Application</button>
           </div>
-        </div>
 
-        <div class="field">
-          <label for="short-intro">Short Introduction</label>
-          <textarea id="short-intro" name="short_intro" placeholder="One or two lines about what you do and how you use MAGSNAP."></textarea>
-        </div>
+          <div class="form-status" id="form-status"></div>
+        </form>
+      </section>
 
-        <div class="actions">
-          <button class="button" type="submit">Activate Registry ID</button>
-          <a class="button secondary" href="../registry/">View Registry</a>
+      <!-- Founder Directory -->
+      <section class="directory-section" id="directory">
+        <h2>Founder Directory</h2>
+        <p class="dir-sub">Public records. Only number, first name, country, profession, and sports are shown.</p>
+
+        <div class="dir-table-wrap">
+          <table class="dir-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Country</th>
+                <th>Profession</th>
+                <th>Sports</th>
+              </tr>
+            </thead>
+            <tbody id="dir-body"></tbody>
+          </table>
         </div>
-        <p class="privacy-note">Public Registry shows only Registry Number, Display Name, Country, Role, Configuration, and Status. Contact details, address, tracking number, and notes remain private.</p>
-      </form>
-    </section>
+        <div class="dir-empty" id="dir-empty">No founders yet. Be the first.</div>
+      </section>
+
+    </div>
   </main>
 
-  <footer class="footer">
-    <span>MAGSNAP / Product Registry</span>
+  <footer class="site-footer">
+    <span>MAGSNAP / Founder Program</span>
     <span>info@magsnap.me</span>
   </footer>
 
-  <script src="../assets/founder/supabase-config.js"></script>
-  <script src="../assets/founder/founder.js"></script>
+  <script src="../assets/founder/founder-program.js"></script>
 </body>
 </html>

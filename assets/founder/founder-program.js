@@ -30,6 +30,12 @@ if (form) {
       return;
     }
 
+    const applyConsent = document.getElementById('apply-consent');
+    if (!applyConsent || !applyConsent.checked) {
+      showStatus('Please confirm consent to submit. / 请勾选同意以提交。', 'error', statusEl);
+      return;
+    }
+
     const existing = JSON.parse(localStorage.getItem(APP_KEY) || '[]');
     existing.push(data);
     localStorage.setItem(APP_KEY, JSON.stringify(existing));
@@ -96,6 +102,12 @@ if (fbForm) {
     const msg = fbForm.fb_message.value.trim();
     if (!name || !msg) {
       showStatus('Name and message are required. / 姓名和内容为必填。', 'error', fbStatus);
+      return;
+    }
+
+    const fbConsent = document.getElementById('fb-consent');
+    if (!fbConsent || !fbConsent.checked) {
+      showStatus('Please consent to upload. / 请勾选同意以提交。', 'error', fbStatus);
       return;
     }
 

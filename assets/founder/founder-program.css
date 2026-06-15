@@ -557,6 +557,31 @@ img { max-width: 100%; }
   word-break: break-all;
   margin-top: 4px;
 }
+
+/* ----- Consent ----- */
+.consent-label {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  color: var(--muted) !important;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.consent-label input[type="checkbox"] {
+  all: revert;
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--kraft);
+  cursor: pointer;
+  flex-shrink: 0;
+}
 .site-footer {
   width: min(100%,var(--max));
   margin: 0 auto;

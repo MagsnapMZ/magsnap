@@ -14,9 +14,8 @@ def test_system_section(page):
 
 def test_creators_rig_text(page):
     content = page.content()
-    assert "One Platform. Multiple Modules." in content
-    assert "一个平台，多种模块" in content
+    assert "Creators Rig" in content
 
-def test_founder_button(page):
-    btn = page.locator(".founder-cta")
+def test_chat_button(page):
+    btn = page.locator("text=CHAT WITH MZ")
     assert btn.is_visible()

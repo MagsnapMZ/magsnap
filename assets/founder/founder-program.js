@@ -15,14 +15,16 @@ if (form) {
     const data = {
       id: 'FP' + String(Date.now()).slice(-6),
       name: form.name.value.trim(),
+      phone: form.phone.value.trim(),
       country: form.country.value.trim(),
+      address: form.address.value.trim(),
       profession: form.profession.value.trim(),
       sports: form.sports.value.trim(),
       reason: form.reason.value.trim(),
       submitted: new Date().toISOString()
     };
 
-    if (!data.name || !data.country || !data.profession) {
+    if (!data.name || !data.phone || !data.country || !data.address || !data.profession) {
       showStatus('Please fill in all required fields (*).', 'error');
       return;
     }

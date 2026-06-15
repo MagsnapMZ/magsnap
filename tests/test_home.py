@@ -14,8 +14,9 @@ def test_system_section(page):
 
 def test_creators_rig_text(page):
     content = page.content()
-    assert "Wearable Magnetic Ecosystem" in content
+    assert "One Platform. Multiple Modules." in content
+    assert "一个平台，多种模块" in content
 
-def test_chat_button(page):
-    btn = page.locator("text=CHAT WITH MZ")
+def test_founder_button(page):
+    btn = page.locator(".founder-cta")
     assert btn.is_visible()

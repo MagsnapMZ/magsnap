@@ -24,7 +24,7 @@ def test_all_images_load(page):
     """All product images should load."""
     imgs = page.locator(".eco-icon")
     count = imgs.count()
-    assert count >= 10
+    assert count == 6
 
     # Check images have src attributes
     for i in range(count):

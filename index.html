@@ -468,6 +468,17 @@
       padding: 8px;
       display: grid;
       gap: 7px;
+      font: inherit;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+    }
+
+    .lab-thumb:hover {
+      border-color: rgba(200, 169, 126, 0.34);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-1px);
     }
 
     .lab-thumb video {
@@ -484,7 +495,7 @@
       font-size: 10px;
       font-weight: 900;
       line-height: 1.16;
-      text-align: center;
+      text-align: left;
     }
 
     .lab-thumb strong,
@@ -498,6 +509,79 @@
       font-size: 9px;
       font-weight: 700;
       line-height: 1.3;
+    }
+
+    .lab-modal[hidden] {
+      display: none;
+    }
+
+    .lab-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(8px);
+    }
+
+    .lab-modal-backdrop {
+      position: absolute;
+      inset: 0;
+    }
+
+    .lab-modal-card {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 760px);
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      background: #080706;
+      padding: 14px;
+      display: grid;
+      gap: 12px;
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.45);
+    }
+
+    .lab-modal-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .lab-modal-title {
+      color: var(--paper);
+      font-size: 18px;
+      font-family: "Arial Black", Impact, sans-serif;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+
+    .lab-modal-copy {
+      margin-top: 6px;
+      color: rgba(245, 239, 230, 0.64);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .lab-modal-close {
+      flex: 0 0 auto;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(245, 239, 230, 0.16);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--paper);
+      font: inherit;
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .lab-modal-video {
+      width: 100%;
+      max-height: min(70svh, 620px);
+      background: #000;
     }
 
     .snap-grid {
@@ -702,13 +786,10 @@
     }
 
     .style-label {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      min-height: 68px;
-      padding: 18px;
+      display: grid;
+      gap: 6px;
+      min-height: 0;
+      padding: 16px 18px 8px;
       color: #080706;
       font-size: 14px;
       font-weight: 950;
@@ -719,13 +800,30 @@
       color: rgba(8, 7, 6, 0.56);
       font-size: 11px;
       line-height: 1.2;
-      text-align: right;
+      text-align: left;
     }
 
     .style-label strong {
       font-family: "Arial Black", Impact, sans-serif;
       font-size: 18px;
       line-height: 0.95;
+    }
+
+    .style-detail {
+      padding: 0 18px 12px;
+      color: rgba(8, 7, 6, 0.72);
+      font-size: 12px;
+      font-weight: 760;
+      line-height: 1.38;
+    }
+
+    .style-detail em {
+      display: block;
+      margin-top: 5px;
+      color: rgba(8, 7, 6, 0.52);
+      font-style: normal;
+      font-size: 11px;
+      line-height: 1.35;
     }
 
     .style-colors {
@@ -1401,6 +1499,22 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .lab-modal {
+        padding: 12px;
+      }
+
+      .lab-modal-card {
+        padding: 12px;
+      }
+
+      .lab-modal-title {
+        font-size: 15px;
+      }
+
+      .lab-modal-copy {
+        font-size: 12px;
+      }
+
       .section.style {
         padding-top: 48px;
         padding-bottom: 36px;
@@ -1429,6 +1543,16 @@
       .style-label span {
         width: 100%;
         text-align: left;
+      }
+
+      .style-detail {
+        padding: 0 12px 10px;
+        font-size: 11px;
+        line-height: 1.34;
+      }
+
+      .style-detail em {
+        font-size: 10px;
       }
 
       .style-colors {
@@ -1661,42 +1785,24 @@
           <div class="ecosystem-group" id="lab" aria-label="MagSnap Lab videos">
             <p class="ecosystem-kicker">测试实验 / MAGSNAP LAB</p>
             <div class="lab-thumb-grid">
-              <div class="lab-thumb">
+              <button class="lab-thumb" type="button" data-lab-title="磁力拉扯测试 / Magnetic Strength Test" data-lab-copy="测试磁吸固定后的拉扯保持力。 / Measures holding force under pull and retention load." data-lab-src="assets/site/lab-thumbs/magnetic-strength.mp4">
                 <video autoplay muted loop playsinline preload="metadata">
                   <source src="assets/site/lab-thumbs/magnetic-strength.mp4" type="video/mp4">
                 </video>
                 <span>磁力拉扯测试 / Magnetic Strength Test</span>
-              </div>
-              <div class="lab-thumb">
+              </button>
+              <button class="lab-thumb" type="button" data-lab-title="磁力高斯测试 / Magnetic Gauss Test" data-lab-copy="测试核心磁力强度与吸附稳定性。 / Measures magnetic strength and attachment stability." data-lab-src="assets/site/lab-thumbs/magnetic-gauss.mp4">
                 <video autoplay muted loop playsinline preload="metadata">
                   <source src="assets/site/lab-thumbs/magnetic-gauss.mp4" type="video/mp4">
                 </video>
                 <span>磁力高斯测试 / Magnetic Gauss Test</span>
-              </div>
-              <div class="lab-thumb">
+              </button>
+              <button class="lab-thumb" type="button" data-lab-title="海水暴晒测试 / Seawater Test" data-lab-copy="模拟海水、暴晒与户外环境下的持续使用测试。 / Long-term exposure test under seawater, sun and outdoor conditions." data-lab-src="assets/site/lab-thumbs/seawater-test.mp4">
                 <video autoplay muted loop playsinline preload="metadata">
                   <source src="assets/site/lab-thumbs/seawater-test.mp4" type="video/mp4">
                 </video>
-                <span>海水暴晒测试 / Seawater Test</span>
-              </div>
-              <div class="lab-thumb">
-                <video autoplay muted loop playsinline preload="metadata">
-                  <source src="assets/site/lab-thumbs/lens-test.mp4" type="video/mp4">
-                </video>
-                <span><strong>镜片耐久测试 / Lens Water / Impact Test</strong><small>CSPL 贴合PC偏光镜片，适合海水、暴晒与户外冲击场景。 / CSPL laminated PC polarized lens, built for water, sun and outdoor impact.</small></span>
-              </div>
-              <div class="lab-thumb">
-                <video autoplay muted loop playsinline preload="metadata">
-                  <source src="assets/site/lab-thumbs/wear-test-feedback.mp4" type="video/mp4">
-                </video>
-                <span>试戴反馈 / Wear Test Feedback</span>
-              </div>
-              <div class="lab-thumb">
-                <video autoplay muted loop playsinline preload="metadata">
-                  <source src="assets/site/lab-thumbs/wear-demo.mp4" type="video/mp4">
-                </video>
-                <span>佩戴演示 / Product Demo</span>
-              </div>
+                <span><strong>海水暴晒测试 / Seawater Test</strong><small>模拟海水、暴晒与户外环境下的持续使用测试。 / Long-term exposure test under seawater, sun and outdoor conditions.</small></span>
+              </button>
             </div>
           </div>
         </div>
@@ -1706,13 +1812,14 @@
     <section class="section style" id="style">
       <div class="wrap">
         <div class="section-mark">04</div>
-        <p class="eyebrow">三种镜架 / Three Frame Styles</p>
-        <h2>三种镜架风格 / Three Frame Styles</h2>
-        <p class="style-copy">同一个磁吸系统 / Same Magnetic System</p>
+        <p class="eyebrow">Three Frame Styles / 三种镜架</p>
+        <h2>Three Frame Styles.<br>Same Magnetic System.</h2>
+        <p class="style-copy">三种镜架风格。<br>同一个磁吸系统。</p>
         <div class="style-row">
           <article class="style-card">
             <img data-style-image src="assets/site/style-black-yellow.jpg" alt="TYPE A MagSnap frame with black lens option">
-            <div class="style-label"><strong>甲 / Model A</strong><span>黑 / 蓝 / 粉 / 烟灰 · BLACK / BLUE / PINK / SMOKE</span></div>
+            <div class="style-label"><strong>A / 甲</strong><span>Action / 运动款</span></div>
+            <div class="style-detail">大视野镜框，为 POV、户外和高强度运动准备。<em>Large field-of-view frame for POV, outdoor and high-intensity use.</em></div>
             <div class="style-colors" aria-label="TYPE A lens colors">
               <button class="color-button active" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE A MagSnap frame with black lens option">黑 / Black</button>
               <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE A MagSnap frame with blue lens option">蓝 / Blue</button>
@@ -1722,7 +1829,8 @@
           </article>
           <article class="style-card">
             <img data-style-image src="assets/site/style-clear-pink.jpg" alt="TYPE B MagSnap frame with pink lens option">
-            <div class="style-label"><strong>乙 / Model B</strong><span>黑 / 蓝 / 粉 / 烟灰 · BLACK / BLUE / PINK / SMOKE</span></div>
+            <div class="style-label"><strong>B / 乙</strong><span>Street / 街头款</span></div>
+            <div class="style-detail">原生 MagSnap 风格，适合日常、骑行和创作者佩戴。<em>The original MagSnap look for daily wear, cycling and creators.</em></div>
             <div class="style-colors" aria-label="TYPE B lens colors">
               <button class="color-button" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE B MagSnap frame with black lens option">黑 / Black</button>
               <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE B MagSnap frame with blue lens option">蓝 / Blue</button>
@@ -1732,7 +1840,8 @@
           </article>
           <article class="style-card">
             <img data-style-image src="assets/site/style-clear-smoke.jpg" alt="TYPE C MagSnap frame with smoke lens option">
-            <div class="style-label"><strong>丙 / Model C</strong><span>黑 / 蓝 / 粉 / 烟灰 · BLACK / BLUE / PINK / SMOKE</span></div>
+            <div class="style-label"><strong>C / 丙</strong><span>Optical / 光学款</span></div>
+            <div class="style-detail">尺寸更克制，为未来近视镜片和光学版本准备。<em>A more compact frame prepared for future prescription lens options.</em></div>
             <div class="style-colors" aria-label="TYPE C lens colors">
               <button class="color-button" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE C MagSnap frame with black lens option">黑 / Black</button>
               <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE C MagSnap frame with blue lens option">蓝 / Blue</button>
@@ -1835,6 +1944,20 @@
       </div>
     </section>
   </main>
+
+  <div class="lab-modal" id="lab-modal" hidden>
+    <div class="lab-modal-backdrop" data-lab-close></div>
+    <div class="lab-modal-card" role="dialog" aria-modal="true" aria-labelledby="lab-modal-title">
+      <div class="lab-modal-head">
+        <div>
+          <div class="lab-modal-title" id="lab-modal-title">MAGSNAP LAB</div>
+          <div class="lab-modal-copy" id="lab-modal-copy"></div>
+        </div>
+        <button class="lab-modal-close" type="button" aria-label="Close lab video" data-lab-close>&times;</button>
+      </div>
+      <video class="lab-modal-video" id="lab-modal-video" controls playsinline preload="metadata"></video>
+    </div>
+  </div>
 
   <footer class="site-footer" id="disclaimer-link">
     <div class="footer-inner">
@@ -1972,6 +2095,45 @@
         showFounderStatus("谢谢，你的 Founder 申请已收到。<br>我们会审核你的邀请来源和使用场景。<br><br>Thank you. Your Founder application has been received.<br>We will review your invitation and use case.");
       } catch (error) {
         showFounderStatus("当前设备暂时无法保存 Founder 申请，请稍后再试。<br>Unable to save the Founder application on this device right now.");
+      }
+    });
+
+    const labModal = document.getElementById("lab-modal");
+    const labModalVideo = document.getElementById("lab-modal-video");
+    const labModalTitle = document.getElementById("lab-modal-title");
+    const labModalCopy = document.getElementById("lab-modal-copy");
+
+    const closeLabModal = () => {
+      if (!labModal || !labModalVideo) return;
+      labModal.hidden = true;
+      document.body.style.overflow = "";
+      labModalVideo.pause();
+      labModalVideo.removeAttribute("src");
+      labModalVideo.load();
+    };
+
+    document.querySelectorAll(".lab-thumb[data-lab-src]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!labModal || !labModalVideo || !labModalTitle || !labModalCopy) return;
+        labModalTitle.textContent = button.dataset.labTitle || "MAGSNAP LAB";
+        labModalCopy.textContent = button.dataset.labCopy || "";
+        labModalVideo.src = button.dataset.labSrc || "";
+        labModal.hidden = false;
+        document.body.style.overflow = "hidden";
+        const playback = labModalVideo.play();
+        if (playback && typeof playback.catch === "function") {
+          playback.catch(() => {});
+        }
+      });
+    });
+
+    labModal?.querySelectorAll("[data-lab-close]").forEach((element) => {
+      element.addEventListener("click", closeLabModal);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && labModal && !labModal.hidden) {
+        closeLabModal();
       }
     });
 

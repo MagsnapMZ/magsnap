@@ -36,6 +36,10 @@
       scroll-behavior: smooth;
     }
 
+    section[id] {
+      scroll-margin-top: 96px;
+    }
+
     body {
       margin: 0;
       background: var(--black);
@@ -252,6 +256,45 @@
       color: var(--kraft);
       font-size: clamp(20px, 2.6vw, 34px);
       font-weight: 950;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border: 1px solid rgba(200, 169, 126, 0.42);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--paper);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .hero-cta::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: var(--pink);
+      box-shadow: 0 0 0 6px rgba(255, 92, 154, 0.12);
+    }
+
+    .hero-cta:hover {
+      border-color: var(--pink);
+      background: rgba(255, 92, 154, 0.08);
+      color: var(--white);
     }
 
     .system {
@@ -698,6 +741,15 @@
       color: var(--kraft);
     }
 
+    .style-copy {
+      max-width: 420px;
+      margin-top: 12px;
+      color: rgba(8, 7, 6, 0.62);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
     .why {
       display: grid;
       min-height: 92svh;
@@ -869,6 +921,270 @@
       color: var(--kraft-2);
     }
 
+    .founder-apply {
+      min-height: auto;
+      background: linear-gradient(180deg, #0b0907 0%, #000 100%);
+    }
+
+    .founder-apply-card {
+      border: 1px solid rgba(245, 239, 230, 0.12);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+        rgba(11, 9, 7, 0.92);
+      padding: clamp(22px, 4vw, 36px);
+    }
+
+    .founder-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      gap: clamp(22px, 4vw, 36px);
+      align-items: start;
+    }
+
+    .founder-intro .section-mark {
+      margin-bottom: 22px;
+    }
+
+    .founder-intro .eyebrow {
+      margin-bottom: 10px;
+    }
+
+    .founder-intro h2 {
+      max-width: 520px;
+      font-size: clamp(44px, 7vw, 88px);
+    }
+
+    .founder-subtitle {
+      margin-top: 10px;
+      color: var(--kraft);
+      font-size: clamp(18px, 2vw, 28px);
+      font-weight: 800;
+      line-height: 1.24;
+    }
+
+    .founder-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .founder-stat {
+      border: 1px solid rgba(245, 239, 230, 0.12);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 14px 14px 12px;
+    }
+
+    .founder-stat strong {
+      display: block;
+      color: var(--paper);
+      font-size: clamp(24px, 3vw, 34px);
+      font-family: "Arial Black", Impact, sans-serif;
+      line-height: 0.96;
+      text-transform: uppercase;
+    }
+
+    .founder-stat span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(245, 239, 230, 0.7);
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.3;
+    }
+
+    .founder-points {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .founder-point {
+      border-left: 1px solid rgba(200, 169, 126, 0.4);
+      padding-left: 12px;
+      color: rgba(245, 239, 230, 0.76);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .founder-point strong {
+      color: var(--paper);
+      font-weight: 900;
+    }
+
+    .founder-form-wrap {
+      border: 1px solid rgba(245, 239, 230, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+      padding: clamp(18px, 3.5vw, 24px);
+    }
+
+    .founder-apply-actions {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .founder-invite-note {
+      display: none;
+      border: 1px solid rgba(200, 169, 126, 0.24);
+      background: rgba(200, 169, 126, 0.08);
+      padding: 12px 14px;
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 850;
+      line-height: 1.45;
+    }
+
+    .founder-invite-note.is-visible {
+      display: block;
+    }
+
+    .founder-form-title {
+      color: var(--paper);
+      font-size: 22px;
+      font-family: "Arial Black", Impact, sans-serif;
+      line-height: 0.96;
+      text-transform: uppercase;
+    }
+
+    .founder-form-lead {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .founder-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .founder-field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .founder-field.span-2,
+    .founder-form > .span-2 {
+      grid-column: 1 / -1;
+    }
+
+    .founder-field label,
+    .checkbox-row span {
+      color: rgba(245, 239, 230, 0.68);
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .founder-form input,
+    .founder-form select,
+    .founder-form textarea {
+      width: 100%;
+      min-height: 52px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--paper);
+      font: inherit;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .founder-form textarea {
+      min-height: 120px;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      resize: vertical;
+    }
+
+    .founder-form input:focus,
+    .founder-form select:focus,
+    .founder-form textarea:focus {
+      border-color: var(--kraft);
+      box-shadow: 0 0 0 4px rgba(200, 169, 126, 0.16);
+    }
+
+    .founder-form input::placeholder,
+    .founder-form textarea::placeholder {
+      color: rgba(245, 239, 230, 0.38);
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      min-height: 52px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .checkbox-row input {
+      width: 18px;
+      height: 18px;
+      min-height: 18px;
+      margin: 1px 0 0;
+      padding: 0;
+      accent-color: var(--pink);
+      border-radius: 4px;
+      box-shadow: none;
+    }
+
+    .founder-btn {
+      min-height: 54px;
+      padding: 0 24px;
+      border: none;
+      border-radius: 999px;
+      background: var(--pink);
+      color: #000;
+      font-size: 15px;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .founder-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(255, 92, 154, 0.36);
+    }
+
+    .founder-toggle {
+      justify-self: start;
+    }
+
+    .founder-form-collapsible[hidden] {
+      display: none;
+    }
+
+    .form-status {
+      display: none;
+      grid-column: 1 / -1;
+      padding: 14px 16px;
+      border: 1px solid rgba(200, 169, 126, 0.18);
+      background: rgba(200, 169, 126, 0.08);
+      color: var(--paper);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .form-status.is-visible {
+      display: block;
+    }
+
+    .form-note {
+      margin-top: 14px;
+      color: rgba(245, 239, 230, 0.48);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
     .mag-section {
       min-height: 76svh;
       display: grid;
@@ -883,44 +1199,6 @@
       align-items: center;
     }
 
-    .mag-disc-large {
-      justify-self: center;
-      width: min(64vw, 340px);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background:
-        linear-gradient(145deg, #171411, #020202 62%, #2b2118);
-      border: 1px solid rgba(200, 169, 126, 0.5);
-      box-shadow: inset 0 0 54px rgba(255, 255, 255, 0.06), 0 26px 90px rgba(0, 0, 0, 0.65);
-    }
-
-    .mag-disc-large img,
-    .mag-float img {
-      width: 54%;
-      height: 54%;
-      border-radius: 50%;
-      background: var(--white);
-      padding: 12%;
-      object-fit: contain;
-    }
-
-    .mag-topics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 28px;
-    }
-
-    .mag-topic {
-      border: 1px solid rgba(200, 169, 126, 0.36);
-      color: rgba(245, 239, 230, 0.8);
-      padding: 10px 12px;
-      font-size: 12px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
 
     .contact {
       background: #f4efe7;
@@ -1038,120 +1316,6 @@
       color: var(--pink);
     }
 
-    .mag-float {
-      position: fixed;
-      right: clamp(16px, 4vw, 30px);
-      bottom: clamp(16px, 4vw, 30px);
-      z-index: 90;
-      width: 70px;
-      height: 70px;
-      border: 1px solid rgba(200, 169, 126, 0.52);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: #050403;
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.56), inset 0 0 24px rgba(200, 169, 126, 0.12);
-      cursor: pointer;
-      animation: breathe 3.4s ease-in-out infinite;
-    }
-
-    .mz-chat-float {
-      position: fixed;
-      left: clamp(16px, 4vw, 30px);
-      bottom: clamp(16px, 4vw, 30px);
-      z-index: 90;
-      min-height: 52px;
-      border: 1px solid rgba(255, 92, 154, 0.52);
-      background: var(--pink);
-      color: #080706;
-      padding: 0 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 950;
-      text-transform: uppercase;
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
-    }
-
-    @keyframes breathe {
-      0%,
-      100% {
-        transform: scale(1);
-        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.56), 0 0 0 rgba(255, 92, 154, 0);
-      }
-      50% {
-        transform: scale(1.04);
-        box-shadow: 0 20px 56px rgba(0, 0, 0, 0.62), 0 0 0 8px rgba(255, 92, 154, 0.08);
-      }
-    }
-
-    .mag-panel {
-      position: fixed;
-      right: clamp(16px, 4vw, 30px);
-      bottom: 106px;
-      z-index: 89;
-      width: min(calc(100vw - 32px), 360px);
-      border: 1px solid rgba(200, 169, 126, 0.4);
-      background: rgba(5, 4, 3, 0.96);
-      color: var(--paper);
-      padding: 18px;
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      transition: opacity 160ms ease, transform 160ms ease;
-    }
-
-    .mag-panel.open {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .mag-panel h2 {
-      font-size: 30px;
-    }
-
-    .mag-panel p {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .mag-buttons {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .mag-buttons button {
-      min-height: 42px;
-      border: 1px solid rgba(245, 239, 230, 0.14);
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--paper);
-      font: inherit;
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-      cursor: pointer;
-    }
-
-    .mag-buttons button:hover {
-      border-color: var(--pink);
-    }
-
-    .mag-answer {
-      min-height: 88px;
-      margin-top: 12px;
-      border-top: 1px solid rgba(245, 239, 230, 0.12);
-      padding-top: 12px;
-      color: rgba(245, 239, 230, 0.76);
-      font-size: 13px;
-      line-height: 1.48;
-    }
-
     @media (max-width: 940px) {
       .nav {
         display: none;
@@ -1162,7 +1326,7 @@
       .ecosystem-columns,
       .box-layout,
       .founder-grid,
-      .mag-grid {
+      .founder-layout {
         grid-template-columns: 1fr;
       }
 
@@ -1195,6 +1359,16 @@
         font-size: clamp(58px, 19vw, 92px);
       }
 
+      .hero-actions {
+        margin-top: 20px;
+      }
+
+      .hero-cta {
+        min-height: 48px;
+        padding: 0 18px;
+        font-size: 11px;
+      }
+
       .style-row,
       .parts-grid,
       .ecosystem-header,
@@ -1212,6 +1386,49 @@
 
       .lab-thumb-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section.style {
+        padding-top: 48px;
+        padding-bottom: 36px;
+      }
+
+      .style-row {
+        margin-top: 18px;
+        gap: 10px;
+      }
+
+      .style-card img {
+        aspect-ratio: 16 / 10;
+        max-height: 178px;
+      }
+
+      .style-label {
+        min-height: 0;
+        gap: 8px;
+        padding: 12px 12px 6px;
+      }
+
+      .style-label strong {
+        font-size: 16px;
+      }
+
+      .style-label span {
+        width: 100%;
+        text-align: left;
+      }
+
+      .style-colors {
+        gap: 1px;
+      }
+
+      .color-button {
+        min-height: 36px;
+      }
+
+      .style-copy {
+        margin-top: 10px;
+        font-size: 13px;
       }
 
       .eco-item {
@@ -1243,15 +1460,23 @@
         flex-direction: column;
       }
 
-      .mag-float {
-        width: 62px;
-        height: 62px;
+      .founder-apply-card {
+        padding: 18px;
       }
 
-      .mz-chat-float {
-        min-height: 46px;
-        padding: 0 14px;
+      .founder-stats {
+        grid-template-columns: 1fr;
       }
+
+      .founder-form {
+        grid-template-columns: 1fr;
+      }
+
+      .founder-field.span-2 {
+        grid-column: auto;
+      }
+
+
     }
   </style>
 </head>
@@ -1264,12 +1489,8 @@
     <nav class="nav" aria-label="Sections">
       <a href="#system">System</a>
       <a href="#snap">Snap</a>
-      <a href="#box">Included</a>
       <a href="#style">Style</a>
-      <a href="#lab">Lab</a>
-      <a href="#life">POV Life</a>
-      <a href="founder/#apply">Become a Founder</a>
-      <a href="#contact">Contact</a>
+      <a href="#founder">Founder</a>
     </nav>
   </header>
 
@@ -1283,6 +1504,9 @@
         <h1>MAGSNAP</h1>
         <p class="hero-subtitle">Wearable Magnetic Ecosystem</p>
         <p class="hero-tagline">100% Magnetic · 0% Electric</p>
+        <div class="hero-actions">
+          <a class="hero-cta" href="#founder">Join Founder / 成为 Founder</a>
+        </div>
       </div>
     </section>
 
@@ -1291,8 +1515,8 @@
         <div>
           <div class="section-mark">02</div>
           <p class="eyebrow">One System</p>
-          <h2>For Camera, Audio and AI</h2>
-          <p class="body-copy">MAGSNAP is not just glasses. It is a head-mounted expansion system — a wearable base for camera, audio, AI, tracker, and communication modules.</p>
+          <h2>For Camera and Audio</h2>
+          <p class="body-copy">MAGSNAP is not just glasses. It is a Head-Mounted Magnetic Expansion System — a wearable base for camera, audio, tracker, and communication modules.</p>
           <div class="chips" aria-label="Compatibility">
             <span class="chip">Insta360 GO3</span>
             <span class="chip">GO3S</span>
@@ -1301,11 +1525,11 @@
             <span class="chip">AirTag</span>
             <span class="chip">Walkie Talkie</span>
           </div>
-          <p class="native-note">Native magnetic mounting.<br>No adapters.<br>脑袋外挂系统</p>
+          <p class="native-note">Native magnetic mounting.<br>No adapters.<br>头部磁吸扩展系统</p>
         </div>
-        <div class="media-frame" aria-label="Kitesurfing lifestyle">
-          <video autoplay muted loop playsinline poster="assets/site/hero-kitesurf-poster.jpg">
-            <source src="assets/site/hero-kitesurf.mp4" type="video/mp4">
+        <div class="media-frame" aria-label="MagSnap product demo">
+          <video autoplay muted loop playsinline preload="metadata" poster="assets/site/system-kitesurf-poster.jpg">
+            <source src="assets/site/system-kitesurf-loop.mp4" type="video/mp4">
           </video>
         </div>
       </div>
@@ -1317,7 +1541,7 @@
           <div>
             <div class="section-mark">03</div>
             <p class="eyebrow">Ecosystem</p>
-            <h2>Compact Magnetic Index</h2>
+            <h2>Compact Magnetic Index / 磁吸生态索引</h2>
           </div>
         </div>
 
@@ -1469,12 +1693,13 @@
     <section class="section style" id="style">
       <div class="wrap">
         <div class="section-mark">04</div>
-        <p class="eyebrow">Choose Your Style</p>
-        <h2>Three Frame Styles</h2>
+        <p class="eyebrow">Three Frame Styles</p>
+        <h2>Three Frame Styles / 三种镜架风格</h2>
+        <p class="style-copy">Same Magnetic System / 同一个磁吸系统</p>
         <div class="style-row">
           <article class="style-card">
             <img data-style-image src="assets/site/style-black-yellow.jpg" alt="TYPE A MagSnap frame with black lens option">
-            <div class="style-label"><strong>TYPE A</strong><span>BLACK / BLUE / PINK / SMOKE</span></div>
+            <div class="style-label"><strong>Model A / 甲</strong><span>BLACK / BLUE / PINK / SMOKE</span></div>
             <div class="style-colors" aria-label="TYPE A lens colors">
               <button class="color-button active" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE A MagSnap frame with black lens option">Black</button>
               <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE A MagSnap frame with blue lens option">Blue</button>
@@ -1484,7 +1709,7 @@
           </article>
           <article class="style-card">
             <img data-style-image src="assets/site/style-clear-pink.jpg" alt="TYPE B MagSnap frame with pink lens option">
-            <div class="style-label"><strong>TYPE B</strong><span>BLACK / BLUE / PINK / SMOKE</span></div>
+            <div class="style-label"><strong>Model B / 乙</strong><span>BLACK / BLUE / PINK / SMOKE</span></div>
             <div class="style-colors" aria-label="TYPE B lens colors">
               <button class="color-button" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE B MagSnap frame with black lens option">Black</button>
               <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE B MagSnap frame with blue lens option">Blue</button>
@@ -1494,7 +1719,7 @@
           </article>
           <article class="style-card">
             <img data-style-image src="assets/site/style-clear-smoke.jpg" alt="TYPE C MagSnap frame with smoke lens option">
-            <div class="style-label"><strong>TYPE C</strong><span>BLACK / BLUE / PINK / SMOKE</span></div>
+            <div class="style-label"><strong>Model C / 丙</strong><span>BLACK / BLUE / PINK / SMOKE</span></div>
             <div class="style-colors" aria-label="TYPE C lens colors">
               <button class="color-button" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE C MagSnap frame with black lens option">Black</button>
               <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE C MagSnap frame with blue lens option">Blue</button>
@@ -1506,118 +1731,93 @@
       </div>
     </section>
 
-    <section class="section why" id="why" aria-label="Why MagSnap">
-      <div class="why-lines">
-        <p>Only Magnetic</p>
-        <p>No Electric</p>
-        <p>Nothing else.</p>
-      </div>
-    </section>
-
-    <section class="section life" id="life">
+    <section class="section founder-apply" id="founder">
       <div class="wrap">
-        <div class="section-mark">06</div>
-        <p class="eyebrow">POV Life</p>
-        <h2>Real MagSnap Footage</h2>
-        <p class="body-copy">Kitesurfing, beach lifestyle, DJ, travel, and product use from existing MagSnap media.</p>
-        <div class="life-grid">
-          <div class="life-tile">
-            <video autoplay muted loop playsinline data-media-slot="pov-kitesurf">
-              <source src="assets/site/pov-kitesurf.mp4" type="video/mp4">
-            </video>
-            <span>Kitesurfing</span>
-          </div>
-          <div class="life-tile">
-            <video autoplay muted loop playsinline data-media-slot="pov-beach">
-              <source src="assets/site/pov-beach.mp4" type="video/mp4">
-            </video>
-            <span>Beach Lifestyle</span>
-          </div>
-          <div class="life-tile">
-            <video autoplay muted loop playsinline data-media-slot="pov-dj">
-              <source src="assets/site/pov-dj.mp4" type="video/mp4">
-            </video>
-            <span>DJ</span>
-          </div>
-          <div class="life-tile">
-            <video autoplay muted loop playsinline data-media-slot="pov-travel">
-              <source src="assets/site/pov-travel.mp4" type="video/mp4">
-            </video>
-            <span>Travel</span>
-          </div>
-          <div class="life-tile">
-            <video autoplay muted loop playsinline data-media-slot="pov-sailing">
-              <source src="assets/site/pov-sailing.mp4" type="video/mp4">
-            </video>
-            <span>Sailing</span>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="founder-apply-card">
+          <div class="founder-layout">
+            <div class="founder-intro">
+              <div class="section-mark">05</div>
+              <p class="eyebrow">Invite-Only Founder / 邀请制 Founder</p>
+              <h2>Join the MagSnap<br>Founder Network</h2>
+              <p class="founder-subtitle">Invite-only access for real players, testers, creators and early contributors.<br>加入 MagSnap Founder 网络<br>仅向真实玩家、测试者、创作者和早期共创者开放的邀请制通道。</p>
+              <div class="founder-stats" aria-label="Founder numbers">
+                <div class="founder-stat">
+                  <strong>1000</strong>
+                  <span>Founder cap: 1,000 people.<br>Founder 总名额：1000 人。</span>
+                </div>
+                <div class="founder-stat">
+                  <strong>1–2</strong>
+                  <span>Each approved Founder may invite 1–2 qualified people.<br>每位通过审核的 Founder，可推荐 1–2 位高质量玩家。</span>
+                </div>
+              </div>
+              <div class="founder-points">
+                <div class="founder-point"><strong>MagSnap Founder is invite-only.</strong> The first Founder group is reserved for people who can help test, improve and shape the MagSnap magnetic eyewear system.<br>首批 MagSnap Founder 采用邀请制。Founder 名额只开放给能够测试、改进并共同塑造 MagSnap 磁吸眼镜系统的人。</div>
+                <div class="founder-point"><strong>1–2 invites each.</strong> Each approved Founder may invite one or two qualified people to join the next wave.<br>每位通过审核的 Founder，可推荐 1–2 位高质量玩家进入下一轮邀请。</div>
+                <div class="founder-point"><strong>Locked after 1,000.</strong> Founder access will be permanently closed once the first 1,000 Founders are confirmed.<br>当首批 1,000 位 Founder 确认后，Founder 身份将永久锁定，不再开放。</div>
+                <div class="founder-point"><strong>Interest is open. Founder access is selective.</strong> Anyone can express interest. Founder status is granted only to invited, reviewed people who can make a real contribution.<br>所有人可以表达申请意向。但 Founder 身份只授予受邀请、通过审核、并能真实贡献的人。</div>
+              </div>
+            </div>
 
-    <section class="section founder" id="founder">
-      <div class="wrap founder-grid">
-        <div>
-          <div class="section-mark">07</div>
-          <p class="eyebrow">Founder</p>
-          <p class="founder-quote">Built for myself.<span>Shared with the world.</span></p>
-          <p class="body-copy">MAGSNAP started as MZ's own head-mounted expansion system — 脑袋外挂系统 — and is becoming a registry for players, creators, explorers, and early founders.</p>
-        </div>
-        <div class="founder-photo">
-          <img src="assets/site/founder.jpg" alt="Real founder wearing MagSnap">
-        </div>
-      </div>
-    </section>
-
-    <section class="section mag-section" id="mag">
-      <div class="wrap mag-grid">
-        <div>
-          <div class="section-mark">08</div>
-          <p class="eyebrow">MAG AI</p>
-          <h2>MAG</h2>
-          <p class="lead">Persistent floating assistant.</p>
-          <div class="mag-topics" aria-label="MAG topics">
-            <span class="mag-topic">Compatibility</span>
-            <span class="mag-topic">Installation</span>
-            <span class="mag-topic">Warranty</span>
-            <span class="mag-topic">Shipping</span>
-            <span class="mag-topic">FAQ</span>
-            <span class="mag-topic">Disclaimer</span>
+            <div class="founder-form-wrap">
+              <div class="founder-form-title">Founder Apply / 申请 Founder</div>
+              <p class="founder-form-lead">Anyone can express interest. Only invited and qualified contributors become Founder.<br>所有人可以表达申请意向。只有受邀请、通过审核并能真实贡献的人会成为 Founder。</p>
+              <div class="founder-apply-actions">
+                <div class="founder-invite-note" id="founder-invite-note" aria-live="polite"></div>
+                <button class="founder-btn founder-toggle" id="founder-toggle" type="button" aria-expanded="false" aria-controls="founder-form-collapsible">Start Founder Survey / 开始 Founder 问卷</button>
+              </div>
+              <div class="founder-form-collapsible" id="founder-form-collapsible" hidden>
+                <form class="founder-form" id="founder-form" action="#" method="post">
+                  <div class="founder-field">
+                    <label for="founder-name">Name / 姓名</label>
+                    <input id="founder-name" type="text" name="name" placeholder="Name / 姓名" autocomplete="name" required>
+                  </div>
+                  <div class="founder-field">
+                    <label for="founder-email">Email / 邮箱</label>
+                    <input id="founder-email" type="email" name="email" placeholder="Email / 邮箱" autocomplete="email" required>
+                  </div>
+                  <div class="founder-field">
+                    <label for="founder-country">Country / 国家</label>
+                    <input id="founder-country" type="text" name="country" placeholder="Country / 国家" autocomplete="country-name" required>
+                  </div>
+                  <div class="founder-field">
+                    <label for="founder-city">City / 城市</label>
+                    <input id="founder-city" type="text" name="city" placeholder="City / 城市" autocomplete="address-level2" required>
+                  </div>
+                  <div class="founder-field">
+                    <label for="founder-sport">Sport or Industry / 运动或行业</label>
+                    <input id="founder-sport" type="text" name="sport_or_industry" placeholder="FPV / Sailing / Creator / 行业" required>
+                  </div>
+                  <div class="founder-field">
+                    <label for="founder-device">Device You Use / 你使用的设备</label>
+                    <input id="founder-device" type="text" name="device" placeholder="GO3S / DJI Nano / DJI Mic / AirTag / 设备" required>
+                  </div>
+                  <div class="founder-field">
+                    <label for="founder-social">Social Link / 社交账号链接</label>
+                    <input id="founder-social" type="text" name="social_link" placeholder="Instagram / WeChat / Website / 账号">
+                  </div>
+                  <div class="founder-field">
+                    <label for="founder-code">Invitation Code / 邀请码</label>
+                    <input id="founder-code" type="text" name="invitation_code" placeholder="Invitation Code / 邀请码" required>
+                  </div>
+                  <div class="founder-field span-2">
+                    <label for="founder-invited-by">Who invited you? / 谁邀请了你？</label>
+                    <input id="founder-invited-by" type="text" name="invited_by" placeholder="Who invited you? / 谁邀请了你？" required>
+                  </div>
+                  <div class="founder-field span-2">
+                    <label for="founder-reason">Why do you want to test MagSnap? / 你为什么想测试 MagSnap？</label>
+                    <textarea id="founder-reason" name="reason" placeholder="Use case / sport / field feedback / why you should join the first wave. 使用场景 / 运动类型 / 反馈能力 / 为什么适合首批。" required></textarea>
+                  </div>
+                  <label class="checkbox-row founder-field span-2" for="founder-share">
+                    <input id="founder-share" type="checkbox" name="share_feedback">
+                    <span>Are you willing to share feedback, photos or videos? / 你是否愿意分享反馈、照片或视频？</span>
+                  </label>
+                  <button class="founder-btn span-2" type="submit">Apply to Become a Founder / 申请成为 Founder</button>
+                  <div class="form-status" id="founder-form-status" aria-live="polite"></div>
+                </form>
+                <p class="form-note">Invite-only. We review the invitation source and use case before reply. / 邀请制。我们会先审核邀请来源和使用场景。</p>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="mag-disc-large" aria-hidden="true">
-          <img src="assets/site/panda-logo.jpg" alt="">
-        </div>
-      </div>
-    </section>
-
-    <section class="section contact" id="contact">
-      <div class="wrap">
-        <div class="section-mark">09</div>
-        <p class="eyebrow">Contact</p>
-        <h2>Talk to the Founder</h2>
-        <p class="lead">Chat directly with MZ.</p>
-        <div class="contact-grid" aria-label="Founder contact methods">
-          <a class="contact-card" href="assets/site/wechat-qr.jpg" target="_blank" rel="noopener">
-            <img class="contact-qr" src="assets/site/wechat-qr.jpg" alt="MZ WeChat QR code">
-            <strong>WeChat QR</strong>
-            <span>Scan to add 马峥 MZ.</span>
-          </a>
-          <a class="contact-card" href="assets/site/whatsapp-qr.jpg" target="_blank" rel="noopener">
-            <img class="contact-qr" src="assets/site/whatsapp-qr.jpg" alt="MZ WhatsApp QR code">
-            <strong>WhatsApp</strong>
-            <span>Scan to start a WhatsApp chat.</span>
-          </a>
-          <a class="contact-card" href="https://www.instagram.com/mzmagsnap/" target="_blank" rel="noopener">
-            <img class="contact-avatar" src="assets/site/mz-instagram-avatar.jpg" alt="MZ Instagram profile image">
-            <strong>Instagram</strong>
-            <span>@mzmagsnap</span>
-          </a>
-          <a class="contact-card" href="mailto:info@magsnap.me">
-            <div class="contact-mark">@</div>
-            <strong>Email</strong>
-            <span>info@magsnap.me</span>
-          </a>
         </div>
       </div>
     </section>
@@ -1631,30 +1831,12 @@
         <a href="disclaimer.html#warranty">Warranty</a>
         <a href="disclaimer.html#disclaimer">Disclaimer</a>
         <a href="disclaimer.html#privacy">Privacy</a>
-        <a href="founder/">Activate</a>
+        <a href="founder/">Founder</a>
         <a href="registry/">Registry</a>
         <a href="mailto:info@magsnap.me">info@magsnap.me</a>
       </div>
     </div>
   </footer>
-
-  <a class="mz-chat-float" href="#contact">Chat with MZ</a>
-  <button class="mag-float" type="button" aria-label="Open MAG assistant" aria-expanded="false">
-    <img src="assets/site/panda-logo.jpg" alt="">
-  </button>
-  <aside class="mag-panel" aria-label="MAG assistant">
-    <h2>MAG</h2>
-    <p>Ask about compatibility, installation, warranty, shipping, FAQ, or disclaimer.</p>
-    <div class="mag-buttons">
-      <button type="button" data-answer="compatibility">Compatibility</button>
-      <button type="button" data-answer="installation">Installation</button>
-      <button type="button" data-answer="warranty">Warranty</button>
-      <button type="button" data-answer="shipping">Shipping</button>
-      <button type="button" data-answer="faq">FAQ</button>
-      <button type="button" data-answer="disclaimer">Disclaimer</button>
-    </div>
-    <div class="mag-answer" id="mag-answer">Tap a topic. MAG gives the short answer first.</div>
-  </aside>
 
   <script>
     const heroVideo = document.querySelector(".hero-video");
@@ -1680,27 +1862,104 @@
       if (!document.hidden) playHeroVideo();
     });
 
-    const floatButton = document.querySelector(".mag-float");
-    const panel = document.querySelector(".mag-panel");
-    const answer = document.querySelector("#mag-answer");
-    const answers = {
-      compatibility: "MAGSNAP is designed around native magnetic mounting for lightweight camera, audio, AI, tracker, and communication modules.",
-      installation: "Snap the module to the magnetic interface, check alignment by hand, then test gently before real use.",
-      warranty: "Warranty information depends on the purchase channel and batch. Keep purchase proof and inspect magnets before each use. Contact info@magsnap.me if needed.",
-      shipping: "Shipping is handled by the sales platform or channel where the product is purchased. Contact info@magsnap.me if needed.",
-      faq: "MAGSNAP is not just glasses. It is a head-mounted expansion system — a wearable base for camera, audio, AI, tracker, and communication modules. Chinese concept: 脑袋外挂系统.",
-      disclaimer: "Magnetic devices may detach. High speed, heavy impact, and improper use increase risk. User is responsible for attached devices."
+    const getFounderHash = () => window.location.hash || "";
+    const getFounderHashParams = () => {
+      const hash = getFounderHash();
+      const queryIndex = hash.indexOf("?");
+      if (queryIndex === -1) return new URLSearchParams();
+      return new URLSearchParams(hash.slice(queryIndex + 1));
     };
 
-    floatButton.addEventListener("click", () => {
-      const open = panel.classList.toggle("open");
-      floatButton.setAttribute("aria-expanded", String(open));
+    const jumpToFounderFromHash = () => {
+      if (!getFounderHash().startsWith("#founder")) return;
+      const founderSection = document.getElementById("founder");
+      if (!founderSection) return;
+      window.requestAnimationFrame(() => {
+        founderSection.scrollIntoView({ block: "start" });
+      });
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", jumpToFounderFromHash, { once: true });
+    } else {
+      jumpToFounderFromHash();
+    }
+
+    window.addEventListener("hashchange", jumpToFounderFromHash);
+
+    const founderForm = document.getElementById("founder-form");
+    const founderFormStatus = document.getElementById("founder-form-status");
+    const founderToggle = document.getElementById("founder-toggle");
+    const founderFormCollapsible = document.getElementById("founder-form-collapsible");
+    const founderInviteNote = document.getElementById("founder-invite-note");
+    const founderStorageKey = "magsnap_founder_applications_v2";
+
+    const showFounderStatus = (message) => {
+      if (!founderFormStatus) return;
+      founderFormStatus.innerHTML = message;
+      founderFormStatus.classList.add("is-visible");
+    };
+
+    const founderParams = new URLSearchParams(window.location.search);
+    const founderHashParams = getFounderHashParams();
+    const inviteCode = founderParams.get("invite") || founderParams.get("code") || founderHashParams.get("invite") || founderHashParams.get("code");
+    const invitedBy = founderParams.get("by") || founderParams.get("ref") || founderHashParams.get("by") || founderHashParams.get("ref");
+
+    const openFounderSurvey = () => {
+      if (!founderFormCollapsible || !founderToggle) return;
+      founderFormCollapsible.hidden = false;
+      founderToggle.setAttribute("aria-expanded", "true");
+      founderToggle.textContent = "Founder Survey Open / 问卷已展开";
+    };
+
+    founderToggle?.addEventListener("click", () => {
+      const willOpen = founderFormCollapsible?.hidden;
+      if (willOpen) {
+        openFounderSurvey();
+        founderForm?.querySelector("input, textarea, select")?.focus();
+      } else if (founderFormCollapsible) {
+        founderFormCollapsible.hidden = true;
+        founderToggle.setAttribute("aria-expanded", "false");
+        founderToggle.textContent = "Start Founder Survey / 开始 Founder 问卷";
+      }
     });
 
-    document.querySelectorAll("[data-answer]").forEach((button) => {
-      button.addEventListener("click", () => {
-        answer.textContent = answers[button.dataset.answer];
-      });
+    if (founderForm && inviteCode && founderForm.elements.invitation_code) {
+      founderForm.elements.invitation_code.value = inviteCode;
+    }
+
+    if (founderForm && invitedBy && founderForm.elements.invited_by) {
+      founderForm.elements.invited_by.value = invitedBy;
+    }
+
+    if (founderInviteNote && (inviteCode || invitedBy)) {
+      founderInviteNote.innerHTML = "You are entering through a Founder invitation.<br>你正在通过 Founder 邀请进入。";
+      founderInviteNote.classList.add("is-visible");
+    }
+
+    founderForm?.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(founderForm);
+      const payload = Object.fromEntries(formData.entries());
+      payload.share_feedback = founderForm.elements.share_feedback?.checked || false;
+      payload.submitted_at = new Date().toISOString();
+      payload.source = window.location.href;
+
+      try {
+        const current = JSON.parse(window.localStorage.getItem(founderStorageKey) || "[]");
+        current.push(payload);
+        window.localStorage.setItem(founderStorageKey, JSON.stringify(current));
+        founderForm.reset();
+        if (inviteCode && founderForm.elements.invitation_code) {
+          founderForm.elements.invitation_code.value = inviteCode;
+        }
+        if (invitedBy && founderForm.elements.invited_by) {
+          founderForm.elements.invited_by.value = invitedBy;
+        }
+        showFounderStatus("Thank you. Your Founder application has been received.<br>We will review your invitation and use case.<br><br>谢谢，你的 Founder 申请已收到。<br>我们会审核你的邀请来源和使用场景。");
+      } catch (error) {
+        showFounderStatus("Unable to save the Founder application on this device right now.<br>当前设备暂时无法保存 Founder 申请，请稍后再试。");
+      }
     });
 
     document.querySelectorAll(".color-button").forEach((button) => {

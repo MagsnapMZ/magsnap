@@ -1,202 +1,92 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MAGSNAP | Founder Program · 创始人计划</title>
-  <meta name="description" content="Join the MAGSNAP Founder Program. Limited to 1000. / MAGSNAP 创始人计划，全球限量 1000 席。">
-  <link rel="stylesheet" href="../assets/founder/founder-program.css">
+  <title>MAGSNAP Founder Redirect</title>
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url=../#founder">
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      --paper: #f5efe6;
+      --kraft: #c8a97e;
+      --pink: #ff5c9a;
+      --black: #000;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      background: var(--black);
+      color: var(--paper);
+      padding: 24px;
+    }
+
+    .card {
+      width: min(100%, 520px);
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(34px, 10vw, 58px);
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 14px 0 0;
+      color: rgba(245, 239, 230, 0.74);
+      line-height: 1.5;
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      min-height: 48px;
+      padding: 0 18px;
+      border: 1px solid rgba(200, 169, 126, 0.4);
+      color: var(--paper);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    a::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: var(--pink);
+    }
+  </style>
 </head>
 <body>
-
-  <header class="site-header" aria-label="MAGSNAP">
-    <a class="brand" href="../" aria-label="MAGSNAP home">
-      <img src="../assets/site/panda-logo.jpg" alt="Official MAGSNAP Panda Logo">
-      <span>MAGSNAP</span>
-    </a>
-    <nav class="nav" aria-label="Founder pages">
-      <a href="../">Home · 首页</a>
-      <a href="../registry/">Registry · 注册</a>
-    </nav>
-  </header>
-
-  <main>
-    <div class="founder-wrap">
-
-      <!-- Hero -->
-      <section class="founder-hero">
-        <div class="section-mark">01</div>
-        <p class="subtitle">EN / 中文</p>
-        <h1>Founder Program<br>创始人计划</h1>
-        <p class="description">
-          Application-based membership. Limited to 1,000 individuals worldwide.<br>
-          申请制会员。全球限量 1,000 人。
-        </p>
-        <div class="range-badge">
-          FOUNDER <strong>#0001</strong> &mdash; <strong>#1000</strong>
-        </div>
-        <p class="plain">
-          Your Founder Number comes from a physical card inside the glasses box. It is random and cannot be chosen. Every card is unique.<br>
-          创始人编号来自眼镜盒内的实体卡片。号码随机生成，不可自选，每张卡片唯一。
-        </p>
-        <div class="stats-row">
-          <div class="stat-item">
-            <div class="stat-number">1,000</div>
-            <div class="stat-label">Limit · 限额</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">Apply</div>
-            <div class="stat-label">Membership · 申请制</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">Global</div>
-            <div class="stat-label">Community · 全球社区</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Benefits -->
-      <h2 class="section-title">Benefits · 权益</h2>
-
-      <div class="benefits-grid">
-        <div class="benefit-card">
-          <h3>Early Access · 优先体验</h3>
-          <p>First access to new products, limited editions, and prototypes before public release. / 优先获得新品、限量版和工程样机。</p>
-        </div>
-        <div class="benefit-card">
-          <h3>Direct Input · 产品话语权</h3>
-          <p>Your feedback goes straight to product design. / 你的使用反馈直接影响下一代产品设计。</p>
-        </div>
-        <div class="benefit-card">
-          <h3>Permanent Record · 永久记录</h3>
-          <p>Your name listed in the public Founder Directory with a unique number from #0001 to #1000. / 姓名和编号在创始人目录中永久展示。</p>
-        </div>
-        <div class="benefit-card">
-          <h3>Global Network · 全球社群</h3>
-          <p>Connect with athletes, creators, engineers, and explorers who wear MAGSNAP in the field. / 与全球 MAGSNAP 用户社群建立连接。</p>
-        </div>
-        <div class="benefit-card">
-          <h3>Test Card ID · 测试卡身份</h3>
-          <p>A unique polarized UV test card with your Founder Number. Included in the glasses box. / 一张印有创始人编号的专属偏光 UV 测试卡，随眼镜盒附带。</p>
-        </div>
-      </div>
-
-      <!-- Application Form -->
-      <section class="apply-section" id="apply">
-        <h2>Apply · 申请</h2>
-        <p class="form-sub">Applications are reviewed individually. / 每人单独审核。</p>
-
-        <form class="founder-form" id="founder-form">
-          <div class="field">
-            <label for="name">Name / 姓名 *</label>
-            <input id="name" name="name" required placeholder="Your full name / 全名">
-          </div>
-          <div class="field">
-            <label for="phone">Phone / 电话 *</label>
-            <input id="phone" name="phone" type="tel" required placeholder="+86 138...">
-          </div>
-          <div class="field">
-            <label for="country">Country / 国家 *</label>
-            <input id="country" name="country" required placeholder="Country / 居住国">
-          </div>
-          <div class="field full">
-            <label for="address">Mailing Address / 邮寄地址 *</label>
-            <input id="address" name="address" required placeholder="Street, city, postal code / 街道、城市、邮编">
-          </div>
-          <div class="field">
-            <label for="profession">Profession / 职业 *</label>
-            <input id="profession" name="profession" required placeholder="What do you do? / 你的职业">
-          </div>
-          <div class="field">
-            <label for="sports">Sports / Hobby · 运动 / 爱好</label>
-            <input id="sports" name="sports" placeholder="FPV, kitesurf, moto, diving...">
-          </div>
-          <div class="field full">
-            <label for="reason">Why join? / 为什么加入？</label>
-            <textarea id="reason" name="reason" placeholder="Your use case, environment, what you'd build with MAGSNAP. / 你的使用场景和想法。"></textarea>
-          </div>
-
-          <div class="form-actions">
-            <button class="button" type="submit">Submit · 提交</button>
-          </div>
-          <div class="field full">
-            <label class="consent-label">
-              <input type="checkbox" id="apply-consent" required>
-              <span>I confirm my information is accurate and consent to being listed in the Founder Directory. / 我确认信息准确，同意在创始人名录中展示。</span>
-            </label>
-          </div>
-
-          <div class="form-status" id="form-status"></div>
-        </form>
-      </section>
-
-      <!-- Founder Directory -->
-      <section class="directory-section" id="directory">
-        <h2>Directory · 创始⼈名录</h2>
-        <p class="dir-sub">Public: number, name, country, profession, sports only. / 仅公开编号、姓名、国家、职业、运动。</p>
-
-        <div class="dir-table-wrap">
-          <table class="dir-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Name · 姓名</th>
-                <th>Country · 国家</th>
-                <th>Profession · 职业</th>
-                <th>Sports · 运动</th>
-              </tr>
-            </thead>
-            <tbody id="dir-body"></tbody>
-          </table>
-        </div>
-        <div class="dir-empty" id="dir-empty">No founders yet. Be the first. / 还没有创始人。成为第一个。</div>
-      </section>
-
-      <!-- Feedback -->
-      <section class="feedback-section" id="feedback">
-        <h2>Feedback · 反馈</h2>
-        <p class="fb-sub">Share your experience, ideas, or issues. Text, images, and videos are all welcome.<br>分享你的使用体验、想法或问题。文字、图片、视频都可以。</p>
-
-        <form class="feedback-form" id="feedback-form">
-          <div class="field full">
-            <label for="fb-name">Founder Name / 创始人姓名 *</label>
-            <input id="fb-name" name="fb_name" required placeholder="Your name as it appeared in the directory">
-          </div>
-          <div class="field full">
-            <label for="fb-message">Message / 内容 *</label>
-            <textarea id="fb-message" name="fb_message" required placeholder="What worked, what didn't, what would you change? / 什么好用、什么不好、想改进什么？"></textarea>
-          </div>
-          <div class="field full">
-            <label for="fb-image">Image / 图片</label>
-            <input id="fb-image" name="fb_image" type="file" accept="image/*">
-            <div class="fb-preview" id="fb-image-preview"></div>
-          </div>
-          <div class="field full">
-            <label for="fb-video">Video / 视频</label>
-            <input id="fb-video" name="fb_video" type="file" accept="video/*">
-            <div class="fb-preview" id="fb-video-preview"></div>
-          </div>
-          <div class="form-actions">
-            <button class="button" type="submit">Submit Feedback · 提交反馈</button>
-          </div>
-          <div class="field full">
-            <label class="consent-label">
-              <input type="checkbox" id="fb-consent" required>
-              <span>I consent to MAGSNAP reviewing and using my submitted feedback, images, and video for product improvement. / 我同意 MAGSNAP 审核并使用我提交的反馈、图片和视频用于产品改进。</span>
-            </label>
-          </div>
-          <div class="form-status" id="fb-status"></div>
-        </form>
-      </section>
-
-    </div>
+  <main class="card">
+    <h1>Founder</h1>
+    <p>Redirecting to the MAGSNAP Founder survey.<br>正在跳转到 MAGSNAP Founder 申请页面。</p>
+    <a href="../#founder">Open Founder Survey</a>
   </main>
-
-  <footer class="site-footer">
-    <span>MAGSNAP / Founder Program · 创始⼈计划</span>
-    <span>info@magsnap.me</span>
-  </footer>
-
-  <script src="../assets/founder/founder-program.js"></script>
+  <script>
+    const target = `../${window.location.search}#founder`;
+    window.location.replace(target);
+  </script>
 </body>
 </html>

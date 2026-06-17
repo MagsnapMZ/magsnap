@@ -488,6 +488,7 @@
       object-fit: cover;
       justify-self: center;
       filter: saturate(0.86) contrast(1.04);
+      pointer-events: none;
     }
 
     .lab-thumb span {
@@ -1799,15 +1800,21 @@
             <p class="ecosystem-kicker">测试实验 / MAGSNAP LAB</p>
             <div class="lab-thumb-grid">
               <button class="lab-thumb" type="button" data-lab-title="磁力拉扯测试 / Magnetic Strength Test" data-lab-copy="测试磁吸固定后的拉扯保持力。 / Measures holding force under pull and retention load." data-lab-src="assets/site/lab-thumbs/magnetic-strength.mp4" data-lab-poster="assets/site/lab-thumbs/magnetic-strength.jpg">
-                <img class="lab-thumb-media" src="assets/site/lab-thumbs/magnetic-strength.jpg" alt="Magnetic Strength Test thumbnail" loading="eager" decoding="async">
+                <video class="lab-thumb-media" autoplay muted loop playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/lab-thumbs/magnetic-strength.jpg" data-inline-autoplay-video="lab-strength" aria-hidden="true">
+                  <source src="assets/site/lab-thumbs/magnetic-strength.mp4" type="video/mp4">
+                </video>
                 <span>磁力拉扯测试 / Magnetic Strength Test</span>
               </button>
               <button class="lab-thumb" type="button" data-lab-title="磁力高斯测试 / Magnetic Gauss Test" data-lab-copy="测试核心磁力强度与吸附稳定性。 / Measures magnetic strength and attachment stability." data-lab-src="assets/site/lab-thumbs/magnetic-gauss.mp4" data-lab-poster="assets/site/lab-thumbs/magnetic-gauss.jpg">
-                <img class="lab-thumb-media" src="assets/site/lab-thumbs/magnetic-gauss.jpg" alt="Magnetic Gauss Test thumbnail" loading="eager" decoding="async">
+                <video class="lab-thumb-media" autoplay muted loop playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/lab-thumbs/magnetic-gauss.jpg" data-inline-autoplay-video="lab-gauss" aria-hidden="true">
+                  <source src="assets/site/lab-thumbs/magnetic-gauss.mp4" type="video/mp4">
+                </video>
                 <span>磁力高斯测试 / Magnetic Gauss Test</span>
               </button>
               <button class="lab-thumb" type="button" data-lab-title="海水暴晒测试 / Seawater Test" data-lab-copy="模拟海水、暴晒与户外环境下的持续使用测试。 / Long-term exposure test under seawater, sun and outdoor conditions." data-lab-src="assets/site/lab-thumbs/seawater-test.mp4" data-lab-poster="assets/site/lab-thumbs/seawater-test.jpg">
-                <img class="lab-thumb-media" src="assets/site/lab-thumbs/seawater-test.jpg" alt="Seawater Test thumbnail" loading="eager" decoding="async">
+                <video class="lab-thumb-media" autoplay muted loop playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/lab-thumbs/seawater-test.jpg" data-inline-autoplay-video="lab-seawater" aria-hidden="true">
+                  <source src="assets/site/lab-thumbs/seawater-test.mp4" type="video/mp4">
+                </video>
                 <span><strong>海水暴晒测试 / Seawater Test</strong><small>模拟海水、暴晒与户外环境下的持续使用测试。 / Long-term exposure test under seawater, sun and outdoor conditions.</small></span>
               </button>
             </div>
@@ -1824,25 +1831,25 @@
         <p class="style-copy">三种镜架风格。<br>同一个磁吸系统。</p>
         <div class="style-row">
           <article class="style-card">
-            <img data-style-image src="assets/site/style-clear-pink.jpg" alt="TYPE A MagSnap frame with pink lens option">
+            <img data-style-image src="assets/site/frames/frame-a-black.png" alt="TYPE A MagSnap frame with black frame option">
             <div class="style-label"><strong>A / 甲</strong><span>Action / 运动款</span></div>
             <div class="style-detail">大视野镜框，为 POV、户外和高强度运动准备。<em>Large field-of-view frame for POV, outdoor and high-intensity use.</em></div>
-            <div class="style-colors" aria-label="TYPE A current color labels">
-              <span class="color-chip">黑 / Black</span>
-              <span class="color-chip">蓝 / Blue</span>
-              <span class="color-chip active">粉 / Pink</span>
-              <span class="color-chip">灰 / Smoke</span>
+            <div class="style-colors" aria-label="TYPE A frame colors">
+              <button class="color-chip frame-color-button active" type="button" data-style-src="assets/site/frames/frame-a-black.png" data-style-alt="TYPE A MagSnap frame with black frame option">黑 / Black</button>
+              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-a-white.png" data-style-alt="TYPE A MagSnap frame with white frame option">白 / White</button>
+              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-a-clear.png" data-style-alt="TYPE A MagSnap frame with clear frame option">透明 / Clear</button>
+              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-a-white-black.png" data-style-alt="TYPE A MagSnap frame with white-black frame option">外白内黑 / White-Black</button>
             </div>
           </article>
           <article class="style-card">
-            <img data-style-image src="assets/site/style-black-yellow.jpg" alt="TYPE B MagSnap frame with black lens option">
+            <img data-style-image src="assets/site/frames/frame-b-black.png" alt="TYPE B MagSnap frame with black frame option">
             <div class="style-label"><strong>B / 乙</strong><span>Street / 街头款</span></div>
             <div class="style-detail">原生 MagSnap 风格，适合日常、骑行和创作者佩戴。<em>The original MagSnap look for daily wear, cycling and creators.</em></div>
-            <div class="style-colors" aria-label="TYPE B current color labels">
-              <span class="color-chip active">黑 / Black</span>
-              <span class="color-chip">蓝 / Blue</span>
-              <span class="color-chip">粉 / Pink</span>
-              <span class="color-chip">灰 / Smoke</span>
+            <div class="style-colors" aria-label="TYPE B frame colors">
+              <button class="color-chip frame-color-button active" type="button" data-style-src="assets/site/frames/frame-b-black.png" data-style-alt="TYPE B MagSnap frame with black frame option">黑 / Black</button>
+              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-b-white.png" data-style-alt="TYPE B MagSnap frame with white frame option">白 / White</button>
+              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-b-clear.png" data-style-alt="TYPE B MagSnap frame with clear frame option">透明 / Clear</button>
+              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-b-white-black.png" data-style-alt="TYPE B MagSnap frame with white-black frame option">外白内黑 / White-Black</button>
             </div>
           </article>
           <article class="style-card">

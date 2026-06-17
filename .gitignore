@@ -3,3 +3,6 @@ Thumbs.db
 *.log
 index_live_backup.html
 index_v2_preview.html
+preview-*.png
+playwright-recordings/
+*.webm

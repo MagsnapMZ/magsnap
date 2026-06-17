@@ -1633,7 +1633,7 @@
 
   <main>
     <section class="section hero" id="hero" aria-label="MAGSNAP hero video">
-      <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/site/hero-poster.jpg">
+      <video class="hero-video" autoplay muted loop playsinline webkit-playsinline="true" preload="auto" poster="assets/site/hero-poster.jpg" data-inline-autoplay-video="hero">
         <source src="assets/site/hero-pov.mp4" type="video/mp4">
       </video>
       <div class="wrap">
@@ -1665,7 +1665,7 @@
           <p class="native-note">原生磁吸连接。<br>无需转接。<br>头部磁吸外挂系统</p>
         </div>
         <div class="media-frame" aria-label="MagSnap product demo">
-          <video autoplay muted loop playsinline preload="metadata" poster="assets/site/system-kitesurf-poster.jpg">
+          <video class="system-video" autoplay muted loop playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/system-kitesurf-poster.jpg" data-inline-autoplay-video="system" data-inline-autoplay-fallback="controls" x5-playsinline="true">
             <source src="assets/site/system-kitesurf-loop.mp4" type="video/mp4">
           </video>
         </div>
@@ -1817,24 +1817,24 @@
         <p class="style-copy">三种镜架风格。<br>同一个磁吸系统。</p>
         <div class="style-row">
           <article class="style-card">
-            <img data-style-image src="assets/site/style-black-yellow.jpg" alt="TYPE A MagSnap frame with black lens option">
+            <img data-style-image src="assets/site/style-clear-pink.jpg" alt="TYPE A MagSnap frame with pink lens option">
             <div class="style-label"><strong>A / 甲</strong><span>Action / 运动款</span></div>
             <div class="style-detail">大视野镜框，为 POV、户外和高强度运动准备。<em>Large field-of-view frame for POV, outdoor and high-intensity use.</em></div>
             <div class="style-colors" aria-label="TYPE A lens colors">
-              <button class="color-button active" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE A MagSnap frame with black lens option">黑 / Black</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE A MagSnap frame with black lens option">黑 / Black</button>
               <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE A MagSnap frame with blue lens option">蓝 / Blue</button>
-              <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE A MagSnap frame with pink lens option">粉 / Pink</button>
+              <button class="color-button active" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE A MagSnap frame with pink lens option">粉 / Pink</button>
               <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE A MagSnap frame with smoke lens option">灰 / Smoke</button>
             </div>
           </article>
           <article class="style-card">
-            <img data-style-image src="assets/site/style-clear-pink.jpg" alt="TYPE B MagSnap frame with pink lens option">
+            <img data-style-image src="assets/site/style-black-yellow.jpg" alt="TYPE B MagSnap frame with black lens option">
             <div class="style-label"><strong>B / 乙</strong><span>Street / 街头款</span></div>
             <div class="style-detail">原生 MagSnap 风格，适合日常、骑行和创作者佩戴。<em>The original MagSnap look for daily wear, cycling and creators.</em></div>
             <div class="style-colors" aria-label="TYPE B lens colors">
-              <button class="color-button" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE B MagSnap frame with black lens option">黑 / Black</button>
+              <button class="color-button active" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE B MagSnap frame with black lens option">黑 / Black</button>
               <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE B MagSnap frame with blue lens option">蓝 / Blue</button>
-              <button class="color-button active" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE B MagSnap frame with pink lens option">粉 / Pink</button>
+              <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE B MagSnap frame with pink lens option">粉 / Pink</button>
               <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE B MagSnap frame with smoke lens option">灰 / Smoke</button>
             </div>
           </article>
@@ -1975,28 +1975,74 @@
   </footer>
 
   <script>
-    const heroVideo = document.querySelector(".hero-video");
-    const playHeroVideo = () => {
-      if (!heroVideo) return;
-      heroVideo.muted = true;
-      heroVideo.playsInline = true;
-      heroVideo.setAttribute("muted", "");
-      heroVideo.setAttribute("playsinline", "");
-      const playback = heroVideo.play();
+    const inlineAutoplayVideos = Array.from(document.querySelectorAll("[data-inline-autoplay-video]"));
+
+    const prepareInlineVideo = (video) => {
+      if (!video) return;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.autoplay = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("autoplay", "");
+      video.setAttribute("loop", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "true");
+    };
+
+    const playInlineVideo = (video) => {
+      if (!video) return;
+      prepareInlineVideo(video);
+      const playback = video.play();
       if (playback && typeof playback.catch === "function") {
-        playback.catch(() => {});
+        playback.catch(() => {
+          if (video.dataset.inlineAutoplayFallback === "controls") {
+            video.controls = true;
+            video.setAttribute("controls", "");
+          }
+        });
       }
     };
 
+    const playInlineAutoplayVideos = () => {
+      inlineAutoplayVideos.forEach((video) => {
+        playInlineVideo(video);
+      });
+    };
+
+    inlineAutoplayVideos.forEach((video) => {
+      prepareInlineVideo(video);
+
+      video.addEventListener("playing", () => {
+        if (video.controls) {
+          video.controls = false;
+          video.removeAttribute("controls");
+        }
+      });
+
+      video.addEventListener("loadedmetadata", () => {
+        playInlineVideo(video);
+      });
+
+      video.addEventListener("canplay", () => {
+        playInlineVideo(video);
+      });
+    });
+
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", playHeroVideo, { once: true });
+      document.addEventListener("DOMContentLoaded", playInlineAutoplayVideos, { once: true });
     } else {
-      playHeroVideo();
+      playInlineAutoplayVideos();
     }
 
     document.addEventListener("visibilitychange", () => {
-      if (!document.hidden) playHeroVideo();
+      if (!document.hidden) playInlineAutoplayVideos();
     });
+
+    window.addEventListener("pageshow", playInlineAutoplayVideos);
+    document.addEventListener("WeixinJSBridgeReady", playInlineAutoplayVideos, false);
+    window.addEventListener("touchstart", playInlineAutoplayVideos, { once: true, passive: true });
 
     const getFounderHash = () => window.location.hash || "";
     const getFounderHashParams = () => {

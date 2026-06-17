@@ -481,7 +481,7 @@
       transform: translateY(-1px);
     }
 
-    .lab-thumb video {
+    .lab-thumb-media {
       width: 100%;
       max-width: 120px;
       aspect-ratio: 120 / 68;
@@ -834,20 +834,33 @@
       background: rgba(0, 0, 0, 0.12);
     }
 
-    .color-button {
+    .color-chip {
       min-height: 42px;
+      display: grid;
+      place-items: center;
+      padding: 0 6px;
       border: 0;
       background: #fbfaf7;
       color: rgba(8, 7, 6, 0.62);
       font: inherit;
       font-size: 11px;
       font-weight: 950;
+      line-height: 1.1;
       text-transform: uppercase;
-      cursor: pointer;
     }
 
-    .color-button.active,
-    .color-button:hover {
+    .color-chip.active {
+      background: #080706;
+      color: var(--kraft);
+    }
+
+    .frame-color-button {
+      cursor: pointer;
+      appearance: none;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    .frame-color-button:hover {
       background: #080706;
       color: var(--kraft);
     }
@@ -1559,7 +1572,7 @@
         gap: 1px;
       }
 
-      .color-button {
+      .color-chip {
         min-height: 36px;
       }
 
@@ -1785,22 +1798,16 @@
           <div class="ecosystem-group" id="lab" aria-label="MagSnap Lab videos">
             <p class="ecosystem-kicker">测试实验 / MAGSNAP LAB</p>
             <div class="lab-thumb-grid">
-              <button class="lab-thumb" type="button" data-lab-title="磁力拉扯测试 / Magnetic Strength Test" data-lab-copy="测试磁吸固定后的拉扯保持力。 / Measures holding force under pull and retention load." data-lab-src="assets/site/lab-thumbs/magnetic-strength.mp4">
-                <video autoplay muted loop playsinline preload="metadata">
-                  <source src="assets/site/lab-thumbs/magnetic-strength.mp4" type="video/mp4">
-                </video>
+              <button class="lab-thumb" type="button" data-lab-title="磁力拉扯测试 / Magnetic Strength Test" data-lab-copy="测试磁吸固定后的拉扯保持力。 / Measures holding force under pull and retention load." data-lab-src="assets/site/lab-thumbs/magnetic-strength.mp4" data-lab-poster="assets/site/lab-thumbs/magnetic-strength.jpg">
+                <img class="lab-thumb-media" src="assets/site/lab-thumbs/magnetic-strength.jpg" alt="Magnetic Strength Test thumbnail" loading="eager" decoding="async">
                 <span>磁力拉扯测试 / Magnetic Strength Test</span>
               </button>
-              <button class="lab-thumb" type="button" data-lab-title="磁力高斯测试 / Magnetic Gauss Test" data-lab-copy="测试核心磁力强度与吸附稳定性。 / Measures magnetic strength and attachment stability." data-lab-src="assets/site/lab-thumbs/magnetic-gauss.mp4">
-                <video autoplay muted loop playsinline preload="metadata">
-                  <source src="assets/site/lab-thumbs/magnetic-gauss.mp4" type="video/mp4">
-                </video>
+              <button class="lab-thumb" type="button" data-lab-title="磁力高斯测试 / Magnetic Gauss Test" data-lab-copy="测试核心磁力强度与吸附稳定性。 / Measures magnetic strength and attachment stability." data-lab-src="assets/site/lab-thumbs/magnetic-gauss.mp4" data-lab-poster="assets/site/lab-thumbs/magnetic-gauss.jpg">
+                <img class="lab-thumb-media" src="assets/site/lab-thumbs/magnetic-gauss.jpg" alt="Magnetic Gauss Test thumbnail" loading="eager" decoding="async">
                 <span>磁力高斯测试 / Magnetic Gauss Test</span>
               </button>
-              <button class="lab-thumb" type="button" data-lab-title="海水暴晒测试 / Seawater Test" data-lab-copy="模拟海水、暴晒与户外环境下的持续使用测试。 / Long-term exposure test under seawater, sun and outdoor conditions." data-lab-src="assets/site/lab-thumbs/seawater-test.mp4">
-                <video autoplay muted loop playsinline preload="metadata">
-                  <source src="assets/site/lab-thumbs/seawater-test.mp4" type="video/mp4">
-                </video>
+              <button class="lab-thumb" type="button" data-lab-title="海水暴晒测试 / Seawater Test" data-lab-copy="模拟海水、暴晒与户外环境下的持续使用测试。 / Long-term exposure test under seawater, sun and outdoor conditions." data-lab-src="assets/site/lab-thumbs/seawater-test.mp4" data-lab-poster="assets/site/lab-thumbs/seawater-test.jpg">
+                <img class="lab-thumb-media" src="assets/site/lab-thumbs/seawater-test.jpg" alt="Seawater Test thumbnail" loading="eager" decoding="async">
                 <span><strong>海水暴晒测试 / Seawater Test</strong><small>模拟海水、暴晒与户外环境下的持续使用测试。 / Long-term exposure test under seawater, sun and outdoor conditions.</small></span>
               </button>
             </div>
@@ -1820,33 +1827,33 @@
             <img data-style-image src="assets/site/style-clear-pink.jpg" alt="TYPE A MagSnap frame with pink lens option">
             <div class="style-label"><strong>A / 甲</strong><span>Action / 运动款</span></div>
             <div class="style-detail">大视野镜框，为 POV、户外和高强度运动准备。<em>Large field-of-view frame for POV, outdoor and high-intensity use.</em></div>
-            <div class="style-colors" aria-label="TYPE A lens colors">
-              <button class="color-button" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE A MagSnap frame with black lens option">黑 / Black</button>
-              <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE A MagSnap frame with blue lens option">蓝 / Blue</button>
-              <button class="color-button active" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE A MagSnap frame with pink lens option">粉 / Pink</button>
-              <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE A MagSnap frame with smoke lens option">灰 / Smoke</button>
+            <div class="style-colors" aria-label="TYPE A current color labels">
+              <span class="color-chip">黑 / Black</span>
+              <span class="color-chip">蓝 / Blue</span>
+              <span class="color-chip active">粉 / Pink</span>
+              <span class="color-chip">灰 / Smoke</span>
             </div>
           </article>
           <article class="style-card">
             <img data-style-image src="assets/site/style-black-yellow.jpg" alt="TYPE B MagSnap frame with black lens option">
             <div class="style-label"><strong>B / 乙</strong><span>Street / 街头款</span></div>
             <div class="style-detail">原生 MagSnap 风格，适合日常、骑行和创作者佩戴。<em>The original MagSnap look for daily wear, cycling and creators.</em></div>
-            <div class="style-colors" aria-label="TYPE B lens colors">
-              <button class="color-button active" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE B MagSnap frame with black lens option">黑 / Black</button>
-              <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE B MagSnap frame with blue lens option">蓝 / Blue</button>
-              <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE B MagSnap frame with pink lens option">粉 / Pink</button>
-              <button class="color-button" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE B MagSnap frame with smoke lens option">灰 / Smoke</button>
+            <div class="style-colors" aria-label="TYPE B current color labels">
+              <span class="color-chip active">黑 / Black</span>
+              <span class="color-chip">蓝 / Blue</span>
+              <span class="color-chip">粉 / Pink</span>
+              <span class="color-chip">灰 / Smoke</span>
             </div>
           </article>
           <article class="style-card">
-            <img data-style-image src="assets/site/style-clear-smoke.jpg" alt="TYPE C MagSnap frame with smoke lens option">
+            <img data-style-image src="assets/site/frames/frame-c-black.jpg" alt="TYPE C MagSnap frame with black frame option">
             <div class="style-label"><strong>C / 丙</strong><span>Optical / 光学款</span></div>
             <div class="style-detail">尺寸更克制，为未来近视镜片和光学版本准备。<em>A more compact frame prepared for future prescription lens options.</em></div>
-            <div class="style-colors" aria-label="TYPE C lens colors">
-              <button class="color-button" type="button" data-style-src="assets/site/style-black-yellow.jpg" data-style-alt="TYPE C MagSnap frame with black lens option">黑 / Black</button>
-              <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE C MagSnap frame with blue lens option">蓝 / Blue</button>
-              <button class="color-button" type="button" data-style-src="assets/site/style-clear-pink.jpg" data-style-alt="TYPE C MagSnap frame with pink lens option">粉 / Pink</button>
-              <button class="color-button active" type="button" data-style-src="assets/site/style-clear-smoke.jpg" data-style-alt="TYPE C MagSnap frame with smoke lens option">灰 / Smoke</button>
+            <div class="style-colors" aria-label="TYPE C frame colors">
+              <button class="color-chip frame-color-button active" type="button" data-style-src="assets/site/frames/frame-c-black.jpg" data-style-alt="TYPE C MagSnap frame with black frame option">黑 / Black</button>
+              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-c-white.jpg" data-style-alt="TYPE C MagSnap frame with white frame option">白 / White</button>
+              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-c-clear.jpg" data-style-alt="TYPE C MagSnap frame with clear frame option">透明 / Clear</button>
+              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-c-white-black.jpg" data-style-alt="TYPE C MagSnap frame with white-black frame option">外白内黑 / White-Black</button>
             </div>
           </article>
         </div>
@@ -2155,6 +2162,7 @@
       document.body.style.overflow = "";
       labModalVideo.pause();
       labModalVideo.removeAttribute("src");
+      labModalVideo.removeAttribute("poster");
       labModalVideo.load();
     };
 
@@ -2163,6 +2171,9 @@
         if (!labModal || !labModalVideo || !labModalTitle || !labModalCopy) return;
         labModalTitle.textContent = button.dataset.labTitle || "MAGSNAP LAB";
         labModalCopy.textContent = button.dataset.labCopy || "";
+        if (button.dataset.labPoster) {
+          labModalVideo.poster = button.dataset.labPoster;
+        }
         labModalVideo.src = button.dataset.labSrc || "";
         labModal.hidden = false;
         document.body.style.overflow = "hidden";
@@ -2183,16 +2194,18 @@
       }
     });
 
-    document.querySelectorAll(".color-button").forEach((button) => {
+    document.querySelectorAll(".frame-color-button").forEach((button) => {
       button.addEventListener("click", () => {
         const card = button.closest(".style-card");
-        const image = card.querySelector("[data-style-image]");
-        card.querySelectorAll(".color-button").forEach((item) => item.classList.remove("active"));
+        const image = card?.querySelector("[data-style-image]");
+        if (!card || !image) return;
+        card.querySelectorAll(".frame-color-button").forEach((item) => item.classList.remove("active"));
         button.classList.add("active");
-        image.src = button.dataset.styleSrc;
-        image.alt = button.dataset.styleAlt;
+        image.src = button.dataset.styleSrc || image.src;
+        image.alt = button.dataset.styleAlt || image.alt;
       });
     });
+
   </script>
 </body>
 </html>

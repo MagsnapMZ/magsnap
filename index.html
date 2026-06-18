@@ -2098,6 +2098,11 @@
       founderFormStatus.classList.add("is-visible");
     };
 
+    const preserveFounderSheetText = (value) => {
+      const text = String(value || "").trim();
+      return /^0\d+$/.test(text) ? `'${text}` : text;
+    };
+
     const restoreFounderInviteFields = () => {
       if (!founderForm) return;
       if (inviteCode && founderForm.elements.invitation_code) {
@@ -2222,6 +2227,7 @@
       const formData = new FormData(founderForm);
       const payload = Object.fromEntries(formData.entries());
       payload.share_feedback = founderForm.elements.share_feedback?.checked || false;
+      payload.invitation_code = preserveFounderSheetText(payload.invitation_code);
       payload.submitted_at = new Date().toISOString();
       payload.source_url = window.location.href;
       payload.user_agent = window.navigator.userAgent;

@@ -1932,12 +1932,12 @@
                     <input id="founder-social" type="text" name="social_link" placeholder="微信 / Instagram / Website">
                   </div>
                   <div class="founder-field">
-                    <label for="founder-code">邀请码 / Invitation Code</label>
-                    <input id="founder-code" type="text" name="invitation_code" placeholder="邀请码 / Invitation Code" required>
+                    <label for="founder-code">Invitation Code / 邀请码<br>4-digit code if you have one / 如有四位邀请码请填写</label>
+                    <input id="founder-code" type="text" name="invitation_code" placeholder="e.g. 0171">
                   </div>
                   <div class="founder-field span-2">
-                    <label for="founder-invited-by">谁邀请了你？ / Who invited you?</label>
-                    <input id="founder-invited-by" type="text" name="invited_by" placeholder="谁邀请了你？ / Who invited you?" required>
+                    <label for="founder-invited-by">Who invited you? / 谁邀请了你？</label>
+                    <input id="founder-invited-by" type="text" name="invited_by" placeholder="Optional / 选填">
                   </div>
                   <div class="founder-field span-2">
                     <label for="founder-reason">你为什么想测试 MagSnap？ / Why do you want to test MagSnap?</label>
@@ -2089,12 +2089,96 @@
     const founderFormCollapsible = document.getElementById("founder-form-collapsible");
     const founderInviteNote = document.getElementById("founder-invite-note");
     const founderStorageKey = "magsnap_founder_applications_v2";
+    const founderSubmissionEndpoint = "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec";
+    const founderSubmitTimeoutMs = 20000;
 
     const showFounderStatus = (message) => {
       if (!founderFormStatus) return;
       founderFormStatus.innerHTML = message;
       founderFormStatus.classList.add("is-visible");
     };
+
+    const restoreFounderInviteFields = () => {
+      if (!founderForm) return;
+      if (inviteCode && founderForm.elements.invitation_code) {
+        founderForm.elements.invitation_code.value = inviteCode;
+      }
+      if (invitedBy && founderForm.elements.invited_by) {
+        founderForm.elements.invited_by.value = invitedBy;
+      }
+    };
+
+    const saveFounderBackup = (payload, status) => {
+      try {
+        const current = JSON.parse(window.localStorage.getItem(founderStorageKey) || "[]");
+        current.push({
+          ...payload,
+          backup_status: status,
+          backup_at: new Date().toISOString()
+        });
+        window.localStorage.setItem(founderStorageKey, JSON.stringify(current));
+      } catch (error) {
+        // Local backup is best-effort only. The Google Sheet submission remains primary.
+      }
+    };
+
+    const submitFounderPayload = (payload) => new Promise((resolve, reject) => {
+      if (!founderSubmissionEndpoint || founderSubmissionEndpoint.includes("PASTE_")) {
+        reject(new Error("Founder submission backend is not configured."));
+        return;
+      }
+
+      const frameName = `magsnap-founder-submit-${Date.now()}`;
+      const iframe = document.createElement("iframe");
+      iframe.name = frameName;
+      iframe.hidden = true;
+      iframe.setAttribute("aria-hidden", "true");
+
+      const form = document.createElement("form");
+      form.method = "post";
+      form.action = founderSubmissionEndpoint;
+      form.target = frameName;
+      form.hidden = true;
+      form.acceptCharset = "UTF-8";
+
+      Object.entries(payload).forEach(([key, value]) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = value == null ? "" : String(value);
+        form.appendChild(input);
+      });
+
+      const cleanup = () => {
+        window.removeEventListener("message", handleMessage);
+        window.clearTimeout(timeoutId);
+        form.remove();
+        iframe.remove();
+      };
+
+      const handleMessage = (event) => {
+        const data = event.data || {};
+        if (typeof data !== "object" || data.source !== "magsnap-founder-survey") return;
+        cleanup();
+        if (data.ok === true) {
+          resolve(data);
+        } else if (data.ok === false) {
+          reject(new Error(data.error || "Founder submission failed."));
+        } else {
+          reject(new Error("Invalid Founder submission response."));
+        }
+      };
+
+      const timeoutId = window.setTimeout(() => {
+        cleanup();
+        reject(new Error("Founder submission timed out."));
+      }, founderSubmitTimeoutMs);
+
+      window.addEventListener("message", handleMessage);
+      document.body.appendChild(iframe);
+      document.body.appendChild(form);
+      form.submit();
+    });
 
     const founderParams = new URLSearchParams(window.location.search);
     const founderHashParams = getFounderHashParams();
@@ -2133,28 +2217,40 @@
       founderInviteNote.classList.add("is-visible");
     }
 
-    founderForm?.addEventListener("submit", (event) => {
+    founderForm?.addEventListener("submit", async (event) => {
       event.preventDefault();
       const formData = new FormData(founderForm);
       const payload = Object.fromEntries(formData.entries());
       payload.share_feedback = founderForm.elements.share_feedback?.checked || false;
       payload.submitted_at = new Date().toISOString();
-      payload.source = window.location.href;
+      payload.source_url = window.location.href;
+      payload.user_agent = window.navigator.userAgent;
+      const submitButton = founderForm.querySelector("[type='submit']");
+      const originalButtonText = submitButton?.textContent;
+
+      saveFounderBackup(payload, "pending_backend");
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "正在提交 / Submitting";
+      }
+
+      showFounderStatus("正在提交 Founder 申请。<br>Submitting your Founder application.");
 
       try {
-        const current = JSON.parse(window.localStorage.getItem(founderStorageKey) || "[]");
-        current.push(payload);
-        window.localStorage.setItem(founderStorageKey, JSON.stringify(current));
+        await submitFounderPayload(payload);
+        saveFounderBackup(payload, "backend_saved");
         founderForm.reset();
-        if (inviteCode && founderForm.elements.invitation_code) {
-          founderForm.elements.invitation_code.value = inviteCode;
-        }
-        if (invitedBy && founderForm.elements.invited_by) {
-          founderForm.elements.invited_by.value = invitedBy;
-        }
+        restoreFounderInviteFields();
         showFounderStatus("谢谢，你的 Founder 申请已收到。<br>我们会审核你的邀请来源和使用场景。<br><br>Thank you. Your Founder application has been received.<br>We will review your invitation and use case.");
       } catch (error) {
-        showFounderStatus("当前设备暂时无法保存 Founder 申请，请稍后再试。<br>Unable to save the Founder application on this device right now.");
+        saveFounderBackup(payload, "backend_failed");
+        showFounderStatus("Founder 申请暂时提交失败，请稍后再试。<br>The Founder application could not be submitted right now. Please try again.");
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
       }
     });
 

@@ -2127,63 +2127,39 @@
       }
     };
 
-    const submitFounderPayload = (payload) => new Promise((resolve, reject) => {
+    const submitFounderPayload = async (payload) => {
       if (!founderSubmissionEndpoint || founderSubmissionEndpoint.includes("PASTE_")) {
-        reject(new Error("Founder submission backend is not configured."));
-        return;
+        throw new Error("Founder submission backend is not configured.");
       }
 
-      const frameName = `magsnap-founder-submit-${Date.now()}`;
-      const iframe = document.createElement("iframe");
-      iframe.name = frameName;
-      iframe.hidden = true;
-      iframe.setAttribute("aria-hidden", "true");
-
-      const form = document.createElement("form");
-      form.method = "post";
-      form.action = founderSubmissionEndpoint;
-      form.target = frameName;
-      form.hidden = true;
-      form.acceptCharset = "UTF-8";
-
+      const body = new URLSearchParams();
       Object.entries(payload).forEach(([key, value]) => {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = key;
-        input.value = value == null ? "" : String(value);
-        form.appendChild(input);
+        body.append(key, value == null ? "" : String(value));
       });
 
-      const cleanup = () => {
-        window.removeEventListener("message", handleMessage);
-        window.clearTimeout(timeoutId);
-        form.remove();
-        iframe.remove();
-      };
-
-      const handleMessage = (event) => {
-        const data = event.data || {};
-        if (typeof data !== "object" || data.source !== "magsnap-founder-survey") return;
-        cleanup();
-        if (data.ok === true) {
-          resolve(data);
-        } else if (data.ok === false) {
-          reject(new Error(data.error || "Founder submission failed."));
-        } else {
-          reject(new Error("Invalid Founder submission response."));
-        }
-      };
-
+      const controller = new AbortController();
       const timeoutId = window.setTimeout(() => {
-        cleanup();
-        reject(new Error("Founder submission timed out."));
+        controller.abort();
       }, founderSubmitTimeoutMs);
 
-      window.addEventListener("message", handleMessage);
-      document.body.appendChild(iframe);
-      document.body.appendChild(form);
-      form.submit();
-    });
+      try {
+        await fetch(founderSubmissionEndpoint, {
+          method: "POST",
+          mode: "no-cors",
+          cache: "no-store",
+          body,
+          signal: controller.signal
+        });
+        return { ok: true };
+      } catch (error) {
+        const reason = error && error.name === "AbortError"
+          ? "Founder submission timed out."
+          : "Founder submission network request failed.";
+        throw new Error(reason);
+      } finally {
+        window.clearTimeout(timeoutId);
+      }
+    };
 
     const founderParams = new URLSearchParams(window.location.search);
     const founderHashParams = getFounderHashParams();
@@ -2250,8 +2226,13 @@
         restoreFounderInviteFields();
         showFounderStatus("谢谢，你的 Founder 申请已收到。<br>我们会审核你的邀请来源和使用场景。<br><br>Thank you. Your Founder application has been received.<br>We will review your invitation and use case.");
       } catch (error) {
+        console.error("Founder application submission failed:", error);
         saveFounderBackup(payload, "backend_failed");
-        showFounderStatus("Founder 申请暂时提交失败，请稍后再试。<br>The Founder application could not be submitted right now. Please try again.");
+        const isTimeout = /timed out/i.test(error.message || "");
+        const statusText = isTimeout
+          ? "Founder 申请提交超时，请检查网络后再试。<br>The Founder application timed out. Please check your connection and try again."
+          : "Founder 申请提交失败，可能是网络或后台暂时不可用。请稍后再试。<br>The Founder application could not be submitted because the network or backend is temporarily unavailable. Please try again.";
+        showFounderStatus(statusText);
       } finally {
         if (submitButton) {
           submitButton.disabled = false;

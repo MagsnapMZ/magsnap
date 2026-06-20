@@ -1303,6 +1303,93 @@
       display: block;
     }
 
+    .founder-form.is-submitted > :not(.form-status) {
+      display: none;
+    }
+
+    .founder-success-card {
+      display: grid;
+      gap: 12px;
+    }
+
+    .founder-success-title {
+      margin: 0;
+      color: var(--paper);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(24px, 7vw, 36px);
+      line-height: 0.96;
+      text-transform: uppercase;
+    }
+
+    .founder-success-body,
+    .founder-success-steps {
+      margin: 0;
+      color: rgba(245, 239, 230, 0.78);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .founder-success-steps {
+      padding-left: 18px;
+    }
+
+    .founder-success-summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin: 0;
+      padding: 10px;
+      border: 1px solid rgba(245, 239, 230, 0.12);
+      background: rgba(0, 0, 0, 0.18);
+    }
+
+    .founder-success-summary div {
+      min-width: 0;
+    }
+
+    .founder-success-summary dt {
+      color: rgba(245, 239, 230, 0.48);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .founder-success-summary dd {
+      margin: 4px 0 0;
+      color: var(--paper);
+      font-size: 13px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .founder-success-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .founder-success-actions a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid rgba(200, 169, 126, 0.28);
+      border-radius: 999px;
+      color: var(--paper);
+      font-size: 12px;
+      font-weight: 950;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .founder-success-actions a:first-child {
+      background: var(--pink);
+      border-color: var(--pink);
+      color: #000;
+    }
+
     .form-note {
       margin-top: 14px;
       color: rgba(245, 239, 230, 0.48);
@@ -1947,7 +2034,7 @@
                     <input id="founder-share" type="checkbox" name="share_feedback">
                     <span>你是否愿意分享反馈、照片或视频？ / Are you willing to share feedback, photos or videos?</span>
                   </label>
-                  <button class="founder-btn span-2" type="submit">申请成为 Founder / Apply to Become a Founder</button>
+                  <button class="founder-btn span-2" type="submit">申请 Founder / Apply for Founder</button>
                   <div class="form-status" id="founder-form-status" aria-live="polite"></div>
                 </form>
                 <p class="form-note">邀请制。我们会先审核邀请来源和使用场景。 / Invite-only. We review the invitation source and use case before reply.</p>
@@ -2089,6 +2176,7 @@
     const founderFormCollapsible = document.getElementById("founder-form-collapsible");
     const founderInviteNote = document.getElementById("founder-invite-note");
     const founderStorageKey = "magsnap_founder_applications_v2";
+    const founderLatestSuccessKey = "magsnap_founder_latest_success";
     const founderSubmissionEndpoint = "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec";
     const founderSubmitTimeoutMs = 45000;
 
@@ -2096,6 +2184,55 @@
       if (!founderFormStatus) return;
       founderFormStatus.innerHTML = message;
       founderFormStatus.classList.add("is-visible");
+    };
+
+    const escapeFounderHtml = (value) => String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+    const showFounderSuccess = (payload) => {
+      if (!founderFormStatus) return;
+      founderForm?.classList.add("is-submitted");
+      founderFormStatus.classList.add("is-visible");
+      founderFormStatus.innerHTML = `
+        <div class="founder-success-card" role="status">
+          <h3 class="founder-success-title">Founder Application Received<br>申请已收到</h3>
+          <p class="founder-success-body">感谢申请成为 MagSnap Founder。<br>我们会审核你的邀请来源和使用场景。<br><br>Thank you for applying to become a MagSnap Founder.<br>We will review your invitation source and use case.</p>
+          <div>
+            <strong>Next Steps / 下一步：</strong>
+            <ol class="founder-success-steps">
+              <li>我们会审核邀请来源和使用场景</li>
+              <li>通过审核后会收到邮件通知</li>
+              <li>部分 Founder 将获得优先测试资格</li>
+            </ol>
+          </div>
+          <dl class="founder-success-summary" aria-label="Founder application summary">
+            <div><dt>Name</dt><dd>${escapeFounderHtml(payload.name)}</dd></div>
+            <div><dt>Email</dt><dd>${escapeFounderHtml(payload.email)}</dd></div>
+            <div><dt>Country</dt><dd>${escapeFounderHtml(payload.country)}</dd></div>
+            <div><dt>Use Case</dt><dd>${escapeFounderHtml(payload.use_case || payload.reason)}</dd></div>
+          </dl>
+          <div class="founder-success-actions">
+            <a href="#hero">Back to Home / 返回首页</a>
+            <a href="https://www.instagram.com/mzmagsnap" target="_blank" rel="noopener">Follow Updates / 关注更新</a>
+          </div>
+        </div>
+      `;
+      try {
+        window.localStorage.setItem(founderLatestSuccessKey, JSON.stringify({
+          name: payload.name,
+          email: payload.email,
+          country: payload.country,
+          use_case: payload.use_case || payload.reason,
+          submitted_at: payload.submitted_at
+        }));
+      } catch (_error) {
+        // Success display is already rendered; persistent local summary is best-effort.
+      }
+      founderFormStatus.scrollIntoView({ block: "center", behavior: "smooth" });
     };
 
     const preserveFounderSheetText = (value) => {
@@ -2266,9 +2403,7 @@
       try {
         await submitFounderPayload(payload);
         saveFounderBackup(payload, "backend_saved");
-        founderForm.reset();
-        restoreFounderInviteFields();
-        showFounderStatus("谢谢，你的 Founder 申请已收到。<br>我们会审核你的邀请来源和使用场景。<br><br>Thank you. Your Founder application has been received.<br>We will review your invitation and use case.");
+        showFounderSuccess(payload);
       } catch (error) {
         console.error("Founder application submission failed:", error);
         saveFounderBackup(payload, "backend_failed");

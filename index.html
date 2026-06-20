@@ -1928,8 +1928,8 @@
                     <input id="founder-device" type="text" name="device" placeholder="设备型号 / Device You Use" required>
                   </div>
                   <div class="founder-field">
-                    <label for="founder-social">社交账号链接 / Social Link</label>
-                    <input id="founder-social" type="text" name="social_link" placeholder="微信 / Instagram / Website">
+                    <label for="founder-social">联系方式 / Contact</label>
+                    <input id="founder-social" type="text" name="social_link" placeholder="微信 / WhatsApp / Instagram / Website">
                   </div>
                   <div class="founder-field">
                     <label for="founder-code">Invitation Code / 邀请码<br>4-digit code if you have one / 如有四位邀请码请填写</label>
@@ -2103,6 +2103,56 @@
       return /^0\d+$/.test(text) ? `'${text}` : text;
     };
 
+    const cleanFounderText = (value) => String(value || "").trim();
+
+    const buildFounderPayload = () => {
+      const formData = new FormData(founderForm);
+      const payload = Object.fromEntries(formData.entries());
+      const rawInvitationCode = cleanFounderText(payload.invitation_code);
+      const sheetInvitationCode = preserveFounderSheetText(rawInvitationCode);
+      const contactParts = [
+        cleanFounderText(payload.email),
+        cleanFounderText(payload.social_link)
+      ].filter(Boolean);
+
+      payload.name = cleanFounderText(payload.name);
+      payload.email = cleanFounderText(payload.email);
+      payload.country = cleanFounderText(payload.country);
+      payload.city = cleanFounderText(payload.city);
+      payload.sport_or_industry = cleanFounderText(payload.sport_or_industry);
+      payload.device = cleanFounderText(payload.device);
+      payload.social_link = cleanFounderText(payload.social_link);
+      payload.invited_by = cleanFounderText(payload.invited_by);
+      payload.reason = cleanFounderText(payload.reason);
+      payload.share_feedback = founderForm.elements.share_feedback?.checked || false;
+
+      payload.invitation_code = sheetInvitationCode;
+      payload.founder_number = sheetInvitationCode;
+      payload.founder_number_raw = rawInvitationCode;
+      payload.registry_number = sheetInvitationCode;
+      payload.industry = payload.sport_or_industry;
+      payload.profession = payload.sport_or_industry;
+      payload.sports = payload.sport_or_industry;
+      payload.device_used = payload.device;
+      payload.use_case = payload.reason;
+      payload.feedback_willing = payload.share_feedback ? "yes" : "no";
+      payload.contact_email = payload.email;
+      payload.contact_method = payload.social_link ? "Email / Social" : "Email";
+      payload.contact_detail = contactParts.join(" / ");
+      payload.wechat_or_social = payload.social_link;
+      payload.phone = "";
+      payload.address = "";
+      payload.form_version = "founder_apply_v3_2026_06_20";
+      payload.source_form = "homepage_founder_apply";
+      payload.page_language = "zh-CN/en";
+      payload.browser_language = window.navigator.language || "";
+      payload.submitted_at = new Date().toISOString();
+      payload.source_url = window.location.href;
+      payload.user_agent = window.navigator.userAgent;
+
+      return payload;
+    };
+
     const restoreFounderInviteFields = () => {
       if (!founderForm) return;
       if (inviteCode && founderForm.elements.invitation_code) {
@@ -2200,13 +2250,7 @@
 
     founderForm?.addEventListener("submit", async (event) => {
       event.preventDefault();
-      const formData = new FormData(founderForm);
-      const payload = Object.fromEntries(formData.entries());
-      payload.share_feedback = founderForm.elements.share_feedback?.checked || false;
-      payload.invitation_code = preserveFounderSheetText(payload.invitation_code);
-      payload.submitted_at = new Date().toISOString();
-      payload.source_url = window.location.href;
-      payload.user_agent = window.navigator.userAgent;
+      const payload = buildFounderPayload();
       const submitButton = founderForm.querySelector("[type='submit']");
       const originalButtonText = submitButton?.textContent;
 

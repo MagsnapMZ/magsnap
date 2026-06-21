@@ -1,0 +1,1491 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MAGSNAP | Panda Masters</title>
+  <meta name="description" content="Operation Vietnam Panda Masters check-in, registry and coverage dashboard for the first MagSnap kitesurf network.">
+  <style>
+    :root {
+      --black: #000;
+      --near: #080706;
+      --paper: #f5efe6;
+      --white: #fff;
+      --kraft: #c8a97e;
+      --pink: #ff5c9a;
+      --muted: rgba(245, 239, 230, 0.68);
+      --line: rgba(245, 239, 230, 0.16);
+      --dark-line: rgba(0, 0, 0, 0.14);
+      color-scheme: dark;
+      font-family: Inter, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--paper);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      pointer-events: none;
+      opacity: 0.045;
+      background-image:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.35) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+      background-size: 8px 12px;
+      mix-blend-mode: screen;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .header,
+    .footer {
+      width: min(100%, 1160px);
+      margin: 0 auto;
+      padding: 22px clamp(18px, 5vw, 44px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 950;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--white);
+      padding: 5px;
+      object-fit: contain;
+    }
+
+    .nav,
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 14px;
+      color: rgba(245, 239, 230, 0.7);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    .nav a:hover,
+    .footer-links a:hover {
+      color: var(--pink);
+    }
+
+    main {
+      width: min(100%, 1160px);
+      margin: 0 auto;
+      padding: clamp(36px, 6vw, 72px) clamp(18px, 5vw, 44px) clamp(70px, 9vw, 110px);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.52fr);
+      gap: clamp(24px, 5vw, 70px);
+      align-items: end;
+      min-height: 72svh;
+      padding-bottom: 42px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mark {
+      display: grid;
+      grid-template-columns: auto 1px;
+      align-items: start;
+      gap: 14px;
+      width: max-content;
+      margin-bottom: 28px;
+      color: var(--kraft);
+      font-size: 16px;
+      font-weight: 950;
+    }
+
+    .mark::after {
+      content: "";
+      width: 1px;
+      height: 58px;
+      background: currentColor;
+      opacity: 0.48;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--kraft);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Arial Black", Impact, "Avenir Next Condensed", sans-serif;
+      font-weight: 950;
+      letter-spacing: 0;
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(52px, 8.5vw, 110px);
+      max-width: 920px;
+    }
+
+    h2 {
+      font-size: clamp(38px, 6vw, 76px);
+    }
+
+    h3 {
+      font-size: clamp(20px, 3vw, 34px);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin-top: 22px;
+      color: var(--paper);
+      font-size: clamp(19px, 2.4vw, 30px);
+      font-weight: 900;
+      line-height: 1.22;
+    }
+
+    .plain {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.56;
+    }
+
+    .sale-badge {
+      display: inline-flex;
+      align-items: center;
+      width: max-content;
+      margin-top: 20px;
+      border: 1px solid rgba(255, 92, 154, 0.42);
+      background: rgba(255, 92, 154, 0.1);
+      color: var(--paper);
+      padding: 10px 12px;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      border: 1px solid rgba(200, 169, 126, 0.36);
+      background: rgba(200, 169, 126, 0.12);
+      color: var(--paper);
+      padding: 0 18px;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, #f0c27a, #c8a97e);
+      color: #080706;
+      border-color: transparent;
+    }
+
+    .button:disabled {
+      cursor: progress;
+      opacity: 0.62;
+    }
+
+    .mission-card {
+      border: 1px solid rgba(200, 169, 126, 0.36);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255, 92, 154, 0.14), transparent 32%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+        #0d0b09;
+      padding: clamp(20px, 4vw, 34px);
+      min-height: 320px;
+      display: grid;
+      align-content: space-between;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+    }
+
+    .mission-card strong {
+      display: block;
+      color: var(--kraft);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 0.9;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: clamp(42px, 7vw, 78px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.58fr);
+      gap: clamp(22px, 5vw, 54px);
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card,
+    .form-shell,
+    .dashboard-card {
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      background: rgba(255, 255, 255, 0.04);
+      padding: clamp(18px, 3vw, 28px);
+    }
+
+    .card .number {
+      color: var(--pink);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 15px;
+      font-weight: 950;
+    }
+
+    .card h3,
+    .dashboard-card h3 {
+      margin-top: 18px;
+      font-size: clamp(22px, 3vw, 34px);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .stat {
+      border: 1px solid rgba(245, 239, 230, 0.1);
+      background: rgba(0, 0, 0, 0.18);
+      padding: 12px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--paper);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 28px;
+      line-height: 0.95;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 7px;
+      color: rgba(245, 239, 230, 0.54);
+      font-size: 10px;
+      font-weight: 900;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .form-shell {
+      margin-top: 20px;
+    }
+
+    .panda-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field.full,
+    .form-status,
+    .form-note {
+      grid-column: 1 / -1;
+    }
+
+    .panda-form .button {
+      grid-column: 1 / -1;
+      width: 100%;
+    }
+
+    label {
+      color: rgba(245, 239, 230, 0.78);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid rgba(245, 239, 230, 0.16);
+      border-radius: 0;
+      background: rgba(0, 0, 0, 0.28);
+      color: var(--paper);
+      font: inherit;
+      font-size: 16px;
+      padding: 11px 12px;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 86px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(255, 92, 154, 0.58);
+      box-shadow: 0 0 0 3px rgba(255, 92, 154, 0.1);
+    }
+
+    .id-box {
+      border: 1px solid rgba(200, 169, 126, 0.32);
+      background: rgba(200, 169, 126, 0.08);
+      padding: 14px;
+    }
+
+    .id-box span {
+      display: block;
+      color: rgba(245, 239, 230, 0.58);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .id-box strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--kraft);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(30px, 6vw, 52px);
+      line-height: 0.9;
+      word-break: break-word;
+    }
+
+    .confirmation-card {
+      border: 1px solid rgba(200, 169, 126, 0.36);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(255, 92, 154, 0.12), transparent 30%),
+        rgba(255, 255, 255, 0.04);
+      padding: clamp(20px, 4vw, 34px);
+    }
+
+    .confirmation-card[hidden] {
+      display: none;
+    }
+
+    .confirmation-card h2 {
+      font-size: clamp(34px, 6vw, 68px);
+    }
+
+    .confirmation-summary {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .confirmation-summary div {
+      border: 1px solid rgba(245, 239, 230, 0.11);
+      background: rgba(0, 0, 0, 0.18);
+      padding: 10px;
+    }
+
+    .confirmation-summary dt {
+      color: rgba(245, 239, 230, 0.46);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .confirmation-summary dd {
+      margin: 5px 0 0;
+      color: var(--paper);
+      font-size: 14px;
+      font-weight: 850;
+      line-height: 1.35;
+    }
+
+    .form-status {
+      display: none;
+      border: 1px solid rgba(200, 169, 126, 0.32);
+      background: rgba(200, 169, 126, 0.08);
+      padding: 14px 16px;
+      color: var(--paper);
+      font-size: 14px;
+      font-weight: 850;
+      line-height: 1.48;
+    }
+
+    .form-status.show {
+      display: block;
+    }
+
+    .form-status.error {
+      border-color: rgba(255, 92, 154, 0.5);
+      background: rgba(255, 92, 154, 0.08);
+    }
+
+    .form-note {
+      color: rgba(245, 239, 230, 0.48);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .checkbox-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(245, 239, 230, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px;
+      color: rgba(245, 239, 230, 0.72);
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.25;
+      text-transform: none;
+    }
+
+    .checkbox-pill input {
+      width: auto;
+      min-height: 0;
+      accent-color: var(--pink);
+    }
+
+    .registry-table {
+      width: 100%;
+      margin-top: 18px;
+      border-collapse: collapse;
+      overflow: hidden;
+      font-size: 13px;
+    }
+
+    .registry-table th,
+    .registry-table td {
+      border-bottom: 1px solid rgba(245, 239, 230, 0.1);
+      padding: 12px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .registry-table th {
+      color: var(--kraft);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .registry-table td {
+      color: rgba(245, 239, 230, 0.72);
+      font-weight: 750;
+      line-height: 1.35;
+    }
+
+    .tag {
+      display: inline-flex;
+      border: 1px solid rgba(200, 169, 126, 0.28);
+      color: var(--kraft);
+      padding: 5px 8px;
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: start;
+      border: 1px solid rgba(245, 239, 230, 0.11);
+      background: rgba(255, 255, 255, 0.025);
+      padding: 12px;
+    }
+
+    .timeline-row strong {
+      color: var(--paper);
+      font-size: 13px;
+      font-weight: 950;
+      line-height: 1.3;
+    }
+
+    .timeline-row span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      color: rgba(245, 239, 230, 0.55);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    @media (max-width: 760px) {
+      .header,
+      .footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav,
+      .footer-links {
+        justify-content: flex-start;
+      }
+
+      main {
+        padding-top: 28px;
+      }
+
+      .hero,
+      .section-head,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .panda-form {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .checkbox-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .confirmation-summary {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-row {
+        grid-template-columns: 1fr;
+      }
+
+      .registry-table,
+      .registry-table thead,
+      .registry-table tbody,
+      .registry-table tr,
+      .registry-table th,
+      .registry-table td {
+        display: block;
+      }
+
+      .registry-table thead {
+        display: none;
+      }
+
+      .registry-table tr {
+        border: 1px solid rgba(245, 239, 230, 0.1);
+        margin-bottom: 10px;
+      }
+
+      .registry-table td {
+        border-bottom: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="../">
+      <img src="../assets/site/panda-logo.jpg" alt="Official MAGSNAP Panda Logo">
+      <span>MAGSNAP</span>
+    </a>
+    <nav class="nav" aria-label="Panda Masters navigation">
+      <a href="../">首页 / Home</a>
+      <a href="#checkin">登记 / Check-in</a>
+      <a href="#coverage">覆盖 / Coverage</a>
+      <a href="#clubs">俱乐部 / Clubs</a>
+      <a href="#email">邮件 / Email</a>
+      <a href="mailto:info@magsnap.me">info@magsnap.me</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div>
+        <div class="mark">V2</div>
+        <p class="eyebrow">Operation Vietnam / Panda Masters System</p>
+        <h1>PANDA MASTERS</h1>
+        <p class="lead">第一阶段不是卖眼镜。第一阶段是占领越南风筝冲浪圈。<br>Phase one is not sales. Phase one is Vietnam kitesurf network coverage.</p>
+        <div class="sale-badge">Not For Sale / 暂不销售</div>
+        <p class="plain">让 MagSnap 成为越南风筝冲浪圈默认出现的 POV 眼镜品牌。成功标准是俱乐部覆盖、教练覆盖、海滩可见度和 Panda Masters Registry。</p>
+        <div class="cta-row">
+          <a class="button primary" href="#checkin">Panda Master 登记 / Check-in</a>
+          <a class="button" href="#coverage">查看覆盖 Dashboard / View Coverage</a>
+        </div>
+      </div>
+      <aside class="mission-card">
+        <div>
+          <p class="eyebrow">Mission</p>
+          <strong>Vietnam First.</strong>
+        </div>
+        <p class="plain">MZ + 越南朋友，骑摩托从芽庄到番朗再到美奈，逐个俱乐部拜访、拍摄、登记、覆盖。<br>MZ and a Vietnam friend ride the coast, club by club.</p>
+      </aside>
+    </section>
+
+    <section class="section" id="definition">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">定义 / Definition</p>
+          <h2>不是客户。<br>是第一代 Panda Masters.</h2>
+        </div>
+        <p class="plain">Panda Masters 是第一批获得 MagSnap 的真实玩家。他们帮助风筝冲浪变得更安全、更规范、更有趣。<br>Panda Masters are first-wave field users who help make kitesurfing safer, cleaner and more fun.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="number">01</span>
+          <h3>Club Owner</h3>
+          <p class="plain">俱乐部老板优先。当地影响力最高。<br>Club owners first. They shape local visibility.</p>
+        </article>
+        <article class="card">
+          <span class="number">02</span>
+          <h3>Coach</h3>
+          <p class="plain">主教练和教练优先。安全标准从教学开始。<br>Head coaches and coaches define the field standard.</p>
+        </article>
+        <article class="card">
+          <span class="number">03</span>
+          <h3>Core Rider</h3>
+          <p class="plain">核心玩家、运动员、创作者和长期本地玩家。<br>Core riders, athletes, creators and long-term locals.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="checkin">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">登记系统 / Check-in System</p>
+          <h2>Panda Master Check-in</h2>
+        </div>
+        <p class="plain">二维码扫码后填写。提交后自动生成 Panda Master ID，并写入 MagSnap 收集表。<br>Scan, submit, and receive a Panda Master ID for the MagSnap field registry.</p>
+      </div>
+
+      <div class="form-shell">
+        <div class="id-box">
+          <span>Panda Master ID / 自动生成</span>
+          <strong id="panda-master-id">PM-LOADING</strong>
+        </div>
+        <form class="panda-form" id="panda-master-form" action="#" method="post">
+          <div class="field">
+            <label for="pm-name">姓名 / Name</label>
+            <input id="pm-name" type="text" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="pm-country">国家 / Country</label>
+            <input id="pm-country" type="text" name="country" autocomplete="country-name" value="Vietnam" required>
+          </div>
+          <div class="field">
+            <label for="pm-city">城市 / City</label>
+            <select id="pm-city" name="city" required>
+              <option value="">选择城市 / Select city</option>
+              <option value="Nha Trang">Nha Trang / 芽庄</option>
+              <option value="Phan Rang">Phan Rang / 番朗</option>
+              <option value="Mui Ne">Mui Ne / 美奈</option>
+              <option value="Other">Other / 其他</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pm-club">俱乐部 / Club</label>
+            <input id="pm-club" type="text" name="club" required>
+          </div>
+          <div class="field">
+            <label for="pm-role">角色 / Role</label>
+            <select id="pm-role" name="role" required>
+              <option value="">选择角色 / Select role</option>
+              <option value="Club Owner">Club Owner / 俱乐部老板</option>
+              <option value="Head Coach">Head Coach / 主教练</option>
+              <option value="Coach">Coach / 教练</option>
+              <option value="Core Rider">Core Rider / 核心玩家</option>
+              <option value="Athlete">Athlete / 运动员</option>
+              <option value="Creator">Creator / 创作者</option>
+              <option value="Long-term Local Rider">Long-term Local Rider / 长期本地玩家</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pm-email">邮箱 / Email</label>
+            <input id="pm-email" type="email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="pm-instagram">Instagram</label>
+            <input id="pm-instagram" type="text" name="instagram" placeholder="@username">
+          </div>
+          <div class="field">
+            <label for="pm-whatsapp">WhatsApp</label>
+            <input id="pm-whatsapp" type="text" name="whatsapp" inputmode="tel" autocomplete="tel">
+          </div>
+          <div class="field">
+            <label for="pm-received-date">收到日期 / Received Date</label>
+            <input id="pm-received-date" type="date" name="received_date" required>
+          </div>
+          <div class="field">
+            <label for="pm-referred-by">推荐人 / Referred By</label>
+            <input id="pm-referred-by" type="text" name="referred_by" placeholder="MZ / club / friend">
+          </div>
+          <div class="field full">
+            <label for="pm-note">现场备注 / Field Note</label>
+            <textarea id="pm-note" name="field_note" placeholder="可记录俱乐部情况、教练数量、拍摄素材或后续跟进。"></textarea>
+          </div>
+          <button class="button primary" type="submit">提交 Panda Master 登记 / Submit Check-in</button>
+          <div class="form-status" id="panda-form-status" aria-live="polite"></div>
+          <p class="form-note">联系方式仅供 MagSnap 内部跟进，不在公开页面展示。<br>Contact information is for MagSnap internal follow-up only and is not shown publicly.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="confirmation" aria-label="Panda Master confirmation">
+      <div class="confirmation-card" id="confirmation-card" hidden>
+        <p class="eyebrow">Confirmation Page / 确认页</p>
+        <h2>Check-in Received.<br>登记已收到。</h2>
+        <p class="plain">你已经进入 Operation Vietnam / Panda Masters Registry。请保存你的 Panda Master ID。<br>You are now recorded for the Operation Vietnam / Panda Masters Registry. Save your Panda Master ID.</p>
+        <dl class="confirmation-summary" id="confirmation-summary"></dl>
+        <div class="cta-row">
+          <a class="button primary" href="#coverage">查看 Coverage / View Coverage</a>
+          <a class="button" href="#checkin">继续登记 / Add Another</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="coverage">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Vietnam Coverage Dashboard</p>
+          <h2>俱乐部覆盖。<br>教练覆盖。<br>海滩可见度。</h2>
+        </div>
+        <p class="plain">Dashboard 第一版用于行动跟踪。真实全局数据以后从 MagSnap 后台或 Google Sheet 同步。<br>V1 tracks the operation structure. Live global data can sync from the MagSnap backend or Google Sheet next.</p>
+      </div>
+      <div class="grid-3" id="coverage-grid"></div>
+    </section>
+
+    <section class="section" id="clubs">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Club Database</p>
+          <h2>每个俱乐部。<br>每个老板。<br>每个主教练。</h2>
+        </div>
+        <p class="plain">俱乐部数据库用于记录拜访、拍摄和覆盖状态。它是 Operation Vietnam 的现场行动日志。<br>The club database records visits, content and coverage status for Operation Vietnam.</p>
+      </div>
+
+      <div class="form-shell">
+        <form class="panda-form" id="club-database-form" action="#" method="post">
+          <div class="field">
+            <label for="club-name">俱乐部名称 / Club Name</label>
+            <input id="club-name" type="text" name="club_name" required>
+          </div>
+          <div class="field">
+            <label for="club-owner">Owner</label>
+            <input id="club-owner" type="text" name="owner">
+          </div>
+          <div class="field">
+            <label for="club-head-coach">Head Coach / 主教练</label>
+            <input id="club-head-coach" type="text" name="head_coach">
+          </div>
+          <div class="field">
+            <label for="club-location">Location / 位置</label>
+            <input id="club-location" type="text" name="location" placeholder="Nha Trang / Phan Rang / Mui Ne" required>
+          </div>
+          <div class="field">
+            <label for="club-country">Country / 国家</label>
+            <input id="club-country" type="text" name="country" value="Vietnam" required>
+          </div>
+          <div class="field">
+            <label for="club-instagram">Instagram</label>
+            <input id="club-instagram" type="text" name="instagram" placeholder="@club">
+          </div>
+          <div class="field">
+            <label for="club-whatsapp">WhatsApp</label>
+            <input id="club-whatsapp" type="text" name="whatsapp" inputmode="tel">
+          </div>
+          <div class="field">
+            <label for="club-status">Coverage Status / 覆盖状态</label>
+            <select id="club-status" name="coverage_status" required>
+              <option value="Not Visited">Not Visited / 未拜访</option>
+              <option value="Contacted">Contacted / 已联系</option>
+              <option value="Visited">Visited / 已拜访</option>
+              <option value="Covered">Covered / 已覆盖</option>
+              <option value="Follow-up">Follow-up / 待跟进</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="club-visit-date">Visit Date / 拜访日期</label>
+            <input id="club-visit-date" type="date" name="visit_date">
+          </div>
+          <div class="field full">
+            <label>Content Collection / 素材收集</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="checkbox" name="content_items" value="Owner Photo">Owner Photo / 老板照片</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_items" value="Owner Video">Owner Video / 老板视频</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_items" value="Group Photo">Group Photo / 合影</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_items" value="Club Coverage Record">Club Coverage Record / 覆盖记录</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_items" value="Coach Interviews">Coach Interviews / 教练采访</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label for="club-asset-link">素材文件夹 / Asset Folder Link</label>
+            <input id="club-asset-link" type="url" name="asset_link" placeholder="Google Drive / iCloud / Dropbox folder">
+          </div>
+          <div class="field full">
+            <label for="club-notes">Notes / 备注</label>
+            <textarea id="club-notes" name="notes" placeholder="现场情况、跟进事项、素材位置、下一步。"></textarea>
+          </div>
+          <button class="button primary" type="submit">保存 Club Record / Save Club Record</button>
+          <div class="form-status" id="club-form-status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="email">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Email System</p>
+          <h2>Panda Masters Newsletter</h2>
+        </div>
+        <p class="plain">Email 是长期沟通主通道。用于新品模块、测试计划、镜片、配件和未来机会。<br>Email is the primary long-term channel for modules, testing programs, lenses, accessories and future opportunities.</p>
+      </div>
+
+      <div class="form-shell">
+        <form class="panda-form" id="newsletter-form" action="#" method="post">
+          <div class="field">
+            <label for="newsletter-name">姓名 / Name</label>
+            <input id="newsletter-name" type="text" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="newsletter-email">邮箱 / Email</label>
+            <input id="newsletter-email" type="email" name="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="newsletter-city">城市 / City</label>
+            <input id="newsletter-city" type="text" name="city" placeholder="Nha Trang / Phan Rang / Mui Ne">
+          </div>
+          <div class="field">
+            <label for="newsletter-segment">Segment</label>
+            <select id="newsletter-segment" name="newsletter_segment">
+              <option value="panda_masters">Panda Masters</option>
+              <option value="club_owner">Club Owner</option>
+              <option value="coach">Coach</option>
+              <option value="creator">Creator</option>
+              <option value="club_database">Club Database</option>
+            </select>
+          </div>
+          <button class="button primary" type="submit">加入邮件系统 / Join Newsletter</button>
+          <div class="form-status" id="newsletter-form-status" aria-live="polite"></div>
+          <p class="form-note">目前只收集邮箱和分组，用于后续产品与测试信息。<br>We collect email and segment for future product and testing updates.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section" id="registry">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Panda Masters Registry</p>
+          <h2>先收集。<br>再公开。</h2>
+        </div>
+        <p class="plain">公开页不展示 Email、WhatsApp 等私人信息。当前页面只显示本机刚提交的登记预览，正式公开 Registry 后再筛选发布。<br>Private fields stay private. This page previews local submissions only until the public registry is approved.</p>
+      </div>
+      <table class="registry-table" aria-label="Local Panda Masters registry preview">
+        <thead>
+          <tr>
+            <th>Panda Master ID</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th>City</th>
+            <th>Club</th>
+            <th>Role</th>
+            <th>Referred By</th>
+          </tr>
+        </thead>
+        <tbody id="registry-preview-body">
+          <tr><td colspan="7">暂无本机登记记录。 / No local check-ins yet.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section" id="tracking">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Operation Vietnam Tracker</p>
+          <h2>Day 1 → Day 7</h2>
+        </div>
+        <p class="plain">内容策略只讲人、风冲、摩旅、越南和故事。<br>Content focuses on people, kitesurfing, motorbike travel, Vietnam and stories.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-row"><strong>Day 1</strong><span>Nha Trang arrival. Assemble first MagSnap units. First beach visibility.</span><span class="tag">Nha Trang</span></div>
+        <div class="timeline-row"><strong>Day 2</strong><span>Nha Trang clubs. Owner photo, owner video, group photo, club coverage record.</span><span class="tag">Clubs</span></div>
+        <div class="timeline-row"><strong>Day 3</strong><span>Road to Phan Rang. Motorbike story and coastal documentary footage.</span><span class="tag">Road</span></div>
+        <div class="timeline-row"><strong>Day 4</strong><span>Phi Feed. Core local story, first rider handoff and check-in.</span><span class="tag">Story</span></div>
+        <div class="timeline-row"><strong>Day 5</strong><span>Coaches. Teaching use case, safety POV, coach interview clips.</span><span class="tag">Coaches</span></div>
+        <div class="timeline-row"><strong>Day 6</strong><span>Mui Ne. Club mapping, long-term local riders, creator coverage.</span><span class="tag">Mui Ne</span></div>
+        <div class="timeline-row"><strong>Day 7</strong><span>Completion. Coverage recap, Panda Masters count, next-wave email list.</span><span class="tag">Complete</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>MAGSNAP / Panda Masters System</span>
+    <div class="footer-links">
+      <a href="../">Home</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+      <a href="mailto:info@magsnap.me">info@magsnap.me</a>
+    </div>
+  </footer>
+
+  <script>
+    const PANDA_ENDPOINT = "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec";
+    const PANDA_STORAGE_KEY = "magsnap_panda_masters_v1";
+    const PANDA_ID_KEY = "magsnap_pending_panda_master_id";
+    const CLUB_STORAGE_KEY = "magsnap_club_database_v1";
+    const NEWSLETTER_STORAGE_KEY = "magsnap_panda_newsletter_v1";
+
+    const coverageBase = [
+      { city: "Nha Trang", zh: "芽庄", clubs: 0, owners: 0, coaches: 0 },
+      { city: "Phan Rang", zh: "番朗", clubs: 0, owners: 0, coaches: 0 },
+      { city: "Mui Ne", zh: "美奈", clubs: 0, owners: 0, coaches: 0 }
+    ];
+
+    const form = document.getElementById("panda-master-form");
+    const statusNode = document.getElementById("panda-form-status");
+    const idNode = document.getElementById("panda-master-id");
+    const registryBody = document.getElementById("registry-preview-body");
+    const coverageGrid = document.getElementById("coverage-grid");
+    const clubForm = document.getElementById("club-database-form");
+    const clubStatusNode = document.getElementById("club-form-status");
+    const newsletterForm = document.getElementById("newsletter-form");
+    const newsletterStatusNode = document.getElementById("newsletter-form-status");
+    const confirmationCard = document.getElementById("confirmation-card");
+    const confirmationSummary = document.getElementById("confirmation-summary");
+
+    const cleanText = (value) => String(value || "").trim();
+
+    const escapeHtml = (value) => String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+    const todayString = () => new Date().toISOString().slice(0, 10);
+
+    const selectedValues = (root, name) => Array.from(root.querySelectorAll(`input[name="${name}"]:checked`)).map((input) => input.value);
+
+    const generatePandaId = () => {
+      const date = new Date();
+      const stamp = [
+        date.getFullYear(),
+        String(date.getMonth() + 1).padStart(2, "0"),
+        String(date.getDate()).padStart(2, "0")
+      ].join("");
+      const randomPart = Math.random().toString(36).slice(2, 6).toUpperCase();
+      return `PM-VN-${stamp}-${randomPart}`;
+    };
+
+    const getPendingPandaId = () => {
+      try {
+        const existing = window.localStorage.getItem(PANDA_ID_KEY);
+        if (existing) return existing;
+        const next = generatePandaId();
+        window.localStorage.setItem(PANDA_ID_KEY, next);
+        return next;
+      } catch (_error) {
+        return generatePandaId();
+      }
+    };
+
+    const resetPendingPandaId = () => {
+      const next = generatePandaId();
+      try {
+        window.localStorage.setItem(PANDA_ID_KEY, next);
+      } catch (_error) {
+        // ID display can still update even when localStorage is unavailable.
+      }
+      if (idNode) idNode.textContent = next;
+    };
+
+    const readLocalRecords = () => {
+      try {
+        const records = JSON.parse(window.localStorage.getItem(PANDA_STORAGE_KEY) || "[]");
+        return Array.isArray(records) ? records : [];
+      } catch (_error) {
+        return [];
+      }
+    };
+
+    const readStorage = (key) => {
+      try {
+        const records = JSON.parse(window.localStorage.getItem(key) || "[]");
+        return Array.isArray(records) ? records : [];
+      } catch (_error) {
+        return [];
+      }
+    };
+
+    const writeStorageRecord = (key, payload, status, uniqueField) => {
+      try {
+        const records = readStorage(key);
+        const nextRecord = {
+          ...payload,
+          local_status: status,
+          local_saved_at: new Date().toISOString()
+        };
+        const uniqueValue = uniqueField ? payload[uniqueField] : "";
+        const existingIndex = uniqueValue
+          ? records.findIndex((record) => record[uniqueField] === uniqueValue)
+          : -1;
+        if (existingIndex >= 0) {
+          records[existingIndex] = nextRecord;
+        } else {
+          records.unshift(nextRecord);
+        }
+        window.localStorage.setItem(key, JSON.stringify(records.slice(0, 120)));
+      } catch (_error) {
+        // Local cache is best-effort. The Google Sheet submission remains primary.
+      }
+    };
+
+    const writeLocalRecord = (payload, status) => {
+      try {
+        const records = readLocalRecords();
+        const nextRecord = {
+          ...payload,
+          local_status: status,
+          local_saved_at: new Date().toISOString()
+        };
+        const existingIndex = records.findIndex((record) => record.panda_master_id === payload.panda_master_id);
+        if (existingIndex >= 0) {
+          records[existingIndex] = nextRecord;
+        } else {
+          records.unshift(nextRecord);
+        }
+        window.localStorage.setItem(PANDA_STORAGE_KEY, JSON.stringify(records.slice(0, 60)));
+      } catch (_error) {
+        // Google Sheet submission remains primary.
+      }
+    };
+
+    const showStatus = (message, isError = false) => {
+      if (!statusNode) return;
+      statusNode.innerHTML = message;
+      statusNode.classList.add("show");
+      statusNode.classList.toggle("error", Boolean(isError));
+    };
+
+    const setFormStatus = (node, message, isError = false) => {
+      if (!node) return;
+      node.innerHTML = message;
+      node.classList.add("show");
+      node.classList.toggle("error", Boolean(isError));
+    };
+
+    const showConfirmation = (payload) => {
+      if (!confirmationCard || !confirmationSummary) return;
+      confirmationSummary.innerHTML = `
+        <div><dt>Panda Master ID</dt><dd>${escapeHtml(payload.panda_master_id)}</dd></div>
+        <div><dt>Name</dt><dd>${escapeHtml(payload.name)}</dd></div>
+        <div><dt>Country</dt><dd>${escapeHtml(payload.country)}</dd></div>
+        <div><dt>City</dt><dd>${escapeHtml(payload.city)}</dd></div>
+        <div><dt>Club</dt><dd>${escapeHtml(payload.club)}</dd></div>
+        <div><dt>Role</dt><dd>${escapeHtml(payload.role)}</dd></div>
+      `;
+      confirmationCard.hidden = false;
+      window.location.hash = "confirmation";
+      window.requestAnimationFrame(() => {
+        confirmationCard.scrollIntoView({ block: "start", behavior: "smooth" });
+      });
+    };
+
+    const buildPayload = () => {
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      const pandaMasterId = cleanText(idNode?.textContent) || generatePandaId();
+      payload.panda_master_id = pandaMasterId;
+      payload.name = cleanText(payload.name);
+      payload.country = cleanText(payload.country);
+      payload.city = cleanText(payload.city);
+      payload.club = cleanText(payload.club);
+      payload.role = cleanText(payload.role);
+      payload.email = cleanText(payload.email);
+      payload.instagram = cleanText(payload.instagram);
+      payload.whatsapp = cleanText(payload.whatsapp);
+      payload.received_date = cleanText(payload.received_date);
+      payload.referred_by = cleanText(payload.referred_by);
+      payload.field_note = cleanText(payload.field_note);
+      payload.operation = "Operation Vietnam";
+      payload.registry_type = "Panda Masters";
+      payload.source_form = "panda_masters_checkin";
+      payload.form_version = "panda_masters_v1_2026_06_21";
+      payload.newsletter_segment = "panda_masters";
+      payload.submitted_at = new Date().toISOString();
+      payload.source_url = window.location.href;
+      payload.user_agent = window.navigator.userAgent;
+      return payload;
+    };
+
+    const buildClubPayload = () => {
+      const formData = new FormData(clubForm);
+      const payload = Object.fromEntries(formData.entries());
+      payload.club_name = cleanText(payload.club_name);
+      payload.owner = cleanText(payload.owner);
+      payload.head_coach = cleanText(payload.head_coach);
+      payload.location = cleanText(payload.location);
+      payload.country = cleanText(payload.country);
+      payload.instagram = cleanText(payload.instagram);
+      payload.whatsapp = cleanText(payload.whatsapp);
+      payload.coverage_status = cleanText(payload.coverage_status);
+      payload.visit_date = cleanText(payload.visit_date);
+      payload.asset_link = cleanText(payload.asset_link);
+      payload.notes = cleanText(payload.notes);
+      payload.content_items = selectedValues(clubForm, "content_items").join(", ");
+      payload.operation = "Operation Vietnam";
+      payload.registry_type = "Club Database";
+      payload.source_form = "club_database";
+      payload.form_version = "club_database_v1_2026_06_21";
+      payload.submitted_at = new Date().toISOString();
+      payload.source_url = window.location.href;
+      payload.user_agent = window.navigator.userAgent;
+      payload.club_record_id = `${payload.club_name || "club"}-${payload.location || "location"}`.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      return payload;
+    };
+
+    const buildNewsletterPayload = () => {
+      const formData = new FormData(newsletterForm);
+      const payload = Object.fromEntries(formData.entries());
+      payload.name = cleanText(payload.name);
+      payload.email = cleanText(payload.email);
+      payload.city = cleanText(payload.city);
+      payload.newsletter_segment = cleanText(payload.newsletter_segment) || "panda_masters";
+      payload.operation = "Operation Vietnam";
+      payload.registry_type = "Panda Masters Newsletter";
+      payload.source_form = "panda_masters_newsletter";
+      payload.form_version = "newsletter_v1_2026_06_21";
+      payload.submitted_at = new Date().toISOString();
+      payload.source_url = window.location.href;
+      payload.user_agent = window.navigator.userAgent;
+      payload.newsletter_record_id = payload.email.toLowerCase();
+      return payload;
+    };
+
+    const submitPayload = async (payload) => {
+      const body = new URLSearchParams();
+      Object.entries(payload).forEach(([key, value]) => {
+        body.append(key, value == null ? "" : String(value));
+      });
+
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), 45000);
+
+      try {
+        await fetch(PANDA_ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          cache: "no-store",
+          body,
+          signal: controller.signal
+        });
+      } catch (error) {
+        const reason = error && error.name === "AbortError"
+          ? "提交超时。请检查网络后重试。<br>Submission timed out. Please check the network and retry."
+          : "提交失败。请检查网络后重试。<br>Submission failed. Please check the network and retry.";
+        throw new Error(reason);
+      } finally {
+        window.clearTimeout(timeoutId);
+      }
+    };
+
+    const renderRegistry = () => {
+      const records = readLocalRecords();
+      if (!registryBody) return;
+      if (!records.length) {
+        registryBody.innerHTML = '<tr><td colspan="7">暂无本机登记记录。 / No local check-ins yet.</td></tr>';
+        return;
+      }
+      registryBody.innerHTML = records.slice(0, 12).map((record) => `
+        <tr>
+          <td>${escapeHtml(record.panda_master_id)}</td>
+          <td>${escapeHtml(record.name)}</td>
+          <td>${escapeHtml(record.country)}</td>
+          <td>${escapeHtml(record.city)}</td>
+          <td>${escapeHtml(record.club)}</td>
+          <td>${escapeHtml(record.role)}</td>
+          <td>${escapeHtml(record.referred_by)}</td>
+        </tr>
+      `).join("");
+    };
+
+    const renderCoverage = () => {
+      if (!coverageGrid) return;
+      const records = readLocalRecords();
+      const clubRecords = readStorage(CLUB_STORAGE_KEY);
+      const coveredStatus = new Set(["Visited", "Covered", "Follow-up"]);
+      const cityMatches = (value, city) => cleanText(value).toLowerCase().includes(city.toLowerCase());
+      const merged = coverageBase.map((base) => {
+        const cityRecords = records.filter((record) => record.city === base.city);
+        const cityClubs = clubRecords.filter((record) => cityMatches(record.location, base.city));
+        const clubs = new Set([
+          ...cityRecords.map((record) => record.club).filter(Boolean),
+          ...cityClubs.filter((record) => coveredStatus.has(record.coverage_status)).map((record) => record.club_name).filter(Boolean)
+        ]);
+        const owners = cityRecords.filter((record) => record.role === "Club Owner").length;
+        const clubOwners = cityClubs.filter((record) => record.owner && coveredStatus.has(record.coverage_status)).length;
+        const coaches = cityRecords.filter((record) => /coach/i.test(record.role || "")).length;
+        const clubCoaches = cityClubs.filter((record) => record.head_coach && coveredStatus.has(record.coverage_status)).length;
+        return {
+          ...base,
+          clubs: base.clubs + clubs.size,
+          owners: base.owners + owners + clubOwners,
+          coaches: base.coaches + coaches + clubCoaches,
+          masters: cityRecords.length
+        };
+      });
+
+      const completedSignals = merged.reduce((sum, item) => {
+        return sum
+          + (item.clubs > 0 ? 1 : 0)
+          + (item.owners > 0 ? 1 : 0)
+          + (item.coaches > 0 ? 1 : 0)
+          + (item.masters > 0 ? 1 : 0);
+      }, 0);
+      const coveragePercent = Math.round((completedSignals / (merged.length * 4)) * 100);
+      const total = merged.reduce((acc, item) => ({
+        clubs: acc.clubs + item.clubs,
+        owners: acc.owners + item.owners,
+        coaches: acc.coaches + item.coaches,
+        masters: acc.masters + item.masters
+      }), { clubs: 0, owners: 0, coaches: 0, masters: 0 });
+
+      coverageGrid.innerHTML = `
+        <article class="dashboard-card">
+          <p class="eyebrow">Overall Coverage</p>
+          <h3>${coveragePercent}%</h3>
+          <div class="stat-grid">
+            <div class="stat"><strong>${total.clubs}</strong><span>Clubs<br>俱乐部</span></div>
+            <div class="stat"><strong>${total.owners}</strong><span>Owners<br>老板</span></div>
+            <div class="stat"><strong>${total.coaches}</strong><span>Coaches<br>教练</span></div>
+            <div class="stat"><strong>${total.masters}</strong><span>Panda Masters<br>登记人数</span></div>
+          </div>
+        </article>
+      ` + merged.map((item) => `
+        <article class="dashboard-card">
+          <p class="eyebrow">${escapeHtml(item.zh)} / ${escapeHtml(item.city)}</p>
+          <h3>${escapeHtml(item.city)}</h3>
+          <div class="stat-grid">
+            <div class="stat"><strong>${item.clubs}</strong><span>Clubs Covered<br>俱乐部覆盖</span></div>
+            <div class="stat"><strong>${item.owners}</strong><span>Owners Covered<br>老板覆盖</span></div>
+            <div class="stat"><strong>${item.coaches}</strong><span>Coaches Covered<br>教练覆盖</span></div>
+            <div class="stat"><strong>${item.masters}</strong><span>Panda Masters<br>登记人数</span></div>
+          </div>
+        </article>
+      `).join("");
+    };
+
+    const hydrateFromUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      const fieldMap = {
+        city: "city",
+        club: "club",
+        role: "role",
+        ref: "referred_by",
+        by: "referred_by"
+      };
+      Object.entries(fieldMap).forEach(([param, field]) => {
+        const value = params.get(param);
+        if (value && form?.elements[field]) {
+          form.elements[field].value = value;
+        }
+      });
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (idNode) idNode.textContent = getPendingPandaId();
+      if (form?.elements.received_date) {
+        form.elements.received_date.value = todayString();
+      }
+      if (clubForm?.elements.visit_date) {
+        clubForm.elements.visit_date.value = todayString();
+      }
+      hydrateFromUrl();
+      renderRegistry();
+      renderCoverage();
+    });
+
+    form?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const submitButton = form.querySelector("[type='submit']");
+      const originalText = submitButton?.textContent;
+      const payload = buildPayload();
+
+      writeLocalRecord(payload, "pending_backend");
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "正在提交 / Submitting";
+      }
+      showStatus("正在提交 Panda Master 登记。<br>Submitting Panda Master check-in.");
+
+      try {
+        await submitPayload(payload);
+        writeLocalRecord(payload, "backend_saved");
+        showStatus(`
+          <strong>Panda Master Check-in Received / 登记已收到</strong><br>
+          ID: ${escapeHtml(payload.panda_master_id)}<br>
+          ${escapeHtml(payload.name)} · ${escapeHtml(payload.city)} · ${escapeHtml(payload.club)}<br>
+          我们会把这条记录归入 Operation Vietnam / Panda Masters Registry。
+        `);
+        showConfirmation(payload);
+        form.reset();
+        if (form.elements.received_date) form.elements.received_date.value = todayString();
+        resetPendingPandaId();
+        renderRegistry();
+        renderCoverage();
+      } catch (error) {
+        writeLocalRecord(payload, "backend_failed");
+        showStatus(error.message, true);
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        }
+      }
+    });
+
+    clubForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const submitButton = clubForm.querySelector("[type='submit']");
+      const originalText = submitButton?.textContent;
+      const payload = buildClubPayload();
+
+      writeStorageRecord(CLUB_STORAGE_KEY, payload, "pending_backend", "club_record_id");
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "正在保存 / Saving";
+      }
+      setFormStatus(clubStatusNode, "正在保存 Club Record。<br>Saving club record.");
+
+      try {
+        await submitPayload(payload);
+        writeStorageRecord(CLUB_STORAGE_KEY, payload, "backend_saved", "club_record_id");
+        setFormStatus(clubStatusNode, `<strong>Club Record Saved / 已保存</strong><br>${escapeHtml(payload.club_name)} · ${escapeHtml(payload.location)}`);
+        clubForm.reset();
+        if (clubForm.elements.country) clubForm.elements.country.value = "Vietnam";
+        if (clubForm.elements.visit_date) clubForm.elements.visit_date.value = todayString();
+        renderCoverage();
+      } catch (error) {
+        writeStorageRecord(CLUB_STORAGE_KEY, payload, "backend_failed", "club_record_id");
+        setFormStatus(clubStatusNode, error.message, true);
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        }
+      }
+    });
+
+    newsletterForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const submitButton = newsletterForm.querySelector("[type='submit']");
+      const originalText = submitButton?.textContent;
+      const payload = buildNewsletterPayload();
+
+      writeStorageRecord(NEWSLETTER_STORAGE_KEY, payload, "pending_backend", "newsletter_record_id");
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "正在加入 / Joining";
+      }
+      setFormStatus(newsletterStatusNode, "正在加入 Panda Masters Newsletter。<br>Joining Panda Masters Newsletter.");
+
+      try {
+        await submitPayload(payload);
+        writeStorageRecord(NEWSLETTER_STORAGE_KEY, payload, "backend_saved", "newsletter_record_id");
+        setFormStatus(newsletterStatusNode, `<strong>Email Saved / 邮箱已保存</strong><br>${escapeHtml(payload.email)} · ${escapeHtml(payload.newsletter_segment)}`);
+        newsletterForm.reset();
+      } catch (error) {
+        writeStorageRecord(NEWSLETTER_STORAGE_KEY, payload, "backend_failed", "newsletter_record_id");
+        setFormStatus(newsletterStatusNode, error.message, true);
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

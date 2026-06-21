@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>MAGSNAP | Panda Masters</title>
-  <meta name="description" content="Operation Vietnam Panda Masters V7 check-in, full coverage strategy, intelligence database, photo wall and coverage dashboard.">
+  <meta name="description" content="Operation Vietnam Panda Masters V8 check-in, public directory, pending import queue and coverage dashboard.">
   <style>
     :root {
       --black: #000;
@@ -710,6 +710,8 @@
       <a href="../">首页 / Home</a>
       <a href="#flywheel">全覆盖 / Coverage</a>
       <a href="#checkin">登记 / Check-in</a>
+      <a href="#directory">公开目录 / Directory</a>
+      <a href="#import">导入 / Import</a>
       <a href="#lab">Lab</a>
       <a href="#coverage">覆盖 / Coverage</a>
       <a href="#clubs">俱乐部 / Clubs</a>
@@ -721,7 +723,7 @@
   <main>
     <section class="hero" id="top">
       <div>
-        <div class="mark">V7</div>
+        <div class="mark">V8</div>
         <p class="eyebrow">Operation Vietnam / Locked Strategy</p>
         <h1>PANDA MASTERS</h1>
         <p class="lead">Maximum Coverage.<br>Not Maximum Revenue.</p>
@@ -880,6 +882,10 @@
           <div class="field">
             <label for="pm-name">姓名 / Name</label>
             <input id="pm-name" type="text" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="pm-public-nickname">公开昵称 / Public Nickname</label>
+            <input id="pm-public-nickname" type="text" name="public_nickname" placeholder="shown in public directory">
           </div>
           <div class="field">
             <label for="pm-country">国家 / Country</label>
@@ -1072,6 +1078,10 @@
           <div class="field">
             <label for="pm-story-note">Story Note / 故事备注</label>
             <input id="pm-story-note" type="text" name="story_note" placeholder="one-line rider story / 一句话故事">
+          </div>
+          <div class="field full">
+            <label for="pm-public-story">Public Story / 公开故事</label>
+            <textarea id="pm-public-story" name="public_story" placeholder="可公开展示的一句话故事。不要填写电话、邮箱、地址或私人信息。"></textarea>
           </div>
           <div class="field full">
             <label for="pm-problem-report">Problems / 当前问题</label>
@@ -1303,6 +1313,103 @@
       </div>
     </section>
 
+    <section class="section" id="directory">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Panda Masters Directory / 公开目录</p>
+          <h2>Public Identity.<br>Private Data.</h2>
+        </div>
+        <p class="plain">公开目录只展示 Panda Master ID、昵称、国家、城市、运动、角色、加入日期、照片和故事。真实姓名、电话、邮箱、地址、WhatsApp、Instagram、TikTok 和内部备注不公开。<br>The public directory shows identity only. Private contact and internal data stay hidden.</p>
+      </div>
+      <table class="registry-table" aria-label="Public Panda Masters directory">
+        <thead>
+          <tr>
+            <th>Panda Master ID</th>
+            <th>Nickname</th>
+            <th>Country</th>
+            <th>City</th>
+            <th>Sport</th>
+            <th>Role</th>
+            <th>Join Date</th>
+            <th>Photo</th>
+            <th>Story</th>
+          </tr>
+        </thead>
+        <tbody id="directory-preview-body">
+          <tr><td colspan="9">暂无公开目录记录。 / No public directory records yet.</td></tr>
+        </tbody>
+      </table>
+      <p class="form-note">Directory 只读取公开字段。隐藏字段不会渲染到这张表。<br>The directory renders public fields only.</p>
+    </section>
+
+    <section class="section" id="import">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Pending Import Queue / 待导入队列</p>
+          <h2>批量导入。<br>先入队，再审核。</h2>
+        </div>
+        <p class="plain">支持 CSV、TSV、粘贴文本、Excel 文件入队和截图 OCR 入队。CSV / TSV 会自动解析；Excel 和截图先进入待处理队列，后续再解析或 OCR。<br>CSV and TSV are parsed now. Excel and screenshots are queued for spreadsheet parsing or OCR.</p>
+      </div>
+      <div class="form-shell">
+        <form class="panda-form" id="import-queue-form" action="#" method="post">
+          <div class="field">
+            <label for="import-source">数据来源 / Source</label>
+            <select id="import-source" name="import_source">
+              <option value="Existing Applicants">Existing Applicants / 已申请用户</option>
+              <option value="Address Received Users">Address Received / 已提交地址用户</option>
+              <option value="Invited Users">Invited Users / 已受邀用户</option>
+              <option value="China Kitesurf List">China Kitesurf List / 中国风冲圈名单</option>
+              <option value="Operation Vietnam List">Operation Vietnam List / Operation Vietnam 名单</option>
+              <option value="Chat Export">Chat Export / 聊天记录导出</option>
+              <option value="Other">Other / 其他</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="import-status">默认状态 / Default Status</label>
+            <select id="import-status" name="import_status">
+              <option value="Invited">Invited</option>
+              <option value="Address Received">Address Received</option>
+              <option value="Approved">Approved</option>
+              <option value="Shipped">Shipped</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Registered">Registered</option>
+              <option value="Panda Master">Panda Master</option>
+              <option value="Photo Uploaded">Photo Uploaded</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="import-files">文件 / Files</label>
+            <input id="import-files" type="file" name="import_files" accept=".csv,.tsv,.txt,.xlsx,.xls,image/*" multiple>
+            <p class="form-note">CSV / TSV / TXT 会解析。Excel 和图片会进入待处理队列。<br>CSV / TSV / TXT parse now. Excel and image files are queued.</p>
+          </div>
+          <div class="field full">
+            <label for="import-bulk-text">批量粘贴 / Bulk Paste</label>
+            <textarea id="import-bulk-text" name="bulk_text" placeholder="支持带表头 CSV / TSV。建议字段：panda_master_id,nickname,country,city,sport,role,join_date,photo,story,status,email,phone,address,whatsapp,instagram,tiktok,notes"></textarea>
+          </div>
+          <button class="button primary" type="submit">加入 Pending Import Queue / Add To Queue</button>
+          <div class="form-status" id="import-form-status" aria-live="polite"></div>
+          <p class="form-note">导入队列可以保存私人字段，但公开目录不会显示私人字段。<br>The queue can store private fields. The public directory never displays them.</p>
+        </form>
+      </div>
+      <table class="registry-table" aria-label="Pending import queue">
+        <thead>
+          <tr>
+            <th>Queue ID</th>
+            <th>Source</th>
+            <th>Public Nickname</th>
+            <th>Country</th>
+            <th>Sport</th>
+            <th>Role</th>
+            <th>Status</th>
+            <th>Parse Status</th>
+          </tr>
+        </thead>
+        <tbody id="import-queue-body">
+          <tr><td colspan="8">暂无待导入记录。 / No pending import records.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
     <section class="section" id="registry">
       <div class="section-head">
         <div>
@@ -1365,6 +1472,7 @@
     const PANDA_ID_KEY = "magsnap_pending_panda_master_id";
     const CLUB_STORAGE_KEY = "magsnap_club_database_v1";
     const NEWSLETTER_STORAGE_KEY = "magsnap_panda_newsletter_v1";
+    const IMPORT_QUEUE_STORAGE_KEY = "magsnap_panda_import_queue_v1";
 
     const coverageBase = [
       { city: "Nha Trang", zh: "芽庄", clubs: 0, owners: 0, coaches: 0, coreRiders: 0, povCreators: 0 },
@@ -1376,6 +1484,10 @@
     const statusNode = document.getElementById("panda-form-status");
     const idNode = document.getElementById("panda-master-id");
     const registryBody = document.getElementById("registry-preview-body");
+    const directoryBody = document.getElementById("directory-preview-body");
+    const importForm = document.getElementById("import-queue-form");
+    const importStatusNode = document.getElementById("import-form-status");
+    const importQueueBody = document.getElementById("import-queue-body");
     const coverageGrid = document.getElementById("coverage-grid");
     const intelligenceDashboard = document.getElementById("intelligence-dashboard");
     const clubForm = document.getElementById("club-database-form");
@@ -1432,6 +1544,163 @@
     const topEntries = (map, limit = 5) => Object.entries(map)
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
       .slice(0, limit);
+
+    const PUBLIC_DIRECTORY_STATUSES = new Set(["Registered", "Panda Master", "Photo Uploaded"]);
+    const COVERAGE_RECORD_STATUSES = new Set(["Delivered", "Registered", "Panda Master", "Photo Uploaded"]);
+
+    const normalizeHeader = (value) => cleanText(value).toLowerCase().replace(/[^a-z0-9\u4e00-\u9fa5]+/g, "");
+
+    const IMPORT_FIELD_MAP = {
+      pandamasterid: "panda_master_id",
+      pandaid: "panda_master_id",
+      pmid: "panda_master_id",
+      id: "panda_master_id",
+      nickname: "public_nickname",
+      publicnickname: "public_nickname",
+      displayname: "public_nickname",
+      公开昵称: "public_nickname",
+      name: "real_name",
+      realname: "real_name",
+      真实姓名: "real_name",
+      country: "country",
+      国家: "country",
+      city: "city",
+      城市: "city",
+      club: "club",
+      俱乐部: "club",
+      sport: "sport",
+      sports: "sport",
+      运动: "sport",
+      role: "role",
+      角色: "role",
+      joindate: "join_date",
+      receiveddate: "join_date",
+      date: "join_date",
+      加入日期: "join_date",
+      photo: "photo_link",
+      photolink: "photo_link",
+      照片: "photo_link",
+      story: "public_story",
+      publicstory: "public_story",
+      故事: "public_story",
+      status: "import_status",
+      状态: "import_status",
+      email: "email",
+      phone: "phone",
+      address: "address",
+      whatsapp: "whatsapp",
+      instagram: "instagram",
+      tiktok: "tiktok",
+      youtube: "youtube",
+      facebook: "facebook",
+      referredby: "referred_by",
+      notes: "internal_notes",
+      note: "internal_notes",
+      internalnotes: "internal_notes",
+      备注: "internal_notes"
+    };
+
+    const importRecordId = () => `IMP-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
+
+    const parseDelimitedRows = (text) => {
+      const source = String(text || "").trim();
+      if (!source) return [];
+      const delimiter = source.split(/\r?\n/)[0].includes("\t") ? "\t" : ",";
+      const rows = [];
+      let row = [];
+      let value = "";
+      let inQuotes = false;
+      for (let index = 0; index < source.length; index += 1) {
+        const char = source[index];
+        const next = source[index + 1];
+        if (char === '"' && next === '"') {
+          value += '"';
+          index += 1;
+        } else if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === delimiter && !inQuotes) {
+          row.push(value.trim());
+          value = "";
+        } else if ((char === "\n" || char === "\r") && !inQuotes) {
+          if (char === "\r" && next === "\n") index += 1;
+          row.push(value.trim());
+          if (row.some(Boolean)) rows.push(row);
+          row = [];
+          value = "";
+        } else {
+          value += char;
+        }
+      }
+      row.push(value.trim());
+      if (row.some(Boolean)) rows.push(row);
+      return rows;
+    };
+
+    const rowsToImportRecords = (rows, meta) => {
+      if (!rows.length) return [];
+      const headers = rows[0].map((header) => IMPORT_FIELD_MAP[normalizeHeader(header)] || normalizeHeader(header));
+      const hasKnownHeader = headers.some((header) => Object.values(IMPORT_FIELD_MAP).includes(header) || ["country", "city", "role", "email"].includes(header));
+      const dataRows = hasKnownHeader ? rows.slice(1) : rows;
+      const fallbackFields = ["public_nickname", "country", "city", "club", "sport", "role", "email", "phone", "import_status"];
+      return dataRows.map((row) => {
+        const record = {};
+        const fields = hasKnownHeader ? headers : fallbackFields;
+        fields.forEach((field, index) => {
+          if (!field) return;
+          record[field] = cleanText(row[index]);
+        });
+        return normalizeImportRecord(record, meta);
+      }).filter((record) => record.public_nickname || record.real_name || record.email || record.phone || record.panda_master_id);
+    };
+
+    const normalizeImportRecord = (record, meta = {}) => {
+      const sourceStatus = cleanText(record.import_status) || meta.defaultStatus || "Invited";
+      return {
+        import_record_id: record.import_record_id || importRecordId(),
+        panda_master_id: cleanText(record.panda_master_id),
+        public_nickname: cleanText(record.public_nickname),
+        real_name: cleanText(record.real_name || record.name),
+        country: cleanText(record.country),
+        city: cleanText(record.city),
+        club: cleanText(record.club),
+        sport: cleanText(record.sport || record.sports),
+        role: cleanText(record.role),
+        join_date: cleanText(record.join_date || record.received_date),
+        photo_link: cleanText(record.photo_link),
+        public_story: cleanText(record.public_story || record.story),
+        import_status: sourceStatus,
+        email: cleanText(record.email),
+        phone: cleanText(record.phone),
+        address: cleanText(record.address),
+        whatsapp: cleanText(record.whatsapp),
+        instagram: cleanText(record.instagram),
+        tiktok: cleanText(record.tiktok),
+        youtube: cleanText(record.youtube),
+        facebook: cleanText(record.facebook),
+        referred_by: cleanText(record.referred_by),
+        internal_notes: cleanText(record.internal_notes || record.notes),
+        source_list: meta.source || cleanText(record.source_list),
+        source_file: meta.fileName || cleanText(record.source_file),
+        parse_status: meta.parseStatus || cleanText(record.parse_status) || "Parsed",
+        imported_at: new Date().toISOString()
+      };
+    };
+
+    const toPublicDirectoryRecord = (record) => {
+      const status = cleanText(record.import_status || record.local_status || "Panda Master");
+      if (record.import_record_id && !PUBLIC_DIRECTORY_STATUSES.has(status)) return null;
+      return {
+        panda_master_id: cleanText(record.panda_master_id) || "Pending",
+        nickname: cleanText(record.public_nickname) || cleanText(record.nickname) || "Panda Master",
+        country: cleanText(record.country),
+        city: cleanText(record.city),
+        sport: splitList(record.sport || record.sports)[0] || "",
+        role: cleanText(record.role),
+        join_date: cleanText(record.join_date || record.received_date || record.submitted_at).slice(0, 10),
+        photo_link: cleanText(record.photo_link),
+        story: cleanText(record.public_story || record.story_note)
+      };
+    };
 
     const calculateInfluenceScore = (payload) => {
       const followers = parseNumber(payload.followers);
@@ -1596,6 +1865,7 @@
       const pandaMasterId = cleanText(idNode?.textContent) || generatePandaId();
       payload.panda_master_id = pandaMasterId;
       payload.name = cleanText(payload.name);
+      payload.public_nickname = cleanText(payload.public_nickname);
       payload.country = cleanText(payload.country);
       payload.city = cleanText(payload.city);
       payload.club = cleanText(payload.club);
@@ -1613,6 +1883,7 @@
       payload.video_link = cleanText(payload.video_link);
       payload.pov_clip_link = cleanText(payload.pov_clip_link);
       payload.story_note = cleanText(payload.story_note);
+      payload.public_story = cleanText(payload.public_story);
       payload.prescription_wear = cleanText(payload.prescription_wear);
       payload.degree_range = cleanText(payload.degree_range);
       payload.prescription_solution_needed = cleanText(payload.prescription_solution_needed);
@@ -1648,7 +1919,7 @@
       payload.operation = "Operation Vietnam";
       payload.registry_type = "Panda Masters";
       payload.source_form = "panda_masters_checkin";
-      payload.form_version = "panda_masters_v7_2026_06_22";
+      payload.form_version = "panda_masters_v8_2026_06_22";
       payload.newsletter_segment = "panda_masters";
       payload.submitted_at = new Date().toISOString();
       payload.source_url = window.location.href;
@@ -1748,10 +2019,68 @@
       `).join("");
     };
 
+    const renderDirectory = () => {
+      if (!directoryBody) return;
+      const records = [
+        ...readLocalRecords(),
+        ...readStorage(IMPORT_QUEUE_STORAGE_KEY)
+      ];
+      const publicRecords = records
+        .map(toPublicDirectoryRecord)
+        .filter(Boolean)
+        .slice(0, 80);
+
+      if (!publicRecords.length) {
+        directoryBody.innerHTML = '<tr><td colspan="9">暂无公开目录记录。 / No public directory records yet.</td></tr>';
+        return;
+      }
+
+      directoryBody.innerHTML = publicRecords.map((record) => `
+        <tr>
+          <td>${escapeHtml(record.panda_master_id)}</td>
+          <td>${escapeHtml(record.nickname)}</td>
+          <td>${escapeHtml(record.country)}</td>
+          <td>${escapeHtml(record.city || "—")}</td>
+          <td>${escapeHtml(record.sport || "—")}</td>
+          <td>${escapeHtml(record.role || "—")}</td>
+          <td>${escapeHtml(record.join_date || "—")}</td>
+          <td>${record.photo_link ? `<a href="${escapeHtml(record.photo_link)}" target="_blank" rel="noopener">Photo</a>` : "—"}</td>
+          <td>${escapeHtml(record.story || "—")}</td>
+        </tr>
+      `).join("");
+    };
+
+    const renderImportQueue = () => {
+      if (!importQueueBody) return;
+      const records = readStorage(IMPORT_QUEUE_STORAGE_KEY);
+      if (!records.length) {
+        importQueueBody.innerHTML = '<tr><td colspan="8">暂无待导入记录。 / No pending import records.</td></tr>';
+        return;
+      }
+      importQueueBody.innerHTML = records.slice(0, 80).map((record) => `
+        <tr>
+          <td>${escapeHtml(record.import_record_id)}</td>
+          <td>${escapeHtml(record.source_list || "—")}</td>
+          <td>${escapeHtml(record.public_nickname || "Pending")}</td>
+          <td>${escapeHtml(record.country || "—")}</td>
+          <td>${escapeHtml(record.sport || "—")}</td>
+          <td>${escapeHtml(record.role || "—")}</td>
+          <td>${escapeHtml(record.import_status || "Invited")}</td>
+          <td>${escapeHtml(record.parse_status || "Parsed")}</td>
+        </tr>
+      `).join("");
+    };
+
     const renderIntelligenceDashboard = () => {
       if (!intelligenceDashboard) return;
-      const records = readLocalRecords();
+      const checkinRecords = readLocalRecords();
+      const importRecords = readStorage(IMPORT_QUEUE_STORAGE_KEY);
+      const records = [
+        ...checkinRecords,
+        ...importRecords.filter((record) => COVERAGE_RECORD_STATUSES.has(record.import_status))
+      ];
       const clubRecords = readStorage(CLUB_STORAGE_KEY);
+      const importStatusCounts = topEntries(countBy(importRecords, (record) => record.import_status || "Invited"), 8);
       const countryDistribution = topEntries(countBy(records, (record) => record.country), 5);
       const sportsDistribution = topEntries(countMulti(records, "sports"), 6);
       const equipmentMap = countMulti(records, "equipment");
@@ -1828,6 +2157,13 @@
           <h3>${records.length} Panda Masters</h3>
           <div class="insight-list">
             ${formatTopRows(countryDistribution, "暂无国家分布 / No country data")}
+          </div>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Pending Import Queue</p>
+          <h3>${importRecords.length} Records</h3>
+          <div class="insight-list">
+            ${formatTopRows(importStatusCounts, "暂无待导入记录 / No pending imports")}
           </div>
         </article>
         <article class="dashboard-card">
@@ -1959,7 +2295,10 @@
 
     const renderCoverage = () => {
       if (!coverageGrid) return;
-      const records = readLocalRecords();
+      const records = [
+        ...readLocalRecords(),
+        ...readStorage(IMPORT_QUEUE_STORAGE_KEY).filter((record) => COVERAGE_RECORD_STATUSES.has(record.import_status))
+      ];
       const clubRecords = readStorage(CLUB_STORAGE_KEY);
       const coveredStatus = new Set(["Visited", "Covered", "Follow-up"]);
       const cityMatches = (value, city) => cleanText(value).toLowerCase().includes(city.toLowerCase());
@@ -2039,6 +2378,79 @@
       `).join("");
     };
 
+    const queueImportRecords = (records) => {
+      if (!records.length) return;
+      const existing = readStorage(IMPORT_QUEUE_STORAGE_KEY);
+      const merged = [...records, ...existing];
+      window.localStorage.setItem(IMPORT_QUEUE_STORAGE_KEY, JSON.stringify(merged.slice(0, 500)));
+    };
+
+    const readFileAsText = (file) => new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result || ""));
+      reader.onerror = () => reject(reader.error || new Error("File read failed"));
+      reader.readAsText(file);
+    });
+
+    const buildImportRecords = async () => {
+      if (!importForm) return [];
+      const formData = new FormData(importForm);
+      const source = cleanText(formData.get("import_source")) || "Other";
+      const defaultStatus = cleanText(formData.get("import_status")) || "Invited";
+      const bulkText = cleanText(formData.get("bulk_text"));
+      const records = [];
+
+      if (bulkText) {
+        records.push(...rowsToImportRecords(parseDelimitedRows(bulkText), {
+          source,
+          defaultStatus,
+          fileName: "bulk-paste",
+          parseStatus: "Parsed"
+        }));
+      }
+
+      const files = Array.from(importForm.querySelector("#import-files")?.files || []);
+      for (const file of files) {
+        const fileName = file.name || "uploaded-file";
+        const lowerName = fileName.toLowerCase();
+        const isText = /\.(csv|tsv|txt)$/.test(lowerName) || /text|csv/.test(file.type);
+        const isSpreadsheet = /\.(xlsx|xls)$/.test(lowerName);
+        const isImage = /^image\//.test(file.type) || /\.(png|jpg|jpeg|webp|heic)$/i.test(lowerName);
+
+        if (isText) {
+          const text = await readFileAsText(file);
+          records.push(...rowsToImportRecords(parseDelimitedRows(text), {
+            source,
+            defaultStatus,
+            fileName,
+            parseStatus: "Parsed"
+          }));
+        } else if (isSpreadsheet) {
+          records.push(normalizeImportRecord({
+            public_nickname: fileName,
+            import_status: defaultStatus
+          }, {
+            source,
+            defaultStatus,
+            fileName,
+            parseStatus: "Pending Excel Parse"
+          }));
+        } else if (isImage) {
+          records.push(normalizeImportRecord({
+            public_nickname: fileName,
+            import_status: defaultStatus
+          }, {
+            source,
+            defaultStatus,
+            fileName,
+            parseStatus: "Pending Screenshot OCR"
+          }));
+        }
+      }
+
+      return records;
+    };
+
     const hydrateFromUrl = () => {
       const params = new URLSearchParams(window.location.search);
       const fieldMap = {
@@ -2066,6 +2478,8 @@
       }
       hydrateFromUrl();
       renderRegistry();
+      renderDirectory();
+      renderImportQueue();
       renderCoverage();
       renderIntelligenceDashboard();
     });
@@ -2097,6 +2511,7 @@
         if (form.elements.received_date) form.elements.received_date.value = todayString();
         resetPendingPandaId();
         renderRegistry();
+        renderDirectory();
         renderCoverage();
         renderIntelligenceDashboard();
       } catch (error) {
@@ -2135,6 +2550,40 @@
       } catch (error) {
         writeStorageRecord(CLUB_STORAGE_KEY, payload, "backend_failed", "club_record_id");
         setFormStatus(clubStatusNode, error.message, true);
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        }
+      }
+    });
+
+    importForm?.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const submitButton = importForm.querySelector("[type='submit']");
+      const originalText = submitButton?.textContent;
+
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = "正在入队 / Importing";
+      }
+      setFormStatus(importStatusNode, "正在解析并加入 Pending Import Queue。<br>Parsing and adding records to the pending import queue.");
+
+      try {
+        const records = await buildImportRecords();
+        if (!records.length) {
+          setFormStatus(importStatusNode, "没有可导入记录。请上传 CSV/TSV/TXT/Excel/截图，或粘贴带表头文本。<br>No importable records found.", true);
+          return;
+        }
+        queueImportRecords(records);
+        setFormStatus(importStatusNode, `<strong>${records.length} records queued / ${records.length} 条记录已入队</strong><br>Public directory will only show approved public identity fields.`);
+        importForm.reset();
+        renderImportQueue();
+        renderDirectory();
+        renderCoverage();
+        renderIntelligenceDashboard();
+      } catch (error) {
+        setFormStatus(importStatusNode, `导入失败：${escapeHtml(error.message || error)}<br>Import failed.`, true);
       } finally {
         if (submitButton) {
           submitButton.disabled = false;

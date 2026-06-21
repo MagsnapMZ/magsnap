@@ -520,6 +520,35 @@
       accent-color: var(--pink);
     }
 
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .insight-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .insight-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      border-bottom: 1px solid rgba(245, 239, 230, 0.08);
+      padding-bottom: 8px;
+      color: rgba(245, 239, 230, 0.72);
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.35;
+    }
+
+    .insight-row strong {
+      color: var(--paper);
+    }
+
     .registry-table {
       width: 100%;
       margin-top: 18px;
@@ -635,6 +664,10 @@
         grid-template-columns: 1fr;
       }
 
+      .insight-grid {
+        grid-template-columns: 1fr;
+      }
+
       .confirmation-summary {
         grid-template-columns: 1fr;
       }
@@ -686,12 +719,12 @@
   <main>
     <section class="hero" id="top">
       <div>
-        <div class="mark">V2</div>
-        <p class="eyebrow">Operation Vietnam / Panda Masters System</p>
+        <div class="mark">V3</div>
+        <p class="eyebrow">Operation Vietnam / Panda Masters Intelligence Network</p>
         <h1>PANDA MASTERS</h1>
         <p class="lead">第一阶段不是卖眼镜。第一阶段是占领越南风筝冲浪圈。<br>Phase one is not sales. Phase one is Vietnam kitesurf network coverage.</p>
         <div class="sale-badge">Not For Sale / 暂不销售</div>
-        <p class="plain">让 MagSnap 成为越南风筝冲浪圈默认出现的 POV 眼镜品牌。成功标准是俱乐部覆盖、教练覆盖、海滩可见度和 Panda Masters Registry。</p>
+        <p class="plain">让 MagSnap 成为越南风筝冲浪圈默认出现的 POV 眼镜品牌。成功标准是俱乐部覆盖、教练覆盖、海滩可见度、Panda Masters Registry 和 Equipment Intelligence。MagSnap 正在建立第一视角户外内容网络。</p>
         <div class="cta-row">
           <a class="button primary" href="#checkin">Panda Master 登记 / Check-in</a>
           <a class="button" href="#coverage">查看覆盖 Dashboard / View Coverage</a>
@@ -736,10 +769,10 @@
     <section class="section" id="checkin">
       <div class="section-head">
         <div>
-          <p class="eyebrow">登记系统 / Check-in System</p>
-          <h2>Panda Master Check-in</h2>
+          <p class="eyebrow">Census / Check-in System</p>
+          <h2>Panda Master Census</h2>
         </div>
-        <p class="plain">二维码扫码后填写。提交后自动生成 Panda Master ID，并写入 MagSnap 收集表。<br>Scan, submit, and receive a Panda Master ID for the MagSnap field registry.</p>
+        <p class="plain">二维码扫码后填写。提交后自动生成 Panda Master ID，并写入 Registry、Influence Map 和 Equipment Intelligence。<br>Scan, submit, and build the registry, influence map and equipment intelligence layer.</p>
       </div>
 
       <div class="form-shell">
@@ -792,6 +825,18 @@
             <input id="pm-instagram" type="text" name="instagram" placeholder="@username">
           </div>
           <div class="field">
+            <label for="pm-tiktok">TikTok</label>
+            <input id="pm-tiktok" type="text" name="tiktok" placeholder="@username">
+          </div>
+          <div class="field">
+            <label for="pm-youtube">YouTube</label>
+            <input id="pm-youtube" type="text" name="youtube" placeholder="@channel / link">
+          </div>
+          <div class="field">
+            <label for="pm-facebook">Facebook</label>
+            <input id="pm-facebook" type="text" name="facebook" placeholder="profile / page">
+          </div>
+          <div class="field">
             <label for="pm-whatsapp">WhatsApp</label>
             <input id="pm-whatsapp" type="text" name="whatsapp" inputmode="tel" autocomplete="tel">
           </div>
@@ -802,6 +847,76 @@
           <div class="field">
             <label for="pm-referred-by">推荐人 / Referred By</label>
             <input id="pm-referred-by" type="text" name="referred_by" placeholder="MZ / club / friend">
+          </div>
+          <div class="field full">
+            <label>Sports / 运动</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Kitesurf">Kitesurf / 风筝冲浪</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Wing Foil">Wing Foil</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Sailing">Sailing / 帆船</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Fishing">Fishing / 钓鱼</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Motorcycle">Motorcycle / 摩托</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Cycling">Cycling / 骑行</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Ski">Ski / 滑雪</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Hiking">Hiking / 徒步</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Other">Other / 其他</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Equipment / 设备</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Insta360 GO3">Insta360 GO3</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Insta360 GO3S">Insta360 GO3S</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="DJI Nano">DJI Nano</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="DJI Action">DJI Action</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="GoPro">GoPro</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Action Camera">Action Camera</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="None">None / 暂无</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Accessories / 配件</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="checkbox" name="accessories" value="AirTag">AirTag</label>
+              <label class="checkbox-pill"><input type="checkbox" name="accessories" value="Headlamp">Headlamp / 头灯</label>
+              <label class="checkbox-pill"><input type="checkbox" name="accessories" value="DJI Mic">DJI Mic</label>
+              <label class="checkbox-pill"><input type="checkbox" name="accessories" value="Radio">Radio / 对讲机</label>
+              <label class="checkbox-pill"><input type="checkbox" name="accessories" value="Other">Other / 其他</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="pm-creates-content">Do you create content? / 是否创作内容？</label>
+            <select id="pm-creates-content" name="creates_content">
+              <option value="No">No / 否</option>
+              <option value="Yes">Yes / 是</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pm-posting-frequency">How often? / 发布频率</label>
+            <select id="pm-posting-frequency" name="posting_frequency">
+              <option value="None">None / 不发布</option>
+              <option value="Rare">Rare / 偶尔</option>
+              <option value="Monthly">Monthly / 每月</option>
+              <option value="Weekly">Weekly / 每周</option>
+              <option value="Daily">Daily / 每天</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pm-followers">Followers / 粉丝数</label>
+            <input id="pm-followers" type="number" min="0" step="1" name="followers" inputmode="numeric" placeholder="0">
+          </div>
+          <div class="field">
+            <label for="pm-community-position">Community Position / 圈层位置</label>
+            <input id="pm-community-position" type="text" name="community_position" placeholder="local coach / club owner / rider">
+          </div>
+          <div class="field full">
+            <label>Platforms / 内容平台</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Instagram">Instagram</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="TikTok">TikTok</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="YouTube">YouTube</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Facebook">Facebook</label>
+            </div>
           </div>
           <div class="field full">
             <label for="pm-note">现场备注 / Field Note</label>
@@ -836,6 +951,7 @@
         <p class="plain">Dashboard 第一版用于行动跟踪。真实全局数据以后从 MagSnap 后台或 Google Sheet 同步。<br>V1 tracks the operation structure. Live global data can sync from the MagSnap backend or Google Sheet next.</p>
       </div>
       <div class="grid-3" id="coverage-grid"></div>
+      <div class="insight-grid" id="intelligence-dashboard" aria-label="Panda Masters intelligence dashboard"></div>
     </section>
 
     <section class="section" id="clubs">
@@ -921,7 +1037,7 @@
           <p class="eyebrow">Email System</p>
           <h2>Panda Masters Newsletter</h2>
         </div>
-        <p class="plain">Email 是长期沟通主通道。用于新品模块、测试计划、镜片、配件和未来机会。<br>Email is the primary long-term channel for modules, testing programs, lenses, accessories and future opportunities.</p>
+        <p class="plain">Email 是长期沟通主通道。用于新品模块、测试计划、镜片、配件和 Operation Vietnam 更新。<br>Email is the primary long-term channel for modules, testing programs, lenses, accessories and Operation Vietnam updates.</p>
       </div>
 
       <div class="form-shell">
@@ -972,11 +1088,12 @@
             <th>City</th>
             <th>Club</th>
             <th>Role</th>
+            <th>Influence</th>
             <th>Referred By</th>
           </tr>
         </thead>
         <tbody id="registry-preview-body">
-          <tr><td colspan="7">暂无本机登记记录。 / No local check-ins yet.</td></tr>
+          <tr><td colspan="8">暂无本机登记记录。 / No local check-ins yet.</td></tr>
         </tbody>
       </table>
     </section>
@@ -1028,6 +1145,7 @@
     const idNode = document.getElementById("panda-master-id");
     const registryBody = document.getElementById("registry-preview-body");
     const coverageGrid = document.getElementById("coverage-grid");
+    const intelligenceDashboard = document.getElementById("intelligence-dashboard");
     const clubForm = document.getElementById("club-database-form");
     const clubStatusNode = document.getElementById("club-form-status");
     const newsletterForm = document.getElementById("newsletter-form");
@@ -1047,6 +1165,67 @@
     const todayString = () => new Date().toISOString().slice(0, 10);
 
     const selectedValues = (root, name) => Array.from(root.querySelectorAll(`input[name="${name}"]:checked`)).map((input) => input.value);
+
+    const parseNumber = (value) => {
+      const number = Number.parseInt(String(value || "").replace(/[^0-9]/g, ""), 10);
+      return Number.isFinite(number) ? number : 0;
+    };
+
+    const splitList = (value) => String(value || "")
+      .split(",")
+      .map((item) => item.trim())
+      .filter(Boolean);
+
+    const countBy = (records, getter) => records.reduce((acc, record) => {
+      const value = getter(record);
+      if (!value) return acc;
+      acc[value] = (acc[value] || 0) + 1;
+      return acc;
+    }, {});
+
+    const countMulti = (records, field) => records.reduce((acc, record) => {
+      splitList(record[field]).forEach((value) => {
+        acc[value] = (acc[value] || 0) + 1;
+      });
+      return acc;
+    }, {});
+
+    const formatTopRows = (items, emptyText = "暂无数据 / No data") => {
+      if (!items.length) return `<div class="insight-row"><span>${emptyText}</span><strong>—</strong></div>`;
+      return items.map(([label, value]) => `
+        <div class="insight-row"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>
+      `).join("");
+    };
+
+    const topEntries = (map, limit = 5) => Object.entries(map)
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .slice(0, limit);
+
+    const calculateInfluenceScore = (payload) => {
+      const followers = parseNumber(payload.followers);
+      const followerScore = followers > 0 ? Math.min(40, Math.round((Math.log10(followers + 1) / 5) * 40)) : 0;
+      const platforms = new Set([
+        ...splitList(payload.content_platforms),
+        payload.instagram ? "Instagram" : "",
+        payload.tiktok ? "TikTok" : "",
+        payload.youtube ? "YouTube" : "",
+        payload.facebook ? "Facebook" : ""
+      ].filter(Boolean));
+      const platformScore = Math.min(20, platforms.size * 5);
+      const frequencyScoreMap = { Daily: 20, Weekly: 14, Monthly: 8, Rare: 4, None: 0 };
+      const roleScoreMap = {
+        "Club Owner": 20,
+        "Head Coach": 20,
+        Coach: 16,
+        Athlete: 16,
+        Creator: 16,
+        "Core Rider": 12,
+        "Long-term Local Rider": 10
+      };
+      const frequencyScore = frequencyScoreMap[payload.posting_frequency] || 0;
+      const roleScore = roleScoreMap[payload.role] || 6;
+      return Math.max(0, Math.min(100, followerScore + platformScore + frequencyScore + roleScore));
+    };
 
     const generatePandaId = () => {
       const date = new Date();
@@ -1165,6 +1344,7 @@
         <div><dt>City</dt><dd>${escapeHtml(payload.city)}</dd></div>
         <div><dt>Club</dt><dd>${escapeHtml(payload.club)}</dd></div>
         <div><dt>Role</dt><dd>${escapeHtml(payload.role)}</dd></div>
+        <div><dt>Influence Score</dt><dd>${escapeHtml(payload.influence_score || 0)}</dd></div>
       `;
       confirmationCard.hidden = false;
       window.location.hash = "confirmation";
@@ -1185,14 +1365,26 @@
       payload.role = cleanText(payload.role);
       payload.email = cleanText(payload.email);
       payload.instagram = cleanText(payload.instagram);
+      payload.tiktok = cleanText(payload.tiktok);
+      payload.youtube = cleanText(payload.youtube);
+      payload.facebook = cleanText(payload.facebook);
       payload.whatsapp = cleanText(payload.whatsapp);
       payload.received_date = cleanText(payload.received_date);
       payload.referred_by = cleanText(payload.referred_by);
       payload.field_note = cleanText(payload.field_note);
+      payload.sports = selectedValues(form, "sports").join(", ");
+      payload.equipment = selectedValues(form, "equipment").join(", ");
+      payload.accessories = selectedValues(form, "accessories").join(", ");
+      payload.content_platforms = selectedValues(form, "content_platforms").join(", ");
+      payload.creates_content = cleanText(payload.creates_content);
+      payload.posting_frequency = cleanText(payload.posting_frequency);
+      payload.followers = parseNumber(payload.followers);
+      payload.community_position = cleanText(payload.community_position);
+      payload.influence_score = calculateInfluenceScore(payload);
       payload.operation = "Operation Vietnam";
       payload.registry_type = "Panda Masters";
       payload.source_form = "panda_masters_checkin";
-      payload.form_version = "panda_masters_v1_2026_06_21";
+      payload.form_version = "panda_masters_v3_2026_06_21";
       payload.newsletter_segment = "panda_masters";
       payload.submitted_at = new Date().toISOString();
       payload.source_url = window.location.href;
@@ -1275,7 +1467,7 @@
       const records = readLocalRecords();
       if (!registryBody) return;
       if (!records.length) {
-        registryBody.innerHTML = '<tr><td colspan="7">暂无本机登记记录。 / No local check-ins yet.</td></tr>';
+        registryBody.innerHTML = '<tr><td colspan="8">暂无本机登记记录。 / No local check-ins yet.</td></tr>';
         return;
       }
       registryBody.innerHTML = records.slice(0, 12).map((record) => `
@@ -1286,9 +1478,95 @@
           <td>${escapeHtml(record.city)}</td>
           <td>${escapeHtml(record.club)}</td>
           <td>${escapeHtml(record.role)}</td>
+          <td>${escapeHtml(record.influence_score || 0)}</td>
           <td>${escapeHtml(record.referred_by)}</td>
         </tr>
       `).join("");
+    };
+
+    const renderIntelligenceDashboard = () => {
+      if (!intelligenceDashboard) return;
+      const records = readLocalRecords();
+      const clubRecords = readStorage(CLUB_STORAGE_KEY);
+      const countryDistribution = topEntries(countBy(records, (record) => record.country), 5);
+      const sportsDistribution = topEntries(countMulti(records, "sports"), 6);
+      const equipmentMap = countMulti(records, "equipment");
+      const equipmentDistribution = topEntries(equipmentMap, 8);
+      const accessoryDistribution = countMulti(records, "accessories");
+      const topInfluencers = records
+        .slice()
+        .sort((a, b) => parseNumber(b.influence_score) - parseNumber(a.influence_score))
+        .slice(0, 5)
+        .map((record) => [`${record.name || "Unknown"} · ${record.role || ""}`, parseNumber(record.influence_score)]);
+      const topCoaches = records
+        .filter((record) => /coach/i.test(record.role || ""))
+        .slice()
+        .sort((a, b) => parseNumber(b.influence_score) - parseNumber(a.influence_score))
+        .slice(0, 5)
+        .map((record) => [`${record.name || "Unknown"} · ${record.club || ""}`, parseNumber(record.influence_score)]);
+      const topClubs = topEntries(countBy(records, (record) => record.club), 5);
+      const equipmentNames = ["Insta360 GO3S", "DJI Nano", "GoPro", "DJI Action", "AirTag", "Headlamp", "DJI Mic"];
+      const equipmentCounts = equipmentNames.map((name) => {
+        const source = ["AirTag", "Headlamp", "DJI Mic"].includes(name) ? accessoryDistribution : equipmentMap;
+        return [name, source[name] || 0];
+      });
+
+      intelligenceDashboard.innerHTML = `
+        <article class="dashboard-card">
+          <p class="eyebrow">Registry Dashboard</p>
+          <h3>${records.length} Panda Masters</h3>
+          <div class="insight-list">
+            ${formatTopRows(countryDistribution, "暂无国家分布 / No country data")}
+          </div>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Sports Map</p>
+          <h3>Sports</h3>
+          <div class="insight-list">
+            ${formatTopRows(sportsDistribution, "暂无运动分布 / No sports data")}
+          </div>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Equipment Map</p>
+          <h3>Equipment</h3>
+          <div class="insight-list">
+            ${formatTopRows(equipmentDistribution, "暂无设备数据 / No equipment data")}
+          </div>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Influence Map</p>
+          <h3>Top Influencers</h3>
+          <div class="insight-list">
+            ${formatTopRows(topInfluencers, "暂无影响力数据 / No influence data")}
+          </div>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Coaches</p>
+          <h3>Top Coaches</h3>
+          <div class="insight-list">
+            ${formatTopRows(topCoaches, "暂无教练数据 / No coach data")}
+          </div>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Clubs</p>
+          <h3>Top Clubs</h3>
+          <div class="insight-list">
+            ${formatTopRows(topClubs, "暂无俱乐部数据 / No club data")}
+          </div>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Equipment Intelligence</p>
+          <h3>Module Signals</h3>
+          <div class="insight-list">
+            ${formatTopRows(equipmentCounts)}
+          </div>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Club Network</p>
+          <h3>${clubRecords.length} Records</h3>
+          <p class="plain">Club database records support the Vietnam coverage map and future field visits.</p>
+        </article>
+      `;
     };
 
     const renderCoverage = () => {
@@ -1385,6 +1663,7 @@
       hydrateFromUrl();
       renderRegistry();
       renderCoverage();
+      renderIntelligenceDashboard();
     });
 
     form?.addEventListener("submit", async (event) => {
@@ -1415,6 +1694,7 @@
         resetPendingPandaId();
         renderRegistry();
         renderCoverage();
+        renderIntelligenceDashboard();
       } catch (error) {
         writeLocalRecord(payload, "backend_failed");
         showStatus(error.message, true);
@@ -1447,6 +1727,7 @@
         if (clubForm.elements.country) clubForm.elements.country.value = "Vietnam";
         if (clubForm.elements.visit_date) clubForm.elements.visit_date.value = todayString();
         renderCoverage();
+        renderIntelligenceDashboard();
       } catch (error) {
         writeStorageRecord(CLUB_STORAGE_KEY, payload, "backend_failed", "club_record_id");
         setFormStatus(clubStatusNode, error.message, true);

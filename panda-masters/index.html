@@ -1064,8 +1064,9 @@
             </div>
           </div>
           <div class="field">
-            <label for="pm-photo-link">Photo Wearing MagSnap / 佩戴照片链接</label>
-            <input id="pm-photo-link" type="url" name="photo_link" placeholder="Drive / iCloud / social link">
+            <label for="pm-photo-link">Photo Wearing MagSnap / 佩戴照片链接 *</label>
+            <input id="pm-photo-link" type="url" name="photo_link" placeholder="Drive / iCloud / social link" required>
+            <p class="form-note">必填。没有佩戴照片，不进入公开 Panda Masters Directory。<br>Required. No wearing photo, no public directory entry.</p>
           </div>
           <div class="field">
             <label for="pm-video-link">Video Link / 视频链接</label>
@@ -1339,7 +1340,7 @@
           <tr><td colspan="9">暂无公开目录记录。 / No public directory records yet.</td></tr>
         </tbody>
       </table>
-      <p class="form-note">Directory 只读取公开字段。隐藏字段不会渲染到这张表。<br>The directory renders public fields only.</p>
+      <p class="form-note">Directory 只读取公开字段，并要求有佩戴照片。隐藏字段不会渲染到这张表。<br>The directory renders public fields only and requires a wearing photo.</p>
     </section>
 
     <section class="section" id="import">
@@ -1689,6 +1690,7 @@
     const toPublicDirectoryRecord = (record) => {
       const status = cleanText(record.import_status || record.local_status || "Panda Master");
       if (record.import_record_id && !PUBLIC_DIRECTORY_STATUSES.has(status)) return null;
+      if (!cleanText(record.photo_link)) return null;
       return {
         panda_master_id: cleanText(record.panda_master_id) || "Pending",
         nickname: cleanText(record.public_nickname) || cleanText(record.nickname) || "Panda Master",

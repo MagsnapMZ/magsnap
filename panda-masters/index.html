@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>MAGSNAP | Panda Masters</title>
-  <meta name="description" content="Operation Vietnam Panda Masters V8 check-in, public directory, pending import queue and coverage dashboard.">
+  <meta name="description" content="Panda Masters registration, photo upload and private-safe aggregate stats for MagSnap.">
   <style>
     :root {
       --black: #000;
@@ -579,6 +579,57 @@
       line-height: 1.35;
     }
 
+    #flywheel,
+    #definition,
+    #club-event,
+    #field-kit,
+    #lab,
+    #clubs,
+    #email,
+    #directory,
+    #import,
+    #registry,
+    #tracking {
+      display: none;
+    }
+
+    .survey-hero {
+      min-height: auto;
+      grid-template-columns: 1fr;
+      align-items: start;
+      padding: clamp(20px, 5vw, 40px) 0 clamp(18px, 4vw, 28px);
+      border-bottom: 0;
+    }
+
+    .survey-hero .mark,
+    .survey-hero .cta-row,
+    .survey-hero .mission-card,
+    .survey-hero .sale-badge,
+    .survey-hero .plain {
+      display: none;
+    }
+
+    .survey-hero h1 {
+      max-width: 760px;
+      font-size: clamp(48px, 10vw, 116px);
+    }
+
+    .survey-hero .lead {
+      max-width: 640px;
+      margin-top: 18px;
+      color: var(--kraft);
+    }
+
+    #checkin {
+      padding-top: clamp(16px, 4vw, 34px);
+      border-top: 1px solid var(--line);
+    }
+
+    #intelligence-dashboard,
+    [hidden] {
+      display: none !important;
+    }
+
     .tag {
       display: inline-flex;
       border: 1px solid rgba(200, 169, 126, 0.28);
@@ -708,25 +759,19 @@
     </a>
     <nav class="nav" aria-label="Panda Masters navigation">
       <a href="../">首页 / Home</a>
-      <a href="#flywheel">全覆盖 / Coverage</a>
       <a href="#checkin">登记 / Check-in</a>
-      <a href="#directory">公开目录 / Directory</a>
-      <a href="#import">导入 / Import</a>
-      <a href="#lab">Lab</a>
-      <a href="#coverage">覆盖 / Coverage</a>
-      <a href="#clubs">俱乐部 / Clubs</a>
-      <a href="#email">邮件 / Email</a>
+      <a href="#coverage">统计 / Stats</a>
       <a href="mailto:info@magsnap.me">info@magsnap.me</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" id="top">
+    <section class="hero survey-hero" id="top">
       <div>
         <div class="mark">V8</div>
-        <p class="eyebrow">Operation Vietnam / Locked Strategy</p>
-        <h1>PANDA MASTERS</h1>
-        <p class="lead">Maximum Coverage.<br>Not Maximum Revenue.</p>
+        <p class="eyebrow">Panda Masters Registry / 熊猫高人登记</p>
+        <h1>Join Panda Masters<br>加入熊猫高人</h1>
+        <p class="lead">Not For Sale. For Riders Who Help The Community.</p>
         <div class="sale-badge">Not For Sale / 暂不销售</div>
         <p class="plain">核心 KPI：Club Coverage %、Owner Coverage %、Coach Coverage %、Core Rider Coverage %、POV Creator Coverage %、Panda Masters Count、Content Generated。</p>
         <div class="cta-row">
@@ -867,10 +912,10 @@
     <section class="section" id="checkin">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Census / Check-in System</p>
-          <h2>Coverage Intelligence</h2>
+          <p class="eyebrow">Survey / Registration</p>
+          <h2>Panda Master 登记</h2>
         </div>
-        <p class="plain">每次扫码记录身份、设备、影响力、内容、照片、视频、想法、反馈和近视需求。<br>Every scan records identity, equipment, influence, content, photos, videos, ideas, feedback and prescription needs.</p>
+        <p class="plain">填写基础信息、设备、社交链接、佩戴 MagSnap 照片和反馈。<br>Submit your profile, POV device, social links, wearing photo and feedback.</p>
       </div>
 
       <div class="form-shell">
@@ -973,7 +1018,7 @@
             </div>
           </div>
           <div class="field full">
-            <label>Equipment / 设备</label>
+            <label>Equipment / POV devices / 设备</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Insta360 GO3">Insta360 GO3</label>
               <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Insta360 GO3S">Insta360 GO3S</label>
@@ -1064,9 +1109,9 @@
             </div>
           </div>
           <div class="field">
-            <label for="pm-photo-link">Photo Wearing MagSnap / 佩戴照片链接 *</label>
+            <label for="pm-photo-link">Photo Wearing MagSnap / 佩戴 MagSnap 照片链接 *</label>
             <input id="pm-photo-link" type="url" name="photo_link" placeholder="Drive / iCloud / social link" required>
-            <p class="form-note">必填。没有佩戴照片，不进入公开 Panda Masters Directory。<br>Required. No wearing photo, no public directory entry.</p>
+            <p class="form-note">必填。没有佩戴 MagSnap 照片，不进入公开显示。<br>Required. No wearing photo, no public profile.</p>
           </div>
           <div class="field">
             <label for="pm-video-link">Video Link / 视频链接</label>
@@ -1112,21 +1157,21 @@
             <label for="pm-note">现场备注 / Field Note</label>
             <textarea id="pm-note" name="field_note" placeholder="可记录俱乐部情况、教练数量、素材位置、POV 内容和后续跟进。"></textarea>
           </div>
-          <button class="button primary" type="submit">提交 Panda Master 登记 / Submit Check-in</button>
+          <button class="button primary" type="submit">Submit / 提交</button>
           <div class="form-status" id="panda-form-status" aria-live="polite"></div>
           <p class="form-note">联系方式仅供 MagSnap 内部跟进，不在公开页面展示。<br>Contact information is for MagSnap internal follow-up only and is not shown publicly.</p>
         </form>
       </div>
     </section>
 
-    <section class="section" id="confirmation" aria-label="Panda Master confirmation">
+    <section class="section" id="confirmation" aria-label="Panda Master confirmation" hidden>
       <div class="confirmation-card" id="confirmation-card" hidden>
         <p class="eyebrow">Confirmation Page / 确认页</p>
-        <h2>Check-in Received.<br>登记已收到。</h2>
-        <p class="plain">你已经进入 Operation Vietnam / Panda Masters Intelligence Database。请保存你的 Panda Master ID。<br>You are now recorded in the Panda Masters intelligence database. Save your Panda Master ID.</p>
+        <h2>Registration Received.<br>登记已收到。</h2>
+        <p class="plain">You are now in the Panda Masters Registry. Your public profile will appear only after photo verification.<br>你已进入 Panda Masters Registry。公开资料会在照片审核后显示。</p>
         <dl class="confirmation-summary" id="confirmation-summary"></dl>
         <div class="cta-row">
-          <a class="button primary" href="#coverage">查看 Coverage / View Coverage</a>
+          <a class="button primary" href="#coverage">查看统计 / View Stats</a>
           <a class="button" href="#checkin">继续登记 / Add Another</a>
         </div>
       </div>
@@ -1187,13 +1232,13 @@
     <section class="section" id="coverage">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Vietnam Coverage Dashboard</p>
-          <h2>俱乐部。老板。<br>教练。核心玩家。<br>POV 创作者。</h2>
+          <p class="eyebrow">Stats / 数据</p>
+          <h2>Panda Masters Stats<br>熊猫高人统计</h2>
         </div>
-        <p class="plain">Dashboard 第一版追踪全覆盖信号。真实全局数据以后从 MagSnap 后台或 Google Sheet 同步。<br>V1 tracks full-coverage signals. Live global data can sync from the MagSnap backend or Google Sheet next.</p>
+        <p class="plain">只显示汇总统计，不显示邮箱、电话、地址、WhatsApp 等隐私信息。<br>Aggregate stats only. Private data is never shown here.</p>
       </div>
       <div class="grid-3" id="coverage-grid"></div>
-      <div class="insight-grid" id="intelligence-dashboard" aria-label="Panda Masters intelligence dashboard"></div>
+      <div class="insight-grid" id="intelligence-dashboard" aria-label="Panda Masters intelligence dashboard" hidden></div>
     </section>
 
     <section class="section" id="clubs">
@@ -1459,7 +1504,7 @@
   </main>
 
   <footer class="footer">
-    <span>MAGSNAP / Panda Masters Full Coverage</span>
+    <span>MAGSNAP / Panda Masters Registry</span>
     <div class="footer-links">
       <a href="../">Home</a>
       <a href="../disclaimer.html">Disclaimer</a>
@@ -1495,6 +1540,7 @@
     const clubStatusNode = document.getElementById("club-form-status");
     const newsletterForm = document.getElementById("newsletter-form");
     const newsletterStatusNode = document.getElementById("newsletter-form-status");
+    const confirmationSection = document.getElementById("confirmation");
     const confirmationCard = document.getElementById("confirmation-card");
     const confirmationSummary = document.getElementById("confirmation-summary");
 
@@ -1510,6 +1556,39 @@
     const todayString = () => new Date().toISOString().slice(0, 10);
 
     const selectedValues = (root, name) => Array.from(root.querySelectorAll(`input[name="${name}"]:checked`)).map((input) => input.value);
+
+    const SURVEY_VISIBLE_FIELD_NAMES = new Set([
+      "name",
+      "public_nickname",
+      "country",
+      "city",
+      "club",
+      "role",
+      "email",
+      "instagram",
+      "tiktok",
+      "youtube",
+      "facebook",
+      "sports",
+      "equipment",
+      "photo_link",
+      "feedback"
+    ]);
+
+    const trimSurveyForm = () => {
+      if (!form) return;
+      form.querySelectorAll(".field").forEach((field) => {
+        const controls = Array.from(field.querySelectorAll("input, select, textarea"));
+        if (!controls.length) return;
+        const shouldShow = controls.some((control) => SURVEY_VISIBLE_FIELD_NAMES.has(control.name));
+        if (shouldShow) return;
+        field.hidden = true;
+        controls.forEach((control) => {
+          control.disabled = true;
+          control.required = false;
+        });
+      });
+    };
 
     const parseNumber = (value) => {
       const number = Number.parseInt(String(value || "").replace(/[^0-9]/g, ""), 10);
@@ -1854,6 +1933,7 @@
         <div><dt>Prescription</dt><dd>${escapeHtml(payload.prescription_solution_needed || "—")}</dd></div>
         <div><dt>Lab Signals</dt><dd>${escapeHtml(payload.lab_signal_count || 0)}</dd></div>
       `;
+      if (confirmationSection) confirmationSection.hidden = false;
       confirmationCard.hidden = false;
       window.location.hash = "confirmation";
       window.requestAnimationFrame(() => {
@@ -2301,83 +2381,50 @@
         ...readLocalRecords(),
         ...readStorage(IMPORT_QUEUE_STORAGE_KEY).filter((record) => COVERAGE_RECORD_STATUSES.has(record.import_status))
       ];
-      const clubRecords = readStorage(CLUB_STORAGE_KEY);
-      const coveredStatus = new Set(["Visited", "Covered", "Follow-up"]);
-      const cityMatches = (value, city) => cleanText(value).toLowerCase().includes(city.toLowerCase());
-      const merged = coverageBase.map((base) => {
-        const cityRecords = records.filter((record) => record.city === base.city);
-        const cityClubs = clubRecords.filter((record) => cityMatches(record.location, base.city));
-        const clubs = new Set([
-          ...cityRecords.map((record) => record.club).filter(Boolean),
-          ...cityClubs.filter((record) => coveredStatus.has(record.coverage_status)).map((record) => record.club_name).filter(Boolean)
-        ]);
-        const owners = cityRecords.filter((record) => record.role === "Club Owner").length;
-        const clubOwners = cityClubs.filter((record) => record.owner && coveredStatus.has(record.coverage_status)).length;
-        const coaches = cityRecords.filter((record) => /coach/i.test(record.role || "")).length;
-        const clubCoaches = cityClubs.filter((record) => record.head_coach && coveredStatus.has(record.coverage_status)).length;
-        const coreRiders = cityRecords.filter((record) => {
-          const role = record.role || "";
-          return /Core Rider|Long-term Local Rider|Athlete/i.test(role);
-        }).length;
-        const povCreators = cityRecords.filter((record) => {
-          return record.role === "Creator" || record.creates_content === "Yes" || splitList(record.content_platforms).length > 0;
-        }).length;
-        return {
-          ...base,
-          clubs: base.clubs + clubs.size,
-          owners: base.owners + owners + clubOwners,
-          coaches: base.coaches + coaches + clubCoaches,
-          coreRiders: base.coreRiders + coreRiders,
-          povCreators: base.povCreators + povCreators,
-          masters: cityRecords.length
-        };
-      });
-
-      const completedSignals = merged.reduce((sum, item) => {
-        return sum
-          + (item.clubs > 0 ? 1 : 0)
-          + (item.owners > 0 ? 1 : 0)
-          + (item.coaches > 0 ? 1 : 0)
-          + (item.coreRiders > 0 ? 1 : 0)
-          + (item.povCreators > 0 ? 1 : 0);
-      }, 0);
-      const coveragePercent = Math.round((completedSignals / (merged.length * 5)) * 100);
-      const total = merged.reduce((acc, item) => ({
-        clubs: acc.clubs + item.clubs,
-        owners: acc.owners + item.owners,
-        coaches: acc.coaches + item.coaches,
-        coreRiders: acc.coreRiders + item.coreRiders,
-        povCreators: acc.povCreators + item.povCreators,
-        masters: acc.masters + item.masters
-      }), { clubs: 0, owners: 0, coaches: 0, coreRiders: 0, povCreators: 0, masters: 0 });
+      const countries = new Set(records.map((record) => cleanText(record.country)).filter(Boolean));
+      const clubs = new Set(records.map((record) => cleanText(record.club)).filter(Boolean));
+      const roleCount = records.filter((record) => /Club Owner|Head Coach|Coach|Core Rider|Long-term Local Rider|Athlete|Creator|Community Contributor/i.test(record.role || "")).length;
+      const go3sUsers = records.filter((record) => splitList(record.equipment).some((item) => /GO3S/i.test(item))).length;
+      const nanoUsers = records.filter((record) => splitList(record.equipment).some((item) => /DJI Nano/i.test(item))).length;
+      const photoUploaded = records.filter((record) => cleanText(record.photo_link)).length;
 
       coverageGrid.innerHTML = `
         <article class="dashboard-card">
-          <p class="eyebrow">Overall Coverage</p>
-          <h3>${coveragePercent}%</h3>
-          <div class="stat-grid">
-            <div class="stat"><strong>${total.clubs}</strong><span>Clubs<br>俱乐部</span></div>
-            <div class="stat"><strong>${total.owners}</strong><span>Owners<br>老板</span></div>
-            <div class="stat"><strong>${total.coaches}</strong><span>Coaches<br>教练</span></div>
-            <div class="stat"><strong>${total.coreRiders}</strong><span>Core Riders<br>核心玩家</span></div>
-            <div class="stat"><strong>${total.povCreators}</strong><span>POV Creators<br>创作者</span></div>
-            <div class="stat"><strong>${total.masters}</strong><span>Panda Masters<br>登记人数</span></div>
-          </div>
+          <p class="eyebrow">Total Panda Masters</p>
+          <h3>${records.length}</h3>
+          <p class="plain">登记总数 / Total registry records</p>
         </article>
-      ` + merged.map((item) => `
         <article class="dashboard-card">
-          <p class="eyebrow">${escapeHtml(item.zh)} / ${escapeHtml(item.city)}</p>
-          <h3>${escapeHtml(item.city)}</h3>
-          <div class="stat-grid">
-            <div class="stat"><strong>${item.clubs}</strong><span>Clubs Covered<br>俱乐部覆盖</span></div>
-            <div class="stat"><strong>${item.owners}</strong><span>Owners Covered<br>老板覆盖</span></div>
-            <div class="stat"><strong>${item.coaches}</strong><span>Coaches Covered<br>教练覆盖</span></div>
-            <div class="stat"><strong>${item.coreRiders}</strong><span>Core Riders<br>核心玩家</span></div>
-            <div class="stat"><strong>${item.povCreators}</strong><span>POV Creators<br>创作者</span></div>
-            <div class="stat"><strong>${item.masters}</strong><span>Panda Masters<br>登记人数</span></div>
-          </div>
+          <p class="eyebrow">Countries</p>
+          <h3>${countries.size}</h3>
+          <p class="plain">国家数量 / Country count</p>
         </article>
-      `).join("");
+        <article class="dashboard-card">
+          <p class="eyebrow">Clubs</p>
+          <h3>${clubs.size}</h3>
+          <p class="plain">俱乐部数量 / Club count</p>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Coaches / Owners / Riders</p>
+          <h3>${roleCount}</h3>
+          <p class="plain">教练、老板、玩家 / Key community roles</p>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">GO3S Users</p>
+          <h3>${go3sUsers}</h3>
+          <p class="plain">Insta360 GO3S users</p>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">DJI Nano Users</p>
+          <h3>${nanoUsers}</h3>
+          <p class="plain">DJI Nano users</p>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Photo Uploaded</p>
+          <h3>${photoUploaded}</h3>
+          <p class="plain">已提交佩戴照片 / Wearing photos</p>
+        </article>
+      `;
     };
 
     const queueImportRecords = (records) => {
@@ -2478,6 +2525,7 @@
       if (clubForm?.elements.visit_date) {
         clubForm.elements.visit_date.value = todayString();
       }
+      trimSurveyForm();
       hydrateFromUrl();
       renderRegistry();
       renderDirectory();
@@ -2503,10 +2551,10 @@
         await submitPayload(payload);
         writeLocalRecord(payload, "backend_saved");
         showStatus(`
-          <strong>Panda Master Check-in Received / 登记已收到</strong><br>
+          <strong>You are now in the Panda Masters Registry. / 你已进入 Panda Masters Registry。</strong><br>
+          Your public profile will appear only after photo verification.<br>
           ID: ${escapeHtml(payload.panda_master_id)}<br>
-          ${escapeHtml(payload.name)} · ${escapeHtml(payload.city)} · ${escapeHtml(payload.club)}<br>
-          我们会把这条记录归入 Operation Vietnam / Panda Masters Intelligence Database。
+          ${escapeHtml(payload.public_nickname || payload.name)} · ${escapeHtml(payload.city)} · ${escapeHtml(payload.club)}
         `);
         showConfirmation(payload);
         form.reset();

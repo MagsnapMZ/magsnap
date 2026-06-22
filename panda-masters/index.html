@@ -423,6 +423,16 @@
       word-break: break-word;
     }
 
+    .id-input {
+      margin-top: 10px;
+      color: var(--kraft);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(28px, 7vw, 48px);
+      line-height: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
     .confirmation-card {
       border: 1px solid rgba(200, 169, 126, 0.36);
       background:
@@ -920,8 +930,9 @@
 
       <div class="form-shell">
         <div class="id-box">
-          <span>Panda Master ID / 自动生成</span>
-          <strong id="panda-master-id">PM-LOADING</strong>
+          <span>Panda Master Number / 熊猫高人编号</span>
+          <input id="panda-master-number" class="id-input" type="text" name="panda_master_number" form="panda-master-form" inputmode="numeric" autocomplete="off" pattern="[0-9]{4}" placeholder="4-digit number / 四位数字" required>
+          <p class="form-note">只填写现场给到用户的四位编号，例如 0001、0037、0128、1024。系统内部保存为 PM-0001。</p>
         </div>
         <form class="panda-form" id="panda-master-form" action="#" method="post">
           <div class="field">
@@ -1040,114 +1051,97 @@
             </div>
           </div>
           <div class="field full">
-            <label>Prescription Intelligence / 近视贴片需求</label>
-            <p class="form-note">用于判断未来优先开发哪些 Prescription Adapter SKU，不是医学调查。<br>SKU demand signal only. This is not a medical survey.</p>
-          </div>
-          <div class="field full">
-            <label>Prescription Need / 视力矫正需求</label>
+            <label>Do you need vision correction? / 你是否近视 / 需要视力矫正？</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="radio" name="prescription_need" value="No">No / 不需要</label>
               <label class="checkbox-pill"><input type="radio" name="prescription_need" value="Yes">Yes / 需要</label>
-              <label class="checkbox-pill"><input type="radio" name="prescription_need" value="Not Sure">Not Sure / 不确定</label>
-            </div>
-          </div>
-          <div class="field full">
-            <label>Myopia Degree / 近视度数</label>
-            <p class="form-note">请选择最接近你的近视度数。<br>Select the closest myopia degree.</p>
-            <div class="checkbox-grid">
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="150">150</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="200">200</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="225">225</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="250">250</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="275">275</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="300">300</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="325">325</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="350">350</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="375">375</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="400">400</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="450">450</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="500">500</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="600+">600+</label>
-              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="Not Sure">Not Sure / 不确定</label>
-            </div>
-          </div>
-          <div class="field full">
-            <label>Astigmatism / 散光</label>
-            <div class="checkbox-grid">
-              <label class="checkbox-pill"><input type="radio" name="astigmatism" value="No">No / 无</label>
-              <label class="checkbox-pill"><input type="radio" name="astigmatism" value="Mild">Mild / 轻度</label>
-              <label class="checkbox-pill"><input type="radio" name="astigmatism" value="Moderate">Moderate / 中度</label>
-              <label class="checkbox-pill"><input type="radio" name="astigmatism" value="High">High / 高度</label>
-              <label class="checkbox-pill"><input type="radio" name="astigmatism" value="Not Sure">Not Sure / 不确定</label>
-            </div>
-          </div>
-          <div class="field full">
-            <label>Current Solution / 当前解决方式</label>
-            <div class="checkbox-grid">
-              <label class="checkbox-pill"><input type="radio" name="current_solution" value="Contact Lenses">Contact Lenses / 隐形眼镜</label>
-              <label class="checkbox-pill"><input type="radio" name="current_solution" value="Prescription Sunglasses">Prescription Sunglasses / 近视太阳镜</label>
-              <label class="checkbox-pill"><input type="radio" name="current_solution" value="Sports Glasses">Sports Glasses / 运动眼镜</label>
-              <label class="checkbox-pill"><input type="radio" name="current_solution" value="No Correction">No Correction / 不矫正</label>
-              <label class="checkbox-pill"><input type="radio" name="current_solution" value="Other">Other / 其他</label>
-            </div>
-          </div>
-          <div class="field full">
-            <label>Future Interest / 未来兴趣</label>
-            <p class="form-note">如果 MagSnap 推出近视贴片或 Prescription Adapter，你会使用吗？<br>If MagSnap offered a prescription adapter or insert system, would you use it?</p>
-            <div class="checkbox-grid">
-              <label class="checkbox-pill"><input type="radio" name="prescription_adapter_interest" value="Yes">Yes / 会</label>
-              <label class="checkbox-pill"><input type="radio" name="prescription_adapter_interest" value="Maybe">Maybe / 可能</label>
-              <label class="checkbox-pill"><input type="radio" name="prescription_adapter_interest" value="No">No / 不会</label>
             </div>
           </div>
           <div class="field">
-            <label for="pm-creates-content">Do you create content? / 是否创作内容？</label>
-            <select id="pm-creates-content" name="creates_content">
-              <option value="No">No / 否</option>
-              <option value="Yes">Yes / 是</option>
+            <label for="pm-myopia-degree">If yes, what is your myopia degree? / 如果需要，请填写你的近视度数</label>
+            <select id="pm-myopia-degree" name="myopia_degree">
+              <option value="">Select / 选择</option>
+              <option value="150">150</option>
+              <option value="200">200</option>
+              <option value="225">225</option>
+              <option value="250">250</option>
+              <option value="275">275</option>
+              <option value="300">300</option>
+              <option value="325">325</option>
+              <option value="350">350</option>
+              <option value="375">375</option>
+              <option value="400">400</option>
+              <option value="450">450</option>
+              <option value="500">500</option>
+              <option value="600+">600+</option>
+              <option value="Not sure">Not sure / 不确定</option>
             </select>
           </div>
-          <div class="field">
-            <label for="pm-posting-frequency">How often? / 发布频率</label>
-            <select id="pm-posting-frequency" name="posting_frequency">
-              <option value="None">None / 不发布</option>
-              <option value="Rare">Rare / 偶尔</option>
-              <option value="Monthly">Monthly / 每月</option>
-              <option value="Weekly">Weekly / 每周</option>
-              <option value="Daily">Daily / 每天</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="pm-followers">Followers / 粉丝数</label>
-            <input id="pm-followers" type="number" min="0" step="1" name="followers" inputmode="numeric" placeholder="0">
-          </div>
-          <div class="field">
-            <label for="pm-community-position">Community Position / 圈层位置</label>
-            <input id="pm-community-position" type="text" name="community_position" placeholder="local coach / club owner / rider">
+          <div class="field full">
+            <label>Content Creator Profile / 内容创作者信息</label>
+            <p class="form-note">用于判断 Panda Masters 的内容扩散能力，不公开个人联系方式。<br>Used to understand content reach. Private contact fields stay private.</p>
           </div>
           <div class="field full">
-            <label>Platforms / 内容平台</label>
+            <label>Do you create or post videos/photos? / 你平时会拍摄或发布视频/照片吗？</label>
             <div class="checkbox-grid">
-              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Instagram">Instagram</label>
+              <label class="checkbox-pill"><input type="radio" name="content_creator_status" value="Never">Never / 从不</label>
+              <label class="checkbox-pill"><input type="radio" name="content_creator_status" value="Sometimes">Sometimes / 偶尔</label>
+              <label class="checkbox-pill"><input type="radio" name="content_creator_status" value="Regularly">Regularly / 经常</label>
+              <label class="checkbox-pill"><input type="radio" name="content_creator_status" value="Professional Creator">Professional Creator / 专业创作者</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Where do you post? / 你主要发布在哪些平台？</label>
+            <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="TikTok">TikTok</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Instagram">Instagram</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="YouTube">YouTube</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Facebook">Facebook</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Xiaohongshu">Xiaohongshu / 小红书</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Douyin">Douyin / 抖音</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Other">Other / 其他</label>
             </div>
           </div>
           <div class="field full">
-            <label>Content Assets / 内容资产</label>
+            <label>How often do you post? / 你多久发布一次？</label>
             <div class="checkbox-grid">
-              <label class="checkbox-pill"><input type="checkbox" name="panda_content_items" value="Photo">Photo / 照片</label>
-              <label class="checkbox-pill"><input type="checkbox" name="panda_content_items" value="Video">Video / 视频</label>
-              <label class="checkbox-pill"><input type="checkbox" name="panda_content_items" value="POV Clip">POV Clip / 第一视角片段</label>
-              <label class="checkbox-pill"><input type="checkbox" name="panda_content_items" value="Club Record">Club Record / 俱乐部记录</label>
-              <label class="checkbox-pill"><input type="checkbox" name="panda_content_items" value="Story">Story / 故事</label>
+              <label class="checkbox-pill"><input type="radio" name="posting_frequency" value="Daily">Daily / 每天</label>
+              <label class="checkbox-pill"><input type="radio" name="posting_frequency" value="Weekly">Weekly / 每周</label>
+              <label class="checkbox-pill"><input type="radio" name="posting_frequency" value="Monthly">Monthly / 每月</label>
+              <label class="checkbox-pill"><input type="radio" name="posting_frequency" value="Rarely">Rarely / 很少</label>
             </div>
           </div>
           <div class="field">
-            <label for="pm-photo-link">Photo Wearing MagSnap / 佩戴 MagSnap 照片链接 *</label>
-            <input id="pm-photo-link" type="url" name="photo_link" placeholder="Drive / iCloud / social link" required>
-            <p class="form-note">必填。没有佩戴 MagSnap 照片，不进入公开显示。<br>Required. No wearing photo, no public profile.</p>
+            <label for="pm-follower-range">Approximate followers / 大概粉丝数</label>
+            <select id="pm-follower-range" name="follower_range">
+              <option value="">Select / 选择</option>
+              <option value="0-100">0-100</option>
+              <option value="100-500">100-500</option>
+              <option value="500-1,000">500-1,000</option>
+              <option value="1,000-5,000">1,000-5,000</option>
+              <option value="5,000-10,000">5,000-10,000</option>
+              <option value="10,000+">10,000+</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label>What do you usually film? / 你通常拍什么？</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Kitesurf">Kitesurf</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Wing Foil">Wing Foil</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Sailing">Sailing / 帆船</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Motorcycle">Motorcycle / 摩托</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Fishing">Fishing / 钓鱼</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Travel">Travel / 旅行</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Lifestyle">Lifestyle / 生活方式</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Other">Other / 其他</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="pm-photo-file">Upload Photo Wearing MagSnap / 上传佩戴 MagSnap 照片 *</label>
+            <input id="pm-photo-file" type="file" name="photo_file" accept="image/*" capture="environment" required>
+            <input id="pm-photo-url" type="hidden" name="photo_url">
+            <input id="pm-photo-link" type="hidden" name="photo_link">
+            <p class="form-note" id="photo-upload-status">必填。支持手机直接拍照或从相册选择。<br>Required. Take a photo or choose from your gallery.</p>
           </div>
           <div class="field">
             <label for="pm-video-link">Video Link / 视频链接</label>
@@ -1551,7 +1545,6 @@
   <script>
     const PANDA_ENDPOINT = "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec";
     const PANDA_STORAGE_KEY = "magsnap_panda_masters_v1";
-    const PANDA_ID_KEY = "magsnap_pending_panda_master_id";
     const CLUB_STORAGE_KEY = "magsnap_club_database_v1";
     const NEWSLETTER_STORAGE_KEY = "magsnap_panda_newsletter_v1";
     const IMPORT_QUEUE_STORAGE_KEY = "magsnap_panda_import_queue_v1";
@@ -1564,7 +1557,11 @@
 
     const form = document.getElementById("panda-master-form");
     const statusNode = document.getElementById("panda-form-status");
-    const idNode = document.getElementById("panda-master-id");
+    const pandaNumberInput = document.getElementById("panda-master-number");
+    const photoFileInput = document.getElementById("pm-photo-file");
+    const photoUrlInput = document.getElementById("pm-photo-url");
+    const photoLinkInput = document.getElementById("pm-photo-link");
+    const photoUploadStatus = document.getElementById("photo-upload-status");
     const registryBody = document.getElementById("registry-preview-body");
     const directoryBody = document.getElementById("directory-preview-body");
     const importForm = document.getElementById("import-queue-form");
@@ -1594,6 +1591,7 @@
     const selectedValues = (root, name) => Array.from(root.querySelectorAll(`input[name="${name}"]:checked`)).map((input) => input.value);
 
     const SURVEY_VISIBLE_FIELD_NAMES = new Set([
+      "panda_master_number",
       "name",
       "public_nickname",
       "country",
@@ -1609,10 +1607,14 @@
       "equipment",
       "prescription_need",
       "myopia_degree",
-      "astigmatism",
-      "current_solution",
-      "prescription_adapter_interest",
+      "content_creator_status",
+      "content_platforms",
+      "posting_frequency",
+      "follower_range",
+      "filming_categories",
+      "photo_file",
       "photo_link",
+      "photo_url",
       "feedback"
     ]);
 
@@ -1720,13 +1722,6 @@
       myopiadegree: "myopia_degree",
       degree: "myopia_degree",
       近视度数: "myopia_degree",
-      astigmatism: "astigmatism",
-      散光: "astigmatism",
-      currentsolution: "current_solution",
-      当前解决方式: "current_solution",
-      prescriptionadapterinterest: "prescription_adapter_interest",
-      futureinterest: "prescription_adapter_interest",
-      未来兴趣: "prescription_adapter_interest",
       referredby: "referred_by",
       notes: "internal_notes",
       note: "internal_notes",
@@ -1838,7 +1833,15 @@
     };
 
     const calculateInfluenceScore = (payload) => {
-      const followers = parseNumber(payload.followers);
+      const followerRangeScoreMap = {
+        "0-100": 50,
+        "100-500": 250,
+        "500-1,000": 750,
+        "1,000-5,000": 3000,
+        "5,000-10,000": 7500,
+        "10,000+": 10000
+      };
+      const followers = followerRangeScoreMap[payload.follower_range] || 0;
       const followerScore = followers > 0 ? Math.min(40, Math.round((Math.log10(followers + 1) / 5) * 40)) : 0;
       const platforms = new Set([
         ...splitList(payload.content_platforms),
@@ -1848,7 +1851,7 @@
         payload.facebook ? "Facebook" : ""
       ].filter(Boolean));
       const platformScore = Math.min(20, platforms.size * 5);
-      const frequencyScoreMap = { Daily: 20, Weekly: 14, Monthly: 8, Rare: 4, None: 0 };
+      const frequencyScoreMap = { Daily: 20, Weekly: 14, Monthly: 8, Rarely: 4, None: 0 };
       const roleScoreMap = {
         "Club Owner": 20,
         "Head Coach": 20,
@@ -1863,37 +1866,23 @@
       return Math.max(0, Math.min(100, followerScore + platformScore + frequencyScore + roleScore));
     };
 
-    const generatePandaId = () => {
-      const date = new Date();
-      const stamp = [
-        date.getFullYear(),
-        String(date.getMonth() + 1).padStart(2, "0"),
-        String(date.getDate()).padStart(2, "0")
-      ].join("");
-      const randomPart = Math.random().toString(36).slice(2, 6).toUpperCase();
-      return `PM-VN-${stamp}-${randomPart}`;
+    const normalizePandaNumber = (value) => cleanText(value).replace(/\D/g, "").slice(0, 4);
+
+    const formatPandaId = (number) => `PM-${number}`;
+
+    const validatePandaNumber = () => {
+      const number = normalizePandaNumber(pandaNumberInput?.value);
+      if (pandaNumberInput) {
+        pandaNumberInput.value = number;
+        pandaNumberInput.setCustomValidity(number.length === 4 ? "" : "Please enter a 4-digit Panda Master number.");
+      }
+      return number.length === 4 ? number : "";
     };
 
-    const getPendingPandaId = () => {
-      try {
-        const existing = window.localStorage.getItem(PANDA_ID_KEY);
-        if (existing) return existing;
-        const next = generatePandaId();
-        window.localStorage.setItem(PANDA_ID_KEY, next);
-        return next;
-      } catch (_error) {
-        return generatePandaId();
-      }
-    };
-
-    const resetPendingPandaId = () => {
-      const next = generatePandaId();
-      try {
-        window.localStorage.setItem(PANDA_ID_KEY, next);
-      } catch (_error) {
-        // ID display can still update even when localStorage is unavailable.
-      }
-      if (idNode) idNode.textContent = next;
+    const resetPandaNumber = () => {
+      if (!pandaNumberInput) return;
+      pandaNumberInput.value = "";
+      pandaNumberInput.setCustomValidity("");
     };
 
     const readLocalRecords = () => {
@@ -1940,8 +1929,14 @@
     const writeLocalRecord = (payload, status) => {
       try {
         const records = readLocalRecords();
+        const localPayload = { ...payload };
+        if (/^data:image\//.test(localPayload.photo_link || "")) {
+          const marker = localPayload.photo_file_name ? `uploaded:${localPayload.photo_file_name}` : "uploaded:photo";
+          localPayload.photo_link = marker;
+          localPayload.photo_url = marker;
+        }
         const nextRecord = {
-          ...payload,
+          ...localPayload,
           local_status: status,
           local_saved_at: new Date().toISOString()
         };
@@ -1971,6 +1966,81 @@
       node.classList.toggle("error", Boolean(isError));
     };
 
+    const readFileAsDataUrl = (file) => new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result || ""));
+      reader.onerror = () => reject(reader.error || new Error("Photo read failed"));
+      reader.readAsDataURL(file);
+    });
+
+    const loadImage = (src) => new Promise((resolve, reject) => {
+      const image = new Image();
+      image.onload = () => resolve(image);
+      image.onerror = () => reject(new Error("Photo could not be loaded. Please choose a JPG, PNG or supported mobile photo."));
+      image.src = src;
+    });
+
+    const preparePhotoUpload = async () => {
+      const file = photoFileInput?.files?.[0];
+      if (!file) {
+        throw new Error("请上传佩戴 MagSnap 照片。<br>Please upload a photo wearing MagSnap.");
+      }
+      if (!/^image\//.test(file.type || "")) {
+        throw new Error("请上传图片文件。<br>Please upload an image file.");
+      }
+
+      if (photoUploadStatus) {
+        photoUploadStatus.innerHTML = "正在处理照片 / Preparing photo...";
+      }
+
+      const source = await readFileAsDataUrl(file);
+      const image = await loadImage(source);
+      const maxSide = 1400;
+      const scale = Math.min(1, maxSide / Math.max(image.naturalWidth || image.width, image.naturalHeight || image.height));
+      const width = Math.max(1, Math.round((image.naturalWidth || image.width) * scale));
+      const height = Math.max(1, Math.round((image.naturalHeight || image.height) * scale));
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const context = canvas.getContext("2d");
+      context.drawImage(image, 0, 0, width, height);
+      const photoUrl = canvas.toDataURL("image/jpeg", 0.78);
+
+      if (photoUrl.length > 3000000) {
+        throw new Error("照片处理后仍然过大，请换一张更小的照片。<br>The processed photo is still too large. Please choose a smaller image.");
+      }
+
+      if (photoUrlInput) photoUrlInput.value = photoUrl;
+      if (photoLinkInput) photoLinkInput.value = photoUrl;
+      if (photoUploadStatus) {
+        photoUploadStatus.innerHTML = `照片已准备完成 / Photo ready: ${escapeHtml(file.name || "uploaded photo")}`;
+      }
+      return {
+        photo_url: photoUrl,
+        photo_link: photoUrl,
+        photo_file_name: file.name || "magsnap-photo.jpg",
+        photo_file_type: "image/jpeg",
+        photo_original_type: file.type || "",
+        photo_original_size: file.size || 0,
+        photo_prepared_at: new Date().toISOString()
+      };
+    };
+
+    const updatePrescriptionRequirement = () => {
+      const need = selectedValues(form, "prescription_need")[0] || "";
+      const degreeField = form?.elements.myopia_degree;
+      if (!degreeField) return;
+      degreeField.required = need === "Yes";
+      if (need === "No") {
+        degreeField.value = "";
+        degreeField.setCustomValidity("");
+      } else if (need === "Yes" && !cleanText(degreeField.value)) {
+        degreeField.setCustomValidity("Please select your myopia degree.");
+      } else {
+        degreeField.setCustomValidity("");
+      }
+    };
+
     const showConfirmation = (payload) => {
       if (!confirmationCard || !confirmationSummary) return;
       confirmationSummary.innerHTML = `
@@ -1982,12 +2052,11 @@
         <div><dt>Role</dt><dd>${escapeHtml(payload.role)}</dd></div>
         <div><dt>Influence Score</dt><dd>${escapeHtml(payload.influence_score || 0)}</dd></div>
         <div><dt>Handoff</dt><dd>${escapeHtml(payload.handoff_status || "—")}</dd></div>
-        <div><dt>Content Assets</dt><dd>${escapeHtml(payload.panda_content_items || "—")}</dd></div>
+        <div><dt>Creator Status</dt><dd>${escapeHtml(payload.content_creator_status || "—")}</dd></div>
         <div><dt>Photo Wall</dt><dd>${escapeHtml(payload.photo_wall_ready || "No")}</dd></div>
         <div><dt>Prescription SKU Signal</dt><dd>${escapeHtml([
           payload.prescription_need,
-          payload.myopia_degree,
-          payload.prescription_adapter_interest
+          payload.myopia_degree
         ].filter(Boolean).join(" / ") || "—")}</dd></div>
         <div><dt>Lab Signals</dt><dd>${escapeHtml(payload.lab_signal_count || 0)}</dd></div>
       `;
@@ -1999,11 +2068,16 @@
       });
     };
 
-    const buildPayload = () => {
+    const buildPayload = (photoPayload = {}) => {
       const formData = new FormData(form);
       const payload = Object.fromEntries(formData.entries());
-      const pandaMasterId = cleanText(idNode?.textContent) || generatePandaId();
-      payload.panda_master_id = pandaMasterId;
+      const pandaMasterNumber = validatePandaNumber();
+      if (!pandaMasterNumber) {
+        throw new Error("请输入 4 位 Panda Master 编号。<br>Please enter a 4-digit Panda Master number.");
+      }
+      delete payload.photo_file;
+      payload.panda_master_number = pandaMasterNumber;
+      payload.panda_master_id = formatPandaId(pandaMasterNumber);
       payload.name = cleanText(payload.name);
       payload.public_nickname = cleanText(payload.public_nickname);
       payload.country = cleanText(payload.country);
@@ -2019,16 +2093,19 @@
       payload.received_date = cleanText(payload.received_date);
       payload.handoff_status = cleanText(payload.handoff_status);
       payload.referred_by = cleanText(payload.referred_by);
-      payload.photo_link = cleanText(payload.photo_link);
+      payload.photo_url = cleanText(photoPayload.photo_url || payload.photo_url);
+      payload.photo_link = cleanText(photoPayload.photo_link || payload.photo_link || payload.photo_url);
+      payload.photo_file_name = cleanText(photoPayload.photo_file_name);
+      payload.photo_file_type = cleanText(photoPayload.photo_file_type);
+      payload.photo_original_type = cleanText(photoPayload.photo_original_type);
+      payload.photo_original_size = parseNumber(photoPayload.photo_original_size);
+      payload.photo_prepared_at = cleanText(photoPayload.photo_prepared_at);
       payload.video_link = cleanText(payload.video_link);
       payload.pov_clip_link = cleanText(payload.pov_clip_link);
       payload.story_note = cleanText(payload.story_note);
       payload.public_story = cleanText(payload.public_story);
       payload.prescription_need = cleanText(payload.prescription_need);
       payload.myopia_degree = cleanText(payload.myopia_degree);
-      payload.astigmatism = cleanText(payload.astigmatism);
-      payload.current_solution = cleanText(payload.current_solution);
-      payload.prescription_adapter_interest = cleanText(payload.prescription_adapter_interest);
       payload.problem_report = cleanText(payload.problem_report);
       payload.problem_tags = cleanText(payload.problem_tags);
       payload.module_ideas = cleanText(payload.module_ideas);
@@ -2040,11 +2117,10 @@
       payload.equipment = selectedValues(form, "equipment").join(", ");
       payload.accessories = selectedValues(form, "accessories").join(", ");
       payload.content_platforms = selectedValues(form, "content_platforms").join(", ");
-      payload.panda_content_items = selectedValues(form, "panda_content_items").join(", ");
-      payload.creates_content = cleanText(payload.creates_content);
+      payload.filming_categories = selectedValues(form, "filming_categories").join(", ");
+      payload.content_creator_status = cleanText(payload.content_creator_status);
       payload.posting_frequency = cleanText(payload.posting_frequency);
-      payload.followers = parseNumber(payload.followers);
-      payload.community_position = cleanText(payload.community_position);
+      payload.follower_range = cleanText(payload.follower_range);
       payload.glasses_count = payload.handoff_status === "Received Glasses" ? 1 : 0;
       payload.identity_rule = "one_person_one_glasses_one_panda_master_id";
       payload.coverage_strategy = "maximum_coverage";
@@ -2233,17 +2309,11 @@
       const videoUploadCount = records.filter((record) => cleanText(record.video_link) || cleanText(record.pov_clip_link)).length;
       const prescriptionNeedAnswered = records.filter((record) => cleanText(record.prescription_need));
       const prescriptionUserCount = records.filter((record) => record.prescription_need === "Yes").length;
-      const astigmatismAnswered = records.filter((record) => cleanText(record.astigmatism));
-      const astigmatismCount = records.filter((record) => /Mild|Moderate|High/i.test(record.astigmatism || "")).length;
-      const adapterInterestAnswered = records.filter((record) => cleanText(record.prescription_adapter_interest));
-      const adapterInterestCount = records.filter((record) => /Yes|Maybe/i.test(record.prescription_adapter_interest || "")).length;
       const prescriptionDemand = [
-        ["Prescription Users %", `${prescriptionNeedAnswered.length ? Math.round((prescriptionUserCount / prescriptionNeedAnswered.length) * 100) : 0}%`],
-        ["Astigmatism %", `${astigmatismAnswered.length ? Math.round((astigmatismCount / astigmatismAnswered.length) * 100) : 0}%`],
-        ["Adapter Interest %", `${adapterInterestAnswered.length ? Math.round((adapterInterestCount / adapterInterestAnswered.length) * 100) : 0}%`],
+        ["Prescription Need %", `${prescriptionNeedAnswered.length ? Math.round((prescriptionUserCount / prescriptionNeedAnswered.length) * 100) : 0}%`],
         ...topEntries(countBy(records, (record) => {
           const value = cleanText(record.myopia_degree);
-          return value && value !== "Not Sure" ? `${value} Degree` : "";
+          return value && !/^not sure$/i.test(value) ? `${value} Degree` : "";
         }), 5)
       ];
       const rankedRecords = records
@@ -2263,7 +2333,7 @@
         .slice(0, 5)
         .map((record) => [`${record.name || "Unknown"} · ${record.club || ""}`, parseNumber(record.influence_score)]);
       const topCreators = rankedRecords
-        .filter((record) => record.role === "Creator" || record.creates_content === "Yes" || splitList(record.content_platforms).length)
+        .filter((record) => record.role === "Creator" || !/^never$/i.test(record.content_creator_status || "") || splitList(record.content_platforms).length)
         .slice(0, 5)
         .map((record) => [`${record.name || "Unknown"} · ${record.content_platforms || record.role || ""}`, parseNumber(record.influence_score)]);
       const topAthletes = rankedRecords
@@ -2458,13 +2528,13 @@
       const prescriptionUsers = records.filter((record) => record.prescription_need === "Yes").length;
       const topMyopiaDegrees = topEntries(countBy(records, (record) => {
         const value = cleanText(record.myopia_degree);
-        return value && value !== "Not Sure" ? value : "";
+        return value && !/^not sure$/i.test(value) ? value : "";
       }), 3);
-      const astigmatismAnswered = records.filter((record) => cleanText(record.astigmatism));
-      const astigmatismUsers = records.filter((record) => /Mild|Moderate|High/i.test(record.astigmatism || "")).length;
-      const currentSolutions = topEntries(countBy(records, (record) => cleanText(record.current_solution)), 4);
-      const adapterInterestAnswered = records.filter((record) => cleanText(record.prescription_adapter_interest));
-      const adapterInterest = records.filter((record) => /Yes|Maybe/i.test(record.prescription_adapter_interest || "")).length;
+      const creatorAnswered = records.filter((record) => cleanText(record.content_creator_status));
+      const creatorCount = records.filter((record) => /Sometimes|Regularly|Professional Creator/i.test(record.content_creator_status || "")).length;
+      const regularCreators = records.filter((record) => /Regularly|Professional Creator/i.test(record.content_creator_status || "")).length;
+      const topPlatforms = topEntries(countMulti(records, "content_platforms"), 4);
+      const tenKFollowers = records.filter((record) => record.follower_range === "10,000+").length;
       const formatSummary = (items, emptyText) => items.length
         ? items.map(([label, value]) => `${label}: ${value}`).join(" · ")
         : emptyText;
@@ -2506,7 +2576,7 @@
           <p class="plain">已提交佩戴照片 / Wearing photos</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Prescription Users %</p>
+          <p class="eyebrow">Prescription Need %</p>
           <h3>${percentage(prescriptionUsers, prescriptionNeedAnswered.length)}%</h3>
           <p class="plain">需要视力矫正 / Need vision correction</p>
         </article>
@@ -2516,19 +2586,24 @@
           <p class="plain">${escapeHtml(formatSummary(topMyopiaDegrees, "暂无 SKU 信号 / No SKU signal"))}</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Astigmatism %</p>
-          <h3>${percentage(astigmatismUsers, astigmatismAnswered.length)}%</h3>
-          <p class="plain">散光用户 / Mild, moderate or high</p>
+          <p class="eyebrow">Creators %</p>
+          <h3>${percentage(creatorCount, creatorAnswered.length)}%</h3>
+          <p class="plain">偶尔或经常发布内容 / Sometimes or more</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Current Solutions</p>
-          <h3>${currentSolutions[0] ? escapeHtml(currentSolutions[0][0]) : "—"}</h3>
-          <p class="plain">${escapeHtml(formatSummary(currentSolutions, "暂无数据 / No data"))}</p>
+          <p class="eyebrow">Regular Creators</p>
+          <h3>${regularCreators}</h3>
+          <p class="plain">经常发布或专业创作者 / Regular + professional</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Interest In Prescription Adapter %</p>
-          <h3>${percentage(adapterInterest, adapterInterestAnswered.length)}%</h3>
-          <p class="plain">Yes + Maybe / 会使用或可能使用</p>
+          <p class="eyebrow">Top Platforms</p>
+          <h3>${topPlatforms[0] ? escapeHtml(topPlatforms[0][0]) : "—"}</h3>
+          <p class="plain">${escapeHtml(formatSummary(topPlatforms, "暂无平台数据 / No platform data"))}</p>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">10k+ Followers Count</p>
+          <h3>${tenKFollowers}</h3>
+          <p class="plain">10,000+ followers / 1 万以上粉丝</p>
         </article>
       `;
     };
@@ -2624,7 +2699,6 @@
     };
 
     document.addEventListener("DOMContentLoaded", () => {
-      if (idNode) idNode.textContent = getPendingPandaId();
       if (form?.elements.received_date) {
         form.elements.received_date.value = todayString();
       }
@@ -2638,22 +2712,48 @@
       renderImportQueue();
       renderCoverage();
       renderIntelligenceDashboard();
+      validatePandaNumber();
+      updatePrescriptionRequirement();
+    });
+
+    pandaNumberInput?.addEventListener("input", validatePandaNumber);
+
+    form?.addEventListener("change", (event) => {
+      if (event.target?.name === "prescription_need" || event.target?.name === "myopia_degree") {
+        updatePrescriptionRequirement();
+      }
+      if (event.target === photoFileInput) {
+        if (photoUrlInput) photoUrlInput.value = "";
+        if (photoLinkInput) photoLinkInput.value = "";
+        const file = photoFileInput?.files?.[0];
+        if (photoUploadStatus) {
+          photoUploadStatus.innerHTML = file
+            ? `已选择照片 / Photo selected: ${escapeHtml(file.name || "mobile photo")}`
+            : "必填。支持手机直接拍照或从相册选择。<br>Required. Take a photo or choose from your gallery.";
+        }
+      }
     });
 
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
       const submitButton = form.querySelector("[type='submit']");
       const originalText = submitButton?.textContent;
-      const payload = buildPayload();
+      validatePandaNumber();
+      updatePrescriptionRequirement();
+      if (!form.reportValidity()) return;
 
-      writeLocalRecord(payload, "pending_backend");
       if (submitButton) {
         submitButton.disabled = true;
         submitButton.textContent = "正在提交 / Submitting";
       }
-      showStatus("正在提交 Panda Master 登记。<br>Submitting Panda Master check-in.");
 
+      let payload;
       try {
+        showStatus("正在准备照片。<br>Preparing photo upload.");
+        const photoPayload = await preparePhotoUpload();
+        payload = buildPayload(photoPayload);
+        writeLocalRecord(payload, "pending_backend");
+        showStatus("照片已准备完成，正在提交登记。<br>Photo ready. Submitting check-in.");
         await submitPayload(payload);
         writeLocalRecord(payload, "backend_saved");
         showStatus(`
@@ -2665,13 +2765,17 @@
         showConfirmation(payload);
         form.reset();
         if (form.elements.received_date) form.elements.received_date.value = todayString();
-        resetPendingPandaId();
+        resetPandaNumber();
+        updatePrescriptionRequirement();
+        if (photoUploadStatus) {
+          photoUploadStatus.innerHTML = "必填。支持手机直接拍照或从相册选择。<br>Required. Take a photo or choose from your gallery.";
+        }
         renderRegistry();
         renderDirectory();
         renderCoverage();
         renderIntelligenceDashboard();
       } catch (error) {
-        writeLocalRecord(payload, "backend_failed");
+        if (payload) writeLocalRecord(payload, "backend_failed");
         showStatus(error.message, true);
       } finally {
         if (submitButton) {

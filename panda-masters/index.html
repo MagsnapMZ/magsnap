@@ -98,6 +98,34 @@
       color: var(--pink);
     }
 
+    .language-switcher {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      background: rgba(255, 255, 255, 0.035);
+      padding: 4px;
+    }
+
+    .lang-button {
+      min-width: 42px;
+      border: 0;
+      background: transparent;
+      color: rgba(245, 239, 230, 0.68);
+      padding: 8px 9px;
+      font: inherit;
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .lang-button.is-active {
+      background: var(--kraft);
+      color: var(--black);
+    }
+
     main {
       width: min(100%, 1160px);
       margin: 0 auto;
@@ -698,6 +726,15 @@
         justify-content: flex-start;
       }
 
+      .language-switcher {
+        width: 100%;
+        max-width: 260px;
+      }
+
+      .lang-button {
+        flex: 1;
+      }
+
       main {
         padding-top: 28px;
       }
@@ -773,15 +810,20 @@
       <a href="#coverage">统计 / Stats</a>
       <a href="mailto:info@magsnap.me">info@magsnap.me</a>
     </nav>
+    <div class="language-switcher" aria-label="Language switch">
+      <button class="lang-button" type="button" data-lang-button="en">EN</button>
+      <button class="lang-button" type="button" data-lang-button="zh">中文</button>
+      <button class="lang-button" type="button" data-lang-button="vi">VI</button>
+    </div>
   </header>
 
   <main>
     <section class="hero survey-hero" id="top">
       <div>
         <div class="mark">V8</div>
-        <p class="eyebrow">Panda Masters Registry / 熊猫高人登记</p>
-        <h1>Join Panda Masters<br>加入熊猫高人</h1>
-        <p class="lead">Not For Sale. For Riders Who Help The Community.</p>
+        <p class="eyebrow" data-i18n-html="heroEyebrow">Panda Masters Registry / 熊猫高人登记</p>
+        <h1 data-i18n-html="heroTitle">Join Panda Masters<br>加入熊猫高人</h1>
+        <p class="lead" data-i18n-html="heroLead">Not For Sale. For Riders Who Help The Community.</p>
         <div class="sale-badge">Not For Sale / 暂不销售</div>
         <p class="plain">核心 KPI：Club Coverage %、Owner Coverage %、Coach Coverage %、Core Rider Coverage %、POV Creator Coverage %、Panda Masters Count、Content Generated。</p>
         <div class="cta-row">
@@ -922,33 +964,34 @@
     <section class="section" id="checkin">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Survey / Registration</p>
-          <h2>Panda Master 登记</h2>
+          <p class="eyebrow" data-i18n-html="checkinEyebrow">Survey / Registration</p>
+          <h2 data-i18n-html="checkinTitle">Panda Master 登记</h2>
         </div>
-        <p class="plain">填写基础信息、设备、社交链接、佩戴 MagSnap 照片和反馈。<br>Submit your profile, POV device, social links, wearing photo and feedback.</p>
+        <p class="plain" data-i18n-html="checkinLead">填写基础信息、设备、社交链接、佩戴 MagSnap 照片和反馈。<br>Submit your profile, POV device, social links, wearing photo and feedback.</p>
       </div>
 
       <div class="form-shell">
         <div class="id-box">
-          <span>Panda Master Number / 熊猫高人编号</span>
+          <span data-i18n-html="pandaNumberTitle">Panda Master Number / 熊猫高人编号</span>
           <input id="panda-master-number" class="id-input" type="text" name="panda_master_number" form="panda-master-form" inputmode="numeric" autocomplete="off" pattern="[0-9]{4}" placeholder="4-digit number / 四位数字" required>
-          <p class="form-note">四位编号请在 MagSnap 套装内查找。<br>Find your 4-digit number inside the MagSnap kit.</p>
+          <p class="form-note" data-i18n-html="pandaNumberNote">四位编号请在 MagSnap 套装内查找。<br>Find your 4-digit number inside the MagSnap kit.</p>
         </div>
         <form class="panda-form" id="panda-master-form" action="#" method="post">
+          <input id="preferred-language" type="hidden" name="preferred_language" value="en">
           <div class="field">
-            <label for="pm-name">姓名 / Name</label>
+            <label for="pm-name" data-i18n-html="nameLabel">姓名 / Name</label>
             <input id="pm-name" type="text" name="name" autocomplete="name" required>
           </div>
           <div class="field">
-            <label for="pm-public-nickname">公开昵称 / Public Nickname</label>
+            <label for="pm-public-nickname" data-i18n-html="nicknameLabel">公开昵称 / Public Nickname</label>
             <input id="pm-public-nickname" type="text" name="public_nickname" placeholder="shown in public directory">
           </div>
           <div class="field">
-            <label for="pm-country">国家 / Country</label>
+            <label for="pm-country" data-i18n-html="countryLabel">国家 / Country</label>
             <input id="pm-country" type="text" name="country" autocomplete="country-name" value="Vietnam" required>
           </div>
           <div class="field">
-            <label for="pm-city">城市 / City</label>
+            <label for="pm-city" data-i18n-html="cityLabel">城市 / City</label>
             <select id="pm-city" name="city" required>
               <option value="">选择城市 / Select city</option>
               <option value="Nha Trang">Nha Trang / 芽庄</option>
@@ -958,11 +1001,11 @@
             </select>
           </div>
           <div class="field">
-            <label for="pm-club">俱乐部 / Club</label>
+            <label for="pm-club" data-i18n-html="clubLabel">俱乐部 / Club</label>
             <input id="pm-club" type="text" name="club" required>
           </div>
           <div class="field">
-            <label for="pm-role">角色 / Role</label>
+            <label for="pm-role" data-i18n-html="roleLabel">角色 / Role</label>
             <select id="pm-role" name="role" required>
               <option value="">选择角色 / Select role</option>
               <option value="Club Owner">Club Owner / 俱乐部老板</option>
@@ -976,7 +1019,7 @@
             </select>
           </div>
           <div class="field">
-            <label for="pm-email">邮箱 / Email</label>
+            <label for="pm-email" data-i18n-html="emailLabel">邮箱 / Email</label>
             <input id="pm-email" type="email" name="email" autocomplete="email" required>
           </div>
           <div class="field">
@@ -1015,7 +1058,7 @@
             <input id="pm-referred-by" type="text" name="referred_by" placeholder="MZ / club / friend">
           </div>
           <div class="field full">
-            <label>Sports / 运动</label>
+            <label data-i18n-html="sportsLabel">Sports / 运动</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="checkbox" name="sports" value="Kitesurf">Kitesurf / 风筝冲浪</label>
               <label class="checkbox-pill"><input type="checkbox" name="sports" value="Wing Foil">Wing Foil</label>
@@ -1029,7 +1072,7 @@
             </div>
           </div>
           <div class="field full">
-            <label>Equipment / POV devices / 设备</label>
+            <label data-i18n-html="equipmentLabel">Equipment / POV devices / 设备</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Insta360 GO3">Insta360 GO3</label>
               <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Insta360 GO3S">Insta360 GO3S</label>
@@ -1041,7 +1084,7 @@
             </div>
           </div>
           <div class="field full">
-            <label>Accessories / 配件</label>
+            <label data-i18n-html="accessoriesLabel">Accessories / 配件</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="checkbox" name="accessories" value="AirTag">AirTag</label>
               <label class="checkbox-pill"><input type="checkbox" name="accessories" value="Headlamp">Headlamp / 头灯</label>
@@ -1051,14 +1094,14 @@
             </div>
           </div>
           <div class="field full">
-            <label>Do you need vision correction? / 你是否近视 / 需要视力矫正？</label>
+            <label data-i18n-html="prescriptionLabel">Do you need vision correction? / 你是否近视 / 需要视力矫正？</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="radio" name="prescription_need" value="No">No / 不需要</label>
               <label class="checkbox-pill"><input type="radio" name="prescription_need" value="Yes">Yes / 需要</label>
             </div>
           </div>
           <div class="field">
-            <label for="pm-myopia-degree">If yes, what is your myopia degree? / 如果需要，请填写你的近视度数</label>
+            <label for="pm-myopia-degree" data-i18n-html="myopiaLabel">If yes, what is your myopia degree? / 如果需要，请填写你的近视度数</label>
             <select id="pm-myopia-degree" name="myopia_degree">
               <option value="">Select / 选择</option>
               <option value="150">150</option>
@@ -1078,11 +1121,11 @@
             </select>
           </div>
           <div class="field full">
-            <label>Content Creator Profile / 内容创作者信息</label>
-            <p class="form-note">用于判断 Panda Masters 的内容扩散能力，不公开个人联系方式。<br>Used to understand content reach. Private contact fields stay private.</p>
+            <label data-i18n-html="contentTitle">Content Creator Profile / 内容创作者信息</label>
+            <p class="form-note" data-i18n-html="contentNote">用于判断 Panda Masters 的内容扩散能力，不公开个人联系方式。<br>Used to understand content reach. Private contact fields stay private.</p>
           </div>
           <div class="field full">
-            <label>Do you create or post videos/photos? / 你平时会拍摄或发布视频/照片吗？</label>
+            <label data-i18n-html="creatorStatusLabel">Do you create or post videos/photos? / 你平时会拍摄或发布视频/照片吗？</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="radio" name="content_creator_status" value="Never">Never / 从不</label>
               <label class="checkbox-pill"><input type="radio" name="content_creator_status" value="Sometimes">Sometimes / 偶尔</label>
@@ -1091,7 +1134,7 @@
             </div>
           </div>
           <div class="field full">
-            <label>Where do you post? / 你主要发布在哪些平台？</label>
+            <label data-i18n-html="platformsLabel">Where do you post? / 你主要发布在哪些平台？</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="TikTok">TikTok</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Instagram">Instagram</label>
@@ -1103,7 +1146,7 @@
             </div>
           </div>
           <div class="field full">
-            <label>How often do you post? / 你多久发布一次？</label>
+            <label data-i18n-html="frequencyLabel">How often do you post? / 你多久发布一次？</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="radio" name="posting_frequency" value="Daily">Daily / 每天</label>
               <label class="checkbox-pill"><input type="radio" name="posting_frequency" value="Weekly">Weekly / 每周</label>
@@ -1112,7 +1155,7 @@
             </div>
           </div>
           <div class="field">
-            <label for="pm-follower-range">Approximate followers / 大概粉丝数</label>
+            <label for="pm-follower-range" data-i18n-html="followersLabel">Approximate followers / 大概粉丝数</label>
             <select id="pm-follower-range" name="follower_range">
               <option value="">Select / 选择</option>
               <option value="0-100">0-100</option>
@@ -1124,7 +1167,7 @@
             </select>
           </div>
           <div class="field full">
-            <label>What do you usually film? / 你通常拍什么？</label>
+            <label data-i18n-html="filmLabel">What do you usually film? / 你通常拍什么？</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Kitesurf">Kitesurf</label>
               <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Wing Foil">Wing Foil</label>
@@ -1137,30 +1180,30 @@
             </div>
           </div>
           <div class="field">
-            <label for="pm-photo-file">Upload Photo Wearing MagSnap / 上传佩戴 MagSnap 照片 *</label>
+            <label for="pm-photo-file" data-i18n-html="photoLabel">Upload Your MagSnap Selfie / 上传你的 MagSnap 自拍 *</label>
             <input id="pm-photo-file" type="file" name="photo_file" accept="image/*" capture="environment" required>
             <input id="pm-photo-url" type="hidden" name="photo_url">
             <input id="pm-photo-link" type="hidden" name="photo_link">
-            <p class="form-note" id="photo-upload-status">必填。支持手机直接拍照或从相册选择。<br>Required. Take a photo or choose from your gallery.</p>
+            <p class="form-note" id="photo-upload-status" data-i18n-html="photoNote">Please wear your MagSnap, take a selfie, and upload it here.<br>请戴上 MagSnap 眼镜，自拍一张并上传。<br>Your photo may be featured on the future Panda Masters Wall.<br>你的照片未来可能会出现在 Panda Masters 照片墙。</p>
           </div>
           <div class="field">
-            <label for="pm-video-link">Video Link / 视频链接</label>
+            <label for="pm-video-link" data-i18n-html="videoLabel">Video Link / 视频链接</label>
             <input id="pm-video-link" type="url" name="video_link" placeholder="Drive / iCloud / social link">
           </div>
           <div class="field">
-            <label for="pm-pov-clip-link">POV Clip Link / POV 片段链接</label>
+            <label for="pm-pov-clip-link" data-i18n-html="povLabel">POV Clip Link / POV 片段链接</label>
             <input id="pm-pov-clip-link" type="url" name="pov_clip_link" placeholder="POV clip link">
           </div>
           <div class="field">
-            <label for="pm-story-note">Story Note / 故事备注</label>
+            <label for="pm-story-note" data-i18n-html="storyLabel">Story Note / 故事备注</label>
             <input id="pm-story-note" type="text" name="story_note" placeholder="one-line rider story / 一句话故事">
           </div>
           <div class="field full">
-            <label for="pm-public-story">Public Story / 公开故事</label>
+            <label for="pm-public-story" data-i18n-html="publicStoryLabel">Public Story / 公开故事</label>
             <textarea id="pm-public-story" name="public_story" placeholder="可公开展示的一句话故事。不要填写电话、邮箱、地址或私人信息。"></textarea>
           </div>
           <div class="field full">
-            <label for="pm-problem-report">Problems / 当前问题</label>
+            <label for="pm-problem-report" data-i18n-html="problemLabel">Problems / 当前问题</label>
             <textarea id="pm-problem-report" name="problem_report" placeholder="你在 POV 拍摄、风冲、佩戴、固定或设备使用中遇到的问题。"></textarea>
           </div>
           <div class="field">
@@ -1168,7 +1211,7 @@
             <input id="pm-problem-tags" type="text" name="problem_tags" placeholder="mount stability, comfort, saltwater">
           </div>
           <div class="field">
-            <label for="pm-module-ideas">New Modules / 新模块想法</label>
+            <label for="pm-module-ideas" data-i18n-html="moduleLabel">New Modules / 新模块想法</label>
             <input id="pm-module-ideas" type="text" name="module_ideas" placeholder="camera, light, radio, AI, sensor">
           </div>
           <div class="field">
@@ -1180,29 +1223,29 @@
             <textarea id="pm-crazy-concepts" name="crazy_concepts" placeholder="任何看起来疯狂但可能有价值的模块、用法或场景。"></textarea>
           </div>
           <div class="field full">
-            <label for="pm-feedback">Ideas / Feedback / 想法与反馈</label>
+            <label for="pm-feedback" data-i18n-html="feedbackLabel">Ideas / Feedback / 想法与反馈</label>
             <textarea id="pm-feedback" name="feedback" placeholder="现场反馈、改进建议、下一版产品想法。"></textarea>
           </div>
           <div class="field full">
             <label for="pm-note">现场备注 / Field Note</label>
             <textarea id="pm-note" name="field_note" placeholder="可记录俱乐部情况、教练数量、素材位置、POV 内容和后续跟进。"></textarea>
           </div>
-          <button class="button primary" type="submit">Submit / 提交</button>
+          <button class="button primary" type="submit" data-i18n-html="submitButton">Submit / 提交</button>
           <div class="form-status" id="panda-form-status" aria-live="polite"></div>
-          <p class="form-note">联系方式仅供 MagSnap 内部跟进，不在公开页面展示。<br>Contact information is for MagSnap internal follow-up only and is not shown publicly.</p>
+          <p class="form-note" data-i18n-html="privacyNote">联系方式仅供 MagSnap 内部跟进，不在公开页面展示。<br>Contact information is for MagSnap internal follow-up only and is not shown publicly.</p>
         </form>
       </div>
     </section>
 
     <section class="section" id="confirmation" aria-label="Panda Master confirmation" hidden>
       <div class="confirmation-card" id="confirmation-card" hidden>
-        <p class="eyebrow">Confirmation Page / 确认页</p>
-        <h2>Registration Received.<br>登记已收到。</h2>
-        <p class="plain">You are now in the Panda Masters Registry. Your public profile will appear only after photo verification.<br>你已进入 Panda Masters Registry。公开资料会在照片审核后显示。</p>
+        <p class="eyebrow" data-i18n-html="confirmationEyebrow">Confirmation Page / 确认页</p>
+        <h2 data-i18n-html="confirmationTitle">Registration Received.<br>登记已收到。</h2>
+        <p class="plain" data-i18n-html="confirmationLead">You are now in the Panda Masters Registry. Your public profile will appear only after photo verification.<br>你已进入 Panda Masters Registry。公开资料会在照片审核后显示。</p>
         <dl class="confirmation-summary" id="confirmation-summary"></dl>
         <div class="cta-row">
-          <a class="button primary" href="#coverage">查看统计 / View Stats</a>
-          <a class="button" href="#checkin">继续登记 / Add Another</a>
+          <a class="button primary" href="#coverage" data-i18n-html="confirmationStats">查看统计 / View Stats</a>
+          <a class="button" href="#checkin" data-i18n-html="confirmationAnother">继续登记 / Add Another</a>
         </div>
       </div>
     </section>
@@ -1262,10 +1305,10 @@
     <section class="section" id="coverage">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Stats / 数据</p>
-          <h2>Panda Masters Stats<br>熊猫高人统计</h2>
+          <p class="eyebrow" data-i18n-html="statsEyebrow">Stats / 数据</p>
+          <h2 data-i18n-html="statsTitle">Panda Masters Stats<br>熊猫高人统计</h2>
         </div>
-        <p class="plain">只显示汇总统计，不显示邮箱、电话、地址、WhatsApp 等隐私信息。<br>Aggregate stats only. Private data is never shown here.</p>
+        <p class="plain" data-i18n-html="statsPrivacy">只显示汇总统计，不显示邮箱、电话、地址、WhatsApp 等隐私信息。<br>Aggregate stats only. Private data is never shown here.</p>
       </div>
       <div class="grid-3" id="coverage-grid"></div>
       <div class="insight-grid" id="intelligence-dashboard" aria-label="Panda Masters intelligence dashboard" hidden></div>
@@ -1576,6 +1619,349 @@
     const confirmationSection = document.getElementById("confirmation");
     const confirmationCard = document.getElementById("confirmation-card");
     const confirmationSummary = document.getElementById("confirmation-summary");
+    const preferredLanguageInput = document.getElementById("preferred-language");
+    const languageButtons = Array.from(document.querySelectorAll("[data-lang-button]"));
+
+    const languageStorageKey = "magsnap_panda_preferred_language";
+    const supportedLanguages = new Set(["en", "zh", "vi"]);
+    const defaultLanguage = "base";
+    let currentLanguage = defaultLanguage;
+
+    const i18n = {
+      en: {
+        heroEyebrow: "Panda Masters Registry",
+        heroTitle: "Join Panda Masters",
+        heroLead: "Not For Sale. For Riders Who Help The Community.",
+        checkinEyebrow: "Survey / Registration",
+        checkinTitle: "Panda Master Registration",
+        checkinLead: "Submit your profile, POV device, social links, MagSnap selfie and feedback.",
+        pandaNumberTitle: "Panda Master Number",
+        pandaNumberNote: "Find your 4-digit number inside the MagSnap kit.",
+        nameLabel: "Name",
+        nicknameLabel: "Public Nickname",
+        countryLabel: "Country",
+        cityLabel: "City",
+        clubLabel: "Club",
+        roleLabel: "Role",
+        emailLabel: "Email",
+        sportsLabel: "Sport / Industry",
+        equipmentLabel: "Equipment / POV Devices",
+        accessoriesLabel: "Accessories",
+        prescriptionLabel: "Do you need vision correction?",
+        myopiaLabel: "If yes, what is your myopia degree?",
+        contentTitle: "Content Creator Profile",
+        contentNote: "Used to understand content reach. Private contact fields stay private.",
+        creatorStatusLabel: "Do you create or post videos/photos?",
+        platformsLabel: "Where do you post?",
+        frequencyLabel: "How often do you post?",
+        followersLabel: "Approximate followers",
+        filmLabel: "What do you usually film?",
+        photoLabel: "Upload Your MagSnap Selfie *",
+        photoNote: "Please wear your MagSnap, take a selfie, and upload it here.<br>Your photo may be featured on the future Panda Masters Wall.",
+        videoLabel: "Video Link",
+        povLabel: "POV Clip Link",
+        storyLabel: "Story Note",
+        publicStoryLabel: "Public Story",
+        problemLabel: "Problems",
+        moduleLabel: "New Modules",
+        feedbackLabel: "Ideas / Feedback",
+        submitButton: "Submit",
+        privacyNote: "Contact information is for MagSnap internal follow-up only and is not shown publicly.",
+        confirmationEyebrow: "Confirmation Page",
+        confirmationTitle: "Registration Received.",
+        confirmationLead: "You are now in the Panda Masters Registry. Your public profile will appear only after photo verification.",
+        confirmationStats: "View Stats",
+        confirmationAnother: "Add Another",
+        statsEyebrow: "Stats",
+        statsTitle: "Panda Masters Stats",
+        statsPrivacy: "Aggregate stats only. Private data is never shown here.",
+        numberInvalid: "Please enter a 4-digit Panda Master number.",
+        degreeInvalid: "Please select your myopia degree.",
+        photoMissing: "Please wear your MagSnap, take a selfie, and upload it here.",
+        photoPreparing: "Preparing photo...",
+        photoReady: "Photo ready",
+        photoSelected: "Photo selected",
+        submitting: "Submitting",
+        preparingPhoto: "Preparing photo upload.",
+        submittingCheckin: "Photo ready. Submitting check-in.",
+        submitSuccess: "You are now in the Panda Masters Registry.<br>Your public profile will appear only after photo verification.",
+        submitTimeout: "Submission timed out. Please check the network and retry.",
+        submitFailed: "Submission failed. Please check the form and try again.",
+        yes: "Yes",
+        no: "No"
+      },
+      zh: {
+        heroEyebrow: "熊猫高人登记",
+        heroTitle: "加入熊猫高人",
+        heroLead: "暂不销售。只给帮助社群的人。",
+        checkinEyebrow: "问卷 / 登记",
+        checkinTitle: "熊猫高人登记",
+        checkinLead: "填写基础信息、设备、社交链接、MagSnap 自拍和反馈。",
+        pandaNumberTitle: "熊猫高人编号",
+        pandaNumberNote: "四位编号请在 MagSnap 套装内查找。",
+        nameLabel: "姓名",
+        nicknameLabel: "公开昵称",
+        countryLabel: "国家",
+        cityLabel: "城市",
+        clubLabel: "俱乐部",
+        roleLabel: "角色",
+        emailLabel: "邮箱",
+        sportsLabel: "运动 / 行业",
+        equipmentLabel: "设备 / POV 设备",
+        accessoriesLabel: "配件",
+        prescriptionLabel: "你是否近视 / 需要视力矫正？",
+        myopiaLabel: "如果需要，请选择近视度数",
+        contentTitle: "内容创作者信息",
+        contentNote: "用于判断 Panda Masters 的内容扩散能力，不公开个人联系方式。",
+        creatorStatusLabel: "你平时会拍摄或发布视频/照片吗？",
+        platformsLabel: "你主要发布在哪些平台？",
+        frequencyLabel: "你多久发布一次？",
+        followersLabel: "大概粉丝数",
+        filmLabel: "你通常拍什么？",
+        photoLabel: "上传你的 MagSnap 自拍 *",
+        photoNote: "请戴上 MagSnap 眼镜，自拍一张并上传。<br>你的照片未来可能会出现在 Panda Masters 照片墙。",
+        videoLabel: "视频链接",
+        povLabel: "POV 片段链接",
+        storyLabel: "故事备注",
+        publicStoryLabel: "公开故事",
+        problemLabel: "当前问题",
+        moduleLabel: "新模块想法",
+        feedbackLabel: "想法与反馈",
+        submitButton: "提交",
+        privacyNote: "联系方式仅供 MagSnap 内部跟进，不在公开页面展示。",
+        confirmationEyebrow: "确认页",
+        confirmationTitle: "登记已收到。",
+        confirmationLead: "你已进入 Panda Masters Registry。公开资料会在照片审核后显示。",
+        confirmationStats: "查看统计",
+        confirmationAnother: "继续登记",
+        statsEyebrow: "数据",
+        statsTitle: "熊猫高人统计",
+        statsPrivacy: "只显示汇总统计，不显示邮箱、电话、地址、WhatsApp 等隐私信息。",
+        numberInvalid: "请输入 4 位 Panda Master 编号。",
+        degreeInvalid: "请选择近视度数。",
+        photoMissing: "请戴上 MagSnap 眼镜，自拍一张并上传。",
+        photoPreparing: "正在处理照片...",
+        photoReady: "照片已准备完成",
+        photoSelected: "已选择照片",
+        submitting: "正在提交",
+        preparingPhoto: "正在准备照片。",
+        submittingCheckin: "照片已准备完成，正在提交登记。",
+        submitSuccess: "你已进入 Panda Masters Registry。<br>公开资料会在照片审核后显示。",
+        submitTimeout: "提交超时。请检查网络后重试。",
+        submitFailed: "提交失败。请检查信息后重试。",
+        yes: "需要",
+        no: "不需要"
+      },
+      vi: {
+        heroEyebrow: "Đăng ký Panda Masters",
+        heroTitle: "Tham gia Panda Masters",
+        heroLead: "Không bán. Dành cho những rider giúp cộng đồng phát triển.",
+        checkinEyebrow: "Khảo sát / Đăng ký",
+        checkinTitle: "Đăng ký Panda Master",
+        checkinLead: "Điền hồ sơ, thiết bị POV, mạng xã hội, ảnh selfie với MagSnap và phản hồi.",
+        pandaNumberTitle: "Số Panda Master",
+        pandaNumberNote: "Tìm số 4 chữ số bên trong bộ MagSnap.",
+        nameLabel: "Tên",
+        nicknameLabel: "Biệt danh công khai",
+        countryLabel: "Quốc gia",
+        cityLabel: "Thành phố",
+        clubLabel: "Câu lạc bộ",
+        roleLabel: "Vai trò",
+        emailLabel: "Email",
+        sportsLabel: "Môn chơi / Ngành",
+        equipmentLabel: "Thiết bị / Thiết bị POV",
+        accessoriesLabel: "Phụ kiện",
+        prescriptionLabel: "Bạn có cần chỉnh thị lực không?",
+        myopiaLabel: "Nếu có, độ cận của bạn là bao nhiêu?",
+        contentTitle: "Thông tin nhà sáng tạo nội dung",
+        contentNote: "Dùng để hiểu khả năng lan tỏa nội dung. Thông tin liên hệ riêng tư không công khai.",
+        creatorStatusLabel: "Bạn có quay hoặc đăng video/ảnh không?",
+        platformsLabel: "Bạn thường đăng ở đâu?",
+        frequencyLabel: "Bạn đăng thường xuyên thế nào?",
+        followersLabel: "Số người theo dõi ước tính",
+        filmLabel: "Bạn thường quay nội dung gì?",
+        photoLabel: "Tải selfie với MagSnap *",
+        photoNote: "Hãy đeo kính MagSnap, chụp một ảnh selfie và tải lên tại đây.<br>Ảnh của bạn có thể xuất hiện trên Panda Masters Wall trong tương lai.",
+        videoLabel: "Liên kết video",
+        povLabel: "Liên kết clip POV",
+        storyLabel: "Ghi chú câu chuyện",
+        publicStoryLabel: "Câu chuyện công khai",
+        problemLabel: "Vấn đề đang gặp",
+        moduleLabel: "Ý tưởng module mới",
+        feedbackLabel: "Ý tưởng / Phản hồi",
+        submitButton: "Gửi đăng ký",
+        privacyNote: "Thông tin liên hệ chỉ dùng để MagSnap theo dõi nội bộ, không hiển thị công khai.",
+        confirmationEyebrow: "Trang xác nhận",
+        confirmationTitle: "Đã nhận đăng ký.",
+        confirmationLead: "Bạn đã vào Panda Masters Registry. Hồ sơ công khai chỉ xuất hiện sau khi ảnh được xác minh.",
+        confirmationStats: "Xem thống kê",
+        confirmationAnother: "Đăng ký thêm",
+        statsEyebrow: "Thống kê",
+        statsTitle: "Thống kê Panda Masters",
+        statsPrivacy: "Chỉ hiển thị thống kê tổng hợp. Dữ liệu riêng tư không được hiển thị ở đây.",
+        numberInvalid: "Vui lòng nhập số Panda Master gồm 4 chữ số.",
+        degreeInvalid: "Vui lòng chọn độ cận của bạn.",
+        photoMissing: "Hãy đeo kính MagSnap, chụp một ảnh selfie và tải lên tại đây.",
+        photoPreparing: "Đang xử lý ảnh...",
+        photoReady: "Ảnh đã sẵn sàng",
+        photoSelected: "Đã chọn ảnh",
+        submitting: "Đang gửi",
+        preparingPhoto: "Đang chuẩn bị ảnh tải lên.",
+        submittingCheckin: "Ảnh đã sẵn sàng. Đang gửi đăng ký.",
+        submitSuccess: "Bạn đã vào Panda Masters Registry.<br>Hồ sơ công khai chỉ xuất hiện sau khi ảnh được xác minh.",
+        submitTimeout: "Gửi quá thời gian. Vui lòng kiểm tra mạng và thử lại.",
+        submitFailed: "Gửi thất bại. Vui lòng kiểm tra biểu mẫu và thử lại.",
+        yes: "Có",
+        no: "Không"
+      }
+    };
+
+    const selectI18n = {
+      en: {
+        "#pm-city": { "": "Select city", "Nha Trang": "Nha Trang", "Phan Rang": "Phan Rang", "Mui Ne": "Mui Ne", Other: "Other" },
+        "#pm-role": { "": "Select role", "Club Owner": "Club Owner", "Head Coach": "Head Coach", Coach: "Coach", "Core Rider": "Core Rider", Athlete: "Athlete", Creator: "Creator", "Long-term Local Rider": "Long-term Local Rider", "Community Contributor": "Community Contributor" },
+        "#pm-handoff-status": { "Received Glasses": "Received Glasses", "Pending Handoff": "Pending Handoff" },
+        "#pm-myopia-degree": { "": "Select", "Not sure": "Not sure" },
+        "#pm-follower-range": { "": "Select" }
+      },
+      zh: {
+        "#pm-city": { "": "选择城市", "Nha Trang": "芽庄", "Phan Rang": "番朗", "Mui Ne": "美奈", Other: "其他" },
+        "#pm-role": { "": "选择角色", "Club Owner": "俱乐部老板", "Head Coach": "主教练", Coach: "教练", "Core Rider": "核心玩家", Athlete: "运动员", Creator: "创作者", "Long-term Local Rider": "长期本地玩家", "Community Contributor": "社群贡献者" },
+        "#pm-handoff-status": { "Received Glasses": "已领取眼镜", "Pending Handoff": "待交付" },
+        "#pm-myopia-degree": { "": "选择", "Not sure": "不确定" },
+        "#pm-follower-range": { "": "选择" }
+      },
+      vi: {
+        "#pm-city": { "": "Chọn thành phố", "Nha Trang": "Nha Trang", "Phan Rang": "Phan Rang", "Mui Ne": "Mũi Né", Other: "Khác" },
+        "#pm-role": { "": "Chọn vai trò", "Club Owner": "Chủ câu lạc bộ", "Head Coach": "Huấn luyện viên trưởng", Coach: "Huấn luyện viên", "Core Rider": "Rider nòng cốt", Athlete: "Vận động viên", Creator: "Nhà sáng tạo", "Long-term Local Rider": "Rider địa phương lâu năm", "Community Contributor": "Người đóng góp cộng đồng" },
+        "#pm-handoff-status": { "Received Glasses": "Đã nhận kính", "Pending Handoff": "Chờ bàn giao" },
+        "#pm-myopia-degree": { "": "Chọn", "Not sure": "Không chắc" },
+        "#pm-follower-range": { "": "Chọn" }
+      }
+    };
+
+    const controlI18n = {
+      en: {
+        'input[name="content_creator_status"][value="Never"]': "Never",
+        'input[name="content_creator_status"][value="Sometimes"]': "Sometimes",
+        'input[name="content_creator_status"][value="Regularly"]': "Regularly",
+        'input[name="content_creator_status"][value="Professional Creator"]': "Professional Creator",
+        'input[name="posting_frequency"][value="Daily"]': "Daily",
+        'input[name="posting_frequency"][value="Weekly"]': "Weekly",
+        'input[name="posting_frequency"][value="Monthly"]': "Monthly",
+        'input[name="posting_frequency"][value="Rarely"]': "Rarely"
+      },
+      zh: {
+        'input[name="content_creator_status"][value="Never"]': "从不",
+        'input[name="content_creator_status"][value="Sometimes"]': "偶尔",
+        'input[name="content_creator_status"][value="Regularly"]': "经常",
+        'input[name="content_creator_status"][value="Professional Creator"]': "专业创作者",
+        'input[name="posting_frequency"][value="Daily"]': "每天",
+        'input[name="posting_frequency"][value="Weekly"]': "每周",
+        'input[name="posting_frequency"][value="Monthly"]': "每月",
+        'input[name="posting_frequency"][value="Rarely"]': "很少"
+      },
+      vi: {
+        'input[name="content_creator_status"][value="Never"]': "Không bao giờ",
+        'input[name="content_creator_status"][value="Sometimes"]': "Thỉnh thoảng",
+        'input[name="content_creator_status"][value="Regularly"]': "Thường xuyên",
+        'input[name="content_creator_status"][value="Professional Creator"]': "Nhà sáng tạo chuyên nghiệp",
+        'input[name="posting_frequency"][value="Daily"]': "Hằng ngày",
+        'input[name="posting_frequency"][value="Weekly"]': "Hằng tuần",
+        'input[name="posting_frequency"][value="Monthly"]': "Hằng tháng",
+        'input[name="posting_frequency"][value="Rarely"]': "Hiếm khi"
+      }
+    };
+
+    const baseContent = {};
+
+    const getLanguageCopy = (key) => {
+      if (currentLanguage === defaultLanguage) return baseContent[key] || i18n.en[key] || "";
+      return i18n[currentLanguage]?.[key] || baseContent[key] || "";
+    };
+
+    const getPreferredLanguageValue = () => {
+      if (supportedLanguages.has(currentLanguage)) return currentLanguage;
+      return /^zh/i.test(window.navigator.language || "") ? "zh" : "en";
+    };
+
+    const setInlineHtml = (selector, html) => {
+      const element = document.querySelector(selector);
+      if (element && html) element.innerHTML = html;
+    };
+
+    const setControlLabelText = (selector, text) => {
+      const control = document.querySelector(selector);
+      const label = control?.closest("label");
+      if (!label || !text) return;
+      Array.from(label.childNodes).forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE) node.remove();
+      });
+      label.append(` ${text}`);
+    };
+
+    const setSelectOptionText = (selector, values) => {
+      const select = document.querySelector(selector);
+      if (!select || !values) return;
+      Array.from(select.options).forEach((option) => {
+        if (!option.dataset.baseText) option.dataset.baseText = option.textContent;
+        option.textContent = values[option.value] || option.dataset.baseText;
+      });
+    };
+
+    const applyLanguage = (language, persist = true) => {
+      currentLanguage = supportedLanguages.has(language) ? language : defaultLanguage;
+      if (persist) {
+        if (currentLanguage === defaultLanguage) {
+          window.localStorage.removeItem(languageStorageKey);
+        } else {
+          window.localStorage.setItem(languageStorageKey, currentLanguage);
+        }
+      }
+
+      if (preferredLanguageInput) {
+        preferredLanguageInput.value = getPreferredLanguageValue();
+      }
+      document.documentElement.lang = currentLanguage === "vi" ? "vi" : currentLanguage === "en" ? "en" : "zh-CN";
+
+      document.querySelectorAll("[data-i18n-html]").forEach((element) => {
+        const key = element.dataset.i18nHtml;
+        if (!baseContent[key]) baseContent[key] = element.innerHTML;
+        const html = getLanguageCopy(key);
+        if (html) element.innerHTML = html;
+      });
+
+      languageButtons.forEach((button) => {
+        button.classList.toggle("is-active", button.dataset.langButton === currentLanguage);
+      });
+
+      if (photoUploadStatus && !photoFileInput?.files?.length) {
+        photoUploadStatus.innerHTML = getLanguageCopy("photoNote");
+      }
+
+      setControlLabelText('input[name="prescription_need"][value="No"]', getLanguageCopy("no"));
+      setControlLabelText('input[name="prescription_need"][value="Yes"]', getLanguageCopy("yes"));
+      const selectCopy = selectI18n[currentLanguage] || {};
+      Object.entries(selectCopy).forEach(([selector, values]) => setSelectOptionText(selector, values));
+      const controlCopy = controlI18n[currentLanguage] || {};
+      Object.entries(controlCopy).forEach(([selector, text]) => setControlLabelText(selector, text));
+      if (typeof validatePandaNumber === "function") validatePandaNumber();
+      if (typeof updatePrescriptionRequirement === "function") updatePrescriptionRequirement();
+    };
+
+    const getInitialLanguage = () => {
+      const params = new URLSearchParams(window.location.search);
+      const requested = params.get("lang") || params.get("language");
+      if (supportedLanguages.has(requested)) return requested;
+      const saved = window.localStorage.getItem(languageStorageKey);
+      return supportedLanguages.has(saved) ? saved : defaultLanguage;
+    };
+
+    languageButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        applyLanguage(button.dataset.langButton || defaultLanguage);
+      });
+    });
 
     const cleanText = (value) => String(value || "").trim();
 
@@ -1874,7 +2260,7 @@
       const number = normalizePandaNumber(pandaNumberInput?.value);
       if (pandaNumberInput) {
         pandaNumberInput.value = number;
-        pandaNumberInput.setCustomValidity(number.length === 4 ? "" : "Please enter a 4-digit Panda Master number.");
+        pandaNumberInput.setCustomValidity(number.length === 4 ? "" : getLanguageCopy("numberInvalid"));
       }
       return number.length === 4 ? number : "";
     };
@@ -1983,14 +2369,14 @@
     const preparePhotoUpload = async () => {
       const file = photoFileInput?.files?.[0];
       if (!file) {
-        throw new Error("请上传佩戴 MagSnap 照片。<br>Please upload a photo wearing MagSnap.");
+        throw new Error(getLanguageCopy("photoMissing"));
       }
       if (!/^image\//.test(file.type || "")) {
         throw new Error("请上传图片文件。<br>Please upload an image file.");
       }
 
       if (photoUploadStatus) {
-        photoUploadStatus.innerHTML = "正在处理照片 / Preparing photo...";
+        photoUploadStatus.innerHTML = getLanguageCopy("photoPreparing");
       }
 
       const source = await readFileAsDataUrl(file);
@@ -2013,7 +2399,7 @@
       if (photoUrlInput) photoUrlInput.value = photoUrl;
       if (photoLinkInput) photoLinkInput.value = photoUrl;
       if (photoUploadStatus) {
-        photoUploadStatus.innerHTML = `照片已准备完成 / Photo ready: ${escapeHtml(file.name || "uploaded photo")}`;
+        photoUploadStatus.innerHTML = `${getLanguageCopy("photoReady")}: ${escapeHtml(file.name || "uploaded photo")}`;
       }
       return {
         photo_url: photoUrl,
@@ -2035,7 +2421,7 @@
         degreeField.value = "";
         degreeField.setCustomValidity("");
       } else if (need === "Yes" && !cleanText(degreeField.value)) {
-        degreeField.setCustomValidity("Please select your myopia degree.");
+        degreeField.setCustomValidity(getLanguageCopy("degreeInvalid"));
       } else {
         degreeField.setCustomValidity("");
       }
@@ -2073,7 +2459,7 @@
       const payload = Object.fromEntries(formData.entries());
       const pandaMasterNumber = validatePandaNumber();
       if (!pandaMasterNumber) {
-        throw new Error("请输入 4 位 Panda Master 编号。<br>Please enter a 4-digit Panda Master number.");
+        throw new Error(getLanguageCopy("numberInvalid"));
       }
       delete payload.photo_file;
       payload.panda_master_number = pandaMasterNumber;
@@ -2121,6 +2507,7 @@
       payload.content_creator_status = cleanText(payload.content_creator_status);
       payload.posting_frequency = cleanText(payload.posting_frequency);
       payload.follower_range = cleanText(payload.follower_range);
+      payload.preferred_language = getPreferredLanguageValue();
       const socialLinks = [
         payload.instagram,
         payload.tiktok,
@@ -2256,11 +2643,11 @@
           finish(resolve, data);
           return;
         }
-        finish(reject, new Error(data.error || "提交失败。请检查信息后重试。<br>Submission failed. Please check the form and try again."));
+        finish(reject, new Error(data.error || getLanguageCopy("submitFailed")));
       };
 
       const timeoutId = window.setTimeout(() => {
-        finish(reject, new Error("提交超时。请检查网络后重试。<br>Submission timed out. Please check the network and retry."));
+        finish(reject, new Error(getLanguageCopy("submitTimeout")));
       }, 45000);
 
       window.addEventListener("message", handleMessage);
@@ -2765,6 +3152,7 @@
       renderImportQueue();
       renderCoverage();
       renderIntelligenceDashboard();
+      applyLanguage(getInitialLanguage(), false);
       validatePandaNumber();
       updatePrescriptionRequirement();
     });
@@ -2781,8 +3169,8 @@
         const file = photoFileInput?.files?.[0];
         if (photoUploadStatus) {
           photoUploadStatus.innerHTML = file
-            ? `已选择照片 / Photo selected: ${escapeHtml(file.name || "mobile photo")}`
-            : "必填。支持手机直接拍照或从相册选择。<br>Required. Take a photo or choose from your gallery.";
+            ? `${getLanguageCopy("photoSelected")}: ${escapeHtml(file.name || "mobile photo")}`
+            : getLanguageCopy("photoNote");
         }
       }
     });
@@ -2797,21 +3185,20 @@
 
       if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = "正在提交 / Submitting";
+        submitButton.textContent = getLanguageCopy("submitting");
       }
 
       let payload;
       try {
-        showStatus("正在准备照片。<br>Preparing photo upload.");
+        showStatus(getLanguageCopy("preparingPhoto"));
         const photoPayload = await preparePhotoUpload();
         payload = buildPayload(photoPayload);
         writeLocalRecord(payload, "pending_backend");
-        showStatus("照片已准备完成，正在提交登记。<br>Photo ready. Submitting check-in.");
+        showStatus(getLanguageCopy("submittingCheckin"));
         await submitPayload(payload);
         writeLocalRecord(payload, "backend_saved");
         showStatus(`
-          <strong>You are now in the Panda Masters Registry. / 你已进入 Panda Masters Registry。</strong><br>
-          Your public profile will appear only after photo verification.<br>
+          <strong>${getLanguageCopy("submitSuccess")}</strong><br>
           ID: ${escapeHtml(payload.panda_master_id)}<br>
           ${escapeHtml(payload.public_nickname || payload.name)} · ${escapeHtml(payload.city)} · ${escapeHtml(payload.club)}
         `);
@@ -2821,7 +3208,7 @@
         resetPandaNumber();
         updatePrescriptionRequirement();
         if (photoUploadStatus) {
-          photoUploadStatus.innerHTML = "必填。支持手机直接拍照或从相册选择。<br>Required. Take a photo or choose from your gallery.";
+          photoUploadStatus.innerHTML = getLanguageCopy("photoNote");
         }
         renderRegistry();
         renderDirectory();

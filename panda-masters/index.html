@@ -2121,6 +2121,29 @@
       payload.content_creator_status = cleanText(payload.content_creator_status);
       payload.posting_frequency = cleanText(payload.posting_frequency);
       payload.follower_range = cleanText(payload.follower_range);
+      const socialLinks = [
+        payload.instagram,
+        payload.tiktok,
+        payload.youtube,
+        payload.facebook
+      ].filter(Boolean).join(" / ");
+      const primaryUseCase = cleanText(payload.feedback || payload.public_story || payload.problem_report || payload.product_requests || "Panda Masters check-in");
+      payload.sport_or_industry = cleanText(payload.sports || [payload.role, payload.club].filter(Boolean).join(" / "));
+      payload.industry = cleanText(payload.role || payload.sport_or_industry);
+      payload.profession = payload.industry;
+      payload.device = cleanText(payload.equipment);
+      payload.device_used = payload.device;
+      payload.reason = primaryUseCase;
+      payload.use_case = primaryUseCase;
+      payload.social_link = socialLinks;
+      payload.invitation_code = payload.panda_master_number;
+      payload.invited_by = payload.referred_by;
+      payload.founder_number = payload.panda_master_number;
+      payload.registry_number = payload.panda_master_number;
+      payload.contact_email = payload.email;
+      payload.contact_method = socialLinks ? "Email / Social" : "Email";
+      payload.contact_detail = [payload.email, socialLinks].filter(Boolean).join(" / ");
+      payload.wechat_or_social = socialLinks;
       payload.glasses_count = payload.handoff_status === "Received Glasses" ? 1 : 0;
       payload.identity_rule = "one_person_one_glasses_one_panda_master_id";
       payload.coverage_strategy = "maximum_coverage";
@@ -2189,32 +2212,62 @@
       return payload;
     };
 
-    const submitPayload = async (payload) => {
-      const body = new URLSearchParams();
+    const submitPayload = (payload) => new Promise((resolve, reject) => {
+      const iframeName = `panda-submit-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      const iframe = document.createElement("iframe");
+      const postForm = document.createElement("form");
+      let settled = false;
+
+      iframe.name = iframeName;
+      iframe.hidden = true;
+      iframe.style.display = "none";
+
+      postForm.method = "POST";
+      postForm.action = PANDA_ENDPOINT;
+      postForm.target = iframeName;
+      postForm.hidden = true;
+
       Object.entries(payload).forEach(([key, value]) => {
-        body.append(key, value == null ? "" : String(value));
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = value == null ? "" : String(value);
+        postForm.appendChild(input);
       });
 
-      const controller = new AbortController();
-      const timeoutId = window.setTimeout(() => controller.abort(), 45000);
-
-      try {
-        await fetch(PANDA_ENDPOINT, {
-          method: "POST",
-          mode: "no-cors",
-          cache: "no-store",
-          body,
-          signal: controller.signal
-        });
-      } catch (error) {
-        const reason = error && error.name === "AbortError"
-          ? "提交超时。请检查网络后重试。<br>Submission timed out. Please check the network and retry."
-          : "提交失败。请检查网络后重试。<br>Submission failed. Please check the network and retry.";
-        throw new Error(reason);
-      } finally {
+      const cleanup = () => {
         window.clearTimeout(timeoutId);
-      }
-    };
+        window.removeEventListener("message", handleMessage);
+        iframe.remove();
+        postForm.remove();
+      };
+
+      const finish = (callback, value) => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        callback(value);
+      };
+
+      const handleMessage = (event) => {
+        const data = event.data;
+        if (!data || data.source !== "magsnap-founder-survey") return;
+        if (data.ok) {
+          finish(resolve, data);
+          return;
+        }
+        finish(reject, new Error(data.error || "提交失败。请检查信息后重试。<br>Submission failed. Please check the form and try again."));
+      };
+
+      const timeoutId = window.setTimeout(() => {
+        finish(reject, new Error("提交超时。请检查网络后重试。<br>Submission timed out. Please check the network and retry."));
+      }, 45000);
+
+      window.addEventListener("message", handleMessage);
+      document.body.appendChild(iframe);
+      document.body.appendChild(postForm);
+      postForm.submit();
+    });
 
     const renderRegistry = () => {
       const records = readLocalRecords();

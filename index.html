@@ -1992,7 +1992,7 @@
               <p class="founder-form-lead">所有人都可以表达申请意向。只有受邀请、通过审核并能真实贡献的人会成为 Founder。<br>Anyone can express interest. Only invited and qualified contributors become Founder.</p>
               <div class="founder-apply-actions">
                 <div class="founder-invite-note" id="founder-invite-note" aria-live="polite"></div>
-                <button class="founder-btn founder-toggle" id="founder-toggle" type="button" aria-expanded="false" aria-controls="founder-form-collapsible">开始 Founder 问卷 / Start Founder Survey</button>
+                <button class="founder-btn founder-toggle" id="founder-toggle" type="button" data-survey-url="/panda-masters/">Founder Survey Open</button>
               </div>
               <div class="founder-form-collapsible" id="founder-form-collapsible" hidden>
                 <form class="founder-form" id="founder-form" action="#" method="post">
@@ -2362,21 +2362,11 @@
 
     const openFounderSurvey = () => {
       if (!founderFormCollapsible || !founderToggle) return;
-      founderFormCollapsible.hidden = false;
-      founderToggle.setAttribute("aria-expanded", "true");
-      founderToggle.textContent = "问卷已展开 / Founder Survey Open";
+      window.location.href = founderToggle.dataset.surveyUrl || "/panda-masters/";
     };
 
     founderToggle?.addEventListener("click", () => {
-      const willOpen = founderFormCollapsible?.hidden;
-      if (willOpen) {
-        openFounderSurvey();
-        founderForm?.querySelector("input, textarea, select")?.focus();
-      } else if (founderFormCollapsible) {
-        founderFormCollapsible.hidden = true;
-        founderToggle.setAttribute("aria-expanded", "false");
-        founderToggle.textContent = "开始 Founder 问卷 / Start Founder Survey";
-      }
+      openFounderSurvey();
     });
 
     if (founderForm && inviteCode && founderForm.elements.invitation_code) {

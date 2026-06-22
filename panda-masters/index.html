@@ -1039,30 +1039,66 @@
               <label class="checkbox-pill"><input type="checkbox" name="accessories" value="Other Gear">Other Gear / 其他装备</label>
             </div>
           </div>
-          <div class="field">
-            <label for="pm-prescription-wear">Do you wear prescription glasses? / 是否戴近视眼镜？</label>
-            <select id="pm-prescription-wear" name="prescription_wear">
-              <option value="No">No / 否</option>
-              <option value="Yes">Yes / 是</option>
-            </select>
+          <div class="field full">
+            <label>Prescription Intelligence / 近视贴片需求</label>
+            <p class="form-note">用于判断未来优先开发哪些 Prescription Adapter SKU，不是医学调查。<br>SKU demand signal only. This is not a medical survey.</p>
           </div>
-          <div class="field">
-            <label for="pm-degree-range">Degree Range / 度数范围</label>
-            <select id="pm-degree-range" name="degree_range">
-              <option value="None">None / 无</option>
-              <option value="0-300">0-300</option>
-              <option value="300-600">300-600</option>
-              <option value="600+">600+</option>
-              <option value="Not Sure">Not Sure / 不确定</option>
-            </select>
+          <div class="field full">
+            <label>Prescription Need / 视力矫正需求</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="radio" name="prescription_need" value="No">No / 不需要</label>
+              <label class="checkbox-pill"><input type="radio" name="prescription_need" value="Yes">Yes / 需要</label>
+              <label class="checkbox-pill"><input type="radio" name="prescription_need" value="Not Sure">Not Sure / 不确定</label>
+            </div>
           </div>
-          <div class="field">
-            <label for="pm-prescription-solution">Need Prescription Solution? / 是否需要近视方案？</label>
-            <select id="pm-prescription-solution" name="prescription_solution_needed">
-              <option value="No">No / 否</option>
-              <option value="Maybe">Maybe / 可能</option>
-              <option value="Yes">Yes / 是</option>
-            </select>
+          <div class="field full">
+            <label>Myopia Degree / 近视度数</label>
+            <p class="form-note">请选择最接近你的近视度数。<br>Select the closest myopia degree.</p>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="150">150</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="200">200</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="225">225</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="250">250</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="275">275</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="300">300</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="325">325</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="350">350</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="375">375</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="400">400</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="450">450</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="500">500</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="600+">600+</label>
+              <label class="checkbox-pill"><input type="radio" name="myopia_degree" value="Not Sure">Not Sure / 不确定</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Astigmatism / 散光</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="radio" name="astigmatism" value="No">No / 无</label>
+              <label class="checkbox-pill"><input type="radio" name="astigmatism" value="Mild">Mild / 轻度</label>
+              <label class="checkbox-pill"><input type="radio" name="astigmatism" value="Moderate">Moderate / 中度</label>
+              <label class="checkbox-pill"><input type="radio" name="astigmatism" value="High">High / 高度</label>
+              <label class="checkbox-pill"><input type="radio" name="astigmatism" value="Not Sure">Not Sure / 不确定</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Current Solution / 当前解决方式</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="radio" name="current_solution" value="Contact Lenses">Contact Lenses / 隐形眼镜</label>
+              <label class="checkbox-pill"><input type="radio" name="current_solution" value="Prescription Sunglasses">Prescription Sunglasses / 近视太阳镜</label>
+              <label class="checkbox-pill"><input type="radio" name="current_solution" value="Sports Glasses">Sports Glasses / 运动眼镜</label>
+              <label class="checkbox-pill"><input type="radio" name="current_solution" value="No Correction">No Correction / 不矫正</label>
+              <label class="checkbox-pill"><input type="radio" name="current_solution" value="Other">Other / 其他</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Future Interest / 未来兴趣</label>
+            <p class="form-note">如果 MagSnap 推出近视贴片或 Prescription Adapter，你会使用吗？<br>If MagSnap offered a prescription adapter or insert system, would you use it?</p>
+            <div class="checkbox-grid">
+              <label class="checkbox-pill"><input type="radio" name="prescription_adapter_interest" value="Yes">Yes / 会</label>
+              <label class="checkbox-pill"><input type="radio" name="prescription_adapter_interest" value="Maybe">Maybe / 可能</label>
+              <label class="checkbox-pill"><input type="radio" name="prescription_adapter_interest" value="No">No / 不会</label>
+            </div>
           </div>
           <div class="field">
             <label for="pm-creates-content">Do you create content? / 是否创作内容？</label>
@@ -1571,6 +1607,11 @@
       "facebook",
       "sports",
       "equipment",
+      "prescription_need",
+      "myopia_degree",
+      "astigmatism",
+      "current_solution",
+      "prescription_adapter_interest",
       "photo_link",
       "feedback"
     ]);
@@ -1673,6 +1714,19 @@
       tiktok: "tiktok",
       youtube: "youtube",
       facebook: "facebook",
+      prescriptionneed: "prescription_need",
+      visioncorrection: "prescription_need",
+      视力矫正需求: "prescription_need",
+      myopiadegree: "myopia_degree",
+      degree: "myopia_degree",
+      近视度数: "myopia_degree",
+      astigmatism: "astigmatism",
+      散光: "astigmatism",
+      currentsolution: "current_solution",
+      当前解决方式: "current_solution",
+      prescriptionadapterinterest: "prescription_adapter_interest",
+      futureinterest: "prescription_adapter_interest",
+      未来兴趣: "prescription_adapter_interest",
       referredby: "referred_by",
       notes: "internal_notes",
       note: "internal_notes",
@@ -1930,7 +1984,11 @@
         <div><dt>Handoff</dt><dd>${escapeHtml(payload.handoff_status || "—")}</dd></div>
         <div><dt>Content Assets</dt><dd>${escapeHtml(payload.panda_content_items || "—")}</dd></div>
         <div><dt>Photo Wall</dt><dd>${escapeHtml(payload.photo_wall_ready || "No")}</dd></div>
-        <div><dt>Prescription</dt><dd>${escapeHtml(payload.prescription_solution_needed || "—")}</dd></div>
+        <div><dt>Prescription SKU Signal</dt><dd>${escapeHtml([
+          payload.prescription_need,
+          payload.myopia_degree,
+          payload.prescription_adapter_interest
+        ].filter(Boolean).join(" / ") || "—")}</dd></div>
         <div><dt>Lab Signals</dt><dd>${escapeHtml(payload.lab_signal_count || 0)}</dd></div>
       `;
       if (confirmationSection) confirmationSection.hidden = false;
@@ -1966,9 +2024,11 @@
       payload.pov_clip_link = cleanText(payload.pov_clip_link);
       payload.story_note = cleanText(payload.story_note);
       payload.public_story = cleanText(payload.public_story);
-      payload.prescription_wear = cleanText(payload.prescription_wear);
-      payload.degree_range = cleanText(payload.degree_range);
-      payload.prescription_solution_needed = cleanText(payload.prescription_solution_needed);
+      payload.prescription_need = cleanText(payload.prescription_need);
+      payload.myopia_degree = cleanText(payload.myopia_degree);
+      payload.astigmatism = cleanText(payload.astigmatism);
+      payload.current_solution = cleanText(payload.current_solution);
+      payload.prescription_adapter_interest = cleanText(payload.prescription_adapter_interest);
       payload.problem_report = cleanText(payload.problem_report);
       payload.problem_tags = cleanText(payload.problem_tags);
       payload.module_ideas = cleanText(payload.module_ideas);
@@ -2001,7 +2061,7 @@
       payload.operation = "Operation Vietnam";
       payload.registry_type = "Panda Masters";
       payload.source_form = "panda_masters_checkin";
-      payload.form_version = "panda_masters_v8_2026_06_22";
+      payload.form_version = "panda_masters_v8_prescription_intelligence_v2_2026_06_22";
       payload.newsletter_segment = "panda_masters";
       payload.submitted_at = new Date().toISOString();
       payload.source_url = window.location.href;
@@ -2171,14 +2231,20 @@
       const contentAssetMap = countMulti(records, "panda_content_items");
       const photoWallCount = records.filter((record) => cleanText(record.photo_link)).length;
       const videoUploadCount = records.filter((record) => cleanText(record.video_link) || cleanText(record.pov_clip_link)).length;
-      const prescriptionWearCount = records.filter((record) => record.prescription_wear === "Yes").length;
-      const prescriptionNeedCount = records.filter((record) => record.prescription_solution_needed === "Yes" || record.prescription_solution_needed === "Maybe").length;
+      const prescriptionNeedAnswered = records.filter((record) => cleanText(record.prescription_need));
+      const prescriptionUserCount = records.filter((record) => record.prescription_need === "Yes").length;
+      const astigmatismAnswered = records.filter((record) => cleanText(record.astigmatism));
+      const astigmatismCount = records.filter((record) => /Mild|Moderate|High/i.test(record.astigmatism || "")).length;
+      const adapterInterestAnswered = records.filter((record) => cleanText(record.prescription_adapter_interest));
+      const adapterInterestCount = records.filter((record) => /Yes|Maybe/i.test(record.prescription_adapter_interest || "")).length;
       const prescriptionDemand = [
-        ["Wears Prescription", prescriptionWearCount],
-        ["Needs Solution", prescriptionNeedCount],
-        ["0-300", records.filter((record) => record.degree_range === "0-300").length],
-        ["300-600", records.filter((record) => record.degree_range === "300-600").length],
-        ["600+", records.filter((record) => record.degree_range === "600+").length]
+        ["Prescription Users %", `${prescriptionNeedAnswered.length ? Math.round((prescriptionUserCount / prescriptionNeedAnswered.length) * 100) : 0}%`],
+        ["Astigmatism %", `${astigmatismAnswered.length ? Math.round((astigmatismCount / astigmatismAnswered.length) * 100) : 0}%`],
+        ["Adapter Interest %", `${adapterInterestAnswered.length ? Math.round((adapterInterestCount / adapterInterestAnswered.length) * 100) : 0}%`],
+        ...topEntries(countBy(records, (record) => {
+          const value = cleanText(record.myopia_degree);
+          return value && value !== "Not Sure" ? `${value} Degree` : "";
+        }), 5)
       ];
       const rankedRecords = records
         .slice()
@@ -2387,6 +2453,21 @@
       const go3sUsers = records.filter((record) => splitList(record.equipment).some((item) => /GO3S/i.test(item))).length;
       const nanoUsers = records.filter((record) => splitList(record.equipment).some((item) => /DJI Nano/i.test(item))).length;
       const photoUploaded = records.filter((record) => cleanText(record.photo_link)).length;
+      const percentage = (count, total) => total ? Math.round((count / total) * 100) : 0;
+      const prescriptionNeedAnswered = records.filter((record) => cleanText(record.prescription_need));
+      const prescriptionUsers = records.filter((record) => record.prescription_need === "Yes").length;
+      const topMyopiaDegrees = topEntries(countBy(records, (record) => {
+        const value = cleanText(record.myopia_degree);
+        return value && value !== "Not Sure" ? value : "";
+      }), 3);
+      const astigmatismAnswered = records.filter((record) => cleanText(record.astigmatism));
+      const astigmatismUsers = records.filter((record) => /Mild|Moderate|High/i.test(record.astigmatism || "")).length;
+      const currentSolutions = topEntries(countBy(records, (record) => cleanText(record.current_solution)), 4);
+      const adapterInterestAnswered = records.filter((record) => cleanText(record.prescription_adapter_interest));
+      const adapterInterest = records.filter((record) => /Yes|Maybe/i.test(record.prescription_adapter_interest || "")).length;
+      const formatSummary = (items, emptyText) => items.length
+        ? items.map(([label, value]) => `${label}: ${value}`).join(" · ")
+        : emptyText;
 
       coverageGrid.innerHTML = `
         <article class="dashboard-card">
@@ -2423,6 +2504,31 @@
           <p class="eyebrow">Photo Uploaded</p>
           <h3>${photoUploaded}</h3>
           <p class="plain">已提交佩戴照片 / Wearing photos</p>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Prescription Users %</p>
+          <h3>${percentage(prescriptionUsers, prescriptionNeedAnswered.length)}%</h3>
+          <p class="plain">需要视力矫正 / Need vision correction</p>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Top Myopia Degrees</p>
+          <h3>${topMyopiaDegrees.length ? topMyopiaDegrees.map(([label]) => escapeHtml(label)).join(" / ") : "—"}</h3>
+          <p class="plain">${escapeHtml(formatSummary(topMyopiaDegrees, "暂无 SKU 信号 / No SKU signal"))}</p>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Astigmatism %</p>
+          <h3>${percentage(astigmatismUsers, astigmatismAnswered.length)}%</h3>
+          <p class="plain">散光用户 / Mild, moderate or high</p>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Current Solutions</p>
+          <h3>${currentSolutions[0] ? escapeHtml(currentSolutions[0][0]) : "—"}</h3>
+          <p class="plain">${escapeHtml(formatSummary(currentSolutions, "暂无数据 / No data"))}</p>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Interest In Prescription Adapter %</p>
+          <h3>${percentage(adapterInterest, adapterInterestAnswered.length)}%</h3>
+          <p class="plain">Yes + Maybe / 会使用或可能使用</p>
         </article>
       `;
     };

@@ -750,6 +750,21 @@
         min-height: auto;
       }
 
+      .hero > *,
+      .section-head > * {
+        min-width: 0;
+      }
+
+      h1,
+      h2,
+      .lead,
+      .eyebrow,
+      .button {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        white-space: normal;
+      }
+
       .panda-form {
         grid-template-columns: 1fr;
       }
@@ -814,6 +829,7 @@
       <button class="lang-button" type="button" data-lang-button="en">EN</button>
       <button class="lang-button" type="button" data-lang-button="zh">中文</button>
       <button class="lang-button" type="button" data-lang-button="vi">VI</button>
+      <button class="lang-button" type="button" data-lang-button="ru">RU</button>
     </div>
   </header>
 
@@ -823,9 +839,9 @@
         <div class="mark">V8</div>
         <p class="eyebrow" data-i18n-html="heroEyebrow">Panda Masters Registry / 熊猫高人登记</p>
         <h1 data-i18n-html="heroTitle">Join Panda Masters<br>加入熊猫高人</h1>
-        <p class="lead" data-i18n-html="heroLead">Not For Sale. For Riders Who Help The Community.</p>
+        <p class="lead" data-i18n-html="heroLead">Not For Sale. For Those Who Help The Community.<br>非卖品。致那些帮助社区成长的人。</p>
         <div class="sale-badge">Not For Sale / 暂不销售</div>
-        <p class="plain">核心 KPI：Club Coverage %、Owner Coverage %、Coach Coverage %、Core Rider Coverage %、POV Creator Coverage %、Panda Masters Count、Content Generated。</p>
+        <p class="plain">核心 KPI：Club Coverage %、Owner Coverage %、Coach Coverage %、Core Community Coverage %、POV Creator Coverage %、Panda Masters Count、Content Generated。</p>
         <div class="cta-row">
           <a class="button primary" href="#checkin">Panda Master 登记 / Check-in</a>
           <a class="button" href="#coverage">查看覆盖 Dashboard / View Coverage</a>
@@ -857,12 +873,12 @@
         <article class="card">
           <span class="number">02</span>
           <h3>Story Engine</h3>
-          <p class="plain">摩旅、海岸线、俱乐部、教练、玩家和 POV 内容。<br>Road trip, coast roads, clubs, coaches, riders and POV clips.</p>
+          <p class="plain">摩旅、海岸线、俱乐部、教练、社群成员和 POV 内容。<br>Road trip, coast roads, clubs, coaches, community members and POV clips.</p>
         </article>
         <article class="card">
           <span class="number">03</span>
           <h3>Network Map</h3>
-          <p class="plain">记录老板、教练、核心玩家和创作者。<br>Map owners, coaches, core riders and creators.</p>
+          <p class="plain">记录老板、教练、核心成员和创作者。<br>Map owners, coaches, core members and creators.</p>
         </article>
         <article class="card">
           <span class="number">04</span>
@@ -903,8 +919,8 @@
         </article>
         <article class="card">
           <span class="number">03</span>
-          <h3>Core Riders</h3>
-          <p class="plain">长期玩家、运动员、创作者和社群贡献者。<br>Long-term riders, athletes, creators and community contributors.</p>
+          <h3>Core Members</h3>
+          <p class="plain">长期成员、运动员、创作者和社群贡献者。<br>Long-term members, athletes, creators and community contributors.</p>
         </article>
         <article class="card">
           <span class="number">04</span>
@@ -924,7 +940,7 @@
       </div>
       <div class="timeline">
         <div class="timeline-row"><strong>01</strong><span>到达俱乐部 / Arrive at the club</span><span class="tag">Arrive</span></div>
-        <div class="timeline-row"><strong>02</strong><span>老板召集教练和核心玩家 / Owner gathers coaches and core riders</span><span class="tag">Gather</span></div>
+        <div class="timeline-row"><strong>02</strong><span>老板召集教练和核心成员 / Owner gathers coaches and core members</span><span class="tag">Gather</span></div>
         <div class="timeline-row"><strong>03</strong><span>产品演示 / MagSnap demo</span><span class="tag">Demo</span></div>
         <div class="timeline-row"><strong>04</strong><span>现场扫码登记 / Scan and check in</span><span class="tag">Scan</span></div>
         <div class="timeline-row"><strong>05</strong><span>登记确认 / Confirm registration</span><span class="tag">Register</span></div>
@@ -1011,10 +1027,10 @@
               <option value="Club Owner">Club Owner / 俱乐部老板</option>
               <option value="Head Coach">Head Coach / 主教练</option>
               <option value="Coach">Coach / 教练</option>
-              <option value="Core Rider">Core Rider / 核心玩家</option>
+              <option value="Core Member">Core Member / 核心成员</option>
               <option value="Athlete">Athlete / 运动员</option>
               <option value="Creator">Creator / 创作者</option>
-              <option value="Long-term Local Rider">Long-term Local Rider / 长期本地玩家</option>
+              <option value="Long-term Local Member">Long-term Local Member / 长期本地成员</option>
               <option value="Community Contributor">Community Contributor / 社群贡献者</option>
             </select>
           </div>
@@ -1022,7 +1038,7 @@
             <label for="pm-email" data-i18n-html="emailLabel">邮箱 / Email</label>
             <input id="pm-email" type="email" name="email" autocomplete="email" required>
           </div>
-          <div class="field">
+          <div class="field" data-contact-langs="en">
             <label for="pm-instagram">Instagram</label>
             <input id="pm-instagram" type="text" name="instagram" placeholder="@username">
           </div>
@@ -1038,9 +1054,21 @@
             <label for="pm-facebook">Facebook</label>
             <input id="pm-facebook" type="text" name="facebook" placeholder="profile / page">
           </div>
-          <div class="field">
+          <div class="field" data-contact-langs="en ru">
             <label for="pm-whatsapp">WhatsApp</label>
             <input id="pm-whatsapp" type="text" name="whatsapp" inputmode="tel" autocomplete="tel">
+          </div>
+          <div class="field" data-contact-langs="zh">
+            <label for="pm-wechat">WeChat / 微信</label>
+            <input id="pm-wechat" type="text" name="wechat_or_social" placeholder="WeChat ID / 微信号">
+          </div>
+          <div class="field" data-contact-langs="vi">
+            <label for="pm-zalo">Zalo</label>
+            <input id="pm-zalo" type="text" name="wechat_or_social" placeholder="Zalo phone / ID">
+          </div>
+          <div class="field" data-contact-langs="ru">
+            <label for="pm-telegram">Telegram</label>
+            <input id="pm-telegram" type="text" name="wechat_or_social" placeholder="@username">
           </div>
           <div class="field">
             <label for="pm-received-date">收到日期 / Received Date</label>
@@ -1196,7 +1224,7 @@
           </div>
           <div class="field">
             <label for="pm-story-note" data-i18n-html="storyLabel">Story Note / 故事备注</label>
-            <input id="pm-story-note" type="text" name="story_note" placeholder="one-line rider story / 一句话故事">
+            <input id="pm-story-note" type="text" name="story_note" placeholder="one-line community story / 一句话社群故事">
           </div>
           <div class="field full">
             <label for="pm-public-story" data-i18n-html="publicStoryLabel">Public Story / 公开故事</label>
@@ -1562,7 +1590,7 @@
           <p class="eyebrow">Documentary System / 纪录片系统</p>
           <h2>Day 1 → Day 7</h2>
         </div>
-        <p class="plain">Operation Vietnam 不是广告。它记录摩旅、越南、风冲、老板、教练、玩家、POV 内容、Panda Masters 和 MagSnap。<br>Operation Vietnam documents road trip, Vietnam, kitesurf, owners, coaches, riders, POV content, Panda Masters and MagSnap.</p>
+        <p class="plain">Operation Vietnam 不是广告。它记录摩旅、越南、风冲、老板、教练、社群成员、POV 内容、Panda Masters 和 MagSnap。<br>Operation Vietnam documents road trip, Vietnam, kitesurf, owners, coaches, community members, POV content, Panda Masters and MagSnap.</p>
       </div>
       <div class="timeline">
         <div class="timeline-row"><strong>Day 1</strong><span>Nha Trang arrival. Assemble first units. Capture first beach visibility and opening story.</span><span class="tag">Nha Trang</span></div>
@@ -1570,8 +1598,8 @@
         <div class="timeline-row"><strong>Day 3</strong><span>Road to Phan Rang. Motorbike story, coast road footage and field notes.</span><span class="tag">Road</span></div>
         <div class="timeline-row"><strong>Day 4</strong><span>Phi Feed. Local story, Panda Master check-in, handoff and POV shoot.</span><span class="tag">Story</span></div>
         <div class="timeline-row"><strong>Day 5</strong><span>Coaches. Teaching use case, safety POV, coach interview clips and influence map.</span><span class="tag">Coaches</span></div>
-        <div class="timeline-row"><strong>Day 6</strong><span>Mui Ne. Club mapping, long-term local riders, creators and content assets.</span><span class="tag">Mui Ne</span></div>
-        <div class="timeline-row"><strong>Day 7</strong><span>Full coverage recap. Owners, coaches, core riders, POV creators, content archive and email list.</span><span class="tag">Coverage</span></div>
+        <div class="timeline-row"><strong>Day 6</strong><span>Mui Ne. Club mapping, long-term local members, creators and content assets.</span><span class="tag">Mui Ne</span></div>
+        <div class="timeline-row"><strong>Day 7</strong><span>Full coverage recap. Owners, coaches, core members, POV creators, content archive and email list.</span><span class="tag">Coverage</span></div>
       </div>
     </section>
   </main>
@@ -1593,9 +1621,9 @@
     const IMPORT_QUEUE_STORAGE_KEY = "magsnap_panda_import_queue_v1";
 
     const coverageBase = [
-      { city: "Nha Trang", zh: "芽庄", clubs: 0, owners: 0, coaches: 0, coreRiders: 0, povCreators: 0 },
-      { city: "Phan Rang", zh: "番朗", clubs: 0, owners: 0, coaches: 0, coreRiders: 0, povCreators: 0 },
-      { city: "Mui Ne", zh: "美奈", clubs: 0, owners: 0, coaches: 0, coreRiders: 0, povCreators: 0 }
+      { city: "Nha Trang", zh: "芽庄", clubs: 0, owners: 0, coaches: 0, coreMembers: 0, povCreators: 0 },
+      { city: "Phan Rang", zh: "番朗", clubs: 0, owners: 0, coaches: 0, coreMembers: 0, povCreators: 0 },
+      { city: "Mui Ne", zh: "美奈", clubs: 0, owners: 0, coaches: 0, coreMembers: 0, povCreators: 0 }
     ];
 
     const form = document.getElementById("panda-master-form");
@@ -1623,7 +1651,7 @@
     const languageButtons = Array.from(document.querySelectorAll("[data-lang-button]"));
 
     const languageStorageKey = "magsnap_panda_preferred_language";
-    const supportedLanguages = new Set(["en", "zh", "vi"]);
+    const supportedLanguages = new Set(["en", "zh", "vi", "ru"]);
     const defaultLanguage = "base";
     let currentLanguage = defaultLanguage;
 
@@ -1631,7 +1659,7 @@
       en: {
         heroEyebrow: "Panda Masters Registry",
         heroTitle: "Join Panda Masters",
-        heroLead: "Not For Sale. For Riders Who Help The Community.",
+        heroLead: "Not For Sale. For Those Who Help The Community.",
         checkinEyebrow: "Survey / Registration",
         checkinTitle: "Panda Master Registration",
         checkinLead: "Submit your profile, POV device, social links, MagSnap selfie and feedback.",
@@ -1693,7 +1721,7 @@
       zh: {
         heroEyebrow: "熊猫高人登记",
         heroTitle: "加入熊猫高人",
-        heroLead: "暂不销售。只给帮助社群的人。",
+        heroLead: "非卖品。<br>致那些帮助社区成长的人。",
         checkinEyebrow: "问卷 / 登记",
         checkinTitle: "熊猫高人登记",
         checkinLead: "填写基础信息、设备、社交链接、MagSnap 自拍和反馈。",
@@ -1736,7 +1764,7 @@
         confirmationAnother: "继续登记",
         statsEyebrow: "数据",
         statsTitle: "熊猫高人统计",
-        statsPrivacy: "只显示汇总统计，不显示邮箱、电话、地址、WhatsApp 等隐私信息。",
+        statsPrivacy: "只显示汇总统计，不显示邮箱、电话、地址、联系方式等隐私信息。",
         numberInvalid: "请输入 4 位 Panda Master 编号。",
         degreeInvalid: "请选择近视度数。",
         photoMissing: "请戴上 MagSnap 眼镜，自拍一张并上传。",
@@ -1755,7 +1783,7 @@
       vi: {
         heroEyebrow: "Đăng ký Panda Masters",
         heroTitle: "Tham gia Panda Masters",
-        heroLead: "Không bán. Dành cho những rider giúp cộng đồng phát triển.",
+        heroLead: "Không bán.<br>Dành cho những người giúp cộng đồng phát triển.",
         checkinEyebrow: "Khảo sát / Đăng ký",
         checkinTitle: "Đăng ký Panda Master",
         checkinLead: "Điền hồ sơ, thiết bị POV, mạng xã hội, ảnh selfie với MagSnap và phản hồi.",
@@ -1798,7 +1826,7 @@
         confirmationAnother: "Đăng ký thêm",
         statsEyebrow: "Thống kê",
         statsTitle: "Thống kê Panda Masters",
-        statsPrivacy: "Chỉ hiển thị thống kê tổng hợp. Dữ liệu riêng tư không được hiển thị ở đây.",
+        statsPrivacy: "Chỉ hiển thị thống kê tổng hợp. Dữ liệu liên hệ riêng tư không được hiển thị ở đây.",
         numberInvalid: "Vui lòng nhập số Panda Master gồm 4 chữ số.",
         degreeInvalid: "Vui lòng chọn độ cận của bạn.",
         photoMissing: "Hãy đeo kính MagSnap, chụp một ảnh selfie và tải lên tại đây.",
@@ -1813,30 +1841,99 @@
         submitFailed: "Gửi thất bại. Vui lòng kiểm tra biểu mẫu và thử lại.",
         yes: "Có",
         no: "Không"
+      },
+      ru: {
+        heroEyebrow: "Регистрация Panda Masters",
+        heroTitle: "Присоединиться к Panda Masters",
+        heroLead: "Не продается.<br>Для тех, кто помогает сообществу расти.",
+        checkinEyebrow: "Опрос / Регистрация",
+        checkinTitle: "Регистрация Panda Master",
+        checkinLead: "Заполните профиль, POV-устройства, контакты, селфи с MagSnap и обратную связь.",
+        pandaNumberTitle: "Номер Panda Master",
+        pandaNumberNote: "Найдите 4-значный номер внутри набора MagSnap.",
+        nameLabel: "Имя",
+        nicknameLabel: "Публичный никнейм",
+        countryLabel: "Страна",
+        cityLabel: "Город",
+        clubLabel: "Клуб",
+        roleLabel: "Роль",
+        emailLabel: "Email",
+        sportsLabel: "Спорт / Сфера",
+        equipmentLabel: "Оборудование / POV-устройства",
+        accessoriesLabel: "Аксессуары",
+        prescriptionLabel: "Нужна ли коррекция зрения?",
+        myopiaLabel: "Если да, какая у вас близорукость?",
+        contentTitle: "Профиль создателя контента",
+        contentNote: "Нужно для оценки охвата контента. Личные контакты не публикуются.",
+        creatorStatusLabel: "Вы снимаете или публикуете фото/видео?",
+        platformsLabel: "Где вы публикуете?",
+        frequencyLabel: "Как часто вы публикуете?",
+        followersLabel: "Примерное число подписчиков",
+        filmLabel: "Что вы обычно снимаете?",
+        photoLabel: "Загрузите селфи с MagSnap *",
+        photoNote: "Наденьте MagSnap, сделайте селфи и загрузите его здесь.<br>Ваше фото может появиться на будущей стене Panda Masters.",
+        videoLabel: "Ссылка на видео",
+        povLabel: "Ссылка на POV-клип",
+        storyLabel: "Заметка к истории",
+        publicStoryLabel: "Публичная история",
+        problemLabel: "Проблемы",
+        moduleLabel: "Идеи новых модулей",
+        feedbackLabel: "Идеи / Обратная связь",
+        submitButton: "Отправить",
+        privacyNote: "Контакты используются только для внутренней связи MagSnap и не публикуются.",
+        confirmationEyebrow: "Страница подтверждения",
+        confirmationTitle: "Регистрация получена.",
+        confirmationLead: "Вы добавлены в Panda Masters Registry. Публичный профиль появится только после проверки фото.",
+        confirmationStats: "Посмотреть статистику",
+        confirmationAnother: "Добавить еще",
+        statsEyebrow: "Статистика",
+        statsTitle: "Статистика Panda Masters",
+        statsPrivacy: "Показывается только агрегированная статистика. Личные данные не отображаются.",
+        numberInvalid: "Введите 4-значный номер Panda Master.",
+        degreeInvalid: "Выберите степень близорукости.",
+        photoMissing: "Наденьте MagSnap, сделайте селфи и загрузите его здесь.",
+        photoPreparing: "Подготовка фото...",
+        photoReady: "Фото готово",
+        photoSelected: "Фото выбрано",
+        submitting: "Отправка",
+        preparingPhoto: "Подготовка загрузки фото.",
+        submittingCheckin: "Фото готово. Отправляем регистрацию.",
+        submitSuccess: "Вы добавлены в Panda Masters Registry.<br>Публичный профиль появится только после проверки фото.",
+        submitTimeout: "Время отправки истекло. Проверьте сеть и повторите.",
+        submitFailed: "Отправка не удалась. Проверьте форму и попробуйте снова.",
+        yes: "Да",
+        no: "Нет"
       }
     };
 
     const selectI18n = {
       en: {
         "#pm-city": { "": "Select city", "Nha Trang": "Nha Trang", "Phan Rang": "Phan Rang", "Mui Ne": "Mui Ne", Other: "Other" },
-        "#pm-role": { "": "Select role", "Club Owner": "Club Owner", "Head Coach": "Head Coach", Coach: "Coach", "Core Rider": "Core Rider", Athlete: "Athlete", Creator: "Creator", "Long-term Local Rider": "Long-term Local Rider", "Community Contributor": "Community Contributor" },
+        "#pm-role": { "": "Select role", "Club Owner": "Club Owner", "Head Coach": "Head Coach", Coach: "Coach", "Core Member": "Core Member", Athlete: "Athlete", Creator: "Creator", "Long-term Local Member": "Long-term Local Member", "Community Contributor": "Community Contributor" },
         "#pm-handoff-status": { "Received Glasses": "Received Glasses", "Pending Handoff": "Pending Handoff" },
         "#pm-myopia-degree": { "": "Select", "Not sure": "Not sure" },
         "#pm-follower-range": { "": "Select" }
       },
       zh: {
         "#pm-city": { "": "选择城市", "Nha Trang": "芽庄", "Phan Rang": "番朗", "Mui Ne": "美奈", Other: "其他" },
-        "#pm-role": { "": "选择角色", "Club Owner": "俱乐部老板", "Head Coach": "主教练", Coach: "教练", "Core Rider": "核心玩家", Athlete: "运动员", Creator: "创作者", "Long-term Local Rider": "长期本地玩家", "Community Contributor": "社群贡献者" },
+        "#pm-role": { "": "选择角色", "Club Owner": "俱乐部老板", "Head Coach": "主教练", Coach: "教练", "Core Member": "核心成员", Athlete: "运动员", Creator: "创作者", "Long-term Local Member": "长期本地成员", "Community Contributor": "社群贡献者" },
         "#pm-handoff-status": { "Received Glasses": "已领取眼镜", "Pending Handoff": "待交付" },
         "#pm-myopia-degree": { "": "选择", "Not sure": "不确定" },
         "#pm-follower-range": { "": "选择" }
       },
       vi: {
         "#pm-city": { "": "Chọn thành phố", "Nha Trang": "Nha Trang", "Phan Rang": "Phan Rang", "Mui Ne": "Mũi Né", Other: "Khác" },
-        "#pm-role": { "": "Chọn vai trò", "Club Owner": "Chủ câu lạc bộ", "Head Coach": "Huấn luyện viên trưởng", Coach: "Huấn luyện viên", "Core Rider": "Rider nòng cốt", Athlete: "Vận động viên", Creator: "Nhà sáng tạo", "Long-term Local Rider": "Rider địa phương lâu năm", "Community Contributor": "Người đóng góp cộng đồng" },
+        "#pm-role": { "": "Chọn vai trò", "Club Owner": "Chủ câu lạc bộ", "Head Coach": "Huấn luyện viên trưởng", Coach: "Huấn luyện viên", "Core Member": "Thành viên nòng cốt", Athlete: "Vận động viên", Creator: "Nhà sáng tạo", "Long-term Local Member": "Thành viên địa phương lâu năm", "Community Contributor": "Người đóng góp cộng đồng" },
         "#pm-handoff-status": { "Received Glasses": "Đã nhận kính", "Pending Handoff": "Chờ bàn giao" },
         "#pm-myopia-degree": { "": "Chọn", "Not sure": "Không chắc" },
         "#pm-follower-range": { "": "Chọn" }
+      },
+      ru: {
+        "#pm-city": { "": "Выберите город", "Nha Trang": "Нячанг", "Phan Rang": "Фанранг", "Mui Ne": "Муйне", Other: "Другое" },
+        "#pm-role": { "": "Выберите роль", "Club Owner": "Владелец клуба", "Head Coach": "Главный тренер", Coach: "Тренер", "Core Member": "Ключевой участник", Athlete: "Спортсмен", Creator: "Создатель контента", "Long-term Local Member": "Местный участник", "Community Contributor": "Участник сообщества" },
+        "#pm-handoff-status": { "Received Glasses": "Очки получены", "Pending Handoff": "Ожидает передачи" },
+        "#pm-myopia-degree": { "": "Выберите", "Not sure": "Не уверен(а)" },
+        "#pm-follower-range": { "": "Выберите" }
       }
     };
 
@@ -1870,6 +1967,16 @@
         'input[name="posting_frequency"][value="Weekly"]': "Hằng tuần",
         'input[name="posting_frequency"][value="Monthly"]': "Hằng tháng",
         'input[name="posting_frequency"][value="Rarely"]': "Hiếm khi"
+      },
+      ru: {
+        'input[name="content_creator_status"][value="Never"]': "Никогда",
+        'input[name="content_creator_status"][value="Sometimes"]': "Иногда",
+        'input[name="content_creator_status"][value="Regularly"]': "Регулярно",
+        'input[name="content_creator_status"][value="Professional Creator"]': "Профессиональный автор",
+        'input[name="posting_frequency"][value="Daily"]': "Ежедневно",
+        'input[name="posting_frequency"][value="Weekly"]': "Еженедельно",
+        'input[name="posting_frequency"][value="Monthly"]': "Ежемесячно",
+        'input[name="posting_frequency"][value="Rarely"]': "Редко"
       }
     };
 
@@ -1882,7 +1989,11 @@
 
     const getPreferredLanguageValue = () => {
       if (supportedLanguages.has(currentLanguage)) return currentLanguage;
-      return /^zh/i.test(window.navigator.language || "") ? "zh" : "en";
+      const browserLanguage = window.navigator.language || "";
+      if (/^zh/i.test(browserLanguage)) return "zh";
+      if (/^vi/i.test(browserLanguage)) return "vi";
+      if (/^ru/i.test(browserLanguage)) return "ru";
+      return "en";
     };
 
     const setInlineHtml = (selector, html) => {
@@ -1909,6 +2020,19 @@
       });
     };
 
+    const updateLocalizedContactFields = () => {
+      const activeLanguage = getPreferredLanguageValue();
+      document.querySelectorAll("[data-contact-langs]").forEach((field) => {
+        const languages = String(field.dataset.contactLangs || "").split(/\s+/).filter(Boolean);
+        const shouldShow = languages.includes(activeLanguage);
+        field.hidden = !shouldShow;
+        field.querySelectorAll("input, select, textarea").forEach((control) => {
+          control.disabled = !shouldShow;
+          control.required = false;
+        });
+      });
+    };
+
     const applyLanguage = (language, persist = true) => {
       currentLanguage = supportedLanguages.has(language) ? language : defaultLanguage;
       if (persist) {
@@ -1922,7 +2046,13 @@
       if (preferredLanguageInput) {
         preferredLanguageInput.value = getPreferredLanguageValue();
       }
-      document.documentElement.lang = currentLanguage === "vi" ? "vi" : currentLanguage === "en" ? "en" : "zh-CN";
+      document.documentElement.lang = currentLanguage === "vi"
+        ? "vi"
+        : currentLanguage === "ru"
+          ? "ru"
+          : currentLanguage === "en"
+            ? "en"
+            : "zh-CN";
 
       document.querySelectorAll("[data-i18n-html]").forEach((element) => {
         const key = element.dataset.i18nHtml;
@@ -1945,6 +2075,7 @@
       Object.entries(selectCopy).forEach(([selector, values]) => setSelectOptionText(selector, values));
       const controlCopy = controlI18n[currentLanguage] || {};
       Object.entries(controlCopy).forEach(([selector, text]) => setControlLabelText(selector, text));
+      updateLocalizedContactFields();
       if (typeof validatePandaNumber === "function") validatePandaNumber();
       if (typeof updatePrescriptionRequirement === "function") updatePrescriptionRequirement();
     };
@@ -1986,9 +2117,8 @@
       "role",
       "email",
       "instagram",
-      "tiktok",
-      "youtube",
-      "facebook",
+      "whatsapp",
+      "wechat_or_social",
       "sports",
       "equipment",
       "prescription_need",
@@ -2244,8 +2374,8 @@
         Coach: 16,
         Athlete: 16,
         Creator: 16,
-        "Core Rider": 12,
-        "Long-term Local Rider": 10
+        "Core Member": 12,
+        "Long-term Local Member": 10,
       };
       const frequencyScore = frequencyScoreMap[payload.posting_frequency] || 0;
       const roleScore = roleScoreMap[payload.role] || 6;
@@ -2476,6 +2606,7 @@
       payload.youtube = cleanText(payload.youtube);
       payload.facebook = cleanText(payload.facebook);
       payload.whatsapp = cleanText(payload.whatsapp);
+      payload.wechat_or_social = cleanText(payload.wechat_or_social);
       payload.received_date = cleanText(payload.received_date);
       payload.handoff_status = cleanText(payload.handoff_status);
       payload.referred_by = cleanText(payload.referred_by);
@@ -2512,7 +2643,9 @@
         payload.instagram,
         payload.tiktok,
         payload.youtube,
-        payload.facebook
+        payload.facebook,
+        payload.whatsapp,
+        payload.wechat_or_social
       ].filter(Boolean).join(" / ");
       const primaryUseCase = cleanText(payload.feedback || payload.public_story || payload.problem_report || payload.product_requests || "Panda Masters check-in");
       payload.sport_or_industry = cleanText(payload.sports || [payload.role, payload.club].filter(Boolean).join(" / "));
@@ -2959,10 +3092,12 @@
       ];
       const countries = new Set(records.map((record) => cleanText(record.country)).filter(Boolean));
       const clubs = new Set(records.map((record) => cleanText(record.club)).filter(Boolean));
-      const roleCount = records.filter((record) => /Club Owner|Head Coach|Coach|Core Rider|Long-term Local Rider|Athlete|Creator|Community Contributor/i.test(record.role || "")).length;
+      const roleCount = records.filter((record) => /Club Owner|Head Coach|Coach|Core Member|Long-term Local Member|Athlete|Creator|Community Contributor/i.test(record.role || "")).length;
       const go3sUsers = records.filter((record) => splitList(record.equipment).some((item) => /GO3S/i.test(item))).length;
       const nanoUsers = records.filter((record) => splitList(record.equipment).some((item) => /DJI Nano/i.test(item))).length;
       const photoUploaded = records.filter((record) => cleanText(record.photo_link)).length;
+      const languageLabels = { en: "EN", zh: "中文", vi: "VI", ru: "RU" };
+      const languageDistribution = topEntries(countBy(records, (record) => languageLabels[cleanText(record.preferred_language)] || ""), 4);
       const percentage = (count, total) => total ? Math.round((count / total) * 100) : 0;
       const prescriptionNeedAnswered = records.filter((record) => cleanText(record.prescription_need));
       const prescriptionUsers = records.filter((record) => record.prescription_need === "Yes").length;
@@ -2996,9 +3131,9 @@
           <p class="plain">俱乐部数量 / Club count</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Coaches / Owners / Riders</p>
+          <p class="eyebrow">Coaches / Owners / Contributors</p>
           <h3>${roleCount}</h3>
-          <p class="plain">教练、老板、玩家 / Key community roles</p>
+          <p class="plain">教练、老板、贡献者 / Key community roles</p>
         </article>
         <article class="dashboard-card">
           <p class="eyebrow">GO3S Users</p>
@@ -3014,6 +3149,11 @@
           <p class="eyebrow">Photo Uploaded</p>
           <h3>${photoUploaded}</h3>
           <p class="plain">已提交佩戴照片 / Wearing photos</p>
+        </article>
+        <article class="dashboard-card">
+          <p class="eyebrow">Language / 语言</p>
+          <h3>${formatSummary(languageDistribution, "No data")}</h3>
+          <p class="plain">Preferred language distribution</p>
         </article>
         <article class="dashboard-card">
           <p class="eyebrow">Prescription Need %</p>

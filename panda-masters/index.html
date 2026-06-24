@@ -870,6 +870,7 @@
       <a href="../">首页 / Home</a>
       <a href="#checkin">登记 / Check-in</a>
       <a href="#coverage">统计 / Stats</a>
+      <a href="../open-challenges/">官方挑战 / Open Challenges</a>
       <a href="mailto:info@magsnap.me">info@magsnap.me</a>
     </nav>
     <div class="language-switcher" aria-label="Language switch">
@@ -1376,84 +1377,6 @@
         </article>
       </div>
 
-      <article class="card challenge-card" id="lens-challenge">
-        <span class="number">CHALLENGE BOARD / OPEN INNOVATION</span>
-        <h3>Lens Challenge #001<br>寻找更好的镜片解决方案</h3>
-        <div class="challenge-body">
-          <div>
-            <p class="plain">The first generation of MagSnap is not perfect.</p>
-            <p class="plain">Lens performance is one area we are continuously improving.</p>
-            <p class="plain">Right now we are exploring:</p>
-            <ul class="challenge-list" aria-label="Lens solution directions">
-              <li>Better Polarized Lenses<br>更好的偏光镜片</li>
-              <li>Photochromic Lenses<br>变色镜片</li>
-              <li>Prescription Solutions<br>近视解决方案</li>
-              <li>Saltwater Resistant Solutions<br>海水耐久方案</li>
-              <li>Better Optical Clarity<br>更好的光学清晰度</li>
-            </ul>
-            <p class="plain">This is a challenge board for practical solutions and open innovation.</p>
-            <p class="plain">Help us build the next generation of MagSnap.</p>
-          </div>
-          <div>
-            <p class="plain">第一代 MagSnap 并不完美。</p>
-            <p class="plain">镜片仍然是我们正在持续优化的部分。</p>
-            <p class="plain">我们正在寻找：</p>
-            <ul class="challenge-list" aria-label="Lens solution contributors">
-              <li>镜片工厂</li>
-              <li>供应商</li>
-              <li>工程师</li>
-              <li>新材料</li>
-              <li>新方案</li>
-            </ul>
-            <p class="plain">目标是收集可执行方案、材料线索和供应链信息。如果你能帮助我们，请提交你的方案。</p>
-            <div class="challenge-actions">
-              <a class="button primary" href="#lens-solution-form">Submit Lens Solution<br>提交镜片方案</a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <div class="form-shell" id="lens-solution-form">
-        <p class="eyebrow">Panda Masters Lab / Lens Solution</p>
-        <form class="panda-form" id="lens-challenge-form" action="#" method="post">
-          <div class="field">
-            <label for="lens-panda-number">Panda Master Number / 熊猫高人编号</label>
-            <input id="lens-panda-number" type="text" name="panda_master_number" inputmode="numeric" autocomplete="off" pattern="[0-9]{4}" placeholder="0001" required>
-          </div>
-          <div class="field">
-            <label for="lens-name">Name / 姓名</label>
-            <input id="lens-name" type="text" name="name" autocomplete="name" required>
-          </div>
-          <div class="field">
-            <label for="lens-contact">Contact / 联系方式</label>
-            <input id="lens-contact" type="text" name="contact_detail" placeholder="Email / WeChat / WhatsApp / Zalo / Telegram" required>
-          </div>
-          <div class="field">
-            <label for="lens-help">What can you help with? / 你能提供什么帮助？</label>
-            <input id="lens-help" type="text" name="lens_help_type" placeholder="Factory / engineer / supplier / solution" required>
-          </div>
-          <div class="field full">
-            <label for="lens-solution">Describe your solution / 描述你的方案</label>
-            <textarea id="lens-solution" name="lens_solution" placeholder="Material, process, supplier, test method, optical solution..." required></textarea>
-          </div>
-          <div class="field full">
-            <label for="lens-supplier">Supplier / Factory info / 供应商或工厂信息</label>
-            <textarea id="lens-supplier" name="lens_supplier_info" placeholder="Company name, region, contact, capability, MOQ, experience..."></textarea>
-          </div>
-          <div class="field">
-            <label for="lens-file-link">Upload file or link / 文件或链接</label>
-            <input id="lens-file-link" type="url" name="lens_file_link" placeholder="Drive / website / product sheet link">
-          </div>
-          <div class="field">
-            <label for="lens-file">Optional file / 可选文件</label>
-            <input id="lens-file" type="file" name="lens_file" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx">
-          </div>
-          <button class="button primary" type="submit">Submit Lens Solution / 提交镜片方案</button>
-          <div class="form-status" id="lens-challenge-status" aria-live="polite"></div>
-          <p class="form-note">This is a public co-creation challenge. Contact details are only for MagSnap internal follow-up and are not shown publicly.<br>这是公开共创挑战。联系方式仅用于 MagSnap 内部跟进，不会公开展示。</p>
-        </form>
-      </div>
-
       <div class="form-shell" id="v2-optimization">
         <p class="eyebrow">Product Feedback / Quality Improvement</p>
         <h2>MagSnap V2.0 产品优化方向<br>V2.0 Optimization Direction</h2>
@@ -1795,9 +1718,6 @@
     const clubStatusNode = document.getElementById("club-form-status");
     const newsletterForm = document.getElementById("newsletter-form");
     const newsletterStatusNode = document.getElementById("newsletter-form-status");
-    const lensChallengeForm = document.getElementById("lens-challenge-form");
-    const lensChallengeStatusNode = document.getElementById("lens-challenge-status");
-    const lensChallengeFileInput = document.getElementById("lens-file");
     const confirmationSection = document.getElementById("confirmation");
     const confirmationCard = document.getElementById("confirmation-card");
     const confirmationSummary = document.getElementById("confirmation-summary");
@@ -2886,70 +2806,6 @@
       return payload;
     };
 
-    const prepareOptionalLensFile = async () => {
-      const file = lensChallengeFileInput?.files?.[0];
-      if (!file) return {};
-      const maxFileBytes = 1500000;
-      if (file.size > maxFileBytes) {
-        throw new Error("文件过大，请上传云盘链接。<br>The file is too large. Please provide a cloud link instead.");
-      }
-      const fileData = await readFileAsDataUrl(file);
-      return {
-        lens_file_name: file.name || "lens-solution-file",
-        lens_file_type: file.type || "",
-        lens_file_size: file.size || 0,
-        lens_file_data: fileData
-      };
-    };
-
-    const buildLensChallengePayload = async () => {
-      const formData = new FormData(lensChallengeForm);
-      const payload = Object.fromEntries(formData.entries());
-      const pandaMasterNumber = normalizePandaNumber(payload.panda_master_number);
-      if (!/^\d{4}$/.test(pandaMasterNumber)) {
-        throw new Error("请输入 4 位 Panda Master 编号。<br>Please enter a 4-digit Panda Master number.");
-      }
-      delete payload.lens_file;
-      Object.assign(payload, await prepareOptionalLensFile());
-      payload.panda_master_number = pandaMasterNumber;
-      payload.panda_master_id = formatPandaId(pandaMasterNumber);
-      payload.name = cleanText(payload.name);
-      payload.contact_detail = cleanText(payload.contact_detail);
-      payload.lens_help_type = cleanText(payload.lens_help_type);
-      payload.lens_solution = cleanText(payload.lens_solution);
-      payload.lens_supplier_info = cleanText(payload.lens_supplier_info);
-      payload.lens_file_link = cleanText(payload.lens_file_link);
-      const contactEmail = payload.contact_detail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i)?.[0] || "";
-      payload.email = contactEmail || `lens-challenge+${pandaMasterNumber}@magsnap.me`;
-      payload.public_nickname = payload.name;
-      payload.country = "Panda Masters Lab";
-      payload.city = "Lens Challenge";
-      payload.club = "Panda Masters Lab";
-      payload.role = "Community Contributor";
-      payload.sport_or_industry = "Lens / Optical";
-      payload.industry = "Lens / Optical";
-      payload.device = "Lens / Optical Solution";
-      payload.device_used = "Lens / Optical Solution";
-      payload.feedback = payload.lens_solution;
-      payload.reason = payload.lens_solution;
-      payload.use_case = payload.lens_solution;
-      payload.invitation_code = payload.panda_master_number;
-      payload.founder_number = payload.panda_master_number;
-      payload.registry_number = payload.panda_master_number;
-      payload.social_link = payload.contact_detail;
-      payload.contact_method = "Lens Challenge Contact";
-      payload.challenge_id = "Panda Masters Challenge #001";
-      payload.challenge_title = "Lens Challenge #001 / 寻找更好的镜片解决方案";
-      payload.source_form = "panda_masters_lens_challenge_001";
-      payload.registry_type = "Panda Masters Lab";
-      payload.operation = "Panda Masters Lab";
-      payload.preferred_language = getPreferredLanguageValue();
-      payload.submitted_at = new Date().toISOString();
-      payload.source_url = window.location.href;
-      payload.user_agent = window.navigator.userAgent;
-      return payload;
-    };
-
     const submitPayload = (payload) => new Promise((resolve, reject) => {
       const iframeName = `panda-submit-${Date.now()}-${Math.random().toString(36).slice(2)}`;
       const iframe = document.createElement("iframe");
@@ -3642,33 +3498,6 @@
         renderIntelligenceDashboard();
       } catch (error) {
         setFormStatus(importStatusNode, `导入失败：${escapeHtml(error.message || error)}<br>Import failed.`, true);
-      } finally {
-        if (submitButton) {
-          submitButton.disabled = false;
-          submitButton.textContent = originalText;
-        }
-      }
-    });
-
-    lensChallengeForm?.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const submitButton = lensChallengeForm.querySelector("[type='submit']");
-      const originalText = submitButton?.textContent;
-      if (!lensChallengeForm.reportValidity()) return;
-
-      if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.textContent = "Submitting / 正在提交";
-      }
-      setFormStatus(lensChallengeStatusNode, "正在提交镜片方案。<br>Submitting lens solution.");
-
-      try {
-        const payload = await buildLensChallengePayload();
-        await submitPayload(payload);
-        setFormStatus(lensChallengeStatusNode, `<strong>Lens solution received / 镜片方案已收到</strong><br>${escapeHtml(payload.name)} · ${escapeHtml(payload.lens_help_type)}`);
-        lensChallengeForm.reset();
-      } catch (error) {
-        setFormStatus(lensChallengeStatusNode, error.message || "提交失败。<br>Submission failed.", true);
       } finally {
         if (submitButton) {
           submitButton.disabled = false;

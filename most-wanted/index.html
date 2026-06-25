@@ -406,7 +406,6 @@
             <ul class="challenge-list" aria-label="Lens solution directions">
               <li>Better Polarized Lenses<br>更好的偏光镜片</li>
               <li>Photochromic Lenses<br>变色镜片</li>
-              <li>Prescription Solutions<br>近视解决方案</li>
               <li>Saltwater Resistant Solutions<br>海水耐久方案</li>
               <li>Better Optical Clarity<br>更好的光学清晰度</li>
             </ul>
@@ -420,6 +419,45 @@
           </div>
         </div>
       </article>
+
+      <div class="form-shell" id="most-wanted-board">
+        <p class="eyebrow">Most Wanted Board / 研发悬赏清单</p>
+        <h2>One Official R&D Entry<br>唯一官方公开研发入口</h2>
+        <p class="plain">Most Wanted is where MagSnap publishes product improvements, future versions, bugs, supplier searches, and new module directions.</p>
+        <p class="plain">以后所有产品优化、未来版本、Bug、研发方向、供应商寻找和新模块，统一进入 MagSnap 头号悬赏。</p>
+        <div class="grid-3">
+          <article class="note-card">
+            <p class="eyebrow">Most Wanted #002</p>
+            <h3>Prescription Solution<br>近视解决方案</h3>
+            <p class="plain">寻找适合 MagSnap 的近视贴片、内嵌片或运动光学解决方案。</p>
+          </article>
+          <article class="note-card">
+            <p class="eyebrow">Most Wanted #003</p>
+            <h3>Anti Fog<br>防雾方案</h3>
+            <p class="plain">寻找适合海风、汗水、温差和高湿度环境的防雾方案。</p>
+          </article>
+          <article class="note-card">
+            <p class="eyebrow">Most Wanted #004</p>
+            <h3>Nano Module<br>Nano 模块</h3>
+            <p class="plain">寻找更好的 DJI Nano 磁吸安装、定位、保护和安全冗余方案。</p>
+          </article>
+          <article class="note-card">
+            <p class="eyebrow">Most Wanted #005</p>
+            <h3>Water Repellent<br>疏水耐海水方案</h3>
+            <p class="plain">寻找镜片、涂层、边缘封装和结构件的长期海水耐久方案。</p>
+          </article>
+          <article class="note-card">
+            <p class="eyebrow">Most Wanted #006</p>
+            <h3>Dual Polarity<br>双磁极兼容</h3>
+            <p class="plain">寻找能提升第三方磁吸设备兼容性的左右磁极布局方案。</p>
+          </article>
+          <article class="note-card">
+            <p class="eyebrow">Most Wanted #007</p>
+            <h3>Multi-Height Nose Pad<br>多高度鼻托</h3>
+            <p class="plain">寻找适配不同鼻梁高度、脸型和运动稳定性的鼻托系统。</p>
+          </article>
+        </div>
+      </div>
 
       <div class="form-shell" id="recognition">
         <p class="eyebrow">Recognition / 身份认可</p>
@@ -479,12 +517,17 @@
             <label for="challenge-area">What can you help with? / 你能提供什么帮助？</label>
             <select id="challenge-area" name="solution_area" required>
               <option value="">Select / 选择</option>
-              <option>Better Polarized Lenses / 更好的偏光镜片</option>
-              <option>Photochromic Lenses / 变色镜片</option>
-              <option>Prescription Solutions / 近视解决方案</option>
-              <option>Saltwater Resistant Solutions / 海水耐久方案</option>
-              <option>Better Optical Clarity / 更好的光学清晰度</option>
+              <option>Most Wanted #001 / Better Polarized Lenses / 更好的偏光镜片</option>
+              <option>Most Wanted #001 / Photochromic Lenses / 变色镜片</option>
+              <option>Most Wanted #001 / Better Optical Clarity / 更好的光学清晰度</option>
+              <option>Most Wanted #002 / Prescription Solution / 近视解决方案</option>
+              <option>Most Wanted #003 / Anti Fog / 防雾方案</option>
+              <option>Most Wanted #004 / Nano Module / Nano 模块</option>
+              <option>Most Wanted #005 / Water Repellent / 疏水耐海水方案</option>
+              <option>Most Wanted #006 / Dual Polarity / 双磁极兼容</option>
+              <option>Most Wanted #007 / Multi-Height Nose Pad / 多高度鼻托</option>
               <option>Supplier / Factory / 供应商或工厂</option>
+              <option>New Modules / 新模块</option>
               <option>Other / 其他</option>
             </select>
           </div>
@@ -542,7 +585,11 @@
       payload.email = contactEmail || "most-wanted@magsnap.me";
       payload.public_nickname = payload.name;
       payload.country = "MagSnap Most Wanted";
-      payload.city = "Most Wanted #001";
+      payload.challenge_id = payload.solution_area.startsWith("Most Wanted #")
+        ? payload.solution_area.split(" / ")[0]
+        : "MagSnap Most Wanted";
+      payload.challenge_title = payload.solution_area || "MagSnap Most Wanted";
+      payload.city = payload.challenge_id;
       payload.club = "MagSnap Most Wanted";
       payload.role = "Solution Contributor";
       payload.sport_or_industry = "Lens / Optical";
@@ -554,9 +601,7 @@
       payload.use_case = payload.solution_description;
       payload.social_link = payload.contact_detail;
       payload.contact_method = "Most Wanted Contact";
-      payload.challenge_id = "MagSnap Most Wanted #001";
-      payload.challenge_title = "Most Wanted #001 / The Perfect Lens / 寻找更好的镜片方案";
-      payload.source_form = "most_wanted_001";
+      payload.source_form = "most_wanted_solution";
       payload.registry_type = "MagSnap Most Wanted";
       payload.operation = "MagSnap Most Wanted";
       payload.submitted_at = new Date().toISOString();

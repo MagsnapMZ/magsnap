@@ -1052,13 +1052,7 @@
           </div>
           <div class="field">
             <label for="pm-city" data-i18n-html="cityLabel">城市 / City</label>
-            <select id="pm-city" name="city" required>
-              <option value="">选择城市 / Select city</option>
-              <option value="Nha Trang">Nha Trang / 芽庄</option>
-              <option value="Phan Rang">Phan Rang / 番朗</option>
-              <option value="Mui Ne">Mui Ne / 美奈</option>
-              <option value="Other">Other / 其他</option>
-            </select>
+            <input id="pm-city" type="text" name="city" autocomplete="address-level2" placeholder="Shanghai / Nha Trang / Tokyo" required>
           </div>
           <div class="field">
             <label for="pm-club" data-i18n-html="clubLabel">俱乐部 / Club</label>
@@ -1253,7 +1247,7 @@
           </div>
           <div class="field">
             <label for="pm-photo-file" data-i18n-html="photoLabel">Upload Your MagSnap Selfie / 上传你的 MagSnap 自拍 *</label>
-            <input id="pm-photo-file" type="file" name="photo_file" accept="image/*" capture="environment" required>
+            <input id="pm-photo-file" type="file" name="photo_file" accept="image/*" required>
             <input id="pm-photo-url" type="hidden" name="photo_url">
             <input id="pm-photo-link" type="hidden" name="photo_link">
             <p class="form-note" id="photo-upload-status" data-i18n-html="photoNote">Please wear your MagSnap, take a selfie, and upload it here.<br>请戴上 MagSnap 眼镜，自拍一张并上传。<br>Your photo may be featured on the future Panda Masters Wall.<br>你的照片未来可能会出现在 Panda Masters 照片墙。</p>
@@ -1953,28 +1947,24 @@
 
     const selectI18n = {
       en: {
-        "#pm-city": { "": "Select city", "Nha Trang": "Nha Trang", "Phan Rang": "Phan Rang", "Mui Ne": "Mui Ne", Other: "Other" },
         "#pm-role": { "": "Select role", "Club Owner": "Club Owner", "Head Coach": "Head Coach", Coach: "Coach", "Core Member": "Core Member", Athlete: "Athlete", Creator: "Creator", "Long-term Local Member": "Long-term Local Member", "Community Contributor": "Community Contributor" },
         "#pm-handoff-status": { "Received Glasses": "Received Glasses", "Pending Handoff": "Pending Handoff" },
         "#pm-myopia-degree": { "": "Select", "Not sure": "Not sure" },
         "#pm-follower-range": { "": "Select" }
       },
       zh: {
-        "#pm-city": { "": "选择城市", "Nha Trang": "芽庄", "Phan Rang": "番朗", "Mui Ne": "美奈", Other: "其他" },
         "#pm-role": { "": "选择角色", "Club Owner": "俱乐部老板", "Head Coach": "主教练", Coach: "教练", "Core Member": "核心成员", Athlete: "运动员", Creator: "创作者", "Long-term Local Member": "长期本地成员", "Community Contributor": "社群贡献者" },
         "#pm-handoff-status": { "Received Glasses": "已领取眼镜", "Pending Handoff": "待交付" },
         "#pm-myopia-degree": { "": "选择", "Not sure": "不确定" },
         "#pm-follower-range": { "": "选择" }
       },
       vi: {
-        "#pm-city": { "": "Chọn thành phố", "Nha Trang": "Nha Trang", "Phan Rang": "Phan Rang", "Mui Ne": "Mũi Né", Other: "Khác" },
         "#pm-role": { "": "Chọn vai trò", "Club Owner": "Chủ câu lạc bộ", "Head Coach": "Huấn luyện viên trưởng", Coach: "Huấn luyện viên", "Core Member": "Thành viên nòng cốt", Athlete: "Vận động viên", Creator: "Nhà sáng tạo", "Long-term Local Member": "Thành viên địa phương lâu năm", "Community Contributor": "Người đóng góp cộng đồng" },
         "#pm-handoff-status": { "Received Glasses": "Đã nhận kính", "Pending Handoff": "Chờ bàn giao" },
         "#pm-myopia-degree": { "": "Chọn", "Not sure": "Không chắc" },
         "#pm-follower-range": { "": "Chọn" }
       },
       ru: {
-        "#pm-city": { "": "Выберите город", "Nha Trang": "Нячанг", "Phan Rang": "Фанранг", "Mui Ne": "Муйне", Other: "Другое" },
         "#pm-role": { "": "Выберите роль", "Club Owner": "Владелец клуба", "Head Coach": "Главный тренер", Coach: "Тренер", "Core Member": "Ключевой участник", Athlete: "Спортсмен", Creator: "Создатель контента", "Long-term Local Member": "Местный участник", "Community Contributor": "Участник сообщества" },
         "#pm-handoff-status": { "Received Glasses": "Очки получены", "Pending Handoff": "Ожидает передачи" },
         "#pm-myopia-degree": { "": "Выберите", "Not sure": "Не уверен(а)" },
@@ -2058,7 +2048,7 @@
 
     const setSelectOptionText = (selector, values) => {
       const select = document.querySelector(selector);
-      if (!select || !values) return;
+      if (!select || !values || !select.options) return;
       Array.from(select.options).forEach((option) => {
         if (!option.dataset.baseText) option.dataset.baseText = option.textContent;
         option.textContent = values[option.value] || option.dataset.baseText;
@@ -2541,12 +2531,60 @@
       image.src = src;
     });
 
+    const isSupportedMobileImage = (file) => {
+      const type = String(file?.type || "").toLowerCase();
+      const name = String(file?.name || "").toLowerCase();
+      return !type || /^image\//.test(type) || /\.(jpe?g|png|webp|gif|heic|heif|bmp|tiff?)$/.test(name);
+    };
+
+    const loadImageFromFile = async (file) => {
+      if (window.URL?.createObjectURL) {
+        const objectUrl = window.URL.createObjectURL(file);
+        try {
+          return await loadImage(objectUrl);
+        } catch (_error) {
+          // Some mobile WebViews reject object URLs; fall back to FileReader below.
+        } finally {
+          window.URL.revokeObjectURL(objectUrl);
+        }
+      }
+
+      const source = await readFileAsDataUrl(file);
+      return loadImage(source);
+    };
+
+    const renderCompressedPhoto = (image) => {
+      const attempts = [
+        { maxSide: 1400, quality: 0.78 },
+        { maxSide: 1200, quality: 0.72 },
+        { maxSide: 1000, quality: 0.7 },
+        { maxSide: 800, quality: 0.68 }
+      ];
+      const naturalWidth = image.naturalWidth || image.width;
+      const naturalHeight = image.naturalHeight || image.height;
+
+      for (const attempt of attempts) {
+        const scale = Math.min(1, attempt.maxSide / Math.max(naturalWidth, naturalHeight));
+        const width = Math.max(1, Math.round(naturalWidth * scale));
+        const height = Math.max(1, Math.round(naturalHeight * scale));
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const context = canvas.getContext("2d");
+        if (!context) continue;
+        context.drawImage(image, 0, 0, width, height);
+        const photoUrl = canvas.toDataURL("image/jpeg", attempt.quality);
+        if (photoUrl.length <= 3000000) return photoUrl;
+      }
+      throw new Error("照片处理后仍然过大，请换一张更小的照片。<br>The processed photo is still too large. Please choose a smaller image.");
+    };
+
     const preparePhotoUpload = async () => {
       const file = photoFileInput?.files?.[0];
       if (!file) {
         throw new Error(getLanguageCopy("photoMissing"));
       }
-      if (!/^image\//.test(file.type || "")) {
+      if (!isSupportedMobileImage(file)) {
         throw new Error("请上传图片文件。<br>Please upload an image file.");
       }
 
@@ -2554,22 +2592,8 @@
         photoUploadStatus.innerHTML = getLanguageCopy("photoPreparing");
       }
 
-      const source = await readFileAsDataUrl(file);
-      const image = await loadImage(source);
-      const maxSide = 1400;
-      const scale = Math.min(1, maxSide / Math.max(image.naturalWidth || image.width, image.naturalHeight || image.height));
-      const width = Math.max(1, Math.round((image.naturalWidth || image.width) * scale));
-      const height = Math.max(1, Math.round((image.naturalHeight || image.height) * scale));
-      const canvas = document.createElement("canvas");
-      canvas.width = width;
-      canvas.height = height;
-      const context = canvas.getContext("2d");
-      context.drawImage(image, 0, 0, width, height);
-      const photoUrl = canvas.toDataURL("image/jpeg", 0.78);
-
-      if (photoUrl.length > 3000000) {
-        throw new Error("照片处理后仍然过大，请换一张更小的照片。<br>The processed photo is still too large. Please choose a smaller image.");
-      }
+      const image = await loadImageFromFile(file);
+      const photoUrl = renderCompressedPhoto(image);
 
       if (photoUrlInput) photoUrlInput.value = photoUrl;
       if (photoLinkInput) photoLinkInput.value = photoUrl;

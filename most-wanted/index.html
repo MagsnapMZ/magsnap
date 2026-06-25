@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>MAGSNAP | MagSnap Most Wanted</title>
-  <meta name="description" content="MagSnap Most Wanted collects official component improvement targets and better product solutions.">
+  <meta name="description" content="MagSnap Most Wanted is a public engineering roadmap for unresolved product problems and world-class solutions.">
   <style>
     :root {
       --black: #000;
@@ -231,6 +231,36 @@
       line-height: 1.35;
     }
 
+    .status-pill {
+      display: inline-flex;
+      width: fit-content;
+      margin: 16px 0 0;
+      padding: 7px 10px;
+      border: 1px solid rgba(200, 169, 126, 0.42);
+      color: var(--kraft);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .roadmap-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .roadmap-step {
+      border: 1px solid rgba(245, 239, 230, 0.12);
+      background: rgba(0, 0, 0, 0.16);
+      padding: 14px;
+    }
+
+    .roadmap-step h3 {
+      font-size: clamp(18px, 2.2vw, 26px);
+    }
+
     .form-shell {
       margin-top: 20px;
     }
@@ -342,6 +372,7 @@
       }
 
       .grid-3,
+      .roadmap-flow,
       .challenge-body,
       .challenge-form {
         grid-template-columns: 1fr;
@@ -360,6 +391,7 @@
       <a href="../panda-masters/">熊猫高人 / Panda Masters</a>
       <a href="#most-wanted-001">Most Wanted #001</a>
       <a href="#most-wanted-002">Most Wanted #002</a>
+      <a href="#solved">Solved</a>
       <a href="mailto:info@magsnap.me">info@magsnap.me</a>
     </nav>
   </header>
@@ -369,8 +401,8 @@
       <div>
         <p class="eyebrow">Official Most Wanted<br>官方悬赏</p>
         <h1>MAGSNAP MOST WANTED</h1>
-        <p class="lead">MagSnap 要做世界第一。<br>如果一个零件还不够好，<br>我们继续寻找世界上最好的解决方案。</p>
-        <p class="plain">MagSnap is built to be the best. If one component is not good enough, we keep searching for the best solution in the world.</p>
+        <p class="lead">MagSnap Engineering Roadmap.<br>公开寻找世界上最好的解决方案。</p>
+        <p class="plain">This is not a bug list, feedback box, or normal roadmap. This is where MagSnap publishes unresolved engineering targets and invites the world’s best solutions.</p>
         <a class="button primary" href="#solution-form">Submit A Solution / 提交解决方案</a>
       </div>
     </section>
@@ -379,209 +411,200 @@
       <div class="grid-3">
         <article class="note-card">
           <p class="eyebrow">Official / 官方</p>
-          <h3>MagSnap 发布悬赏</h3>
-          <p class="plain">当前 Most Wanted 由 MagSnap 官方发布，用于寻找更好的组件方案。</p>
+          <h3>Engineering Roadmap</h3>
+          <p class="plain">每个公开问题都必须对应一个明确的 Most Wanted。</p>
         </article>
         <article class="note-card">
-          <p class="eyebrow">No Store / 非商城</p>
-          <h3>不是销售页面</h3>
-          <p class="plain">这里不卖产品，不做支付，只收集真正能让产品变强的线索。</p>
+          <p class="eyebrow">Structure / 结构</p>
+          <h3>Problem → Reward</h3>
+          <p class="plain">每一项固定展示：Problem、Analysis、Most Wanted、Reward。</p>
         </article>
         <article class="note-card">
-          <p class="eyebrow">Product First / 产品第一</p>
-          <h3>组件必须继续进化</h3>
-          <p class="plain">镜片、磁吸、鼻托、结构和材料，都可以继续优化。</p>
+          <p class="eyebrow">Open / 公开</p>
+          <h3>寻找最优方案</h3>
+          <p class="plain">Panda Masters、工程师、供应商、工厂和设计师都可以提交方案。</p>
         </article>
       </div>
     </section>
 
     <section class="section" id="most-wanted-001">
       <article class="challenge-card">
-        <p class="eyebrow">Most Wanted #001<br>头号悬赏 #001</p>
-        <h2>The Perfect Lens<br>寻找更好的镜片方案</h2>
-        <div class="challenge-body">
-          <div>
-            <p class="plain">The first generation of MagSnap is not perfect.</p>
-            <p class="plain">The lens is the part we are currently least satisfied with.</p>
-            <p class="plain">We are looking for better solutions.</p>
-            <ul class="challenge-list" aria-label="Lens solution directions">
-              <li>Better Polarized Lenses<br>更好的偏光镜片</li>
-              <li>Photochromic Lenses<br>变色镜片</li>
-              <li>Saltwater Resistant Solutions<br>海水耐久方案</li>
-              <li>Better Optical Clarity<br>更好的光学清晰度</li>
+        <p class="eyebrow">Problem #001 · Lens</p>
+        <h2>Most Wanted #001<br>The Perfect Lens</h2>
+        <span class="status-pill">Status: Investigating</span>
+        <div class="roadmap-flow">
+          <div class="roadmap-step">
+            <p class="eyebrow">Problem</p>
+            <h3>Lens<br>镜片</h3>
+            <p class="plain">第一代 MagSnap 镜片不是最终版本。</p>
+            <p class="plain">The first generation lens is not the final version.</p>
+          </div>
+          <div class="roadmap-step">
+            <p class="eyebrow">Analysis</p>
+            <h3>Current Target</h3>
+            <ul class="challenge-list">
+              <li>更好的光学清晰度 / Better optical clarity</li>
+              <li>更好的偏光效果 / Better polarization</li>
+              <li>更好的海水表现 / Better saltwater performance</li>
+              <li>更适合大尺寸镜框的镜片 / Better lenses for large frames</li>
             </ul>
           </div>
-          <div>
-            <p class="plain">第一代 MagSnap 并不完美。</p>
-            <p class="plain">镜片是我们目前最不满意的部分。</p>
-            <p class="plain">我们正在寻找更好的解决方案。</p>
-            <p class="plain">如果你知道更好的工厂、供应商、工程师、新材料或新方案，请提交给我们。</p>
-            <a class="button primary" href="#solution-form">Submit A Solution<br>提交解决方案</a>
+          <div class="roadmap-step">
+            <p class="eyebrow">Most Wanted</p>
+            <h3>The Perfect Lens<br>寻找更好的镜片方案</h3>
+            <ul class="challenge-list">
+              <li>镜片工厂 / Lens factories</li>
+              <li>光学工程师 / Optical engineers</li>
+              <li>偏光专家 / Polarization specialists</li>
+              <li>更好的镜片方案 / Better lens solutions</li>
+            </ul>
+          </div>
+          <div class="roadmap-step">
+            <p class="eyebrow">Reward</p>
+            <h3>Panda Master</h3>
+            <p class="plain">方案被采用后，成为 Panda Master 或 Panda Masters Contributor，并获得 Future Product Priority Testing。</p>
           </div>
         </div>
+        <a class="button primary" href="#solution-form">Submit A Solution<br>提交解决方案</a>
       </article>
 
       <article class="challenge-card" id="most-wanted-002">
-        <p class="eyebrow">Most Wanted #002 · OPEN<br>头号悬赏 #002 · 开放中</p>
-        <h2>The Best Magnetic Accessories<br>寻找最好的磁吸配件</h2>
-        <div class="challenge-body">
-          <div>
-            <p class="plain">MagSnap is building an ecosystem, not just one product.</p>
-            <p class="plain">We are looking for the world’s best magnetic accessories that can integrate into the MagSnap Ecosystem.</p>
-            <p class="plain">This includes, but is not limited to:</p>
-            <ul class="challenge-list" aria-label="Magnetic accessory categories">
-              <li>Headlamps / Action Cameras / DJI Mic<br>头灯 / 运动相机 / DJI Mic</li>
-              <li>AirTag / Radios / Flashlights<br>AirTag / 对讲机 / 手电</li>
-              <li>Safety Lights / Outdoor Tools / Future Magnetic Modules<br>安全警示灯 / 户外工具 / 未来磁吸模块</li>
+        <p class="eyebrow">Problem #002 · Magnetic Accessories</p>
+        <h2>Most Wanted #002<br>The Best Magnetic Accessories</h2>
+        <span class="status-pill">Status: Searching</span>
+        <div class="roadmap-flow">
+          <div class="roadmap-step">
+            <p class="eyebrow">Problem</p>
+            <h3>Accessories<br>磁吸配件</h3>
+            <p class="plain">目前测试中的头灯产品质量不稳定。</p>
+            <ul class="challenge-list">
+              <li>后部磁铁容易脱胶 / Rear magnet glue can fail</li>
+              <li>1mm N52 小磁铁跌落容易碎裂 / 1mm N52 magnets can break after drops</li>
             </ul>
           </div>
-          <div>
-            <p class="plain">MagSnap 正在打造一个磁吸生态，而不仅仅是一副眼镜。</p>
-            <p class="plain">我们正在寻找全球最好的磁吸配件，并将它们整合到 MagSnap Ecosystem。</p>
-            <p class="plain">包括但不限于：</p>
-            <ul class="challenge-list" aria-label="磁吸配件类别">
-              <li>头灯 / 运动相机 / DJI Mic</li>
-              <li>AirTag / 对讲机 / 手电</li>
-              <li>安全警示灯 / 户外工具 / 未来磁吸模块</li>
+          <div class="roadmap-step">
+            <p class="eyebrow">Analysis</p>
+            <h3>Root Target</h3>
+            <p class="plain">这不是头灯本身的问题。真正的问题是：我们还没有找到世界上最优秀的磁吸配件合作伙伴。</p>
+          </div>
+          <div class="roadmap-step">
+            <p class="eyebrow">Most Wanted</p>
+            <h3>The Best Magnetic Accessories<br>寻找最好的磁吸配件</h3>
+            <ul class="challenge-list">
+              <li>Headlamp / Safety Light / AirTag Accessories</li>
+              <li>Radio Accessories / DJI Mic Accessories</li>
+              <li>Future Magnetic Products / 未来磁吸产品</li>
             </ul>
-            <p class="plain">真实用户反馈：</p>
-            <ul class="challenge-list" aria-label="Magnetic accessory test feedback">
-              <li>当前测试中发现：部分头灯磁铁胶水容易脱落。</li>
-              <li>当前测试中发现：1mm N52 小磁铁容易碎裂。</li>
-            </ul>
-            <p class="plain">因此我们不仅寻找更好的头灯，更寻找整个磁吸生态中更优秀的产品和合作伙伴。</p>
-            <p class="plain">The goal is not to manufacture every product ourselves. The goal is to find the world’s best products and build the MagSnap Ecosystem.</p>
-            <a class="button primary" href="#solution-form">Submit A Solution<br>提交解决方案</a>
+            <p class="plain">目标：建立 MagSnap Ecosystem。不是自己制造所有产品，而是整合世界最好的产品。</p>
+          </div>
+          <div class="roadmap-step">
+            <p class="eyebrow">Reward</p>
+            <h3>Contributor</h3>
+            <p class="plain">方案最终被采用，升级为 Panda Masters Contributor。</p>
           </div>
         </div>
-        <div class="grid-3">
-          <article class="note-card">
-            <p class="eyebrow">Who We Need</p>
-            <h3>Manufacturers<br>制造商</h3>
-            <p class="plain">If you know magnetic product manufacturers, outdoor equipment companies, or OEM / ODM suppliers, contact us.</p>
-          </article>
-          <article class="note-card">
-            <p class="eyebrow">Design / Engineering</p>
-            <h3>Product Designers<br>产品设计师</h3>
-            <p class="plain">Product designers and hardware engineers who understand outdoor use, durability, and magnetic mounting.</p>
-          </article>
-          <article class="note-card">
-            <p class="eyebrow">Recognition / 奖励</p>
-            <h3>Panda Master<br>熊猫高人</h3>
-            <p class="plain">如果你的产品或方案被 MagSnap Ecosystem 采用，你将自动成为 Panda Master；已是 Panda Master 则升级为 Panda Masters Contributor。</p>
-            <p class="plain">永久荣誉展示、新产品优先测试资格、后续生态合作优先权。</p>
-          </article>
-        </div>
+        <a class="button primary" href="#solution-form">Submit A Solution<br>提交解决方案</a>
       </article>
 
-      <div class="form-shell" id="most-wanted-board">
-        <p class="eyebrow">Most Wanted Board / 研发悬赏清单</p>
-        <h2>One Official R&D Entry<br>唯一官方公开研发入口</h2>
-        <p class="plain">Most Wanted is where MagSnap publishes product improvements, future versions, bugs, supplier searches, and new module directions.</p>
-        <p class="plain">以后所有产品优化、未来版本、Bug、研发方向、供应商寻找和新模块，统一进入 MagSnap 头号悬赏。</p>
-        <div class="grid-3">
-          <article class="note-card">
-            <p class="eyebrow">Most Wanted #002</p>
-            <h3>The Best Magnetic Accessories<br>寻找最好的磁吸配件</h3>
-            <p class="plain">寻找全球最好的磁吸配件产品、供应商和合作伙伴，构建 MagSnap Ecosystem。</p>
-          </article>
-          <article class="note-card">
-            <p class="eyebrow">Most Wanted #003</p>
-            <h3>Prescription Solution<br>近视解决方案</h3>
-            <p class="plain">寻找适合 MagSnap 的近视贴片、内嵌片或运动光学解决方案。</p>
-          </article>
-          <article class="note-card">
-            <p class="eyebrow">Most Wanted #004</p>
-            <h3>Anti Fog<br>防雾方案</h3>
-            <p class="plain">寻找适合海风、汗水、温差和高湿度环境的防雾方案。</p>
-          </article>
-          <article class="note-card">
-            <p class="eyebrow">Most Wanted #005</p>
-            <h3>Nano Module<br>Nano 模块</h3>
-            <p class="plain">寻找更好的 DJI Nano 磁吸安装、定位、保护和安全冗余方案。</p>
-          </article>
-          <article class="note-card">
-            <p class="eyebrow">Most Wanted #006</p>
-            <h3>Water Repellent<br>疏水耐海水方案</h3>
-            <p class="plain">寻找镜片、涂层、边缘封装和结构件的长期海水耐久方案。</p>
-          </article>
-          <article class="note-card">
-            <p class="eyebrow">Most Wanted #007</p>
-            <h3>Dual Polarity<br>双磁极兼容</h3>
-            <p class="plain">寻找能提升第三方磁吸设备兼容性的左右磁极布局方案。</p>
-          </article>
-          <article class="note-card">
-            <p class="eyebrow">Most Wanted #008</p>
-            <h3>Multi-Height Nose Pad<br>多高度鼻托</h3>
-            <p class="plain">寻找适配不同鼻梁高度、脸型和运动稳定性的鼻托系统。</p>
-          </article>
+      <article class="challenge-card" id="most-wanted-003">
+        <p class="eyebrow">Problem #003 · Small N52 Magnets</p>
+        <h2>Most Wanted #003<br>Stronger Magnetic Structure</h2>
+        <span class="status-pill">Status: Testing</span>
+        <div class="roadmap-flow">
+          <div class="roadmap-step">
+            <p class="eyebrow">Problem</p>
+            <h3>Small N52 Magnets</h3>
+            <p class="plain">目前 1mm N52 小磁铁跌落容易碎裂。</p>
+          </div>
+          <div class="roadmap-step">
+            <p class="eyebrow">Analysis</p>
+            <h3>Thin Magnet</h3>
+            <p class="plain">磁铁较薄，冲击能力有限。</p>
+          </div>
+          <div class="roadmap-step">
+            <p class="eyebrow">Most Wanted</p>
+            <h3>Stronger Magnetic Structure</h3>
+            <ul class="challenge-list">
+              <li>更好的磁铁材料 / Better magnet material</li>
+              <li>更好的结构 / Better structure</li>
+              <li>更好的包胶方案 / Better overmolding</li>
+              <li>更好的固定方式 / Better fixing method</li>
+            </ul>
+          </div>
+          <div class="roadmap-step">
+            <p class="eyebrow">Reward</p>
+            <h3>Panda Masters Contributor</h3>
+            <p class="plain">采用后获得 Panda Masters Contributor 身份。</p>
+          </div>
         </div>
+        <a class="button primary" href="#solution-form">Submit A Solution<br>提交解决方案</a>
+      </article>
+
+      <article class="challenge-card" id="most-wanted-004">
+        <p class="eyebrow">Problem #004 · Magnetic Pole Layout</p>
+        <h2>Most Wanted #004<br>Universal Magnetic Pole Layout</h2>
+        <span class="status-pill">Status: Design Review</span>
+        <div class="roadmap-flow">
+          <div class="roadmap-step">
+            <p class="eyebrow">Problem</p>
+            <h3>Pole Layout<br>磁极布局</h3>
+            <p class="plain">目前左右镜腿采用相同磁极方向，会影响部分第三方磁吸设备兼容性。</p>
+          </div>
+          <div class="roadmap-step">
+            <p class="eyebrow">Analysis</p>
+            <h3>Compatibility</h3>
+            <p class="plain">第三方磁吸设备的磁极方向并不统一，单一布局会限制模块扩展。</p>
+          </div>
+          <div class="roadmap-step">
+            <p class="eyebrow">Most Wanted</p>
+            <h3>Universal Magnetic Pole Layout</h3>
+            <p class="plain">寻找更合理的磁极阵列，例如左右镜腿采用两组相反磁极方向。</p>
+            <ul class="challenge-list">
+              <li>第三方兼容性 / Third-party compatibility</li>
+              <li>模块扩展能力 / Module expansion</li>
+              <li>MagSnap Ecosystem 标准 / Ecosystem standard</li>
+            </ul>
+          </div>
+          <div class="roadmap-step">
+            <p class="eyebrow">Reward</p>
+            <h3>Panda Masters Contributor</h3>
+            <p class="plain">采用后获得 Panda Masters Contributor 身份。</p>
+          </div>
+        </div>
+        <a class="button primary" href="#solution-form">Submit A Solution<br>提交解决方案</a>
+      </article>
+
+      <div class="form-shell" id="solved">
+        <p class="eyebrow">Solved / 已解决问题</p>
+        <h2>Prescription Adapter<br>近视解决方案</h2>
+        <span class="status-pill">Status: Solved</span>
+        <p class="plain">MagSnap 已找到可行方案，未来进入产品化。不要继续放在 Most Wanted。</p>
+        <p class="plain">MagSnap has found a workable prescription adapter path. It moves toward productization and is no longer listed as an unresolved Most Wanted item.</p>
       </div>
 
-      <div class="form-shell" id="product-intelligence">
-        <p class="eyebrow">Product Intelligence / 产品情报</p>
-        <h2>Magnetic Accessories<br>磁吸配件追踪</h2>
-        <p class="plain">Most Wanted submissions now tag magnetic accessory solution leads and issue signals for occurrence tracking.</p>
-        <p class="plain">Most Wanted 提交将标记磁吸配件方案线索和问题信号，用于后续出现次数统计。</p>
+      <div class="form-shell" id="contributor">
+        <p class="eyebrow">Contributor / 贡献者机制</p>
+        <h2>Solved By<br>永久荣誉展示</h2>
+        <p class="plain">如果任何产品、供应商、工厂或方案最终进入 MagSnap Ecosystem，贡献者自动获得 Panda Master 身份；如果已经是 Panda Master，则升级为 Panda Masters Contributor。</p>
+        <p class="plain">Future public recognition: Solved By, Panda Master #XXXX, Country, Contribution, Date.</p>
         <div class="grid-3">
           <article class="note-card">
-            <p class="eyebrow">Product</p>
-            <h3>Magnetic Accessories<br>磁吸配件</h3>
-            <p class="plain">Track solution leads for ecosystem products, suppliers, and magnetic accessory partners.</p>
+            <p class="eyebrow">Identity</p>
+            <h3>Panda Master</h3>
+            <p class="plain">未加入者自动成为 Panda Master。</p>
           </article>
           <article class="note-card">
-            <p class="eyebrow">Issue</p>
-            <h3>Headlamp Glue Failure<br>头灯胶水脱落</h3>
-            <p class="plain">Track headlamp magnet glue failure reports and better bonding solutions.</p>
+            <p class="eyebrow">Recognition</p>
+            <h3>Contributor</h3>
+            <p class="plain">已加入者升级为 Panda Masters Contributor。</p>
           </article>
           <article class="note-card">
-            <p class="eyebrow">Issue</p>
-            <h3>N52 Magnet Breakage<br>N52 磁铁碎裂</h3>
-            <p class="plain">Track 1mm N52 magnet breakage reports and stronger structural alternatives.</p>
+            <p class="eyebrow">Access</p>
+            <h3>Priority Testing</h3>
+            <p class="plain">获得 Future Product Priority Testing。</p>
           </article>
         </div>
-      </div>
-
-      <div class="form-shell" id="recognition">
-        <p class="eyebrow">Recognition / 身份认可</p>
-        <h2>Solution Accepted<br>方案被采用后</h2>
-        <p class="plain">If your solution is adopted by MagSnap, you will automatically become a Panda Master. If you are already a Panda Master, you will be recognized as a Panda Masters Contributor.</p>
-        <p class="plain">如果你的方案最终被 MagSnap 采用，你将自动成为：熊猫高人（Panda Master）。如果你已经是熊猫高人，你将获得：熊猫高人贡献者（Panda Masters Contributor）身份。</p>
-        <div class="grid-3">
-          <article class="note-card">
-            <p class="eyebrow">01</p>
-            <h3>Solution Accepted<br>方案采用</h3>
-            <p class="plain">MagSnap 确认方案进入真实产品优化或测试流程。</p>
-          </article>
-          <article class="note-card">
-            <p class="eyebrow">02</p>
-            <h3>Panda Master<br>熊猫高人</h3>
-            <p class="plain">未加入者自动升级为 Panda Master。身份本身就是奖励。</p>
-          </article>
-          <article class="note-card">
-            <p class="eyebrow">03</p>
-            <h3>Contributor Badge<br>贡献者身份</h3>
-            <p class="plain">已是熊猫高人的贡献者，将获得 Panda Masters Contributor 认可。</p>
-          </article>
-        </div>
-        <div class="grid-3">
-          <article class="note-card">
-            <p class="eyebrow">Priority Testing</p>
-            <h3>Future Product Priority Testing</h3>
-            <p class="plain">未来产品或组件测试优先邀请。</p>
-          </article>
-          <article class="note-card">
-            <p class="eyebrow">Early Access</p>
-            <h3>Early Access</h3>
-            <p class="plain">优先了解新模块、新镜片和结构升级。</p>
-          </article>
-          <article class="note-card">
-            <p class="eyebrow">Recognition Page</p>
-            <h3>Solved By</h3>
-            <p class="plain">未来展示：Panda Master #XXXX、Country、Solution、Date。</p>
-          </article>
-        </div>
-        <p class="form-note">No cash, equity, agency, commission or revenue sharing is promised. Recognition, priority testing and early access are the reward.<br>不承诺现金、股权、代理、分成或销售返利。身份认可、优先测试和 Early Access 就是奖励。</p>
+        <p class="form-note">No cash, equity, agency, commission or revenue sharing is promised. Recognition and priority testing are the reward.<br>不承诺现金、股权、代理、分成或销售返利。身份认可和优先测试就是奖励。</p>
       </div>
 
       <div class="form-shell" id="solution-form">
@@ -609,14 +632,13 @@
               <option>Most Wanted #002 / OEM ODM Suppliers / OEM ODM 供应商</option>
               <option>Most Wanted #002 / Product Designers / 产品设计师</option>
               <option>Most Wanted #002 / Hardware Engineers / 硬件工程师</option>
-              <option>Most Wanted #003 / Prescription Solution / 近视解决方案</option>
-              <option>Most Wanted #004 / Anti Fog / 防雾方案</option>
-              <option>Most Wanted #005 / Nano Module / Nano 模块</option>
-              <option>Most Wanted #006 / Water Repellent / 疏水耐海水方案</option>
-              <option>Most Wanted #007 / Dual Polarity / 双磁极兼容</option>
-              <option>Most Wanted #008 / Multi-Height Nose Pad / 多高度鼻托</option>
+              <option>Most Wanted #003 / Stronger Magnetic Structure / 更强磁吸结构</option>
+              <option>Most Wanted #003 / Better Magnet Material / 更好的磁铁材料</option>
+              <option>Most Wanted #003 / Better Overmolding / 更好的包胶方案</option>
+              <option>Most Wanted #004 / Universal Magnetic Pole Layout / 通用磁极布局</option>
+              <option>Most Wanted #004 / Opposite Pole Temple Design / 左右反向磁极镜腿</option>
+              <option>Most Wanted #004 / Ecosystem Magnetic Standard / 磁吸生态标准</option>
               <option>Supplier / Factory / 供应商或工厂</option>
-              <option>New Modules / 新模块</option>
               <option>Other / 其他</option>
             </select>
           </div>
@@ -626,7 +648,7 @@
           </div>
           <div class="field full">
             <label for="challenge-solution">Describe your solution / 描述你的方案</label>
-            <textarea id="challenge-solution" name="solution_description" placeholder="Material, process, supplier, test method, optical solution..." required></textarea>
+            <textarea id="challenge-solution" name="solution_description" placeholder="Product, supplier, factory, engineering solution, test method..." required></textarea>
           </div>
           <div class="field full">
             <label for="challenge-supplier">Supplier / Factory info / 供应商或工厂信息</label>
@@ -671,7 +693,19 @@
         payload[key] = cleanText(payload[key]);
       });
       const contactEmail = payload.contact_detail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i)?.[0] || "";
+      const isLensChallenge = payload.solution_area.includes("Most Wanted #001");
       const isMagneticAccessoryChallenge = payload.solution_area.includes("Most Wanted #002");
+      const isMagnetStructureChallenge = payload.solution_area.includes("Most Wanted #003");
+      const isPoleLayoutChallenge = payload.solution_area.includes("Most Wanted #004");
+      const intelligenceLabel = isLensChallenge
+        ? "Lens"
+        : isMagneticAccessoryChallenge
+          ? "Magnetic Accessories"
+          : isMagnetStructureChallenge
+            ? "Small N52 Magnets"
+            : isPoleLayoutChallenge
+              ? "Magnetic Pole Layout"
+              : "";
       payload.email = contactEmail || "most-wanted@magsnap.me";
       payload.public_nickname = payload.name;
       payload.country = "MagSnap Most Wanted";
@@ -682,16 +716,32 @@
       payload.city = payload.challenge_id;
       payload.club = "MagSnap Most Wanted";
       payload.role = "Solution Contributor";
-      payload.sport_or_industry = isMagneticAccessoryChallenge ? "Magnetic Accessories / Outdoor Equipment" : "Most Wanted Solution";
-      payload.industry = isMagneticAccessoryChallenge ? "Magnetic Accessories / Outdoor Equipment" : "Most Wanted Solution";
-      payload.device = isMagneticAccessoryChallenge ? "Magnetic Accessories" : "Most Wanted Solution";
-      payload.device_used = isMagneticAccessoryChallenge ? "Magnetic Accessories" : "Most Wanted Solution";
-      payload.product_intelligence = isMagneticAccessoryChallenge ? "Magnetic Accessories" : "";
+      payload.sport_or_industry = intelligenceLabel || "Most Wanted Solution";
+      payload.industry = intelligenceLabel || "Most Wanted Solution";
+      payload.device = intelligenceLabel || "Most Wanted Solution";
+      payload.device_used = intelligenceLabel || "Most Wanted Solution";
+      payload.product_intelligence = intelligenceLabel;
       payload.accessory_categories = isMagneticAccessoryChallenge ? "Headlamps, Action Cameras, DJI Mic, AirTag, Radios, Flashlights, Safety Lights, Outdoor Tools, Future Magnetic Modules" : "";
-      payload.issue_category = isMagneticAccessoryChallenge ? "Magnetic Accessory Issues" : "";
-      payload.issue_tags = isMagneticAccessoryChallenge ? "Headlamp Glue Failure, N52 Magnet Breakage" : "";
+      payload.issue_category = isLensChallenge
+        ? "Lens Performance"
+        : isMagneticAccessoryChallenge
+          ? "Magnetic Accessory Issues"
+          : isMagnetStructureChallenge
+            ? "Small N52 Magnet Breakage"
+            : isPoleLayoutChallenge
+              ? "Magnetic Pole Compatibility"
+              : "";
+      payload.issue_tags = isLensChallenge
+        ? "Optical Clarity, Polarization, Saltwater Performance, Large Frame Lens"
+        : isMagneticAccessoryChallenge
+          ? "Headlamp Glue Failure, N52 Magnet Breakage"
+          : isMagnetStructureChallenge
+            ? "N52 Magnet Breakage, Overmolding, Fixing Method"
+            : isPoleLayoutChallenge
+              ? "Third-party Compatibility, Opposite Pole Layout, Ecosystem Standard"
+              : "";
       payload.issue_glue_failure = isMagneticAccessoryChallenge ? "1" : "";
-      payload.issue_magnet_breakage = isMagneticAccessoryChallenge ? "1" : "";
+      payload.issue_magnet_breakage = (isMagneticAccessoryChallenge || isMagnetStructureChallenge) ? "1" : "";
       payload.feedback = payload.solution_description;
       payload.reason = payload.solution_description;
       payload.use_case = payload.solution_description;

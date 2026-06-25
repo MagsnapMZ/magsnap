@@ -1048,7 +1048,7 @@
           </div>
           <div class="field">
             <label for="pm-country" data-i18n-html="countryLabel">国家 / Country</label>
-            <input id="pm-country" type="text" name="country" autocomplete="country-name" value="Vietnam" required>
+            <input id="pm-country" type="text" name="country" autocomplete="country-name" placeholder="China / Vietnam / USA / ..." required>
           </div>
           <div class="field">
             <label for="pm-city" data-i18n-html="cityLabel">城市 / City</label>
@@ -1246,11 +1246,11 @@
             </div>
           </div>
           <div class="field">
-            <label for="pm-photo-file" data-i18n-html="photoLabel">Upload Your MagSnap Selfie / 上传你的 MagSnap 自拍 *</label>
-            <input id="pm-photo-file" type="file" name="photo_file" accept="image/*" required>
+            <label for="pm-photo-file" data-i18n-html="photoLabel">Upload Your MagSnap Selfie / 上传你的 MagSnap 自拍</label>
+            <input id="pm-photo-file" type="file" name="photo_file" accept="image/*,.heic,.heif">
             <input id="pm-photo-url" type="hidden" name="photo_url">
             <input id="pm-photo-link" type="hidden" name="photo_link">
-            <p class="form-note" id="photo-upload-status" data-i18n-html="photoNote">Please wear your MagSnap, take a selfie, and upload it here.<br>请戴上 MagSnap 眼镜，自拍一张并上传。<br>Your photo may be featured on the future Panda Masters Wall.<br>你的照片未来可能会出现在 Panda Masters 照片墙。</p>
+            <p class="form-note" id="photo-upload-status" data-i18n-html="photoNote">Optional. Upload a MagSnap selfie or proof image if your phone supports it.<br>可选。如果手机支持，可以上传 MagSnap 自拍或证明图片。<br>If upload fails, submit the form first and send a photo link later.<br>如果上传失败，先提交表单，之后再补照片链接。</p>
           </div>
           <div class="field">
             <label for="pm-video-link" data-i18n-html="videoLabel">Video Link / 视频链接</label>
@@ -1410,7 +1410,7 @@
           </div>
           <div class="field">
             <label for="club-country">Country / 国家</label>
-            <input id="club-country" type="text" name="country" value="Vietnam" required>
+            <input id="club-country" type="text" name="country" autocomplete="country-name" placeholder="China / Vietnam / USA / ..." required>
           </div>
           <div class="field">
             <label for="club-instagram">Instagram</label>
@@ -1701,7 +1701,7 @@
         heroLead: "Not For Sale. For Those Who Help The Community.",
         checkinEyebrow: "Survey / Registration",
         checkinTitle: "Panda Master Registration",
-        checkinLead: "Submit your profile, POV device, social links, MagSnap selfie and feedback.",
+        checkinLead: "Submit your profile, POV device, social links and feedback. Photo upload is optional.",
         pandaNumberTitle: "Panda Master Number",
         pandaNumberNote: "Find your 4-digit number inside the MagSnap kit.",
         nameLabel: "Name",
@@ -1723,8 +1723,8 @@
         frequencyLabel: "How often do you post?",
         followersLabel: "Approximate followers",
         filmLabel: "What do you usually film?",
-        photoLabel: "Upload Your MagSnap Selfie *",
-        photoNote: "Please wear your MagSnap, take a selfie, and upload it here.<br>Your photo may be featured on the future Panda Masters Wall.",
+        photoLabel: "Upload Your MagSnap Selfie",
+        photoNote: "Optional. Upload a MagSnap selfie or proof image if your phone supports it.<br>If upload fails, submit the form first and send a photo link later.",
         videoLabel: "Video Link",
         povLabel: "POV Clip Link",
         storyLabel: "Story Note",
@@ -1736,7 +1736,7 @@
         privacyNote: "Contact information is for MagSnap internal follow-up only and is not shown publicly.",
         confirmationEyebrow: "Confirmation Page",
         confirmationTitle: "Registration Received.",
-        confirmationLead: "You are now in the Panda Masters Registry. Your public profile will appear only after photo verification.",
+        confirmationLead: "You are now in the Panda Masters Registry. Public profiles with photos may appear after review.",
         confirmationStats: "View Stats",
         confirmationAnother: "Add Another",
         statsEyebrow: "Stats",
@@ -1744,14 +1744,16 @@
         statsPrivacy: "Aggregate stats only. Private data is never shown here.",
         numberInvalid: "Please enter a 4-digit Panda Master number.",
         degreeInvalid: "Please select your myopia degree.",
-        photoMissing: "Please wear your MagSnap, take a selfie, and upload it here.",
+        photoMissing: "No photo selected. Continuing without a photo.",
         photoPreparing: "Preparing photo...",
         photoReady: "Photo ready",
         photoSelected: "Photo selected",
+        photoSkipped: "Photo upload skipped. The application will still be submitted.",
+        photoFailedOptional: "Photo could not be processed on this phone. The application will still be submitted; send a photo link later if needed.",
         submitting: "Submitting",
-        preparingPhoto: "Preparing photo upload.",
-        submittingCheckin: "Photo ready. Submitting check-in.",
-        submitSuccess: "You are now in the Panda Masters Registry.<br>Your public profile will appear only after photo verification.",
+        preparingPhoto: "Preparing application.",
+        submittingCheckin: "Application ready. Submitting check-in.",
+        submitSuccess: "You are now in the Panda Masters Registry.<br>Public profiles with photos may appear after review.",
         submitTimeout: "Submission timed out. Please check the network and retry.",
         submitFailed: "Submission failed. Please check the form and try again.",
         yes: "Yes",
@@ -1763,7 +1765,7 @@
         heroLead: "非卖品。<br>致那些帮助社区成长的人。",
         checkinEyebrow: "问卷 / 登记",
         checkinTitle: "熊猫高人登记",
-        checkinLead: "填写基础信息、设备、社交链接、MagSnap 自拍和反馈。",
+        checkinLead: "填写基础信息、设备、社交链接和反馈。照片可选。",
         pandaNumberTitle: "熊猫高人编号",
         pandaNumberNote: "四位编号请在 MagSnap 套装内查找。",
         nameLabel: "姓名",
@@ -1785,8 +1787,8 @@
         frequencyLabel: "你多久发布一次？",
         followersLabel: "大概粉丝数",
         filmLabel: "你通常拍什么？",
-        photoLabel: "上传你的 MagSnap 自拍 *",
-        photoNote: "请戴上 MagSnap 眼镜，自拍一张并上传。<br>你的照片未来可能会出现在 Panda Masters 照片墙。",
+        photoLabel: "上传你的 MagSnap 自拍",
+        photoNote: "可选。如果手机支持，可以上传 MagSnap 自拍或证明图片。<br>如果上传失败，先提交表单，之后再补照片链接。",
         videoLabel: "视频链接",
         povLabel: "POV 片段链接",
         storyLabel: "故事备注",
@@ -1798,7 +1800,7 @@
         privacyNote: "联系方式仅供 MagSnap 内部跟进，不在公开页面展示。",
         confirmationEyebrow: "确认页",
         confirmationTitle: "登记已收到。",
-        confirmationLead: "你已进入 Panda Masters Registry。公开资料会在照片审核后显示。",
+        confirmationLead: "你已进入 Panda Masters Registry。带照片的公开资料会在审核后显示。",
         confirmationStats: "查看统计",
         confirmationAnother: "继续登记",
         statsEyebrow: "数据",
@@ -1806,14 +1808,16 @@
         statsPrivacy: "只显示汇总统计，不显示邮箱、电话、地址、联系方式等隐私信息。",
         numberInvalid: "请输入 4 位 Panda Master 编号。",
         degreeInvalid: "请选择近视度数。",
-        photoMissing: "请戴上 MagSnap 眼镜，自拍一张并上传。",
+        photoMissing: "未选择照片，将继续提交。",
         photoPreparing: "正在处理照片...",
         photoReady: "照片已准备完成",
         photoSelected: "已选择照片",
+        photoSkipped: "已跳过照片上传，申请仍会继续提交。",
+        photoFailedOptional: "这台手机无法处理该照片。申请仍会继续提交；如需要，之后再补照片链接。",
         submitting: "正在提交",
-        preparingPhoto: "正在准备照片。",
-        submittingCheckin: "照片已准备完成，正在提交登记。",
-        submitSuccess: "你已进入 Panda Masters Registry。<br>公开资料会在照片审核后显示。",
+        preparingPhoto: "正在准备申请资料。",
+        submittingCheckin: "申请资料已准备完成，正在提交登记。",
+        submitSuccess: "你已进入 Panda Masters Registry。<br>带照片的公开资料会在审核后显示。",
         submitTimeout: "提交超时。请检查网络后重试。",
         submitFailed: "提交失败。请检查信息后重试。",
         yes: "需要",
@@ -1825,7 +1829,7 @@
         heroLead: "Không bán.<br>Dành cho những người giúp cộng đồng phát triển.",
         checkinEyebrow: "Khảo sát / Đăng ký",
         checkinTitle: "Đăng ký Panda Master",
-        checkinLead: "Điền hồ sơ, thiết bị POV, mạng xã hội, ảnh selfie với MagSnap và phản hồi.",
+        checkinLead: "Điền hồ sơ, thiết bị POV, mạng xã hội và phản hồi. Tải ảnh là tùy chọn.",
         pandaNumberTitle: "Số Panda Master",
         pandaNumberNote: "Tìm số 4 chữ số bên trong bộ MagSnap.",
         nameLabel: "Tên",
@@ -1847,8 +1851,8 @@
         frequencyLabel: "Bạn đăng thường xuyên thế nào?",
         followersLabel: "Số người theo dõi ước tính",
         filmLabel: "Bạn thường quay nội dung gì?",
-        photoLabel: "Tải selfie với MagSnap *",
-        photoNote: "Hãy đeo kính MagSnap, chụp một ảnh selfie và tải lên tại đây.<br>Ảnh của bạn có thể xuất hiện trên Panda Masters Wall trong tương lai.",
+        photoLabel: "Tải selfie với MagSnap",
+        photoNote: "Tùy chọn. Tải selfie MagSnap hoặc ảnh chứng minh nếu điện thoại hỗ trợ.<br>Nếu tải ảnh lỗi, hãy gửi biểu mẫu trước và bổ sung link ảnh sau.",
         videoLabel: "Liên kết video",
         povLabel: "Liên kết clip POV",
         storyLabel: "Ghi chú câu chuyện",
@@ -1860,7 +1864,7 @@
         privacyNote: "Thông tin liên hệ chỉ dùng để MagSnap theo dõi nội bộ, không hiển thị công khai.",
         confirmationEyebrow: "Trang xác nhận",
         confirmationTitle: "Đã nhận đăng ký.",
-        confirmationLead: "Bạn đã vào Panda Masters Registry. Hồ sơ công khai chỉ xuất hiện sau khi ảnh được xác minh.",
+        confirmationLead: "Bạn đã vào Panda Masters Registry. Hồ sơ có ảnh có thể xuất hiện sau khi được duyệt.",
         confirmationStats: "Xem thống kê",
         confirmationAnother: "Đăng ký thêm",
         statsEyebrow: "Thống kê",
@@ -1868,14 +1872,16 @@
         statsPrivacy: "Chỉ hiển thị thống kê tổng hợp. Dữ liệu liên hệ riêng tư không được hiển thị ở đây.",
         numberInvalid: "Vui lòng nhập số Panda Master gồm 4 chữ số.",
         degreeInvalid: "Vui lòng chọn độ cận của bạn.",
-        photoMissing: "Hãy đeo kính MagSnap, chụp một ảnh selfie và tải lên tại đây.",
+        photoMissing: "Chưa chọn ảnh. Tiếp tục gửi không kèm ảnh.",
         photoPreparing: "Đang xử lý ảnh...",
         photoReady: "Ảnh đã sẵn sàng",
         photoSelected: "Đã chọn ảnh",
+        photoSkipped: "Bỏ qua tải ảnh. Đơn đăng ký vẫn sẽ được gửi.",
+        photoFailedOptional: "Điện thoại này không xử lý được ảnh. Đơn đăng ký vẫn sẽ được gửi; có thể gửi link ảnh sau.",
         submitting: "Đang gửi",
-        preparingPhoto: "Đang chuẩn bị ảnh tải lên.",
-        submittingCheckin: "Ảnh đã sẵn sàng. Đang gửi đăng ký.",
-        submitSuccess: "Bạn đã vào Panda Masters Registry.<br>Hồ sơ công khai chỉ xuất hiện sau khi ảnh được xác minh.",
+        preparingPhoto: "Đang chuẩn bị đăng ký.",
+        submittingCheckin: "Đăng ký đã sẵn sàng. Đang gửi.",
+        submitSuccess: "Bạn đã vào Panda Masters Registry.<br>Hồ sơ có ảnh có thể xuất hiện sau khi được duyệt.",
         submitTimeout: "Gửi quá thời gian. Vui lòng kiểm tra mạng và thử lại.",
         submitFailed: "Gửi thất bại. Vui lòng kiểm tra biểu mẫu và thử lại.",
         yes: "Có",
@@ -1887,7 +1893,7 @@
         heroLead: "Не продается.<br>Для тех, кто помогает сообществу расти.",
         checkinEyebrow: "Опрос / Регистрация",
         checkinTitle: "Регистрация Panda Master",
-        checkinLead: "Заполните профиль, POV-устройства, контакты, селфи с MagSnap и обратную связь.",
+        checkinLead: "Заполните профиль, POV-устройства, контакты и обратную связь. Фото необязательно.",
         pandaNumberTitle: "Номер Panda Master",
         pandaNumberNote: "Найдите 4-значный номер внутри набора MagSnap.",
         nameLabel: "Имя",
@@ -1909,8 +1915,8 @@
         frequencyLabel: "Как часто вы публикуете?",
         followersLabel: "Примерное число подписчиков",
         filmLabel: "Что вы обычно снимаете?",
-        photoLabel: "Загрузите селфи с MagSnap *",
-        photoNote: "Наденьте MagSnap, сделайте селфи и загрузите его здесь.<br>Ваше фото может появиться на будущей стене Panda Masters.",
+        photoLabel: "Загрузите селфи с MagSnap",
+        photoNote: "Необязательно. Загрузите селфи с MagSnap или фото-подтверждение, если телефон поддерживает это.<br>Если загрузка не удалась, отправьте форму сначала и добавьте ссылку на фото позже.",
         videoLabel: "Ссылка на видео",
         povLabel: "Ссылка на POV-клип",
         storyLabel: "Заметка к истории",
@@ -1922,7 +1928,7 @@
         privacyNote: "Контакты используются только для внутренней связи MagSnap и не публикуются.",
         confirmationEyebrow: "Страница подтверждения",
         confirmationTitle: "Регистрация получена.",
-        confirmationLead: "Вы добавлены в Panda Masters Registry. Публичный профиль появится только после проверки фото.",
+        confirmationLead: "Вы добавлены в Panda Masters Registry. Профили с фото могут появиться после проверки.",
         confirmationStats: "Посмотреть статистику",
         confirmationAnother: "Добавить еще",
         statsEyebrow: "Статистика",
@@ -1930,14 +1936,16 @@
         statsPrivacy: "Показывается только агрегированная статистика. Личные данные не отображаются.",
         numberInvalid: "Введите 4-значный номер Panda Master.",
         degreeInvalid: "Выберите степень близорукости.",
-        photoMissing: "Наденьте MagSnap, сделайте селфи и загрузите его здесь.",
+        photoMissing: "Фото не выбрано. Отправляем без фото.",
         photoPreparing: "Подготовка фото...",
         photoReady: "Фото готово",
         photoSelected: "Фото выбрано",
+        photoSkipped: "Загрузка фото пропущена. Заявка все равно будет отправлена.",
+        photoFailedOptional: "Фото не удалось обработать на этом телефоне. Заявка все равно будет отправлена; ссылку на фото можно добавить позже.",
         submitting: "Отправка",
-        preparingPhoto: "Подготовка загрузки фото.",
-        submittingCheckin: "Фото готово. Отправляем регистрацию.",
-        submitSuccess: "Вы добавлены в Panda Masters Registry.<br>Публичный профиль появится только после проверки фото.",
+        preparingPhoto: "Подготовка заявки.",
+        submittingCheckin: "Заявка готова. Отправляем регистрацию.",
+        submitSuccess: "Вы добавлены в Panda Masters Registry.<br>Профили с фото могут появиться после проверки.",
         submitTimeout: "Время отправки истекло. Проверьте сеть и повторите.",
         submitFailed: "Отправка не удалась. Проверьте форму и попробуйте снова.",
         yes: "Да",
@@ -2582,18 +2590,43 @@
     const preparePhotoUpload = async () => {
       const file = photoFileInput?.files?.[0];
       if (!file) {
-        throw new Error(getLanguageCopy("photoMissing"));
+        if (photoUploadStatus) {
+          photoUploadStatus.innerHTML = getLanguageCopy("photoMissing");
+        }
+        return {};
       }
       if (!isSupportedMobileImage(file)) {
-        throw new Error("请上传图片文件。<br>Please upload an image file.");
+        if (photoUploadStatus) {
+          photoUploadStatus.innerHTML = getLanguageCopy("photoFailedOptional");
+        }
+        return {
+          photo_file_name: file.name || "",
+          photo_original_type: file.type || "",
+          photo_original_size: file.size || 0,
+          photo_upload_status: "unsupported_optional_skipped"
+        };
       }
 
       if (photoUploadStatus) {
         photoUploadStatus.innerHTML = getLanguageCopy("photoPreparing");
       }
 
-      const image = await loadImageFromFile(file);
-      const photoUrl = renderCompressedPhoto(image);
+      let photoUrl = "";
+      try {
+        const image = await loadImageFromFile(file);
+        photoUrl = renderCompressedPhoto(image);
+      } catch (_error) {
+        if (photoUploadStatus) {
+          photoUploadStatus.innerHTML = getLanguageCopy("photoFailedOptional");
+        }
+        return {
+          photo_file_name: file.name || "magsnap-photo",
+          photo_original_type: file.type || "",
+          photo_original_size: file.size || 0,
+          photo_upload_status: "processing_optional_skipped",
+          photo_prepared_at: new Date().toISOString()
+        };
+      }
 
       if (photoUrlInput) photoUrlInput.value = photoUrl;
       if (photoLinkInput) photoLinkInput.value = photoUrl;
@@ -2607,6 +2640,7 @@
         photo_file_type: "image/jpeg",
         photo_original_type: file.type || "",
         photo_original_size: file.size || 0,
+        photo_upload_status: "embedded_base64",
         photo_prepared_at: new Date().toISOString()
       };
     };
@@ -2685,6 +2719,7 @@
       payload.photo_file_type = cleanText(photoPayload.photo_file_type);
       payload.photo_original_type = cleanText(photoPayload.photo_original_type);
       payload.photo_original_size = parseNumber(photoPayload.photo_original_size);
+      payload.photo_upload_status = cleanText(photoPayload.photo_upload_status);
       payload.photo_prepared_at = cleanText(photoPayload.photo_prepared_at);
       payload.video_link = cleanText(payload.video_link);
       payload.pov_clip_link = cleanText(payload.pov_clip_link);
@@ -3452,7 +3487,6 @@
         writeStorageRecord(CLUB_STORAGE_KEY, payload, "backend_saved", "club_record_id");
         setFormStatus(clubStatusNode, `<strong>Club Record Saved / 已保存</strong><br>${escapeHtml(payload.club_name)} · ${escapeHtml(payload.location)}`);
         clubForm.reset();
-        if (clubForm.elements.country) clubForm.elements.country.value = "Vietnam";
         if (clubForm.elements.visit_date) clubForm.elements.visit_date.value = todayString();
         renderCoverage();
         renderIntelligenceDashboard();

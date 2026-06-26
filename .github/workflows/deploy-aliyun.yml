@@ -1,0 +1,181 @@
+name: Deploy V2 to Aliyun OSS CDN
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Validate workflow without uploading to OSS"
+        required: false
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+      rollback_release:
+        description: "Optional release SHA under __releases/ to restore"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: aliyun-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build, deploy, refresh, verify
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      ALIYUN_ACCESS_KEY_ID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+      ALIYUN_ACCESS_KEY_SECRET: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+      ALIYUN_REGION: ${{ secrets.ALIYUN_REGION }}
+      ALIYUN_OSS_BUCKET: ${{ secrets.ALIYUN_OSS_BUCKET }}
+      ALIYUN_OSS_ENDPOINT: ${{ secrets.ALIYUN_OSS_ENDPOINT }}
+      ALIYUN_CDN_DOMAIN: ${{ secrets.ALIYUN_CDN_DOMAIN }}
+      ALIYUN_OSS_PREFIX: ${{ vars.ALIYUN_OSS_PREFIX }}
+      ALIYUN_CLI_PROFILE: magsnap-prod
+      SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
+      DEPLOY_VERIFY_BASE_URL: ${{ vars.DEPLOY_VERIFY_BASE_URL }}
+      DISALLOW_SERVER_CONTAINS: ${{ vars.DISALLOW_SERVER_CONTAINS }}
+      LIGHTHOUSE_MIN_SCORE: ${{ vars.LIGHTHOUSE_MIN_SCORE }}
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == 'true' && 'true' || 'false' }}
+      ROLLBACK_RELEASE: ${{ github.event_name == 'workflow_dispatch' && inputs.rollback_release || '' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set defaults
+        shell: bash
+        run: |
+          echo "SITE_BASE_URL=${SITE_BASE_URL:-https://magsnap.me}" >> "$GITHUB_ENV"
+          echo "DEPLOY_VERIFY_BASE_URL=${DEPLOY_VERIFY_BASE_URL:-${SITE_BASE_URL:-https://magsnap.me}}" >> "$GITHUB_ENV"
+          echo "DISALLOW_SERVER_CONTAINS=${DISALLOW_SERVER_CONTAINS:-GitHub.com}" >> "$GITHUB_ENV"
+          echo "LIGHTHOUSE_MIN_SCORE=${LIGHTHOUSE_MIN_SCORE:-0.95}" >> "$GITHUB_ENV"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Prepare static package
+        run: python3 scripts/deploy/prepare_static_site.py --source . --output dist
+
+      - name: Verify static package
+        run: python3 scripts/deploy/verify_static_site.py --site-dir dist --json-output deployment_static_check.json
+
+      - name: Generate China compatibility report
+        run: python3 scripts/deploy/china_compatibility_report.py --root . --base-url "$SITE_BASE_URL" --output china_compatibility_report.md
+
+      - name: Generate static performance report
+        run: python3 scripts/deploy/performance_report.py --site-dir dist --base-url "$SITE_BASE_URL" --output performance_report.md
+
+      - name: Upload pre-deploy reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-deploy-reports
+          path: |
+            deployment_static_check.json
+            china_compatibility_report.md
+            performance_report.md
+            dist/deployment_manifest.json
+
+      - name: Validate Aliyun configuration
+        if: env.DRY_RUN != 'true'
+        shell: bash
+        run: |
+          : "${ALIYUN_ACCESS_KEY_ID:?Missing GitHub Secret ALIYUN_ACCESS_KEY_ID}"
+          : "${ALIYUN_ACCESS_KEY_SECRET:?Missing GitHub Secret ALIYUN_ACCESS_KEY_SECRET}"
+          : "${ALIYUN_REGION:?Missing GitHub Secret ALIYUN_REGION}"
+          : "${ALIYUN_OSS_BUCKET:?Missing GitHub Secret ALIYUN_OSS_BUCKET}"
+          : "${ALIYUN_OSS_ENDPOINT:?Missing GitHub Secret ALIYUN_OSS_ENDPOINT}"
+          : "${ALIYUN_CDN_DOMAIN:?Missing GitHub Secret ALIYUN_CDN_DOMAIN}"
+
+      - name: Install Alibaba Cloud CLI
+        if: env.DRY_RUN != 'true'
+        shell: bash
+        run: |
+          curl -fsSL https://aliyuncli.alicdn.com/aliyun-cli-linux-latest-amd64.tgz -o aliyun-cli.tgz
+          tar -xzf aliyun-cli.tgz
+          sudo mv aliyun /usr/local/bin/aliyun
+          aliyun version
+
+      - name: Install ossutil
+        if: env.DRY_RUN != 'true'
+        shell: bash
+        run: |
+          curl -fsSL https://gosspublic.alicdn.com/ossutil/install.sh | sudo bash
+          ossutil --version
+
+      - name: Configure Alibaba Cloud CLI
+        if: env.DRY_RUN != 'true'
+        shell: bash
+        run: |
+          aliyun configure set \
+            --profile "$ALIYUN_CLI_PROFILE" \
+            --mode AK \
+            --region "$ALIYUN_REGION" \
+            --access-key-id "$ALIYUN_ACCESS_KEY_ID" \
+            --access-key-secret "$ALIYUN_ACCESS_KEY_SECRET"
+
+      - name: Deploy to OSS
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == ''
+        run: python3 scripts/deploy/deploy_to_aliyun.py --site-dir dist --release "$GITHUB_SHA"
+
+      - name: Rollback OSS release
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != ''
+        run: python3 scripts/deploy/rollback_aliyun.py --release "$ROLLBACK_RELEASE"
+
+      - name: Refresh Aliyun CDN
+        if: env.DRY_RUN != 'true'
+        run: python3 scripts/deploy/refresh_cdn.py --domain "$ALIYUN_CDN_DOMAIN"
+
+      - name: Wait for CDN propagation
+        if: env.DRY_RUN != 'true'
+        run: sleep 60
+
+      - name: Verify live deployment
+        if: env.DRY_RUN != 'true'
+        run: |
+          python3 scripts/deploy/verify_deployment.py \
+            --base-url "$DEPLOY_VERIFY_BASE_URL" \
+            --disallow-server "$DISALLOW_SERVER_CONTAINS" \
+            --json-output deployment_live_check.json
+
+      - name: Run Lighthouse
+        if: env.DRY_RUN != 'true'
+        shell: bash
+        run: |
+          mkdir -p deployment-artifacts
+          npx --yes lighthouse "$DEPLOY_VERIFY_BASE_URL" \
+            --chrome-flags="--headless --no-sandbox" \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --output=json \
+            --output=html \
+            --output-path=deployment-artifacts/lighthouse-home
+
+      - name: Generate Lighthouse performance report
+        if: env.DRY_RUN != 'true'
+        run: |
+          python3 scripts/deploy/performance_report.py \
+            --site-dir dist \
+            --base-url "$DEPLOY_VERIFY_BASE_URL" \
+            --lighthouse-json deployment-artifacts/lighthouse-home.report.json \
+            --output deployment-artifacts/performance_report.md \
+            --min-score "$LIGHTHOUSE_MIN_SCORE" \
+            --enforce-lighthouse
+
+      - name: Upload post-deploy reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-v2-reports
+          path: |
+            deployment_live_check.json
+            deployment-artifacts/
+            china_compatibility_report.md
+            performance_report.md
+          if-no-files-found: ignore

@@ -88,8 +88,8 @@ def render_report(root: Path, base_url: str) -> str:
             "",
             "- Aliyun OSS + CDN is the correct production hosting target for China access after ICP approval.",
             "- Keep render-critical assets self-hosted in OSS/CDN.",
-            "- Keep Google Apps Script as a temporary form backend only if China submissions are not business-critical.",
-            "- For full China readiness, migrate public form submission endpoints from Google Apps Script to an API hosted on Aliyun, Cloudflare China-compatible service, or another China-reachable backend.",
+            "- Use Aliyun Function Compute or another China-reachable API for production form submissions.",
+            "- Keep Google Apps Script only as an optional back-office export/sync target, never as the China user submission path.",
             "- Keep Instagram and other blocked social networks as outbound optional links only; do not load their SDKs or embeds.",
             "",
         ]

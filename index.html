@@ -2210,7 +2210,7 @@
     const founderInviteNote = document.getElementById("founder-invite-note");
     const founderStorageKey = "magsnap_founder_applications_v2";
     const founderLatestSuccessKey = "magsnap_founder_latest_success";
-    const founderSubmissionEndpoint = "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec";
+    const founderSubmissionEndpoint = window.MAGSNAP_FORM_API_ENDPOINT || "https://api.magsnap.me/forms";
     const founderSubmitTimeoutMs = 45000;
 
     const showFounderStatus = (message) => {
@@ -2343,7 +2343,7 @@
         });
         window.localStorage.setItem(founderStorageKey, JSON.stringify(current));
       } catch (error) {
-        // Local backup is best-effort only. The Google Sheet submission remains primary.
+        // Local backup is best-effort only. The Aliyun form API remains primary.
       }
     };
 
@@ -2352,26 +2352,31 @@
         throw new Error("Panda Masters submission backend is not configured.");
       }
 
-      const body = new URLSearchParams();
-      Object.entries(payload).forEach(([key, value]) => {
-        body.append(key, value == null ? "" : String(value));
-      });
-
       const controller = new AbortController();
       const timeoutId = window.setTimeout(() => {
         controller.abort();
       }, founderSubmitTimeoutMs);
 
       try {
-        await fetch(founderSubmissionEndpoint, {
+        const response = await fetch(founderSubmissionEndpoint, {
           method: "POST",
-          mode: "no-cors",
+          mode: "cors",
           cache: "no-store",
-          body,
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload),
           signal: controller.signal
         });
-        return { ok: true };
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok || data.ok === false) {
+          throw new Error(data.error || "Panda Masters submission failed.");
+        }
+        return data;
       } catch (error) {
+        if (error && error.message && !/network request failed|timed out/i.test(error.message)) {
+          throw error;
+        }
         const reason = error && error.name === "AbortError"
           ? "Panda Masters submission timed out."
           : "Panda Masters submission network request failed.";

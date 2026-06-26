@@ -249,16 +249,17 @@ Current render-critical external dependency status:
 - No YouTube embeds
 - No Google Analytics render dependency
 
-Known China-risk integration:
+China-ready form submission:
 
-- Google Apps Script form endpoints may be blocked from mainland China.
-- This does not block page rendering, but it can block submissions.
+- Public form submissions should use `https://api.magsnap.me/forms`.
+- The API should run on Aliyun Function Compute in China and write records to private OSS.
+- Panda Masters photos should be written to an OSS-backed public photo prefix and returned as an independent `photo_url`.
 
 Recommendation:
 
 - Use Aliyun OSS + CDN for static production immediately after testing.
-- Keep Google Apps Script only as a temporary form backend.
-- Migrate production form submissions to a China-reachable backend if China form conversion is business-critical.
+- Keep Google Apps Script only as an optional back-office export/sync target.
+- Do not put Google Apps Script on the China user submission path.
 
 ## Maintenance
 

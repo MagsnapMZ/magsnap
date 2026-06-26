@@ -14,7 +14,7 @@ Static package: `dist`
 - `.png`: 4.3 MB
 - `.jpg`: 4.2 MB
 - `.gif`: 4.2 MB
-- `.html`: 277.6 KB
+- `.html`: 278.9 KB
 - `.css`: 19.5 KB
 - `.json`: 17.4 KB
 - `.js`: 14.3 KB

@@ -6,7 +6,7 @@ Scanned root: `magsnap-deploy-v2`
 ## Summary
 
 - Blocking external render dependencies found: `0`
-- Non-render China-risk integrations found: `1`
+- Non-render China-risk integrations found: `2`
 - Google Fonts / gstatic / YouTube / Google Analytics should remain absent from render-critical markup.
 
 ## Blocking Render Dependencies
@@ -15,15 +15,17 @@ None found.
 
 ## China-Risk Integrations
 
+- `script.google.com` in: index.html, most-wanted/index.html, panda-masters/index.html
+  - Risk: Form submission endpoint may be unreachable from mainland China. Rendering is not blocked, but submissions can fail.
 - `www.instagram.com` in: index.html
   - Risk: Outbound social link may be unreachable from mainland China. It does not block page rendering.
 
 ## Recommendation
 
-- Keep magsnap.me as the global primary entry for printed QR cards.
+- Keep GitHub Pages as the overseas primary host for magsnap.me.
 - Use Aliyun OSS + CDN for cn.magsnap.me as a China optimized mirror after ICP approval.
+- Evaluate DNS-level regional routing for magsnap.me on a non-production test hostname before changing the printed QR domain.
 - Keep render-critical assets self-hosted in OSS/CDN.
-- Use a globally reachable API such as api.magsnap.me in Singapore or Hong Kong for production form submissions.
-- Use media.magsnap.me for public uploaded images so media URLs do not depend on the website hosting path.
-- Keep Google Apps Script only as an optional back-office export/sync target, never as the China user submission path.
+- Keep Google Apps Script as the current form backend unless real China submission failures are confirmed.
+- Treat form backend and media storage migration as a separate later project, not part of this mirror/routing PR.
 - Keep Instagram and other blocked social networks as outbound optional links only; do not load their SDKs or embeds.

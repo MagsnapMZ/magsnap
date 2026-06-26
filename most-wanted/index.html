@@ -683,7 +683,7 @@
   </footer>
 
   <script>
-    const MOST_WANTED_ENDPOINT = window.MAGSNAP_FORM_API_ENDPOINT || "https://api.magsnap.me/forms";
+    const MOST_WANTED_ENDPOINT = "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec";
     const form = document.getElementById("most-wanted-form");
     const statusNode = document.getElementById("challenge-status");
 
@@ -766,34 +766,62 @@
       return payload;
     };
 
-    const submitPayload = async (payload) => {
-      const controller = new AbortController();
-      const timeoutId = window.setTimeout(() => controller.abort(), 45000);
-      try {
-        const response = await fetch(MOST_WANTED_ENDPOINT, {
-          method: "POST",
-          mode: "cors",
-          cache: "no-store",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(payload),
-          signal: controller.signal
-        });
-        const data = await response.json().catch(() => ({}));
-        if (!response.ok || data.ok === false) {
-          throw new Error(data.error || "Submission failed.");
-        }
-        return data;
-      } catch (error) {
-        if (error && error.name === "AbortError") {
-          throw new Error("Submission timed out. Please check the network and retry.");
-        }
-        throw error;
-      } finally {
+    const submitPayload = (payload) => new Promise((resolve, reject) => {
+      const iframeName = `most-wanted-submit-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      const iframe = document.createElement("iframe");
+      const postForm = document.createElement("form");
+      let settled = false;
+
+      iframe.name = iframeName;
+      iframe.hidden = true;
+      iframe.style.display = "none";
+
+      postForm.method = "POST";
+      postForm.action = MOST_WANTED_ENDPOINT;
+      postForm.target = iframeName;
+      postForm.hidden = true;
+
+      Object.entries(payload).forEach(([key, value]) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = value == null ? "" : String(value);
+        postForm.appendChild(input);
+      });
+
+      const cleanup = () => {
         window.clearTimeout(timeoutId);
-      }
-    };
+        window.removeEventListener("message", handleMessage);
+        iframe.remove();
+        postForm.remove();
+      };
+
+      const finish = (callback, value) => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        callback(value);
+      };
+
+      const handleMessage = (event) => {
+        const data = event.data;
+        if (!data || data.source !== "magsnap-founder-survey") return;
+        if (data.ok) {
+          finish(resolve, data);
+          return;
+        }
+        finish(reject, new Error(data.error || "Submission failed."));
+      };
+
+      const timeoutId = window.setTimeout(() => {
+        finish(reject, new Error("Submission timed out. Please check the network and retry."));
+      }, 45000);
+
+      window.addEventListener("message", handleMessage);
+      document.body.appendChild(iframe);
+      document.body.appendChild(postForm);
+      postForm.submit();
+    });
 
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();

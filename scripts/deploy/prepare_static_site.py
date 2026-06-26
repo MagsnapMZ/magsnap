@@ -16,7 +16,6 @@ EXCLUDED_DIRS = {
     ".github",
     ".pytest_cache",
     "__pycache__",
-    "api",
     "backups",
     "deployment-artifacts",
     "dist",

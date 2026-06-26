@@ -2,35 +2,30 @@
 
 ## Goal
 
-Keep `https://magsnap.me` as the permanent global primary entry point because printed MagSnap QR cards already point there.
+Keep `https://magsnap.me` as the permanent QR-code entry while preserving GitHub Pages as the overseas primary site.
 
-Aliyun OSS + CDN is used for the China optimized mirror, not as the default replacement for the global main site.
+Aliyun OSS + CDN is used only for a China optimized mirror at `https://cn.magsnap.me`. This PR does not replace GitHub Pages, does not create a new form backend, and does not create Singapore OSS or Function Compute resources.
 
 Target domains:
 
 ```text
-magsnap.me        Global primary entry for printed QR cards
-www.magsnap.me    Global primary entry alias
-cn.magsnap.me     China optimized mirror / fallback
-api.magsnap.me    Global form API, Singapore first or Hong Kong fallback
-media.magsnap.me  Public media CDN for Panda Masters photos and other public uploads
+magsnap.me        Permanent QR-code entry and global main domain
+www.magsnap.me    Global main-domain alias
+cn.magsnap.me     China optimized mirror, not a user-entered replacement URL
 ```
 
 ## Architecture
 
 ```text
-Developer / Codex
-  -> Git commit
-  -> GitHub repository: MagsnapMZ/magsnap
-  -> Global static deployment keeps magsnap.me and www.magsnap.me as the main entry
-  -> Manual GitHub Actions workflow builds a static package
-  -> Aliyun OSS stores the China mirror files
+GitHub repository: MagsnapMZ/magsnap
+  -> GitHub Pages remains the overseas primary static host
+  -> GitHub Actions can build the same static files for the China mirror
+  -> Aliyun OSS stores mirror files only
   -> Aliyun CDN serves cn.magsnap.me only
-  -> api.magsnap.me receives global form submissions
-  -> media.magsnap.me serves public uploaded media
+  -> DNS or edge routing is evaluated separately for the single QR-code entry
 ```
 
-Do not require users to open `cn.magsnap.me`. It is a China optimization mirror only. The printed-card entry remains `magsnap.me`.
+The printed-card QR code already points to `magsnap.me`, so `cn.magsnap.me` must not become the required public entry. It is a mirror target for routing and fallback.
 
 ## Repository Files
 
@@ -48,13 +43,25 @@ Do not require users to open `cn.magsnap.me`. It is a China optimization mirror 
 - `scripts/deploy/rollback_aliyun.py`
   - Restores a prior `__releases/<git_sha>/` snapshot to the mirror root.
 - `scripts/deploy/refresh_cdn.py`
-  - Calls Aliyun CDN refresh.
+  - Calls Aliyun CDN refresh for the mirror CDN domain.
 - `scripts/deploy/verify_deployment.py`
-  - Verifies live routes after mirror deployment.
-- `api/aliyun-form-handler/`
-  - Global form API handler package for `api.magsnap.me/forms`.
-- `form_backend_aliyun.md`
-  - Form API, private OSS, and media CDN configuration.
+  - Verifies live mirror routes after deployment.
+- `deployment_qr_entry_routing_recommendation.md`
+  - Routing options for keeping `magsnap.me` as one QR-code entry while serving China and overseas users through different origins.
+
+## Out Of Scope For This PR
+
+Do not build these in PR #2:
+
+- Singapore OSS
+- Function Compute
+- `api.magsnap.me`
+- `media.magsnap.me`
+- New form backend
+- New private media storage
+- Business page design changes
+
+Current form submission and image handling should stay as-is unless real China or overseas submission failures are confirmed.
 
 ## GitHub Secrets For China Mirror
 
@@ -166,18 +173,38 @@ Do not use the Aliyun mirror workflow to move the printed-card entry domain.
 Desired DNS roles:
 
 ```text
-@      Global primary entry for printed QR cards
-www    Global primary entry alias
+@      QR-code entry; overseas should continue to use GitHub Pages unless routing tests prove otherwise
+www    GitHub Pages alias or same routing policy as apex
 cn     Aliyun China optimized mirror
-api    Global API in Singapore or Hong Kong
-media  Public media CDN
 ```
 
 `magsnap.me` must remain valid globally and in China because printed cards already depend on it.
 
+## Routing Evaluation
+
+The next decision is whether `magsnap.me` can safely use region-aware routing:
+
+```text
+China visitors    -> Aliyun OSS/CDN mirror
+Overseas visitors -> GitHub Pages
+```
+
+Evaluate this on a test hostname first, for example:
+
+```text
+qr-test.magsnap.me
+```
+
+Do not apply regional routing to `magsnap.me` until the test hostname is verified from:
+
+- Mainland China mobile network
+- WeChat in mainland China
+- Vietnam mobile network
+- US/EU desktop or mobile network
+
 ## Deployment
 
-The Aliyun workflow is manual-only.
+The Aliyun mirror workflow is manual-only.
 
 Manual China mirror deployment:
 
@@ -239,15 +266,13 @@ Post-deploy mirror checks:
 - Mobile user-agent fetch
 - Desktop user-agent fetch
 
-Form API checks:
+Routing checks before changing `magsnap.me`:
 
-- `https://api.magsnap.me/forms` health check returns `ok: true`.
-- CORS allows:
-  - `https://magsnap.me`
-  - `https://www.magsnap.me`
-  - `https://cn.magsnap.me`
-- Real phone Panda Masters submission returns a standalone `photo_url`.
-- Returned `photo_url` starts with `https://media.magsnap.me/`.
+- China resolver returns the China mirror target on the test hostname.
+- Overseas resolver returns the GitHub Pages target on the test hostname.
+- Both targets serve the same content version.
+- TLS is valid for both origins.
+- WeChat opens the QR entry without manual domain switching.
 
 ## China Compatibility
 
@@ -258,19 +283,18 @@ Current render-critical external dependency status:
 - No YouTube embeds
 - No Google Analytics render dependency
 
-Global form submission:
+Current known non-render risk:
 
-- Public form submissions should use `https://api.magsnap.me/forms`.
-- The API should run in Singapore first, or Hong Kong after real-world testing.
-- The API should write private records to a private OSS bucket in the same region.
-- Panda Masters photos should be written to a public media bucket and returned as an independent `photo_url` on `media.magsnap.me`.
+- Google Apps Script can be unreliable from mainland China for form submissions.
+- Keep it for now unless real submission failures are confirmed.
+- Treat form/backend migration as a separate later PR if needed.
 
 Recommendation:
 
-- Keep `magsnap.me` as the global primary entry.
+- Keep GitHub Pages as the overseas primary host.
 - Use Aliyun OSS + CDN for `cn.magsnap.me` as the China optimized mirror.
-- Keep Google Apps Script only as an optional back-office export/sync target.
-- Do not put Google Apps Script on the user submission path.
+- Evaluate DNS-level regional routing for `magsnap.me` on a test hostname before applying it to the printed QR domain.
+- Do not deploy new API or media storage in this PR.
 
 ## Maintenance
 
@@ -278,7 +302,7 @@ Recommendation:
 - Review Lighthouse artifacts after each mirror deployment.
 - Rotate Aliyun RAM credentials regularly.
 - Keep OSS release snapshots for a defined retention window.
-- Test `magsnap.me`, `cn.magsnap.me`, `api.magsnap.me`, and `media.magsnap.me` from China and overseas before production changes.
+- Test `magsnap.me`, `cn.magsnap.me`, and the routing test hostname from China and overseas before production changes.
 
 ## Troubleshooting
 
@@ -292,7 +316,7 @@ OSS upload fails:
 - Check `ALIYUN_OSS_ENDPOINT`.
 - Check bucket name.
 - Check RAM permissions.
-- Check whether `ossutil` can access the region.
+- Check whether the upload tool can access the region.
 
 CDN refresh fails:
 

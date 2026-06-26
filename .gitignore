@@ -1,6 +1,11 @@
 .DS_Store
 Thumbs.db
 *.log
+__pycache__/
+deployment_static_check.json
+deployment_live_check.json
+dist/
+deployment-artifacts/
 index_live_backup.html
 index_v2_preview.html
 preview-*.png

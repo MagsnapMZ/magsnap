@@ -1,19 +1,16 @@
 name: Deploy V2 to Aliyun OSS CDN
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       dry_run:
         description: "Validate workflow without uploading to OSS"
         required: false
-        default: "false"
+        default: "true"
         type: choice
         options:
-          - "false"
           - "true"
+          - "false"
       rollback_release:
         description: "Optional release SHA under __releases/ to restore"
         required: false

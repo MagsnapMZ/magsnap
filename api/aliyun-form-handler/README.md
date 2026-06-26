@@ -1,6 +1,6 @@
-# Aliyun Form Handler
+# Global Form Handler
 
-China-reachable form backend for MagSnap static pages.
+Globally reachable form backend for MagSnap static pages. The default target is Singapore so Vietnam, Southeast Asia, China, Europe, and US users can submit through the same public API without being forced to a mainland China region.
 
 ## Runtime
 
@@ -10,15 +10,17 @@ China-reachable form backend for MagSnap static pages.
 
 ## Environment Variables
 
-- `OSS_REGION`: `oss-cn-hangzhou`
-- `OSS_ENDPOINT`: optional, for example `oss-cn-hangzhou.aliyuncs.com`
-- `FORM_DATA_BUCKET`: private bucket for form JSON records, recommended `magsnap-form-data`
-- `PHOTO_BUCKET`: public/CDN-backed bucket for Panda Masters photos, currently `magsnap-web`
-- `PUBLIC_PHOTO_BASE_URL`: `https://magsnap.me`
-- `ALLOWED_ORIGINS`: `https://magsnap.me,https://www.magsnap.me`
+- `OSS_REGION`: `oss-ap-southeast-1`
+- `OSS_ENDPOINT`: optional, for example `oss-ap-southeast-1.aliyuncs.com`
+- `FORM_DATA_BUCKET`: private bucket for form JSON records, recommended `magsnap-form-data-sg`
+- `PHOTO_BUCKET`: public media bucket for Panda Masters photos, recommended `magsnap-public-media-sg`
+- `PUBLIC_PHOTO_BASE_URL`: `https://media.magsnap.me`
+- `ALLOWED_ORIGINS`: `https://magsnap.me,https://www.magsnap.me,https://cn.magsnap.me`
 - `REQUIRE_ALLOWED_ORIGIN`: `true`
 - `FORM_SHARED_SECRET`: optional shared secret; leave empty for public browser forms
 - `FORM_BACKEND_DRY_RUN`: `false` in production
+
+`FORM_DATA_BUCKET` and `PHOTO_BUCKET` must be configured explicitly. Do not use a shared website bucket for private form records.
 
 Use a Function Compute RAM role where possible. If role credentials are not used, configure `ALIYUN_ACCESS_KEY_ID` and `ALIYUN_ACCESS_KEY_SECRET` as function environment secrets, not frontend code.
 

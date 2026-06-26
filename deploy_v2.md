@@ -1,17 +1,20 @@
-# MagSnap Website Deploy V2
+# MagSnap Deploy V2
 
 ## Goal
 
-Move production traffic for `https://magsnap.me` from GitHub Pages to Aliyun OSS + CDN while keeping GitHub as the only source repository.
+Keep `https://magsnap.me` as the permanent global primary entry point because printed MagSnap QR cards already point there.
 
-Target result:
+Aliyun OSS + CDN is used for the China optimized mirror, not as the default replacement for the global main site.
 
-- China-ready production hosting
-- Automatic deployment from GitHub `main`
-- No manual upload
-- Aliyun OSS stores static files
-- Aliyun CDN serves production traffic
-- GitHub Pages may remain as preview, development, or backup only
+Target domains:
+
+```text
+magsnap.me        Global primary entry for printed QR cards
+www.magsnap.me    Global primary entry alias
+cn.magsnap.me     China optimized mirror / fallback
+api.magsnap.me    Global form API, Singapore first or Hong Kong fallback
+media.magsnap.me  Public media CDN for Panda Masters photos and other public uploads
+```
 
 ## Architecture
 
@@ -19,40 +22,41 @@ Target result:
 Developer / Codex
   -> Git commit
   -> GitHub repository: MagsnapMZ/magsnap
-  -> GitHub Actions
-  -> Prepare static package
-  -> Verify static package
-  -> Upload release snapshot to Aliyun OSS
-  -> Upload current production files to Aliyun OSS root
-  -> Refresh Aliyun CDN
-  -> Verify live deployment
-  -> Generate Lighthouse and compatibility reports
-  -> https://magsnap.me
+  -> Global static deployment keeps magsnap.me and www.magsnap.me as the main entry
+  -> Manual GitHub Actions workflow builds a static package
+  -> Aliyun OSS stores the China mirror files
+  -> Aliyun CDN serves cn.magsnap.me only
+  -> api.magsnap.me receives global form submissions
+  -> media.magsnap.me serves public uploaded media
 ```
+
+Do not require users to open `cn.magsnap.me`. It is a China optimization mirror only. The printed-card entry remains `magsnap.me`.
 
 ## Repository Files
 
 - `.github/workflows/deploy-aliyun.yml`
-  - Main deployment workflow.
+  - Manual China mirror deployment workflow.
+  - Defaults verification to `https://cn.magsnap.me`.
+  - Blocks non-dry-run deploys if `ALIYUN_CDN_DOMAIN` is `magsnap.me` or `www.magsnap.me`.
 - `scripts/deploy/prepare_static_site.py`
   - Builds `dist/` from static repo files.
 - `scripts/deploy/verify_static_site.py`
-  - Verifies required SEO files, metadata, internal links, and China render-blocking dependencies before upload.
+  - Verifies SEO files, metadata, internal links, and China render-blocking dependencies.
 - `scripts/deploy/deploy_to_aliyun.py`
   - Uploads files to OSS with cache metadata.
-  - Uploads both production root files and `__releases/<git_sha>/` snapshot.
+  - Uploads both current mirror files and `__releases/<git_sha>/` snapshots.
 - `scripts/deploy/rollback_aliyun.py`
-  - Restores a prior `__releases/<git_sha>/` snapshot to production root.
+  - Restores a prior `__releases/<git_sha>/` snapshot to the mirror root.
 - `scripts/deploy/refresh_cdn.py`
   - Calls Aliyun CDN refresh.
 - `scripts/deploy/verify_deployment.py`
-  - Verifies live routes and confirms production is not still served by GitHub Pages after DNS cutover.
-- `scripts/deploy/china_compatibility_report.py`
-  - Generates China compatibility report.
-- `scripts/deploy/performance_report.py`
-  - Generates static package performance report and summarizes Lighthouse output when available.
+  - Verifies live routes after mirror deployment.
+- `api/aliyun-form-handler/`
+  - Global form API handler package for `api.magsnap.me/forms`.
+- `form_backend_aliyun.md`
+  - Form API, private OSS, and media CDN configuration.
 
-## GitHub Secrets
+## GitHub Secrets For China Mirror
 
 Create these in GitHub:
 
@@ -67,18 +71,25 @@ Required:
 - `ALIYUN_OSS_ENDPOINT`
 - `ALIYUN_CDN_DOMAIN`
 
-Recommended values:
+Recommended China mirror values:
 
 ```text
-ALIYUN_REGION=cn-hongkong or the selected OSS/CDN region
-ALIYUN_OSS_ENDPOINT=oss-cn-hongkong.aliyuncs.com
+ALIYUN_REGION=cn-hangzhou
+ALIYUN_OSS_ENDPOINT=oss-cn-hangzhou.aliyuncs.com
+ALIYUN_CDN_DOMAIN=cn.magsnap.me
+```
+
+The mirror workflow must not use:
+
+```text
 ALIYUN_CDN_DOMAIN=magsnap.me
+ALIYUN_CDN_DOMAIN=www.magsnap.me
 ```
 
 Use a least-privilege RAM user. Required permissions:
 
-- OSS put/list/copy object for the target bucket
-- CDN `RefreshObjectCaches` for the CDN domain
+- OSS put/list/copy object for the China mirror static bucket
+- CDN `RefreshObjectCaches` for `cn.magsnap.me`
 
 ## GitHub Variables
 
@@ -89,21 +100,20 @@ Create these in:
 Optional:
 
 - `SITE_BASE_URL`
-  - Default: `https://magsnap.me`
+  - Default: `https://cn.magsnap.me`
 - `DEPLOY_VERIFY_BASE_URL`
   - Default: same as `SITE_BASE_URL`
   - During pre-cutover testing, set this to the Aliyun CDN temporary/test domain.
 - `DISALLOW_SERVER_CONTAINS`
   - Default: `GitHub.com`
-  - After production cutover, live verification fails if response headers still show GitHub Pages.
 - `LIGHTHOUSE_MIN_SCORE`
   - Default: `0.95`
 - `ALIYUN_OSS_PREFIX`
-  - Optional. Leave empty for production root.
+  - Optional. Leave empty for the mirror root.
 
-## Aliyun OSS Configuration
+## China Mirror OSS Configuration
 
-Create one OSS bucket for production static files.
+Create one OSS bucket for the `cn.magsnap.me` static mirror.
 
 Required settings:
 
@@ -111,7 +121,7 @@ Required settings:
 - Default homepage: `index.html`
 - Default 404 page: `404.html`
 - Public access should be controlled by CDN/origin access policy according to Aliyun best practice.
-- Keep bucket region aligned with CDN strategy.
+- Keep bucket region aligned with the China mirror CDN strategy.
 
 Upload behavior:
 
@@ -122,14 +132,18 @@ Upload behavior:
 - Images, video, SVG, icon, font-like assets:
   - `Cache-Control: public, max-age=2592000`
 
-## Aliyun CDN Configuration
+## China Mirror CDN Configuration
 
-Create CDN acceleration for `magsnap.me`.
+Create CDN acceleration for:
+
+```text
+cn.magsnap.me
+```
 
 Required CDN settings:
 
 - Origin: OSS bucket website endpoint or OSS origin configured through Aliyun CDN
-- HTTPS: enabled with valid certificate for `magsnap.me`
+- HTTPS: enabled with valid certificate for `cn.magsnap.me`
 - HTTP/2: enabled
 - Compression: gzip enabled
 - Brotli: enabled if available
@@ -145,42 +159,39 @@ Required CDN settings:
   - `/registry/`
   - `/founder/`
 
-## DNS Cutover
+## DNS Policy
 
-Current DNS is AliDNS / HiChina.
+Do not use the Aliyun mirror workflow to move the printed-card entry domain.
 
-Before cutover:
+Desired DNS roles:
 
-1. Verify Aliyun OSS bucket static website works.
-2. Verify Aliyun CDN test domain works.
-3. Verify HTTPS certificate is active.
-4. Run the GitHub Actions workflow manually with `dry_run=true`.
-5. Run the GitHub Actions workflow manually with `DEPLOY_VERIFY_BASE_URL` set to the Aliyun CDN test domain.
-6. Lower DNS TTL if possible.
+```text
+@      Global primary entry for printed QR cards
+www    Global primary entry alias
+cn     Aliyun China optimized mirror
+api    Global API in Singapore or Hong Kong
+media  Public media CDN
+```
 
-Cutover:
-
-1. Remove GitHub Pages A records from `magsnap.me`.
-2. Point `magsnap.me` to the Aliyun CDN target according to Aliyun DNS instructions.
-3. Point `www.magsnap.me` to the same CDN target or redirect it to apex.
-4. Confirm `https://magsnap.me/` no longer returns `server: GitHub.com`.
+`magsnap.me` must remain valid globally and in China because printed cards already depend on it.
 
 ## Deployment
 
-Automatic deployment:
+The Aliyun workflow is manual-only.
 
-- Every push to `main` runs `.github/workflows/deploy-aliyun.yml`.
-
-Manual deployment:
+Manual China mirror deployment:
 
 1. Open GitHub Actions.
-2. Select `Deploy V2 to Aliyun OSS CDN`.
+2. Select `Deploy China Mirror to Aliyun OSS CDN`.
 3. Run workflow.
-4. Use `dry_run=true` for validation only.
+4. Use `dry_run=true` first.
+5. Use `dry_run=false` only after confirming `ALIYUN_CDN_DOMAIN=cn.magsnap.me`.
+
+No push to `main` should automatically deploy or switch the global main site.
 
 ## Rollback
 
-Every normal deployment uploads a release snapshot:
+Every normal mirror deployment uploads a release snapshot:
 
 ```text
 oss://<bucket>/__releases/<git_sha>/
@@ -189,12 +200,12 @@ oss://<bucket>/__releases/<git_sha>/
 Rollback:
 
 1. Open GitHub Actions.
-2. Select `Deploy V2 to Aliyun OSS CDN`.
+2. Select `Deploy China Mirror to Aliyun OSS CDN`.
 3. Run workflow manually.
 4. Set `rollback_release` to the previous Git SHA.
 5. Leave `dry_run=false`.
 
-The rollback copies the snapshot from `__releases/<git_sha>/` back to production root and refreshes CDN.
+The rollback copies the snapshot from `__releases/<git_sha>/` back to the mirror root and refreshes `cn.magsnap.me`.
 
 ## Verification
 
@@ -214,31 +225,29 @@ Pre-deploy static checks:
 - Internal file references
 - China render-blocking external hosts
 
-Post-deploy live checks:
+Post-deploy mirror checks:
 
-- `/`
-- `/404.html`
-- `/robots.txt`
-- `/sitemap.xml`
-- `/site.webmanifest`
-- `/favicon.svg`
-- `/panda-masters/`
-- `/most-wanted/`
-- `/registry/`
-- `/assets/founder/founder.css`
-- `/assets/founder/founder.js`
-- `/assets/site/panda-logo.jpg`
+- `https://cn.magsnap.me/`
+- `https://cn.magsnap.me/404.html`
+- `https://cn.magsnap.me/robots.txt`
+- `https://cn.magsnap.me/sitemap.xml`
+- `https://cn.magsnap.me/site.webmanifest`
+- `https://cn.magsnap.me/favicon.svg`
+- `https://cn.magsnap.me/panda-masters/`
+- `https://cn.magsnap.me/most-wanted/`
+- `https://cn.magsnap.me/registry/`
 - Mobile user-agent fetch
 - Desktop user-agent fetch
-- Server header must not contain `GitHub.com` after production cutover
 
-Lighthouse:
+Form API checks:
 
-- Performance
-- Accessibility
-- Best Practices
-- SEO
-- Default minimum score: `95`
+- `https://api.magsnap.me/forms` health check returns `ok: true`.
+- CORS allows:
+  - `https://magsnap.me`
+  - `https://www.magsnap.me`
+  - `https://cn.magsnap.me`
+- Real phone Panda Masters submission returns a standalone `photo_url`.
+- Returned `photo_url` starts with `https://media.magsnap.me/`.
 
 ## China Compatibility
 
@@ -249,28 +258,27 @@ Current render-critical external dependency status:
 - No YouTube embeds
 - No Google Analytics render dependency
 
-China-ready form submission:
+Global form submission:
 
 - Public form submissions should use `https://api.magsnap.me/forms`.
-- The API should run on Aliyun Function Compute in China and write records to private OSS.
-- Panda Masters photos should be written to an OSS-backed public photo prefix and returned as an independent `photo_url`.
+- The API should run in Singapore first, or Hong Kong after real-world testing.
+- The API should write private records to a private OSS bucket in the same region.
+- Panda Masters photos should be written to a public media bucket and returned as an independent `photo_url` on `media.magsnap.me`.
 
 Recommendation:
 
-- Use Aliyun OSS + CDN for static production immediately after testing.
+- Keep `magsnap.me` as the global primary entry.
+- Use Aliyun OSS + CDN for `cn.magsnap.me` as the China optimized mirror.
 - Keep Google Apps Script only as an optional back-office export/sync target.
-- Do not put Google Apps Script on the China user submission path.
+- Do not put Google Apps Script on the user submission path.
 
 ## Maintenance
 
-After the first production cutover:
-
-- Keep GitHub Pages as backup only.
-- Do not point production DNS back to GitHub Pages unless rolling back hosting.
 - Review `china_compatibility_report.md` after major frontend or form changes.
-- Review Lighthouse artifacts after each deployment.
+- Review Lighthouse artifacts after each mirror deployment.
 - Rotate Aliyun RAM credentials regularly.
 - Keep OSS release snapshots for a defined retention window.
+- Test `magsnap.me`, `cn.magsnap.me`, `api.magsnap.me`, and `media.magsnap.me` from China and overseas before production changes.
 
 ## Troubleshooting
 
@@ -289,14 +297,9 @@ OSS upload fails:
 CDN refresh fails:
 
 - Check `ALIYUN_CDN_DOMAIN`.
+- Confirm it is `cn.magsnap.me`, not `magsnap.me`.
 - Check CDN permissions for the RAM user.
 - Confirm CDN domain exists and is enabled.
-
-Live verification still shows GitHub:
-
-- DNS has not cut over.
-- CDN domain is not mapped to `magsnap.me`.
-- `DISALLOW_SERVER_CONTAINS=GitHub.com` is working correctly.
 
 Directory pages return 404:
 

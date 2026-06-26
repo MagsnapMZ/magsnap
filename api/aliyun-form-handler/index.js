@@ -2,7 +2,7 @@
 
 const crypto = require("crypto");
 
-const DEFAULT_ALLOWED_ORIGINS = "https://magsnap.me,https://www.magsnap.me";
+const DEFAULT_ALLOWED_ORIGINS = "https://magsnap.me,https://www.magsnap.me,https://cn.magsnap.me";
 const DEFAULT_MAX_JSON_BYTES = 4 * 1024 * 1024;
 const DEFAULT_MAX_PHOTO_BYTES = 4 * 1024 * 1024;
 
@@ -186,7 +186,7 @@ const ossClient = (bucket, context) => {
   const accessKeyId = process.env.ALIYUN_ACCESS_KEY_ID || credentials.accessKeyId || credentials.accessKeyID;
   const accessKeySecret = process.env.ALIYUN_ACCESS_KEY_SECRET || credentials.accessKeySecret;
   const stsToken = process.env.ALIYUN_SECURITY_TOKEN || credentials.securityToken;
-  const region = process.env.OSS_REGION || "oss-cn-hangzhou";
+  const region = process.env.OSS_REGION || "oss-ap-southeast-1";
   const endpoint = cleanText(process.env.OSS_ENDPOINT);
   const config = { region, bucket, accessKeyId, accessKeySecret, stsToken };
   if (endpoint) config.endpoint = endpoint;
@@ -214,7 +214,7 @@ const storePhoto = async ({ payload, submissionId, dateParts, context }) => {
     return null;
   }
 
-  const photoBucket = cleanText(process.env.PHOTO_BUCKET || process.env.OSS_BUCKET);
+  const photoBucket = cleanText(process.env.PHOTO_BUCKET);
   if (!photoBucket) {
     throw Object.assign(new Error("PHOTO_BUCKET is not configured."), { statusCode: 500 });
   }
@@ -230,7 +230,7 @@ const storePhoto = async ({ payload, submissionId, dateParts, context }) => {
     context
   });
 
-  const publicBase = cleanText(process.env.PUBLIC_PHOTO_BASE_URL || process.env.PUBLIC_BASE_URL || "https://magsnap.me").replace(/\/+$/, "");
+  const publicBase = cleanText(process.env.PUBLIC_PHOTO_BASE_URL || process.env.PUBLIC_BASE_URL || "https://media.magsnap.me").replace(/\/+$/, "");
   const photoUrl = `${publicBase}/${key}`;
   payload.photo_url = photoUrl;
   payload.photo_link = photoUrl;
@@ -241,7 +241,7 @@ const storePhoto = async ({ payload, submissionId, dateParts, context }) => {
 };
 
 const storeSubmission = async ({ payload, submissionId, dateParts, origin, clientIp, context }) => {
-  const formDataBucket = cleanText(process.env.FORM_DATA_BUCKET || process.env.OSS_BUCKET);
+  const formDataBucket = cleanText(process.env.FORM_DATA_BUCKET);
   if (!formDataBucket) {
     throw Object.assign(new Error("FORM_DATA_BUCKET is not configured."), { statusCode: 500 });
   }

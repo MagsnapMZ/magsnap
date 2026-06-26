@@ -4,10 +4,10 @@ const assert = require("assert");
 const path = require("path");
 
 process.env.FORM_BACKEND_DRY_RUN = "true";
-process.env.FORM_DATA_BUCKET = "magsnap-form-data";
-process.env.PHOTO_BUCKET = "magsnap-web";
-process.env.PUBLIC_PHOTO_BASE_URL = "https://magsnap.me";
-process.env.ALLOWED_ORIGINS = "https://magsnap.me";
+process.env.FORM_DATA_BUCKET = "magsnap-form-data-sg";
+process.env.PHOTO_BUCKET = "magsnap-public-media-sg";
+process.env.PUBLIC_PHOTO_BASE_URL = "https://media.magsnap.me";
+process.env.ALLOWED_ORIGINS = "https://magsnap.me,https://www.magsnap.me,https://cn.magsnap.me";
 
 const { handler } = require(path.resolve(__dirname, "../../api/aliyun-form-handler/index.js"));
 
@@ -45,7 +45,7 @@ const call = async (body) => handler({
   const body = JSON.parse(result.body);
   assert.strictEqual(body.ok, true);
   assert.strictEqual(body.source_form, "panda_masters_checkin");
-  assert.match(body.photo_url, /^https:\/\/magsnap\.me\/panda-masters\/photos\/incoming\//);
+  assert.match(body.photo_url, /^https:\/\/media\.magsnap\.me\/panda-masters\/photos\/incoming\//);
 
   const missingSource = await call({ name: "No Source" });
   assert.strictEqual(missingSource.statusCode, 400);

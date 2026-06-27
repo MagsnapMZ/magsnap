@@ -150,6 +150,19 @@ jobs:
           }
           print(json.dumps(keep, indent=2, ensure_ascii=False))
           PY
+          echo "::group::full domain detail"
+          python3 - <<'PY'
+          import json
+          data = json.load(open("domain_detail.json"))
+          print(json.dumps(data, indent=2, ensure_ascii=False))
+          PY
+          echo "::endgroup::"
+          echo "::group::domain configs"
+          aliyun cdn DescribeCdnDomainConfigs \
+            --profile "$ALIYUN_CLI_PROFILE" \
+            --DomainName "$ALIYUN_CDN_DOMAIN" \
+            || true
+          echo "::endgroup::"
           set +e
           for url in \
             "http://cn.magsnap.me/" \

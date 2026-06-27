@@ -129,24 +129,59 @@ jobs:
             --access-key-id "$ALIYUN_ACCESS_KEY_ID" \
             --access-key-secret "$ALIYUN_ACCESS_KEY_SECRET"
 
+      - name: Diagnose Aliyun CDN
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == '__diagnose__'
+        shell: bash
+        run: |
+          aliyun cdn DescribeCdnDomainDetail \
+            --profile "$ALIYUN_CLI_PROFILE" \
+            --DomainName "$ALIYUN_CDN_DOMAIN" \
+            > domain_detail.json
+          python3 - <<'PY'
+          import json
+          data = json.load(open("domain_detail.json"))
+          detail = data.get("GetDomainDetailModel", data)
+          keep = {
+              "DomainName": detail.get("DomainName"),
+              "DomainStatus": detail.get("DomainStatus"),
+              "Cname": detail.get("Cname"),
+              "Scope": detail.get("Scope"),
+              "Sources": detail.get("Sources"),
+          }
+          print(json.dumps(keep, indent=2, ensure_ascii=False))
+          PY
+          set +e
+          for url in \
+            "http://cn.magsnap.me/" \
+            "http://cn.magsnap.me/index.html" \
+            "https://cn.magsnap.me/" \
+            "https://cn.magsnap.me/index.html" \
+            "http://magsnap-cn-mirror.oss-cn-hangzhou.aliyuncs.com/index.html"
+          do
+            echo "::group::curl $url"
+            curl -sS -v -I --max-time 25 "$url"
+            echo "exit=$?"
+            echo "::endgroup::"
+          done
+
       - name: Deploy to OSS
         if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == ''
         run: python3 scripts/deploy/deploy_to_aliyun.py --site-dir dist --release "$GITHUB_SHA"
 
       - name: Rollback OSS release
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != ''
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '' && env.ROLLBACK_RELEASE != '__diagnose__'
         run: python3 scripts/deploy/rollback_aliyun.py --release "$ROLLBACK_RELEASE"
 
       - name: Refresh Aliyun CDN
-        if: env.DRY_RUN != 'true'
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '__diagnose__'
         run: python3 scripts/deploy/refresh_cdn.py --domain "$ALIYUN_CDN_DOMAIN"
 
       - name: Wait for CDN propagation
-        if: env.DRY_RUN != 'true'
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '__diagnose__'
         run: sleep 60
 
       - name: Verify live deployment
-        if: env.DRY_RUN != 'true'
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '__diagnose__'
         run: |
           python3 scripts/deploy/verify_deployment.py \
             --base-url "$DEPLOY_VERIFY_BASE_URL" \
@@ -154,7 +189,7 @@ jobs:
             --json-output deployment_live_check.json
 
       - name: Run Lighthouse
-        if: env.DRY_RUN != 'true'
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '__diagnose__'
         shell: bash
         run: |
           mkdir -p deployment-artifacts
@@ -166,7 +201,7 @@ jobs:
             --output-path=deployment-artifacts/lighthouse-home
 
       - name: Generate Lighthouse performance report
-        if: env.DRY_RUN != 'true'
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '__diagnose__'
         run: |
           python3 scripts/deploy/performance_report.py \
             --site-dir dist \

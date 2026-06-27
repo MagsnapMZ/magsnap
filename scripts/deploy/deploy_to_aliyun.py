@@ -69,6 +69,7 @@ def upload_file(
         "-k",
         access_key_secret,
         f"--meta=Cache-Control:{cache_control(file_path)}",
+        "--meta=Content-Disposition:inline",
     ]
     if dry_run:
         print("DRY RUN:", " ".join(mask(command, access_key_id, access_key_secret)))

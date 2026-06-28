@@ -47,7 +47,7 @@ jobs:
       DISALLOW_SERVER_CONTAINS: ${{ vars.DISALLOW_SERVER_CONTAINS }}
       LIGHTHOUSE_MIN_SCORE: ${{ vars.LIGHTHOUSE_MIN_SCORE }}
       DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == 'true' && 'true' || 'false' }}
-      ROLLBACK_RELEASE: ${{ github.event_name == 'push' && '__repair_static_cdn__' || (github.event_name == 'workflow_dispatch' && inputs.rollback_release || '') }}
+      ROLLBACK_RELEASE: ${{ github.event_name == 'push' && '__repair_origin_domain__' || (github.event_name == 'workflow_dispatch' && inputs.rollback_release || '') }}
 
     steps:
       - name: Checkout
@@ -312,12 +312,66 @@ jobs:
             --DomainName "$ALIYUN_CDN_DOMAIN" \
             --ConfigId "$delete_ids"
 
+      - name: Repair CDN origin domain
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == '__repair_origin_domain__'
+        shell: bash
+        run: |
+          endpoint="${ALIYUN_OSS_ENDPOINT#http://}"
+          endpoint="${endpoint#https://}"
+          endpoint="${endpoint%/}"
+          origin_domain="${ALIYUN_OSS_BUCKET}.${endpoint}"
+          if [ "$ALIYUN_CDN_DOMAIN" != "cn.magsnap.me" ]; then
+            echo "Refusing to repair any CDN domain other than cn.magsnap.me."
+            exit 1
+          fi
+          if [ "$origin_domain" != "magsnap-cn-mirror.oss-cn-hangzhou.aliyuncs.com" ]; then
+            echo "Unexpected China mirror OSS origin: $origin_domain"
+            exit 1
+          fi
+          sources="$(
+            ORIGIN_DOMAIN="$origin_domain" python3 - <<'PY'
+          import json
+          import os
+
+          print(json.dumps([{
+              "content": os.environ["ORIGIN_DOMAIN"],
+              "type": "domain",
+              "priority": "20",
+              "port": 80,
+              "weight": "10",
+          }], separators=(",", ":")))
+          PY
+          )"
+          functions="$(
+            ORIGIN_DOMAIN="$origin_domain" python3 - <<'PY'
+          import json
+          import os
+
+          print(json.dumps([{
+              "functionName": "set_req_host_header",
+              "functionArgs": [{
+                  "argName": "domain_name",
+                  "argValue": os.environ["ORIGIN_DOMAIN"],
+              }],
+          }], separators=(",", ":")))
+          PY
+          )"
+          echo "Repairing CDN source to OSS origin domain: $origin_domain"
+          aliyun cdn ModifyCdnDomain \
+            --profile "$ALIYUN_CLI_PROFILE" \
+            --DomainName "$ALIYUN_CDN_DOMAIN" \
+            --Sources "$sources"
+          aliyun cdn BatchSetCdnDomainConfig \
+            --profile "$ALIYUN_CLI_PROFILE" \
+            --DomainNames "$ALIYUN_CDN_DOMAIN" \
+            --Functions "$functions"
+
       - name: Deploy to OSS
         if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == ''
         run: python3 scripts/deploy/deploy_to_aliyun.py --site-dir dist --release "$GITHUB_SHA"
 
       - name: Rollback OSS release
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '' && env.ROLLBACK_RELEASE != '__diagnose__' && env.ROLLBACK_RELEASE != '__disable_oss_auth__' && env.ROLLBACK_RELEASE != '__repair_static_cdn__'
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '' && env.ROLLBACK_RELEASE != '__diagnose__' && env.ROLLBACK_RELEASE != '__disable_oss_auth__' && env.ROLLBACK_RELEASE != '__repair_static_cdn__' && env.ROLLBACK_RELEASE != '__repair_origin_domain__'
         run: python3 scripts/deploy/rollback_aliyun.py --release "$ROLLBACK_RELEASE"
 
       - name: Refresh Aliyun CDN

@@ -15,11 +15,6 @@ on:
         description: "Optional release SHA under __releases/ to restore"
         required: false
         default: ""
-  push:
-    branches:
-      - china-form-backend
-    paths:
-      - ".github/workflows/deploy-aliyun.yml"
 
 permissions:
   contents: read
@@ -46,8 +41,8 @@ jobs:
       DEPLOY_VERIFY_BASE_URL: https://cn.magsnap.me
       DISALLOW_SERVER_CONTAINS: ${{ vars.DISALLOW_SERVER_CONTAINS }}
       LIGHTHOUSE_MIN_SCORE: ${{ vars.LIGHTHOUSE_MIN_SCORE }}
-      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == 'true' && 'true' || 'false' }}
-      ROLLBACK_RELEASE: ${{ github.event_name == 'push' && '__repair_origin_domain__' || (github.event_name == 'workflow_dispatch' && inputs.rollback_release || '') }}
+      DRY_RUN: ${{ inputs.dry_run == 'true' && 'true' || 'false' }}
+      ROLLBACK_RELEASE: ${{ inputs.rollback_release || '' }}
 
     steps:
       - name: Checkout
@@ -134,256 +129,24 @@ jobs:
             --access-key-id "$ALIYUN_ACCESS_KEY_ID" \
             --access-key-secret "$ALIYUN_ACCESS_KEY_SECRET"
 
-      - name: Diagnose Aliyun CDN
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == '__diagnose__'
-        shell: bash
-        run: |
-          aliyun cdn DescribeCdnDomainDetail \
-            --profile "$ALIYUN_CLI_PROFILE" \
-            --DomainName "$ALIYUN_CDN_DOMAIN" \
-            > domain_detail.json
-          python3 - <<'PY'
-          import json
-          data = json.load(open("domain_detail.json"))
-          detail = data.get("GetDomainDetailModel", data)
-          keep = {
-              "DomainName": detail.get("DomainName"),
-              "DomainStatus": detail.get("DomainStatus"),
-              "Cname": detail.get("Cname"),
-              "Scope": detail.get("Scope"),
-              "Sources": detail.get("Sources"),
-          }
-          print(json.dumps(keep, indent=2, ensure_ascii=False))
-          PY
-          echo "::group::full domain detail"
-          python3 - <<'PY'
-          import json
-          data = json.load(open("domain_detail.json"))
-          print(json.dumps(data, indent=2, ensure_ascii=False))
-          PY
-          echo "::endgroup::"
-          echo "::group::domain configs"
-          aliyun cdn DescribeCdnDomainConfigs \
-            --profile "$ALIYUN_CLI_PROFILE" \
-            --DomainName "$ALIYUN_CDN_DOMAIN" \
-            > domain_configs.json \
-            || true
-          cat domain_configs.json
-          echo "::endgroup::"
-          echo "::group::diagnostic summary"
-          python3 - <<'PY'
-          import json
-          import os
-
-          endpoint = os.environ["ALIYUN_OSS_ENDPOINT"].removeprefix("https://").removeprefix("http://").strip("/")
-          expected_origin = f"{os.environ['ALIYUN_OSS_BUCKET']}.{endpoint}"
-          cdn_domain = os.environ["ALIYUN_CDN_DOMAIN"]
-
-          detail = json.load(open("domain_detail.json")).get("GetDomainDetailModel", {})
-          source_models = detail.get("SourceModels", {}).get("SourceModel", [])
-          configs = json.load(open("domain_configs.json")).get("DomainConfigs", {}).get("DomainConfig", [])
-
-          summary = {
-              "expected_origin_config": {
-                  "bucket_matches_cn_mirror": os.environ["ALIYUN_OSS_BUCKET"] == "magsnap-cn-mirror",
-                  "endpoint_matches_cn_hangzhou": endpoint == "oss-cn-hangzhou.aliyuncs.com",
-              },
-              "sources": [],
-              "functions": [],
-          }
-
-          for source in source_models:
-              content = source.get("Content", "")
-              summary["sources"].append({
-                  "type": source.get("Type"),
-                  "enabled": source.get("Enabled"),
-                  "port": source.get("Port"),
-                  "priority": source.get("Priority"),
-                  "weight": source.get("Weight"),
-                  "content_matches_expected_origin": content == expected_origin,
-                  "content_matches_cdn_domain": content == cdn_domain,
-              })
-
-          for config in configs:
-              function_name = config.get("FunctionName")
-              args = {
-                  item.get("ArgName"): item.get("ArgValue")
-                  for item in config.get("FunctionArgs", {}).get("FunctionArg", [])
-              }
-              item = {
-                  "function_name": function_name,
-                  "config_id": config.get("ConfigId"),
-                  "status": config.get("Status"),
-              }
-              if function_name == "set_req_host_header":
-                  host = args.get("domain_name")
-                  item.update({
-                      "host_matches_expected_origin": host == expected_origin,
-                      "host_matches_cdn_domain": host == cdn_domain,
-                  })
-              if function_name == "oss_auth":
-                  item["oss_auth_enabled"] = True
-              summary["functions"].append(item)
-
-          print(json.dumps(summary, indent=2, ensure_ascii=False))
-          PY
-          echo "::endgroup::"
-          set +e
-          for url in \
-            "http://cn.magsnap.me/" \
-            "http://cn.magsnap.me/index.html" \
-            "https://cn.magsnap.me/" \
-            "https://cn.magsnap.me/index.html" \
-            "http://magsnap-cn-mirror.oss-cn-hangzhou.aliyuncs.com/index.html"
-          do
-            echo "::group::curl $url"
-            curl -sS -v -I --max-time 25 "$url"
-            echo "exit=$?"
-            echo "::endgroup::"
-          done
-
-      - name: Disable private OSS origin auth
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == '__disable_oss_auth__'
-        shell: bash
-        run: |
-          aliyun cdn DescribeCdnDomainConfigs \
-            --profile "$ALIYUN_CLI_PROFILE" \
-            --DomainName "$ALIYUN_CDN_DOMAIN" \
-            > domain_configs.json
-          delete_ids="$(python3 - <<'PY'
-          import json
-
-          configs = json.load(open("domain_configs.json")).get("DomainConfigs", {}).get("DomainConfig", [])
-          ids = [
-              str(config["ConfigId"])
-              for config in configs
-              if config.get("FunctionName") == "oss_auth" and config.get("ConfigId")
-          ]
-          print(",".join(ids))
-          PY
-          )"
-          if [ -z "$delete_ids" ]; then
-            echo "No oss_auth config found."
-            exit 0
-          fi
-          echo "Deleting oss_auth config ids: $delete_ids"
-          aliyun cdn DeleteSpecificConfig \
-            --profile "$ALIYUN_CLI_PROFILE" \
-            --DomainName "$ALIYUN_CDN_DOMAIN" \
-            --ConfigId "$delete_ids"
-
-      - name: Repair static CDN edge config
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == '__repair_static_cdn__'
-        shell: bash
-        run: |
-          aliyun cdn DescribeCdnDomainConfigs \
-            --profile "$ALIYUN_CLI_PROFILE" \
-            --DomainName "$ALIYUN_CDN_DOMAIN" \
-            > domain_configs.json
-          delete_ids="$(python3 - <<'PY'
-          import json
-
-          static_mirror_blockers = {
-              "p2pqos",
-              "cc_defense",
-              "consistent_hash",
-          }
-          configs = json.load(open("domain_configs.json")).get("DomainConfigs", {}).get("DomainConfig", [])
-          selected = [
-              (config.get("FunctionName"), str(config["ConfigId"]))
-              for config in configs
-              if config.get("FunctionName") in static_mirror_blockers and config.get("ConfigId")
-          ]
-          if selected:
-              print(",".join(config_id for _, config_id in selected))
-              print(
-                  "Selected CDN configs for deletion: "
-                  + ", ".join(f"{name}:{config_id}" for name, config_id in selected),
-                  file=__import__("sys").stderr,
-              )
-          PY
-          )"
-          if [ -z "$delete_ids" ]; then
-            echo "No static CDN blocker configs found."
-            exit 0
-          fi
-          aliyun cdn DeleteSpecificConfig \
-            --profile "$ALIYUN_CLI_PROFILE" \
-            --DomainName "$ALIYUN_CDN_DOMAIN" \
-            --ConfigId "$delete_ids"
-
-      - name: Repair CDN origin domain
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == '__repair_origin_domain__'
-        shell: bash
-        run: |
-          endpoint="${ALIYUN_OSS_ENDPOINT#http://}"
-          endpoint="${endpoint#https://}"
-          endpoint="${endpoint%/}"
-          origin_domain="${ALIYUN_OSS_BUCKET}.${endpoint}"
-          if [ "$ALIYUN_CDN_DOMAIN" != "cn.magsnap.me" ]; then
-            echo "Refusing to repair any CDN domain other than cn.magsnap.me."
-            exit 1
-          fi
-          if [ "$origin_domain" != "magsnap-cn-mirror.oss-cn-hangzhou.aliyuncs.com" ]; then
-            echo "Unexpected China mirror OSS origin: $origin_domain"
-            exit 1
-          fi
-          sources="$(
-            ORIGIN_DOMAIN="$origin_domain" python3 - <<'PY'
-          import json
-          import os
-
-          print(json.dumps([{
-              "content": os.environ["ORIGIN_DOMAIN"],
-              "type": "domain",
-              "priority": "20",
-              "port": 80,
-              "weight": "10",
-          }], separators=(",", ":")))
-          PY
-          )"
-          functions="$(
-            ORIGIN_DOMAIN="$origin_domain" python3 - <<'PY'
-          import json
-          import os
-
-          print(json.dumps([{
-              "functionName": "set_req_host_header",
-              "functionArgs": [{
-                  "argName": "domain_name",
-                  "argValue": os.environ["ORIGIN_DOMAIN"],
-              }],
-          }], separators=(",", ":")))
-          PY
-          )"
-          echo "Repairing CDN source to OSS origin domain: $origin_domain"
-          aliyun cdn ModifyCdnDomain \
-            --profile "$ALIYUN_CLI_PROFILE" \
-            --DomainName "$ALIYUN_CDN_DOMAIN" \
-            --Sources "$sources"
-          aliyun cdn BatchSetCdnDomainConfig \
-            --profile "$ALIYUN_CLI_PROFILE" \
-            --DomainNames "$ALIYUN_CDN_DOMAIN" \
-            --Functions "$functions"
-
       - name: Deploy to OSS
         if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == ''
         run: python3 scripts/deploy/deploy_to_aliyun.py --site-dir dist --release "$GITHUB_SHA"
 
       - name: Rollback OSS release
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '' && env.ROLLBACK_RELEASE != '__diagnose__' && env.ROLLBACK_RELEASE != '__disable_oss_auth__' && env.ROLLBACK_RELEASE != '__repair_static_cdn__' && env.ROLLBACK_RELEASE != '__repair_origin_domain__'
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != ''
         run: python3 scripts/deploy/rollback_aliyun.py --release "$ROLLBACK_RELEASE"
 
       - name: Refresh Aliyun CDN
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '__diagnose__'
+        if: env.DRY_RUN != 'true'
         run: python3 scripts/deploy/refresh_cdn.py --domain "$ALIYUN_CDN_DOMAIN"
 
       - name: Wait for CDN propagation
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '__diagnose__'
+        if: env.DRY_RUN != 'true'
         run: sleep 60
 
       - name: Verify live deployment
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '__diagnose__'
+        if: env.DRY_RUN != 'true'
         run: |
           python3 scripts/deploy/verify_deployment.py \
             --base-url "$DEPLOY_VERIFY_BASE_URL" \
@@ -391,7 +154,7 @@ jobs:
             --json-output deployment_live_check.json
 
       - name: Run Lighthouse
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '__diagnose__'
+        if: env.DRY_RUN != 'true'
         shell: bash
         run: |
           mkdir -p deployment-artifacts
@@ -403,7 +166,7 @@ jobs:
             --output-path=deployment-artifacts/lighthouse-home
 
       - name: Generate Lighthouse performance report
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '__diagnose__'
+        if: env.DRY_RUN != 'true'
         run: |
           python3 scripts/deploy/performance_report.py \
             --site-dir dist \

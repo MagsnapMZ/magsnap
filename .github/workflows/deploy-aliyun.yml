@@ -1,4 +1,4 @@
-name: Deploy V2 to Aliyun OSS CDN
+name: Deploy China Mirror to Aliyun OSS CDN
 
 on:
   workflow_dispatch:
@@ -20,7 +20,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: aliyun-production
+  group: aliyun-china-mirror
   cancel-in-progress: false
 
 jobs:
@@ -36,13 +36,13 @@ jobs:
       ALIYUN_OSS_ENDPOINT: ${{ secrets.ALIYUN_OSS_ENDPOINT }}
       ALIYUN_CDN_DOMAIN: ${{ secrets.ALIYUN_CDN_DOMAIN }}
       ALIYUN_OSS_PREFIX: ${{ vars.ALIYUN_OSS_PREFIX }}
-      ALIYUN_CLI_PROFILE: magsnap-prod
-      SITE_BASE_URL: ${{ vars.SITE_BASE_URL }}
-      DEPLOY_VERIFY_BASE_URL: ${{ vars.DEPLOY_VERIFY_BASE_URL }}
+      ALIYUN_CLI_PROFILE: magsnap-cn-mirror
+      SITE_BASE_URL: https://cn.magsnap.me
+      DEPLOY_VERIFY_BASE_URL: https://cn.magsnap.me
       DISALLOW_SERVER_CONTAINS: ${{ vars.DISALLOW_SERVER_CONTAINS }}
       LIGHTHOUSE_MIN_SCORE: ${{ vars.LIGHTHOUSE_MIN_SCORE }}
-      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == 'true' && 'true' || 'false' }}
-      ROLLBACK_RELEASE: ${{ github.event_name == 'workflow_dispatch' && inputs.rollback_release || '' }}
+      DRY_RUN: ${{ inputs.dry_run == 'true' && 'true' || 'false' }}
+      ROLLBACK_RELEASE: ${{ inputs.rollback_release || '' }}
 
     steps:
       - name: Checkout
@@ -51,8 +51,8 @@ jobs:
       - name: Set defaults
         shell: bash
         run: |
-          echo "SITE_BASE_URL=${SITE_BASE_URL:-https://magsnap.me}" >> "$GITHUB_ENV"
-          echo "DEPLOY_VERIFY_BASE_URL=${DEPLOY_VERIFY_BASE_URL:-${SITE_BASE_URL:-https://magsnap.me}}" >> "$GITHUB_ENV"
+          echo "SITE_BASE_URL=https://cn.magsnap.me" >> "$GITHUB_ENV"
+          echo "DEPLOY_VERIFY_BASE_URL=https://cn.magsnap.me" >> "$GITHUB_ENV"
           echo "DISALLOW_SERVER_CONTAINS=${DISALLOW_SERVER_CONTAINS:-GitHub.com}" >> "$GITHUB_ENV"
           echo "LIGHTHOUSE_MIN_SCORE=${LIGHTHOUSE_MIN_SCORE:-0.95}" >> "$GITHUB_ENV"
 
@@ -93,6 +93,14 @@ jobs:
           : "${ALIYUN_OSS_BUCKET:?Missing GitHub Secret ALIYUN_OSS_BUCKET}"
           : "${ALIYUN_OSS_ENDPOINT:?Missing GitHub Secret ALIYUN_OSS_ENDPOINT}"
           : "${ALIYUN_CDN_DOMAIN:?Missing GitHub Secret ALIYUN_CDN_DOMAIN}"
+          if [ "$ALIYUN_OSS_BUCKET" != "magsnap-cn-mirror" ]; then
+            echo "ALIYUN_OSS_BUCKET must be magsnap-cn-mirror for the China mirror workflow."
+            exit 1
+          fi
+          if [ "$ALIYUN_CDN_DOMAIN" != "cn.magsnap.me" ]; then
+            echo "ALIYUN_CDN_DOMAIN must be cn.magsnap.me. Do not deploy the Aliyun mirror workflow to magsnap.me or www.magsnap.me."
+            exit 1
+          fi
 
       - name: Install Alibaba Cloud CLI
         if: env.DRY_RUN != 'true'

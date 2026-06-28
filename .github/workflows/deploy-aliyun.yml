@@ -161,7 +161,67 @@ jobs:
           aliyun cdn DescribeCdnDomainConfigs \
             --profile "$ALIYUN_CLI_PROFILE" \
             --DomainName "$ALIYUN_CDN_DOMAIN" \
+            > domain_configs.json \
             || true
+          cat domain_configs.json
+          echo "::endgroup::"
+          echo "::group::diagnostic summary"
+          python3 - <<'PY'
+          import json
+          import os
+
+          endpoint = os.environ["ALIYUN_OSS_ENDPOINT"].removeprefix("https://").removeprefix("http://").strip("/")
+          expected_origin = f"{os.environ['ALIYUN_OSS_BUCKET']}.{endpoint}"
+          cdn_domain = os.environ["ALIYUN_CDN_DOMAIN"]
+
+          detail = json.load(open("domain_detail.json")).get("GetDomainDetailModel", {})
+          source_models = detail.get("SourceModels", {}).get("SourceModel", [])
+          configs = json.load(open("domain_configs.json")).get("DomainConfigs", {}).get("DomainConfig", [])
+
+          summary = {
+              "expected_origin_config": {
+                  "bucket_matches_cn_mirror": os.environ["ALIYUN_OSS_BUCKET"] == "magsnap-cn-mirror",
+                  "endpoint_matches_cn_hangzhou": endpoint == "oss-cn-hangzhou.aliyuncs.com",
+              },
+              "sources": [],
+              "functions": [],
+          }
+
+          for source in source_models:
+              content = source.get("Content", "")
+              summary["sources"].append({
+                  "type": source.get("Type"),
+                  "enabled": source.get("Enabled"),
+                  "port": source.get("Port"),
+                  "priority": source.get("Priority"),
+                  "weight": source.get("Weight"),
+                  "content_matches_expected_origin": content == expected_origin,
+                  "content_matches_cdn_domain": content == cdn_domain,
+              })
+
+          for config in configs:
+              function_name = config.get("FunctionName")
+              args = {
+                  item.get("ArgName"): item.get("ArgValue")
+                  for item in config.get("FunctionArgs", {}).get("FunctionArg", [])
+              }
+              item = {
+                  "function_name": function_name,
+                  "config_id": config.get("ConfigId"),
+                  "status": config.get("Status"),
+              }
+              if function_name == "set_req_host_header":
+                  host = args.get("domain_name")
+                  item.update({
+                      "host_matches_expected_origin": host == expected_origin,
+                      "host_matches_cdn_domain": host == cdn_domain,
+                  })
+              if function_name == "oss_auth":
+                  item["oss_auth_enabled"] = True
+              summary["functions"].append(item)
+
+          print(json.dumps(summary, indent=2, ensure_ascii=False))
+          PY
           echo "::endgroup::"
           set +e
           for url in \

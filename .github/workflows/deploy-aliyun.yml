@@ -237,12 +237,42 @@ jobs:
             echo "::endgroup::"
           done
 
+      - name: Disable private OSS origin auth
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == '__disable_oss_auth__'
+        shell: bash
+        run: |
+          aliyun cdn DescribeCdnDomainConfigs \
+            --profile "$ALIYUN_CLI_PROFILE" \
+            --DomainName "$ALIYUN_CDN_DOMAIN" \
+            > domain_configs.json
+          delete_ids="$(python3 - <<'PY'
+          import json
+
+          configs = json.load(open("domain_configs.json")).get("DomainConfigs", {}).get("DomainConfig", [])
+          ids = [
+              str(config["ConfigId"])
+              for config in configs
+              if config.get("FunctionName") == "oss_auth" and config.get("ConfigId")
+          ]
+          print(",".join(ids))
+          PY
+          )"
+          if [ -z "$delete_ids" ]; then
+            echo "No oss_auth config found."
+            exit 0
+          fi
+          echo "Deleting oss_auth config ids: $delete_ids"
+          aliyun cdn DeleteSpecificConfig \
+            --profile "$ALIYUN_CLI_PROFILE" \
+            --DomainName "$ALIYUN_CDN_DOMAIN" \
+            --ConfigId "$delete_ids"
+
       - name: Deploy to OSS
         if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == ''
         run: python3 scripts/deploy/deploy_to_aliyun.py --site-dir dist --release "$GITHUB_SHA"
 
       - name: Rollback OSS release
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '' && env.ROLLBACK_RELEASE != '__diagnose__'
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '' && env.ROLLBACK_RELEASE != '__diagnose__' && env.ROLLBACK_RELEASE != '__disable_oss_auth__'
         run: python3 scripts/deploy/rollback_aliyun.py --release "$ROLLBACK_RELEASE"
 
       - name: Refresh Aliyun CDN

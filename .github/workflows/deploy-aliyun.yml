@@ -15,6 +15,11 @@ on:
         description: "Optional release SHA under __releases/ to restore"
         required: false
         default: ""
+  push:
+    branches:
+      - china-form-backend
+    paths:
+      - ".github/workflows/deploy-aliyun.yml"
 
 permissions:
   contents: read
@@ -42,7 +47,7 @@ jobs:
       DISALLOW_SERVER_CONTAINS: ${{ vars.DISALLOW_SERVER_CONTAINS }}
       LIGHTHOUSE_MIN_SCORE: ${{ vars.LIGHTHOUSE_MIN_SCORE }}
       DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == 'true' && 'true' || 'false' }}
-      ROLLBACK_RELEASE: ${{ github.event_name == 'workflow_dispatch' && inputs.rollback_release || '' }}
+      ROLLBACK_RELEASE: ${{ github.event_name == 'push' && '__repair_static_cdn__' || (github.event_name == 'workflow_dispatch' && inputs.rollback_release || '') }}
 
     steps:
       - name: Checkout
@@ -267,12 +272,52 @@ jobs:
             --DomainName "$ALIYUN_CDN_DOMAIN" \
             --ConfigId "$delete_ids"
 
+      - name: Repair static CDN edge config
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == '__repair_static_cdn__'
+        shell: bash
+        run: |
+          aliyun cdn DescribeCdnDomainConfigs \
+            --profile "$ALIYUN_CLI_PROFILE" \
+            --DomainName "$ALIYUN_CDN_DOMAIN" \
+            > domain_configs.json
+          delete_ids="$(python3 - <<'PY'
+          import json
+
+          static_mirror_blockers = {
+              "p2pqos",
+              "cc_defense",
+              "consistent_hash",
+          }
+          configs = json.load(open("domain_configs.json")).get("DomainConfigs", {}).get("DomainConfig", [])
+          selected = [
+              (config.get("FunctionName"), str(config["ConfigId"]))
+              for config in configs
+              if config.get("FunctionName") in static_mirror_blockers and config.get("ConfigId")
+          ]
+          if selected:
+              print(",".join(config_id for _, config_id in selected))
+              print(
+                  "Selected CDN configs for deletion: "
+                  + ", ".join(f"{name}:{config_id}" for name, config_id in selected),
+                  file=__import__("sys").stderr,
+              )
+          PY
+          )"
+          if [ -z "$delete_ids" ]; then
+            echo "No static CDN blocker configs found."
+            exit 0
+          fi
+          aliyun cdn DeleteSpecificConfig \
+            --profile "$ALIYUN_CLI_PROFILE" \
+            --DomainName "$ALIYUN_CDN_DOMAIN" \
+            --ConfigId "$delete_ids"
+
       - name: Deploy to OSS
         if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == ''
         run: python3 scripts/deploy/deploy_to_aliyun.py --site-dir dist --release "$GITHUB_SHA"
 
       - name: Rollback OSS release
-        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '' && env.ROLLBACK_RELEASE != '__diagnose__' && env.ROLLBACK_RELEASE != '__disable_oss_auth__'
+        if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE != '' && env.ROLLBACK_RELEASE != '__diagnose__' && env.ROLLBACK_RELEASE != '__disable_oss_auth__' && env.ROLLBACK_RELEASE != '__repair_static_cdn__'
         run: python3 scripts/deploy/rollback_aliyun.py --release "$ROLLBACK_RELEASE"
 
       - name: Refresh Aliyun CDN

@@ -2855,6 +2855,8 @@
       const iframe = document.createElement("iframe");
       const postForm = document.createElement("form");
       let settled = false;
+      let submitted = false;
+      let submittedAt = 0;
 
       iframe.name = iframeName;
       iframe.hidden = true;
@@ -2897,14 +2899,25 @@
         finish(reject, new Error(data.error || getLanguageCopy("submitFailed")));
       };
 
+      const handleLoad = () => {
+        if (!submitted || settled) return;
+        if (Date.now() - submittedAt < 500) return;
+        finish(resolve, { ok: true, source: "magsnap-iframe-load" });
+      };
+
       const timeoutId = window.setTimeout(() => {
         finish(reject, new Error(getLanguageCopy("submitTimeout")));
       }, 45000);
 
       window.addEventListener("message", handleMessage);
+      iframe.addEventListener("load", handleLoad);
       document.body.appendChild(iframe);
       document.body.appendChild(postForm);
-      postForm.submit();
+      window.setTimeout(() => {
+        submitted = true;
+        submittedAt = Date.now();
+        postForm.submit();
+      }, 0);
     });
 
     const renderRegistry = () => {

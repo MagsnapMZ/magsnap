@@ -1069,17 +1069,16 @@
             <input id="pm-club" type="text" name="club" required>
           </div>
           <div class="field">
-            <label for="pm-role" data-i18n-html="roleLabel">角色 / Role</label>
+            <label for="pm-role" data-i18n-html="roleLabel">你更接近哪一种身份？ / Which best describes you?</label>
             <select id="pm-role" name="role" required>
-              <option value="">选择角色 / Select role</option>
-              <option value="Club Owner">Club Owner / 俱乐部老板</option>
-              <option value="Head Coach">Head Coach / 主教练</option>
-              <option value="Coach">Coach / 教练</option>
-              <option value="Core Member">Core Member / 核心成员</option>
-              <option value="Athlete">Athlete / 运动员</option>
-              <option value="Creator">Creator / 创作者</option>
-              <option value="Long-term Local Member">Long-term Local Member / 长期本地成员</option>
-              <option value="Community Contributor">Community Contributor / 社群贡献者</option>
+              <option value="">选择最接近的一项 / Select the closest one</option>
+              <option value="Club Owner">Club Owner / 俱乐部或店主</option>
+              <option value="Coach / Instructor">Coach / Instructor / 教练</option>
+              <option value="Rider / Athlete">Rider / Athlete / 玩家或运动员</option>
+              <option value="Content Creator">Content Creator / 内容创作者</option>
+              <option value="Community Member">Community Member / 社群成员</option>
+              <option value="Product / Factory / Supplier">Product / Factory / Supplier / 产品、工厂或供应链</option>
+              <option value="Other">Other / 其他</option>
             </select>
           </div>
           <div class="field">
@@ -1218,6 +1217,9 @@
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Facebook">Facebook</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Xiaohongshu">Xiaohongshu / 小红书</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Douyin">Douyin / 抖音</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Bilibili">Bilibili / B站</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="WeChat Channels">WeChat Channels / 视频号</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Kuaishou">Kuaishou / 快手</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Other">Other / 其他</label>
             </div>
           </div>
@@ -1719,7 +1721,7 @@
         countryLabel: "Country",
         cityLabel: "City",
         clubLabel: "Club",
-        roleLabel: "Role",
+        roleLabel: "Which best describes you?",
         emailLabel: "Email",
         sportsLabel: "Sport / Industry",
         equipmentLabel: "Equipment / POV Devices",
@@ -1783,7 +1785,7 @@
         countryLabel: "国家",
         cityLabel: "城市",
         clubLabel: "俱乐部",
-        roleLabel: "角色",
+        roleLabel: "你更接近哪一种身份？",
         emailLabel: "邮箱",
         sportsLabel: "运动 / 行业",
         equipmentLabel: "设备 / POV 设备",
@@ -1847,7 +1849,7 @@
         countryLabel: "Quốc gia",
         cityLabel: "Thành phố",
         clubLabel: "Câu lạc bộ",
-        roleLabel: "Vai trò",
+        roleLabel: "Bạn giống nhóm nào nhất?",
         emailLabel: "Email",
         sportsLabel: "Môn chơi / Ngành",
         equipmentLabel: "Thiết bị / Thiết bị POV",
@@ -1911,7 +1913,7 @@
         countryLabel: "Страна",
         cityLabel: "Город",
         clubLabel: "Клуб",
-        roleLabel: "Роль",
+        roleLabel: "Что лучше описывает вас?",
         emailLabel: "Email",
         sportsLabel: "Спорт / Сфера",
         equipmentLabel: "Оборудование / POV-устройства",
@@ -1965,25 +1967,25 @@
 
     const selectI18n = {
       en: {
-        "#pm-role": { "": "Select role", "Club Owner": "Club Owner", "Head Coach": "Head Coach", Coach: "Coach", "Core Member": "Core Member", Athlete: "Athlete", Creator: "Creator", "Long-term Local Member": "Long-term Local Member", "Community Contributor": "Community Contributor" },
+        "#pm-role": { "": "Select the closest one", "Club Owner": "Club Owner / Shop Owner", "Coach / Instructor": "Coach / Instructor", "Rider / Athlete": "Rider / Athlete", "Content Creator": "Content Creator", "Community Member": "Community Member", "Product / Factory / Supplier": "Product / Factory / Supplier", Other: "Other" },
         "#pm-handoff-status": { "Received Glasses": "Received Glasses", "Pending Handoff": "Pending Handoff" },
         "#pm-myopia-degree": { "": "Select", "Not sure": "Not sure" },
         "#pm-follower-range": { "": "Select" }
       },
       zh: {
-        "#pm-role": { "": "选择角色", "Club Owner": "俱乐部老板", "Head Coach": "主教练", Coach: "教练", "Core Member": "核心成员", Athlete: "运动员", Creator: "创作者", "Long-term Local Member": "长期本地成员", "Community Contributor": "社群贡献者" },
+        "#pm-role": { "": "选择最接近的一项", "Club Owner": "俱乐部或店主", "Coach / Instructor": "教练", "Rider / Athlete": "玩家或运动员", "Content Creator": "内容创作者", "Community Member": "社群成员", "Product / Factory / Supplier": "产品、工厂或供应链", Other: "其他" },
         "#pm-handoff-status": { "Received Glasses": "已领取眼镜", "Pending Handoff": "待交付" },
         "#pm-myopia-degree": { "": "选择", "Not sure": "不确定" },
         "#pm-follower-range": { "": "选择" }
       },
       vi: {
-        "#pm-role": { "": "Chọn vai trò", "Club Owner": "Chủ câu lạc bộ", "Head Coach": "Huấn luyện viên trưởng", Coach: "Huấn luyện viên", "Core Member": "Thành viên nòng cốt", Athlete: "Vận động viên", Creator: "Nhà sáng tạo", "Long-term Local Member": "Thành viên địa phương lâu năm", "Community Contributor": "Người đóng góp cộng đồng" },
+        "#pm-role": { "": "Chọn mục gần nhất", "Club Owner": "Chủ câu lạc bộ / cửa hàng", "Coach / Instructor": "Huấn luyện viên / người hướng dẫn", "Rider / Athlete": "Người chơi / vận động viên", "Content Creator": "Nhà sáng tạo nội dung", "Community Member": "Thành viên cộng đồng", "Product / Factory / Supplier": "Sản phẩm / nhà máy / nhà cung cấp", Other: "Khác" },
         "#pm-handoff-status": { "Received Glasses": "Đã nhận kính", "Pending Handoff": "Chờ bàn giao" },
         "#pm-myopia-degree": { "": "Chọn", "Not sure": "Không chắc" },
         "#pm-follower-range": { "": "Chọn" }
       },
       ru: {
-        "#pm-role": { "": "Выберите роль", "Club Owner": "Владелец клуба", "Head Coach": "Главный тренер", Coach: "Тренер", "Core Member": "Ключевой участник", Athlete: "Спортсмен", Creator: "Создатель контента", "Long-term Local Member": "Местный участник", "Community Contributor": "Участник сообщества" },
+        "#pm-role": { "": "Выберите ближайший вариант", "Club Owner": "Владелец клуба / магазина", "Coach / Instructor": "Тренер / инструктор", "Rider / Athlete": "Райдер / спортсмен", "Content Creator": "Создатель контента", "Community Member": "Участник сообщества", "Product / Factory / Supplier": "Продукт / фабрика / поставщик", Other: "Другое" },
         "#pm-handoff-status": { "Received Glasses": "Очки получены", "Pending Handoff": "Ожидает передачи" },
         "#pm-myopia-degree": { "": "Выберите", "Not sure": "Не уверен(а)" },
         "#pm-follower-range": { "": "Выберите" }
@@ -2423,12 +2425,14 @@
       const frequencyScoreMap = { Daily: 20, Weekly: 14, Monthly: 8, Rarely: 4, None: 0 };
       const roleScoreMap = {
         "Club Owner": 20,
-        "Head Coach": 20,
+        "Coach / Instructor": 16,
+        "Rider / Athlete": 16,
+        "Content Creator": 16,
+        "Community Member": 12,
+        "Product / Factory / Supplier": 12,
         Coach: 16,
         Athlete: 16,
         Creator: 16,
-        "Core Member": 12,
-        "Long-term Local Member": 10,
       };
       const frequencyScore = frequencyScoreMap[payload.posting_frequency] || 0;
       const roleScore = roleScoreMap[payload.role] || 6;
@@ -3020,11 +3024,11 @@
         .slice(0, 5)
         .map((record) => [`${record.name || "Unknown"} · ${record.club || ""}`, parseNumber(record.influence_score)]);
       const topCreators = rankedRecords
-        .filter((record) => record.role === "Creator" || !/^never$/i.test(record.content_creator_status || "") || splitList(record.content_platforms).length)
+        .filter((record) => record.role === "Content Creator" || record.role === "Creator" || !/^never$/i.test(record.content_creator_status || "") || splitList(record.content_platforms).length)
         .slice(0, 5)
         .map((record) => [`${record.name || "Unknown"} · ${record.content_platforms || record.role || ""}`, parseNumber(record.influence_score)]);
       const topAthletes = rankedRecords
-        .filter((record) => record.role === "Athlete")
+        .filter((record) => record.role === "Rider / Athlete" || record.role === "Athlete")
         .slice(0, 5)
         .map((record) => [`${record.name || "Unknown"} · ${record.club || ""}`, parseNumber(record.influence_score)]);
       const topClubs = topEntries(countBy(records, (record) => record.club), 5);
@@ -3206,7 +3210,7 @@
       ];
       const countries = new Set(records.map((record) => cleanText(record.country)).filter(Boolean));
       const clubs = new Set(records.map((record) => cleanText(record.club)).filter(Boolean));
-      const roleCount = records.filter((record) => /Club Owner|Head Coach|Coach|Core Member|Long-term Local Member|Athlete|Creator|Community Contributor/i.test(record.role || "")).length;
+      const roleCount = records.filter((record) => /Club Owner|Shop Owner|Coach|Instructor|Rider|Athlete|Content Creator|Creator|Community Member|Product|Factory|Supplier|Core Member|Long-term Local Member|Community Contributor/i.test(record.role || "")).length;
       const go3sUsers = records.filter((record) => splitList(record.equipment).some((item) => /GO3S/i.test(item))).length;
       const nanoUsers = records.filter((record) => splitList(record.equipment).some((item) => /DJI Nano/i.test(item))).length;
       const photoUploaded = records.filter((record) => cleanText(record.photo_link)).length;

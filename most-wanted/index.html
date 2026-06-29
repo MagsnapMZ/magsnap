@@ -194,6 +194,11 @@
       color: var(--black);
     }
 
+    .button[aria-disabled="true"] {
+      cursor: default;
+      opacity: 0.82;
+    }
+
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -256,7 +261,7 @@
 
     .roadmap-flow {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 12px;
       margin-top: 22px;
     }
@@ -417,26 +422,6 @@
       </div>
     </section>
 
-    <section class="section" aria-label="MagSnap Most Wanted positioning">
-      <div class="grid-3">
-        <article class="note-card">
-          <p class="eyebrow">Official / 官方</p>
-          <h3>Engineering Roadmap</h3>
-          <p class="plain">每个公开问题都必须对应一个明确的 Most Wanted。</p>
-        </article>
-        <article class="note-card">
-          <p class="eyebrow">Structure / 结构</p>
-          <h3>Problem → Reward</h3>
-          <p class="plain">每一项固定展示：Problem、Analysis、Most Wanted、Reward。</p>
-        </article>
-        <article class="note-card">
-          <p class="eyebrow">Open / 公开</p>
-          <h3>寻找最优方案</h3>
-          <p class="plain">Panda Masters、工程师、供应商、工厂和设计师都可以提交方案。</p>
-        </article>
-      </div>
-    </section>
-
     <section class="section" id="most-wanted-001">
       <article class="challenge-card">
         <p class="eyebrow">Problem #001 · Lens</p>
@@ -553,7 +538,7 @@
       <article class="challenge-card" id="most-wanted-004">
         <p class="eyebrow">Problem #004 · Magnetic Pole Layout</p>
         <h2>Most Wanted #004<br>Universal Magnetic Pole Layout</h2>
-        <span class="status-pill">Status: Design Review</span>
+        <span class="status-pill">Status: Solved</span>
         <div class="roadmap-flow">
           <div class="roadmap-step">
             <p class="eyebrow">Problem</p>
@@ -576,12 +561,23 @@
             </ul>
           </div>
           <div class="roadmap-step">
-            <p class="eyebrow">Reward</p>
-            <h3>Panda Masters Contributor</h3>
-            <p class="plain">采用后获得 Panda Masters Contributor 身份。</p>
+            <p class="eyebrow">Solution / 最终方案</p>
+            <h3>Reverse One Temple Arm<br>翻转一侧镜腿磁吸方向</h3>
+            <p class="plain">手工将其中一侧镜腿的两个磁吸件取出并调转方向，使左右镜腿形成相反磁极布局。</p>
+            <p class="plain">Remove and reverse the two magnetic inserts on one temple arm, so the left and right temples use opposite magnetic pole layouts.</p>
+          </div>
+          <div class="roadmap-step">
+            <p class="eyebrow">Impact / 影响</p>
+            <h3>Assembly Update Only<br>仅需更新装配方向</h3>
+            <ul class="challenge-list">
+              <li>兼容更多第三方磁吸设备 / Compatible with more third-party magnetic accessories</li>
+              <li>无需重新开模 / No tooling change required</li>
+              <li>下一批生产交给工厂按左右磁极方向区分装配 / The next batch will instruct the factory to assemble left and right temple poles differently</li>
+              <li>可先通过手工翻转执行 / Can be implemented first by manual reversal</li>
+            </ul>
           </div>
         </div>
-        <a class="button primary" href="#solution-form">Submit A Solution<br>提交解决方案</a>
+        <span class="button" aria-disabled="true">Solved / 已解决</span>
       </article>
 
       <div class="form-shell" id="solved">
@@ -645,9 +641,6 @@
               <option>Most Wanted #003 / Stronger Magnetic Structure / 更强磁吸结构</option>
               <option>Most Wanted #003 / Better Magnet Material / 更好的磁铁材料</option>
               <option>Most Wanted #003 / Better Overmolding / 更好的包胶方案</option>
-              <option>Most Wanted #004 / Universal Magnetic Pole Layout / 通用磁极布局</option>
-              <option>Most Wanted #004 / Opposite Pole Temple Design / 左右反向磁极镜腿</option>
-              <option>Most Wanted #004 / Ecosystem Magnetic Standard / 磁吸生态标准</option>
               <option>Supplier / Factory / 供应商或工厂</option>
               <option>Other / 其他</option>
             </select>

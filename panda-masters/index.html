@@ -2583,7 +2583,6 @@
         <strong>${getLanguageCopy("submitSavedLocal")}</strong><br>
         ID: ${escapeHtml(payload.panda_master_id)}<br>
         ${escapeHtml(payload.public_nickname || payload.name)} · ${escapeHtml(payload.city)} · ${escapeHtml(payload.club)}<br>
-        <small>${escapeHtml(error?.message || "")}</small><br>
         <button class="button primary" type="button" data-copy-manual-submission>${escapeHtml(getLanguageCopy("copySubmission"))}</button>
       `);
     };

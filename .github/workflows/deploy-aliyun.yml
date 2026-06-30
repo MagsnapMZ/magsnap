@@ -121,6 +121,14 @@ jobs:
             --access-key-id "$ALIYUN_ACCESS_KEY_ID" \
             --access-key-secret "$ALIYUN_ACCESS_KEY_SECRET"
 
+      - name: Resolve production OSS origin
+        if: env.DRY_RUN != 'true'
+        run: |
+          python3 scripts/deploy/resolve_cdn_oss_origin.py \
+            --domain "$SITE_BASE_URL" \
+            --profile "$ALIYUN_CLI_PROFILE" \
+            --env-output "$GITHUB_ENV"
+
       - name: Deploy to OSS
         if: env.DRY_RUN != 'true' && env.ROLLBACK_RELEASE == ''
         run: python3 scripts/deploy/deploy_to_aliyun.py --site-dir dist --release "$GITHUB_SHA"
@@ -131,7 +139,7 @@ jobs:
 
       - name: Refresh Aliyun CDN
         if: env.DRY_RUN != 'true'
-        run: python3 scripts/deploy/refresh_cdn.py --domain "$ALIYUN_CDN_DOMAIN"
+        run: python3 scripts/deploy/refresh_cdn.py --domain "$SITE_BASE_URL"
 
       - name: Wait for CDN propagation
         if: env.DRY_RUN != 'true'

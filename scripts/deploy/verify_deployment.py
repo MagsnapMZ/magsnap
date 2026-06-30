@@ -95,6 +95,11 @@ def main() -> int:
         checks.append({"path": path, "status": status, "bytes": len(body), "server": headers.get("server", "")})
         if args.disallow_server and args.disallow_server.lower() in headers.get("server", "").lower():
             errors.append(f"{path} is still served by disallowed server: {headers.get('server')}")
+        if path == "/panda-masters/":
+            text = body.decode("utf-8", errors="ignore")
+            for marker in ("data-copy-manual-submission", "网络提交被阻断或超时"):
+                if marker not in text:
+                    errors.append(f"{path} is missing expected live marker: {marker}")
 
     status, _, mobile_body = check_url(args.base_url, "/", {200}, MOBILE_UA, errors, args.retries, args.sleep)
     checks.append({"path": "/", "mode": "mobile-user-agent", "status": status, "bytes": len(mobile_body)})

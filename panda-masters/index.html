@@ -1702,6 +1702,7 @@
     const languageButtons = Array.from(document.querySelectorAll("[data-lang-button]"));
 
     const languageStorageKey = "magsnap_panda_preferred_language";
+    let latestManualSubmissionText = "";
     const supportedLanguages = new Set(["en", "zh", "vi", "ru"]);
     const defaultLanguage = "base";
     let currentLanguage = defaultLanguage;
@@ -1768,6 +1769,9 @@
         submitSuccess: "You are now in the Panda Masters Registry.<br>Public profiles with photos may appear after review.",
         submitTimeout: "Submission timed out. Please check the network and retry.",
         submitFailed: "Submission failed. Please check the form and try again.",
+        submitSavedLocal: "Network submission is blocked or timed out. Your registration is saved on this phone. Please copy it and send it to MZ; MagSnap will sync it manually.",
+        copySubmission: "Copy Registration",
+        copiedSubmission: "Registration copied.",
         yes: "Yes",
         no: "No"
       },
@@ -1832,6 +1836,9 @@
         submitSuccess: "你已进入 Panda Masters Registry。<br>带照片的公开资料会在审核后显示。",
         submitTimeout: "提交超时。请检查网络后重试。",
         submitFailed: "提交失败。请检查信息后重试。",
+        submitSavedLocal: "网络提交被阻断或超时。你的登记已保存到本机。请复制登记信息发给 MZ，MagSnap 会手动同步。",
+        copySubmission: "复制登记信息",
+        copiedSubmission: "登记信息已复制。",
         yes: "需要",
         no: "不需要"
       },
@@ -1896,6 +1903,9 @@
         submitSuccess: "Bạn đã vào Panda Masters Registry.<br>Hồ sơ có ảnh có thể xuất hiện sau khi được duyệt.",
         submitTimeout: "Gửi quá thời gian. Vui lòng kiểm tra mạng và thử lại.",
         submitFailed: "Gửi thất bại. Vui lòng kiểm tra biểu mẫu và thử lại.",
+        submitSavedLocal: "Kết nối gửi bị chặn hoặc quá thời gian. Đăng ký đã được lưu trên điện thoại này. Hãy sao chép và gửi cho MZ để MagSnap đồng bộ thủ công.",
+        copySubmission: "Sao chép đăng ký",
+        copiedSubmission: "Đã sao chép đăng ký.",
         yes: "Có",
         no: "Không"
       },
@@ -1960,6 +1970,9 @@
         submitSuccess: "Вы добавлены в Panda Masters Registry.<br>Профили с фото могут появиться после проверки.",
         submitTimeout: "Время отправки истекло. Проверьте сеть и повторите.",
         submitFailed: "Отправка не удалась. Проверьте форму и попробуйте снова.",
+        submitSavedLocal: "Отправка заблокирована или истекло время ожидания. Регистрация сохранена на этом телефоне. Скопируйте данные и отправьте MZ; MagSnap синхронизирует вручную.",
+        copySubmission: "Скопировать регистрацию",
+        copiedSubmission: "Регистрация скопирована.",
         yes: "Да",
         no: "Нет"
       }
@@ -2539,6 +2552,62 @@
       node.classList.toggle("error", Boolean(isError));
     };
 
+    const manualSubmissionText = (payload) => {
+      const safePayload = { ...payload };
+      if (/^data:image\//.test(safePayload.photo_url || "")) safePayload.photo_url = "[embedded photo omitted]";
+      if (/^data:image\//.test(safePayload.photo_link || "")) safePayload.photo_link = "[embedded photo omitted]";
+      return [
+        "MAGSNAP PANDA MASTERS REGISTRATION",
+        `Panda Master ID: ${safePayload.panda_master_id || ""}`,
+        `Panda Master Number: ${safePayload.panda_master_number || ""}`,
+        `Name: ${safePayload.name || ""}`,
+        `Nickname: ${safePayload.public_nickname || ""}`,
+        `Country: ${safePayload.country || ""}`,
+        `City: ${safePayload.city || ""}`,
+        `Club: ${safePayload.club || ""}`,
+        `Role: ${safePayload.role || ""}`,
+        `Email: ${safePayload.email || ""}`,
+        `Contact: ${safePayload.contact_detail || safePayload.wechat_or_social || safePayload.social_link || ""}`,
+        `Sports: ${safePayload.sports || ""}`,
+        `Equipment: ${safePayload.equipment || safePayload.device || ""}`,
+        `Content Creator: ${safePayload.content_creator_status || ""}`,
+        `Feedback: ${safePayload.feedback || ""}`,
+        `Submitted At: ${safePayload.submitted_at || ""}`,
+        `Source URL: ${safePayload.source_url || ""}`
+      ].join("\n");
+    };
+
+    const showManualSubmissionFallback = (payload, error) => {
+      latestManualSubmissionText = manualSubmissionText(payload);
+      showStatus(`
+        <strong>${getLanguageCopy("submitSavedLocal")}</strong><br>
+        ID: ${escapeHtml(payload.panda_master_id)}<br>
+        ${escapeHtml(payload.public_nickname || payload.name)} · ${escapeHtml(payload.city)} · ${escapeHtml(payload.club)}<br>
+        <small>${escapeHtml(error?.message || "")}</small><br>
+        <button class="button primary" type="button" data-copy-manual-submission>${escapeHtml(getLanguageCopy("copySubmission"))}</button>
+      `);
+    };
+
+    statusNode?.addEventListener("click", async (event) => {
+      const button = event.target.closest("[data-copy-manual-submission]");
+      if (!button || !latestManualSubmissionText) return;
+      try {
+        await window.navigator.clipboard.writeText(latestManualSubmissionText);
+        button.textContent = getLanguageCopy("copiedSubmission");
+      } catch (_error) {
+        const textarea = document.createElement("textarea");
+        textarea.value = latestManualSubmissionText;
+        textarea.setAttribute("readonly", "readonly");
+        textarea.style.position = "fixed";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+        button.textContent = getLanguageCopy("copiedSubmission");
+      }
+    });
+
     const readFileAsDataUrl = (file) => new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => resolve(String(reader.result || ""));
@@ -2907,7 +2976,7 @@
 
       const timeoutId = window.setTimeout(() => {
         finish(reject, new Error(getLanguageCopy("submitTimeout")));
-      }, 45000);
+      }, 15000);
 
       window.addEventListener("message", handleMessage);
       iframe.addEventListener("load", handleLoad);
@@ -3486,8 +3555,17 @@
         renderCoverage();
         renderIntelligenceDashboard();
       } catch (error) {
-        if (payload) writeLocalRecord(payload, "backend_failed");
-        showStatus(error.message, true);
+        if (payload) {
+          writeLocalRecord(payload, "local_saved_pending_manual_sync");
+          showManualSubmissionFallback(payload, error);
+          showConfirmation(payload);
+          renderRegistry();
+          renderDirectory();
+          renderCoverage();
+          renderIntelligenceDashboard();
+        } else {
+          showStatus(error.message, true);
+        }
       } finally {
         if (submitButton) {
           submitButton.disabled = false;

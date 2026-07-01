@@ -1169,30 +1169,16 @@
             </div>
           </div>
           <div class="field full">
-            <label data-i18n-html="prescriptionLabel">Do you need vision correction? / 你是否近视 / 需要视力矫正？</label>
-            <div class="checkbox-grid">
-              <label class="checkbox-pill"><input type="radio" name="prescription_need" value="No">No / 不需要</label>
-              <label class="checkbox-pill"><input type="radio" name="prescription_need" value="Yes">Yes / 需要</label>
-            </div>
+            <label data-i18n-html="prescriptionLabel" for="pm-vision-plus-need">Vision+ Need / 视力需求</label>
+            <p class="form-note">Vision+ 已解决近视和老花适配，目前仍在测试阶段。这里只收集最基本的测试意向。<br>Vision+ has solved myopia and reading correction and is still in testing. We only collect basic test interest here.</p>
           </div>
           <div class="field">
-            <label for="pm-myopia-degree" data-i18n-html="myopiaLabel">If yes, what is your myopia degree? / 如果需要，请填写你的近视度数</label>
-            <select id="pm-myopia-degree" name="myopia_degree">
+            <select id="pm-vision-plus-need" name="prescription_need">
               <option value="">Select / 选择</option>
-              <option value="150">150</option>
-              <option value="200">200</option>
-              <option value="225">225</option>
-              <option value="250">250</option>
-              <option value="275">275</option>
-              <option value="300">300</option>
-              <option value="325">325</option>
-              <option value="350">350</option>
-              <option value="375">375</option>
-              <option value="400">400</option>
-              <option value="450">450</option>
-              <option value="500">500</option>
-              <option value="600+">600+</option>
-              <option value="Not sure">Not sure / 不确定</option>
+              <option value="Myopia">Myopia / 近视</option>
+              <option value="Reading">Reading / 老花</option>
+              <option value="Both">Both / 近视 + 老花</option>
+              <option value="Not Needed">Not Needed / 暂不需要</option>
             </select>
           </div>
           <div class="field full">
@@ -1359,8 +1345,8 @@
         </article>
         <article class="card">
           <span class="number">05</span>
-          <h3>Prescription Data</h3>
-          <p class="plain">只收集近视需求数据，暂不开发近视产品。<br>Collect prescription demand first. Do not build yet.</p>
+          <h3>Vision+ Signal</h3>
+          <p class="plain">Vision+ 已解决近视和老花适配，目前仍在测试阶段。<br>Vision+ has solved myopia and reading correction and is now in testing.</p>
         </article>
         <article class="card">
           <span class="number">06</span>
@@ -1728,7 +1714,7 @@
         sportsLabel: "Sport / Industry",
         equipmentLabel: "Equipment / POV Devices",
         accessoriesLabel: "Accessories",
-        prescriptionLabel: "Do you need vision correction?",
+        prescriptionLabel: "Vision+ testing need",
         myopiaLabel: "If yes, what is your myopia degree?",
         contentTitle: "Content Creator Profile",
         contentNote: "Used to understand content reach. Private contact fields stay private.",
@@ -1795,7 +1781,7 @@
         sportsLabel: "运动 / 行业",
         equipmentLabel: "设备 / POV 设备",
         accessoriesLabel: "配件",
-        prescriptionLabel: "你是否近视 / 需要视力矫正？",
+        prescriptionLabel: "Vision+ 视力需求",
         myopiaLabel: "如果需要，请选择近视度数",
         contentTitle: "内容创作者信息",
         contentNote: "用于判断 Panda Masters 的内容扩散能力，不公开个人联系方式。",
@@ -1862,7 +1848,7 @@
         sportsLabel: "Môn chơi / Ngành",
         equipmentLabel: "Thiết bị / Thiết bị POV",
         accessoriesLabel: "Phụ kiện",
-        prescriptionLabel: "Bạn có cần chỉnh thị lực không?",
+        prescriptionLabel: "Nhu cầu thử Vision+",
         myopiaLabel: "Nếu có, độ cận của bạn là bao nhiêu?",
         contentTitle: "Thông tin nhà sáng tạo nội dung",
         contentNote: "Dùng để hiểu khả năng lan tỏa nội dung. Thông tin liên hệ riêng tư không công khai.",
@@ -1929,7 +1915,7 @@
         sportsLabel: "Спорт / Сфера",
         equipmentLabel: "Оборудование / POV-устройства",
         accessoriesLabel: "Аксессуары",
-        prescriptionLabel: "Нужна ли коррекция зрения?",
+        prescriptionLabel: "Потребность в Vision+",
         myopiaLabel: "Если да, какая у вас близорукость?",
         contentTitle: "Профиль создателя контента",
         contentNote: "Нужно для оценки охвата контента. Личные контакты не публикуются.",
@@ -1983,25 +1969,21 @@
       en: {
         "#pm-role": { "": "Select the closest one", "Club Owner": "Club Owner / Shop Owner", "Coach / Instructor": "Coach / Instructor", "Rider / Athlete": "Rider / Athlete", "Content Creator": "Content Creator", "Community Member": "Community Member", "Product / Factory / Supplier": "Product / Factory / Supplier", Other: "Other" },
         "#pm-handoff-status": { "Received Glasses": "Received Glasses", "Pending Handoff": "Pending Handoff" },
-        "#pm-myopia-degree": { "": "Select", "Not sure": "Not sure" },
         "#pm-follower-range": { "": "Select" }
       },
       zh: {
         "#pm-role": { "": "选择最接近的一项", "Club Owner": "俱乐部或店主", "Coach / Instructor": "教练", "Rider / Athlete": "玩家或运动员", "Content Creator": "内容创作者", "Community Member": "社群成员", "Product / Factory / Supplier": "产品、工厂或供应链", Other: "其他" },
         "#pm-handoff-status": { "Received Glasses": "已领取眼镜", "Pending Handoff": "待交付" },
-        "#pm-myopia-degree": { "": "选择", "Not sure": "不确定" },
         "#pm-follower-range": { "": "选择" }
       },
       vi: {
         "#pm-role": { "": "Chọn mục gần nhất", "Club Owner": "Chủ câu lạc bộ / cửa hàng", "Coach / Instructor": "Huấn luyện viên / người hướng dẫn", "Rider / Athlete": "Người chơi / vận động viên", "Content Creator": "Nhà sáng tạo nội dung", "Community Member": "Thành viên cộng đồng", "Product / Factory / Supplier": "Sản phẩm / nhà máy / nhà cung cấp", Other: "Khác" },
         "#pm-handoff-status": { "Received Glasses": "Đã nhận kính", "Pending Handoff": "Chờ bàn giao" },
-        "#pm-myopia-degree": { "": "Chọn", "Not sure": "Không chắc" },
         "#pm-follower-range": { "": "Chọn" }
       },
       ru: {
         "#pm-role": { "": "Выберите ближайший вариант", "Club Owner": "Владелец клуба / магазина", "Coach / Instructor": "Тренер / инструктор", "Rider / Athlete": "Райдер / спортсмен", "Content Creator": "Создатель контента", "Community Member": "Участник сообщества", "Product / Factory / Supplier": "Продукт / фабрика / поставщик", Other: "Другое" },
         "#pm-handoff-status": { "Received Glasses": "Очки получены", "Pending Handoff": "Ожидает передачи" },
-        "#pm-myopia-degree": { "": "Выберите", "Not sure": "Не уверен(а)" },
         "#pm-follower-range": { "": "Выберите" }
       }
     };
@@ -2191,7 +2173,6 @@
       "sports",
       "equipment",
       "prescription_need",
-      "myopia_degree",
       "content_creator_status",
       "content_platforms",
       "posting_frequency",
@@ -2729,18 +2710,8 @@
     };
 
     const updatePrescriptionRequirement = () => {
-      const need = selectedValues(form, "prescription_need")[0] || "";
-      const degreeField = form?.elements.myopia_degree;
-      if (!degreeField) return;
-      degreeField.required = need === "Yes";
-      if (need === "No") {
-        degreeField.value = "";
-        degreeField.setCustomValidity("");
-      } else if (need === "Yes" && !cleanText(degreeField.value)) {
-        degreeField.setCustomValidity(getLanguageCopy("degreeInvalid"));
-      } else {
-        degreeField.setCustomValidity("");
-      }
+      const visionField = form?.elements.prescription_need;
+      if (visionField) visionField.setCustomValidity("");
     };
 
     const showConfirmation = (payload) => {
@@ -2756,10 +2727,7 @@
         <div><dt>Handoff</dt><dd>${escapeHtml(payload.handoff_status || "—")}</dd></div>
         <div><dt>Creator Status</dt><dd>${escapeHtml(payload.content_creator_status || "—")}</dd></div>
         <div><dt>Photo Wall</dt><dd>${escapeHtml(payload.photo_wall_ready || "No")}</dd></div>
-        <div><dt>Prescription SKU Signal</dt><dd>${escapeHtml([
-          payload.prescription_need,
-          payload.myopia_degree
-        ].filter(Boolean).join(" / ") || "—")}</dd></div>
+        <div><dt>Vision+ Signal</dt><dd>${escapeHtml(payload.prescription_need || "—")}</dd></div>
         <div><dt>Lab Signals</dt><dd>${escapeHtml(payload.lab_signal_count || 0)}</dd></div>
       `;
       if (confirmationSection) confirmationSection.hidden = false;
@@ -2809,7 +2777,7 @@
       payload.story_note = cleanText(payload.story_note);
       payload.public_story = cleanText(payload.public_story);
       payload.prescription_need = cleanText(payload.prescription_need);
-      payload.myopia_degree = cleanText(payload.myopia_degree);
+      payload.myopia_degree = "";
       payload.problem_report = cleanText(payload.problem_report);
       payload.problem_tags = cleanText(payload.problem_tags);
       payload.module_ideas = cleanText(payload.module_ideas);
@@ -3080,14 +3048,11 @@
       const contentAssetMap = countMulti(records, "panda_content_items");
       const photoWallCount = records.filter((record) => cleanText(record.photo_link)).length;
       const videoUploadCount = records.filter((record) => cleanText(record.video_link) || cleanText(record.pov_clip_link)).length;
-      const prescriptionNeedAnswered = records.filter((record) => cleanText(record.prescription_need));
-      const prescriptionUserCount = records.filter((record) => record.prescription_need === "Yes").length;
+      const visionPlusAnswered = records.filter((record) => cleanText(record.prescription_need));
+      const visionPlusUserCount = records.filter((record) => /Myopia|Reading|Both/i.test(record.prescription_need || "")).length;
       const prescriptionDemand = [
-        ["Prescription Need %", `${prescriptionNeedAnswered.length ? Math.round((prescriptionUserCount / prescriptionNeedAnswered.length) * 100) : 0}%`],
-        ...topEntries(countBy(records, (record) => {
-          const value = cleanText(record.myopia_degree);
-          return value && !/^not sure$/i.test(value) ? `${value} Degree` : "";
-        }), 5)
+        ["Vision+ Interest %", `${visionPlusAnswered.length ? Math.round((visionPlusUserCount / visionPlusAnswered.length) * 100) : 0}%`],
+        ...topEntries(countBy(records, (record) => cleanText(record.prescription_need)), 5)
       ];
       const rankedRecords = records
         .slice()
@@ -3193,10 +3158,10 @@
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Prescription Intelligence</p>
-          <h3>Prescription Demand</h3>
+          <p class="eyebrow">Vision+ Intelligence</p>
+          <h3>Vision+ Demand</h3>
           <div class="insight-list">
-            ${formatTopRows(prescriptionDemand)}
+            ${formatTopRows(prescriptionDemand, "暂无 Vision+ 数据 / No Vision+ data")}
           </div>
         </article>
         <article class="dashboard-card">
@@ -3299,12 +3264,9 @@
       const languageLabels = { en: "EN", zh: "中文", vi: "VI", ru: "RU" };
       const languageDistribution = topEntries(countBy(records, (record) => languageLabels[cleanText(record.preferred_language)] || ""), 4);
       const percentage = (count, total) => total ? Math.round((count / total) * 100) : 0;
-      const prescriptionNeedAnswered = records.filter((record) => cleanText(record.prescription_need));
-      const prescriptionUsers = records.filter((record) => record.prescription_need === "Yes").length;
-      const topMyopiaDegrees = topEntries(countBy(records, (record) => {
-        const value = cleanText(record.myopia_degree);
-        return value && !/^not sure$/i.test(value) ? value : "";
-      }), 3);
+      const visionPlusAnswered = records.filter((record) => cleanText(record.prescription_need));
+      const visionPlusUsers = records.filter((record) => /Myopia|Reading|Both/i.test(record.prescription_need || "")).length;
+      const topVisionPlusNeeds = topEntries(countBy(records, (record) => cleanText(record.prescription_need)), 3);
       const creatorAnswered = records.filter((record) => cleanText(record.content_creator_status));
       const creatorCount = records.filter((record) => /Sometimes|Regularly|Professional Creator/i.test(record.content_creator_status || "")).length;
       const regularCreators = records.filter((record) => /Regularly|Professional Creator/i.test(record.content_creator_status || "")).length;
@@ -3356,14 +3318,14 @@
           <p class="plain">Preferred language distribution</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Prescription Need %</p>
-          <h3>${percentage(prescriptionUsers, prescriptionNeedAnswered.length)}%</h3>
-          <p class="plain">需要视力矫正 / Need vision correction</p>
+          <p class="eyebrow">Vision+ Interest %</p>
+          <h3>${percentage(visionPlusUsers, visionPlusAnswered.length)}%</h3>
+          <p class="plain">近视或老花测试意向 / Myopia or reading test interest</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Top Myopia Degrees</p>
-          <h3>${topMyopiaDegrees.length ? topMyopiaDegrees.map(([label]) => escapeHtml(label)).join(" / ") : "—"}</h3>
-          <p class="plain">${escapeHtml(formatSummary(topMyopiaDegrees, "暂无 SKU 信号 / No SKU signal"))}</p>
+          <p class="eyebrow">Vision+ Need Types</p>
+          <h3>${topVisionPlusNeeds.length ? topVisionPlusNeeds.map(([label]) => escapeHtml(label)).join(" / ") : "—"}</h3>
+          <p class="plain">${escapeHtml(formatSummary(topVisionPlusNeeds, "暂无 Vision+ 数据 / No Vision+ data"))}</p>
         </article>
         <article class="dashboard-card">
           <p class="eyebrow">Creators %</p>

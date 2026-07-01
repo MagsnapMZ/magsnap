@@ -151,6 +151,17 @@ def scan_inline_hosts(site_dir: Path, warnings: list[str]) -> None:
                 warnings.append(f"{path.relative_to(site_dir)} contains China-risk endpoint: {host}")
 
 
+def validate_submission_fallbacks(site_dir: Path, errors: list[str]) -> None:
+    for html_path in sorted(site_dir.rglob("*.html")):
+        text = html_path.read_text(encoding="utf-8", errors="ignore")
+        if "script.google.com" not in text or "<form" not in text:
+            continue
+        if "submission-transport.js" not in text:
+            errors.append(
+                f"{html_path.relative_to(site_dir)} posts to Google Apps Script without submission-transport.js fallback"
+            )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Verify prepared static site.")
     parser.add_argument("--site-dir", default="dist")
@@ -168,6 +179,7 @@ def main() -> int:
     if (site_dir / "index.html").exists():
         validate_head(site_dir, errors)
     validate_refs(site_dir, errors, warnings)
+    validate_submission_fallbacks(site_dir, errors)
     scan_inline_hosts(site_dir, warnings)
 
     result = {"errors": errors, "warnings": sorted(set(warnings))}

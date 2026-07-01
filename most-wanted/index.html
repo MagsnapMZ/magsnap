@@ -352,6 +352,43 @@
       background: rgba(255, 92, 154, 0.08);
     }
 
+    .submission-fallback {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(245, 239, 230, 0.14);
+      color: rgba(245, 239, 230, 0.78);
+      font-weight: 800;
+    }
+
+    .submission-fallback-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .submission-fallback-actions a,
+    .submission-fallback-actions button {
+      min-height: 42px;
+      border: 1px solid rgba(200, 169, 126, 0.42);
+      background: rgba(0, 0, 0, 0.24);
+      color: var(--paper);
+      padding: 0 14px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .submission-fallback-note {
+      color: rgba(245, 239, 230, 0.58);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
     .form-note {
       color: rgba(245, 239, 230, 0.48);
       font-size: 12px;
@@ -676,8 +713,16 @@
     </div>
   </footer>
 
+  <script src="../assets/site/submission-transport.js"></script>
   <script>
-    const MOST_WANTED_ENDPOINT = "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec";
+    const MOST_WANTED_ENDPOINTS = [{
+      name: "Google Apps Script",
+      url: "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec",
+      mode: "no-cors"
+    }];
+    const MOST_WANTED_ENDPOINT = MOST_WANTED_ENDPOINTS[0].url;
+    const MOST_WANTED_SUBMIT_TIMEOUT_MS = 18000;
+    const MOST_WANTED_STORAGE_KEY = "magsnap_most_wanted_submissions_v1";
     const form = document.getElementById("most-wanted-form");
     const statusNode = document.getElementById("challenge-status");
 
@@ -760,7 +805,21 @@
       return payload;
     };
 
-    const submitPayload = (payload) => new Promise((resolve, reject) => {
+    const saveSubmissionBackup = (payload, status) => {
+      try {
+        const current = JSON.parse(window.localStorage.getItem(MOST_WANTED_STORAGE_KEY) || "[]");
+        current.push({
+          ...payload,
+          backup_status: status,
+          backup_at: new Date().toISOString()
+        });
+        window.localStorage.setItem(MOST_WANTED_STORAGE_KEY, JSON.stringify(current));
+      } catch (_error) {
+        // Local backup is best-effort; visible fallback options still work.
+      }
+    };
+
+    const submitPayloadViaIframe = (payload) => new Promise((resolve, reject) => {
       const iframeName = `most-wanted-submit-${Date.now()}-${Math.random().toString(36).slice(2)}`;
       const iframe = document.createElement("iframe");
       const postForm = document.createElement("form");
@@ -830,23 +889,48 @@
       }, 0);
     });
 
+    const submitPayload = async (payload) => {
+      if (window.MAGSNAP_FORM_TRANSPORT) {
+        return window.MAGSNAP_FORM_TRANSPORT.submit(payload, {
+          context: "most_wanted",
+          endpoints: MOST_WANTED_ENDPOINTS,
+          timeoutMs: MOST_WANTED_SUBMIT_TIMEOUT_MS
+        });
+      }
+      return submitPayloadViaIframe(payload);
+    };
+
     form?.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!form.reportValidity()) return;
       const button = form.querySelector("[type='submit']");
       const originalText = button?.textContent || "";
+      const payload = buildPayload();
+      saveSubmissionBackup(payload, "pending_backend");
       if (button) {
         button.disabled = true;
         button.textContent = "Submitting / 正在提交";
       }
       setStatus("正在提交方案。<br>Submitting solution.");
       try {
-        const payload = buildPayload();
         await submitPayload(payload);
+        saveSubmissionBackup(payload, "backend_saved");
         setStatus(`<strong>Solution received / 方案已收到</strong><br>${payload.name} · ${payload.solution_area}`);
         form.reset();
       } catch (error) {
-        setStatus(error.message || "提交失败，请稍后再试。<br>Submission failed. Please try again.", true);
+        console.error("Most Wanted solution submission failed:", error);
+        saveSubmissionBackup(payload, "backend_failed");
+        const statusText = /timed out/i.test(error.message || "")
+          ? "提交超时，可能是当前网络无法连接后台。<br>The submission timed out; this network may not be able to reach the backend."
+          : "提交失败，可能是网络或后台暂时不可用。<br>The submission could not reach the backend.";
+        const fallback = window.MAGSNAP_FORM_TRANSPORT
+          ? window.MAGSNAP_FORM_TRANSPORT.fallbackHtml(payload, {
+              subject: "MAGSNAP Most Wanted Solution Backup",
+              title: "MAGSNAP Most Wanted solution",
+              intro: "当前网络没有完成 Most Wanted 后台提交。你的方案已保存在本机，请复制资料并通过邮件或微信发送给 MAGSNAP。"
+            })
+          : "";
+        setStatus(`${statusText}${fallback}`, true);
       } finally {
         if (button) {
           button.disabled = false;

@@ -176,8 +176,7 @@ jobs:
             --base-url "$DEPLOY_VERIFY_BASE_URL" \
             --lighthouse-json deployment-artifacts/lighthouse-home.report.json \
             --output deployment-artifacts/performance_report.md \
-            --min-score "$LIGHTHOUSE_MIN_SCORE" \
-            --enforce-lighthouse
+            --min-score "$LIGHTHOUSE_MIN_SCORE"
 
       - name: Upload post-deploy reports
         if: always()

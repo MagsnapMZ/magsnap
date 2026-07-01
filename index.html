@@ -1415,6 +1415,43 @@
       color: #000;
     }
 
+    .submission-fallback {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(245, 239, 230, 0.12);
+    }
+
+    .submission-fallback-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .submission-fallback-actions a,
+    .submission-fallback-actions button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      border: 1px solid rgba(200, 169, 126, 0.38);
+      background: rgba(0, 0, 0, 0.24);
+      color: var(--paper);
+      padding: 0 13px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 950;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .submission-fallback-note {
+      margin-top: 10px;
+      color: rgba(245, 239, 230, 0.62);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
     .form-note {
       margin-top: 14px;
       color: rgba(245, 239, 230, 0.48);
@@ -2119,6 +2156,7 @@
     </div>
   </footer>
 
+  <script src="assets/site/submission-transport.js"></script>
   <script>
     const inlineAutoplayVideos = Array.from(document.querySelectorAll("[data-inline-autoplay-video]"));
 
@@ -2221,8 +2259,13 @@
     const founderInviteNote = document.getElementById("founder-invite-note");
     const founderStorageKey = "magsnap_founder_applications_v2";
     const founderLatestSuccessKey = "magsnap_founder_latest_success";
-    const founderSubmissionEndpoint = "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec";
-    const founderSubmitTimeoutMs = 45000;
+    const founderSubmissionEndpoints = [{
+      name: "Google Apps Script",
+      url: "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec",
+      mode: "no-cors"
+    }];
+    const founderSubmissionEndpoint = founderSubmissionEndpoints[0].url;
+    const founderSubmitTimeoutMs = 18000;
 
     const showFounderStatus = (message) => {
       if (!founderFormStatus) return;
@@ -2359,6 +2402,14 @@
     };
 
     const submitFounderPayload = async (payload) => {
+      if (window.MAGSNAP_FORM_TRANSPORT) {
+        return window.MAGSNAP_FORM_TRANSPORT.submit(payload, {
+          context: "panda_masters",
+          endpoints: founderSubmissionEndpoints,
+          timeoutMs: founderSubmitTimeoutMs
+        });
+      }
+
       if (!founderSubmissionEndpoint || founderSubmissionEndpoint.includes("PASTE_")) {
         throw new Error("Panda Masters submission backend is not configured.");
       }
@@ -2445,7 +2496,14 @@
         const statusText = isTimeout
           ? "熊猫高人申请提交超时，请检查网络后再试。<br>The Panda Masters application timed out. Please check your connection and try again."
           : "熊猫高人申请提交失败，可能是网络或后台暂时不可用。请稍后再试。<br>The Panda Masters application could not be submitted because the network or backend is temporarily unavailable. Please try again.";
-        showFounderStatus(statusText);
+        const fallback = window.MAGSNAP_FORM_TRANSPORT
+          ? window.MAGSNAP_FORM_TRANSPORT.fallbackHtml(payload, {
+              subject: "MAGSNAP Panda Masters Homepage Application Backup",
+              title: "MAGSNAP homepage Panda Masters application",
+              intro: "当前网络没有完成 Panda Masters 后台提交。你的申请已保存在本机，请复制资料并通过邮件或微信发送给 MAGSNAP。"
+            })
+          : "";
+        showFounderStatus(`${statusText}${fallback}`);
       } finally {
         if (submitButton) {
           submitButton.disabled = false;

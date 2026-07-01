@@ -579,6 +579,43 @@
       background: rgba(255, 92, 154, 0.08);
     }
 
+    .submission-fallback {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(245, 239, 230, 0.12);
+    }
+
+    .submission-fallback-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .submission-fallback-actions a,
+    .submission-fallback-actions button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      border: 1px solid rgba(200, 169, 126, 0.38);
+      background: rgba(0, 0, 0, 0.24);
+      color: var(--paper);
+      padding: 0 13px;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 950;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .submission-fallback-note {
+      margin-top: 10px;
+      color: rgba(245, 239, 230, 0.62);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
     .form-note {
       color: rgba(245, 239, 230, 0.48);
       font-size: 12px;
@@ -1651,8 +1688,15 @@
     </div>
   </footer>
 
+  <script src="../assets/site/submission-transport.js"></script>
   <script>
-    const PANDA_ENDPOINT = "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec";
+    const PANDA_ENDPOINTS = [{
+      name: "Google Apps Script",
+      url: "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec",
+      mode: "no-cors"
+    }];
+    const PANDA_ENDPOINT = PANDA_ENDPOINTS[0].url;
+    const PANDA_SUBMIT_TIMEOUT_MS = 18000;
     const PANDA_STORAGE_KEY = "magsnap_panda_masters_v1";
     const CLUB_STORAGE_KEY = "magsnap_club_database_v1";
     const NEWSLETTER_STORAGE_KEY = "magsnap_panda_newsletter_v1";
@@ -2561,11 +2605,19 @@
 
     const showManualSubmissionFallback = (payload, error) => {
       latestManualSubmissionText = manualSubmissionText(payload);
+      const richerFallback = window.MAGSNAP_FORM_TRANSPORT
+        ? window.MAGSNAP_FORM_TRANSPORT.fallbackHtml(payload, {
+            subject: "MAGSNAP Panda Masters Application Backup",
+            title: "MAGSNAP Panda Masters application",
+            intro: "当前网络没有完成 Panda Masters 后台提交。你的申请已保存在本机，请复制资料并通过邮件或微信发送给 MAGSNAP。"
+          })
+        : "";
       showStatus(`
         <strong>${getLanguageCopy("submitSavedLocal")}</strong><br>
         ID: ${escapeHtml(payload.panda_master_id)}<br>
         ${escapeHtml(payload.public_nickname || payload.name)} · ${escapeHtml(payload.city)} · ${escapeHtml(payload.club)}<br>
         <button class="button primary" type="button" data-copy-manual-submission>${escapeHtml(getLanguageCopy("copySubmission"))}</button>
+        ${richerFallback}
       `);
     };
 
@@ -2887,7 +2939,16 @@
       return payload;
     };
 
-    const submitPayload = (payload) => new Promise((resolve, reject) => {
+    const submitPayload = (payload) => {
+      if (window.MAGSNAP_FORM_TRANSPORT) {
+        return window.MAGSNAP_FORM_TRANSPORT.submit(payload, {
+          context: "panda_masters",
+          endpoints: PANDA_ENDPOINTS,
+          timeoutMs: PANDA_SUBMIT_TIMEOUT_MS
+        });
+      }
+
+      return new Promise((resolve, reject) => {
       const iframeName = `panda-submit-${Date.now()}-${Math.random().toString(36).slice(2)}`;
       const iframe = document.createElement("iframe");
       const postForm = document.createElement("form");
@@ -2955,7 +3016,12 @@
         submittedAt = Date.now();
         postForm.submit();
       }, 0);
-    });
+      });
+    };
+
+    const submissionFallbackHtml = (payload, subject, title, intro) => window.MAGSNAP_FORM_TRANSPORT
+      ? window.MAGSNAP_FORM_TRANSPORT.fallbackHtml(payload, { subject, title, intro })
+      : "";
 
     const renderRegistry = () => {
       const records = readLocalRecords();
@@ -3559,7 +3625,12 @@
         renderIntelligenceDashboard();
       } catch (error) {
         writeStorageRecord(CLUB_STORAGE_KEY, payload, "backend_failed", "club_record_id");
-        setFormStatus(clubStatusNode, error.message, true);
+        setFormStatus(clubStatusNode, `${error.message}${submissionFallbackHtml(
+          payload,
+          "MAGSNAP Club Record Backup",
+          "MAGSNAP club record",
+          "当前网络没有完成 Club Record 后台保存。记录已保存在本机，请复制资料并通过邮件或微信发送。"
+        )}`, true);
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
@@ -3622,7 +3693,12 @@
         newsletterForm.reset();
       } catch (error) {
         writeStorageRecord(NEWSLETTER_STORAGE_KEY, payload, "backend_failed", "newsletter_record_id");
-        setFormStatus(newsletterStatusNode, error.message, true);
+        setFormStatus(newsletterStatusNode, `${error.message}${submissionFallbackHtml(
+          payload,
+          "MAGSNAP Newsletter Backup",
+          "MAGSNAP newsletter signup",
+          "当前网络没有完成 Newsletter 后台提交。邮箱已保存在本机，请复制资料并通过邮件或微信发送。"
+        )}`, true);
       } finally {
         if (submitButton) {
           submitButton.disabled = false;

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MZ Universe | Submit Your Solution</title>
+  <meta name="description" content="Submit a solution for MZ Universe and Global Bounty challenges.">
+  <style>
+    :root {
+      --black: #000;
+      --near: #080706;
+      --paper: #f5efe6;
+      --kraft: #c8a97e;
+      --pink: #ff5c9a;
+      --muted: rgba(245, 239, 230, 0.68);
+      --line: rgba(245, 239, 230, 0.16);
+      color-scheme: dark;
+      font-family: Inter, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--paper);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.045;
+      background-image:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.35) 1px, transparent 1px),
+        linear-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+      background-size: 8px 12px;
+      mix-blend-mode: screen;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(100%, 1080px);
+      min-height: 100svh;
+      margin: 0 auto;
+      padding: 24px clamp(18px, 5vw, 48px) 70px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    header,
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: rgba(245, 239, 230, 0.72);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    nav a:hover,
+    footer a:hover {
+      color: var(--pink);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.62fr);
+      gap: clamp(28px, 5vw, 72px);
+      align-items: end;
+      padding: clamp(62px, 10vw, 120px) 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--kraft);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-family: "Arial Black", Impact, "Avenir Next Condensed", sans-serif;
+      font-size: clamp(44px, 9vw, 104px);
+      font-weight: 950;
+      letter-spacing: 0;
+      line-height: 0.94;
+    }
+
+    h1 span {
+      display: block;
+      color: var(--kraft);
+      font-size: clamp(28px, 5vw, 58px);
+    }
+
+    .lead,
+    .note {
+      max-width: 720px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(16px, 1.8vw, 22px);
+      font-weight: 760;
+      line-height: 1.5;
+    }
+
+    .note {
+      margin-top: 16px;
+      color: rgba(245, 239, 230, 0.56);
+      font-size: 14px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.035);
+      padding: 22px;
+    }
+
+    .panel strong {
+      display: block;
+      color: var(--paper);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 24px;
+      line-height: 1.04;
+    }
+
+    .panel ul {
+      margin: 18px 0 0;
+      padding: 0 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 720;
+      line-height: 1.55;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      border: 1px solid rgba(200, 169, 126, 0.44);
+      background: rgba(200, 169, 126, 0.1);
+      padding: 0 18px;
+      color: var(--paper);
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .button.primary {
+      border-color: rgba(200, 169, 126, 0.68);
+      background: rgba(200, 169, 126, 0.18);
+    }
+
+    @media (max-width: 760px) {
+      header,
+      footer,
+      main {
+        align-items: flex-start;
+        grid-template-columns: 1fr;
+      }
+
+      header,
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <a href="/">MAGSNAP / MZ Universe</a>
+      <nav aria-label="Submit idea navigation">
+        <a href="/open-challenges">Open Challenges</a>
+        <a href="/panda-masters">Panda Masters</a>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <p class="eyebrow">MZ Universe / Global Bounty</p>
+        <h1>提交你的方案<span>Submit Your Solution</span></h1>
+        <p class="lead">如果你能解决真实问题，我们想听。材料、镜片、磁铁、AI、生活系统、内容工具、运动训练系统，都可以。我们不寻找最便宜，我们寻找最好的。</p>
+        <p class="note">If you can solve a real problem, we want to hear it. Materials, lenses, magnets, AI, life systems, content tools, sports training systems — all are welcome.</p>
+        <div class="actions">
+          <a class="button primary" href="mailto:info@magsnap.me?subject=MZ%20Universe%20Solution%20Submission">邮件提交 / Submit by Email</a>
+          <a class="button" href="/panda-masters">加入熊猫高人 / Join Panda Masters</a>
+        </div>
+      </section>
+
+      <aside class="panel" aria-label="Submission checklist">
+        <strong>What to include</strong>
+        <ul>
+          <li>你想解决的问题 / The problem you solve</li>
+          <li>你的方案或能力 / Your solution or capability</li>
+          <li>样品、链接、图纸、视频或案例 / Samples, links, drawings, videos or proof</li>
+          <li>你希望怎样合作 / How you want to collaborate</li>
+        </ul>
+      </aside>
+    </main>
+
+    <footer>
+      <span>Panda Masters receive priority access to future programs.</span>
+      <a href="/">Back to MAGSNAP</a>
+    </footer>
+  </div>
+</body>
+</html>

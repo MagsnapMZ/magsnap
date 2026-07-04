@@ -15,8 +15,8 @@ Use `MAGSNAP_SOURCE_OF_TRUTH.md` as the active project reference before changing
 
 ## Core Message
 
-MAGSNAP is the Wearable Magnetic Ecosystem.
+MAGSNAP is an open platform started from MZ's unmet real-life needs.
 
-The glasses are only the first product.
+MAGSNAP does not currently manufacture the final device it wants. It publishes real problems, field-tests existing devices, and looks for companies, teams, engineers, creators, and individual users who can provide solutions.
 
-Snap. Mount. Go.
+Most Wanted #001 is a waterproof 3+ hour wearable live-streaming system for seawater, extreme sports, and high-pressure field environments.

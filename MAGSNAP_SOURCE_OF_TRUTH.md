@@ -9,22 +9,30 @@ This file is the active project reference for the MAGSNAP website. When older br
 - Project: MAGSNAP
 - Domain: magsnap.me
 - Contact email: `info@magsnap.me`
-- Mission: replace the current website with a clean, premium, mobile-first landing page.
-- Primary purpose: help visitors quickly understand the product.
+- Mission: explain MAGSNAP as an open platform for finding, testing, and partnering on extreme wearable live-streaming and AI device solutions.
+- Primary purpose: help visitors quickly understand what MAGSNAP is, what MZ needs, what Most Wanted #001 is, and how companies, teams, and individuals can submit solutions.
 - The site is not for checkout, signup, crowdfunding, or direct purchase.
 
 ## Brand Positioning
 
 MAGSNAP is not a sunglasses brand.
 
-MAGSNAP is a Wearable Magnetic Ecosystem.
+MAGSNAP is not currently manufacturing the final device it wants.
 
-The glasses are only the first product. Future ecosystem categories include:
+MAGSNAP is an open platform started from MZ's unmet real-life needs. It publishes real problems, field-tests existing devices, and looks for companies, teams, engineers, creators, and individual users who can provide solutions.
+
+The glasses are a magnetic base system and field-test platform. The long-term goal is to find or co-create wearable device systems for:
 
 - Cameras
 - Audio
 - AI devices
 - Communication devices
+
+The current first Most Wanted target is an extreme-environment wearable live-streaming system that can support 3+ hour use in seawater, wet hands, strong wind, high-speed sports, outdoor work, rescue/disaster/conflict-region field conditions, and other high-pressure environments.
+
+Waterproof capability is a baseline requirement, not a bonus.
+
+Before Most Wanted #001 is solved, MAGSNAP should be presented as a field-testing and review platform that combines existing products from DJI, Insta360, Bambu Lab, and other makers. This must not imply official partnership unless confirmed in writing.
 
 ## Color System
 
@@ -57,17 +65,18 @@ Do not use generic AI outdoor photos.
 
 1. Hero Video
    - Background: real MagSnap POV footage
-   - Text: `MAGSNAP` / `Wearable Magnetic Ecosystem` / `Snap. Mount. Go.`
-   - No CTA button
+   - Text: MAGSNAP is not just a product; it is an open platform looking for the missing device system MZ needs.
+   - Make clear that MAGSNAP does not currently produce the final device; it seeks partners and solutions.
+   - CTA buttons may link to Open Challenges, Panda Masters, and Submit Solution.
    - No Buy Now
    - No Add To Cart
 
-2. One System
-   - Headline: `One System`
-   - Message: `For Camera, Audio and AI`
-   - Show compatibility: Insta360 GO3, GO3S, DJI Nano, DJI Mic, AirTag, Walkie Talkie
-   - Demonstrate native magnetic mounting
-   - No adapters
+2. Most Wanted #001
+   - Headline: `Most Wanted #001`
+   - Message: `3+ Hour Extreme Live System`
+   - Clearly state the first-stage challenge: a waterproof wearable live-streaming system for seawater, extreme sports, and high-pressure outdoor environments.
+   - Requirements: 3+ hour live streaming, waterproof baseline, does not block vision, does not restrict movement, stable video, usable sound, controlled heat and battery, AI workflow connection.
+   - Show current field-test devices: phone, DJI Nano, Insta360 GO3/GO3S, DJI Mic, and future modules.
 
 3. What's Included
    - Show actual included components.
@@ -97,12 +106,26 @@ Do not use generic AI outdoor photos.
 
 6. POV Life
    - Use real footage and photos
-   - Prioritize Kitesurfing, Sailing, Beach Lifestyle, DJ, Travel
+   - Prioritize kitesurfing, seawater, beach lifestyle, extreme sports, travel, and real daily field tests.
    - No stock imagery
+   - List MZ's current daily test and carry kit clearly:
+     - Phone live streaming
+     - DJI Nano
+     - Insta360 GO3 / GO3S
+     - Bambu Lab / 3D printing
+     - DJI Mic
+     - Apple Watch Ultra
+     - AirPods
+     - MagSnap Frame
+     - ZenLoop
+     - Safe Strap
+     - Mac mini AI backend
 
 7. Founder
-   - Use a real founder photo
-   - Text: `Built for myself.` / `Shared with the world.`
+   - MZ is the first real test user.
+   - He previously used a phone for live streaming and recording.
+   - He is now testing DJI Nano, Insta360 GO3/GO3S, phone, and other devices in real life.
+   - The public story is not "we already have the finished product"; it is "MZ's need is not yet fully solved, so MAGSNAP opens the problem to society."
 
 8. MAG AI
    - Persistent floating assistant
@@ -177,6 +200,14 @@ Do not include:
 - Long Founder Story
 - Crowdfunding-style content
 - Generic FAQ pages
+
+## Partner / Brand Wording
+
+MAGSNAP may mention DJI, Insta360, Bambu Lab, Apple, GoPro, and other companies as examples of companies or product categories that could provide solutions or devices to test.
+
+Do not imply that any named company is an official partner, sponsor, maker, owner, or collaborator unless that relationship is confirmed in writing.
+
+MAGSNAP is seeking partners. It is not claiming existing partnerships.
 
 ## Founder Wording
 

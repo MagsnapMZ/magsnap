@@ -12,10 +12,12 @@ def test_system_section(page):
     section = page.locator("#system")
     assert section.is_visible()
 
-def test_creators_rig_text(page):
+def test_most_wanted_positioning(page):
     content = page.content()
-    assert "Creators Rig" in content
+    assert "Most Wanted #001" in content
+    assert "防水不是加分项，是入场门槛" in content
 
-def test_chat_button(page):
-    btn = page.locator("text=CHAT WITH MZ")
-    assert btn.is_visible()
+def test_mz_daily_test_kit(page):
+    content = page.content()
+    for name in ["DJI Nano", "Insta360 GO3/GO3S", "拓竹", "Mac mini"]:
+        assert name in content

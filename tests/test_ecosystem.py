@@ -8,6 +8,7 @@ def test_ecosystem_section(page):
 def test_ecosystem_header(page):
     content = page.content()
     assert "Compact Magnetic Index" in content
+    assert "问题队列" in content
 
 def test_device_cards(page):
     cards = page.locator(".eco-item")

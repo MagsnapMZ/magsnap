@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MAGSNAP | 磁吸外挂生态 / Wearable Magnetic Ecosystem</title>
-  <meta name="description" content="MAGSNAP 是一套头部磁吸外挂系统，可快速挂载相机、音频、定位与未来 AI 模块。 / MAGSNAP is a head-mounted magnetic platform for camera, audio, tracker and future AI modules.">
+  <title>MAGSNAP | MZ Most Wanted Platform</title>
+  <meta name="description" content="MAGSNAP 是 MZ 发起的开放平台，在目标达成前围绕 DJI、影石、拓竹等现有产品做真实测评，并向社会征集极端环境直播与 AI 随身设备解决方案。">
   <link rel="canonical" href="https://magsnap.me/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#000000">
-  <meta property="og:title" content="MAGSNAP | 磁吸外挂生态 / Wearable Magnetic Ecosystem">
-  <meta property="og:description" content="头部磁吸外挂系统。镜架只是起点。 / A magnetic head-worn system. The frame is only the beginning.">
+  <meta property="og:title" content="MAGSNAP | MZ Most Wanted Platform">
+  <meta property="og:description" content="不是只卖眼镜。MagSnap 是 MZ 用真实生活测试未来设备、向社会征集解决方案的平台。">
   <meta property="og:image" content="https://magsnap.me/assets/site/style-group-sand.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://magsnap.me/">
@@ -245,15 +245,35 @@
     }
 
     .hero h1 {
-      max-width: 980px;
+      max-width: 1060px;
+      font-size: clamp(48px, 9.6vw, 122px);
+      line-height: 0.94;
+      text-transform: none;
+    }
+
+    .hero h1 span {
+      display: block;
+      margin-top: 8px;
+      color: var(--kraft);
+      font-size: clamp(32px, 5.7vw, 74px);
+      line-height: 0.96;
     }
 
     .hero-subtitle {
       margin-top: 18px;
+      max-width: 960px;
       color: var(--paper);
       font-size: clamp(25px, 4vw, 58px);
       font-weight: 950;
       line-height: 1.03;
+    }
+
+    .hero-subtitle span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(245, 239, 230, 0.82);
+      font-size: clamp(19px, 2.5vw, 31px);
+      line-height: 1.12;
     }
 
     .hero-tagline {
@@ -264,12 +284,74 @@
     }
 
     .hero-vision {
-      max-width: 780px;
-      margin-top: 14px;
+      max-width: none;
+      margin-top: 0;
+      border-top: 1px solid rgba(245, 239, 230, 0.14);
+      padding-top: 11px;
       color: var(--paper);
-      font-size: clamp(13px, 1.2vw, 16px);
+      font-size: clamp(12px, 1vw, 14px);
       font-weight: 950;
-      line-height: 1.45;
+      line-height: 1.38;
+    }
+
+    .hero-manifesto {
+      max-width: 1120px;
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .hero-brief {
+      min-height: 158px;
+      border: 1px solid rgba(245, 239, 230, 0.15);
+      background: rgba(0, 0, 0, 0.34);
+      padding: 16px;
+      display: grid;
+      align-content: space-between;
+      gap: 14px;
+    }
+
+    .hero-brief strong {
+      display: block;
+      color: var(--kraft);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(17px, 1.55vw, 24px);
+      line-height: 0.98;
+      text-transform: uppercase;
+    }
+
+    .hero-brief span {
+      display: block;
+      color: rgba(245, 239, 230, 0.8);
+      font-size: clamp(13px, 1.1vw, 15px);
+      font-weight: 820;
+      line-height: 1.38;
+    }
+
+    .hero-signal-grid {
+      max-width: 1120px;
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .hero-priority,
+    .hero-witness {
+      max-width: none;
+      margin: 0;
+      border-top: 1px solid rgba(200, 169, 126, 0.34);
+      padding-top: 11px;
+      color: rgba(245, 239, 230, 0.76);
+      font-size: clamp(12px, 1vw, 14px);
+      font-weight: 850;
+      line-height: 1.42;
+    }
+
+    .hero-witness {
+      border-top-color: rgba(255, 92, 154, 0.32);
+      color: var(--kraft);
     }
 
     .hero-actions {
@@ -290,9 +372,18 @@
       color: var(--paper);
       font-size: 12px;
       font-weight: 950;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      text-transform: none;
       transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .hero-cta.primary {
+      background: rgba(200, 169, 126, 0.16);
+      border-color: rgba(200, 169, 126, 0.64);
+    }
+
+    .hero-cta span {
+      color: rgba(245, 239, 230, 0.66);
     }
 
     .hero-cta::before {
@@ -363,6 +454,83 @@
       font-weight: 950;
       line-height: 0.98;
       text-transform: uppercase;
+    }
+
+    .challenge-queue {
+      margin-top: clamp(34px, 5vw, 64px);
+      border-top: 1px solid rgba(245, 239, 230, 0.14);
+      padding-top: clamp(22px, 4vw, 36px);
+    }
+
+    .challenge-queue-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(260px, 0.7fr);
+      gap: clamp(18px, 4vw, 46px);
+      align-items: end;
+    }
+
+    .challenge-queue h3 {
+      font-size: clamp(30px, 5.5vw, 68px);
+      line-height: 0.92;
+    }
+
+    .challenge-queue-copy {
+      color: rgba(245, 239, 230, 0.62);
+      font-size: clamp(13px, 1.2vw, 16px);
+      font-weight: 760;
+      line-height: 1.52;
+    }
+
+    .mini-challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .mini-challenge {
+      min-height: 142px;
+      border: 1px solid rgba(245, 239, 230, 0.13);
+      background: rgba(255, 255, 255, 0.035);
+      padding: 14px;
+      display: grid;
+      align-content: space-between;
+      gap: 14px;
+    }
+
+    .mini-challenge strong {
+      color: var(--paper);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: 18px;
+      line-height: 1.02;
+    }
+
+    .mini-challenge span {
+      color: rgba(245, 239, 230, 0.62);
+      font-size: 12px;
+      font-weight: 820;
+      line-height: 1.35;
+    }
+
+    .mini-status {
+      width: fit-content;
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      padding: 5px 7px;
+      color: rgba(245, 239, 230, 0.62);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .mini-challenge.current .mini-status {
+      color: var(--pink);
+      border-color: rgba(255, 92, 154, 0.38);
+    }
+
+    .mini-challenge.solved .mini-status {
+      color: var(--kraft);
+      border-color: rgba(200, 169, 126, 0.44);
     }
 
     .snap {
@@ -1600,8 +1768,15 @@
       .ecosystem-columns,
       .box-layout,
       .founder-grid,
-      .founder-layout {
+      .founder-layout,
+      .hero-manifesto,
+      .hero-signal-grid,
+      .challenge-queue-head {
         grid-template-columns: 1fr;
+      }
+
+      .hero-brief {
+        min-height: 0;
       }
 
       .icon-grid {
@@ -1611,7 +1786,8 @@
       .snap-grid,
       .life-grid,
       .lab-grid,
-      .contact-grid {
+      .contact-grid,
+      .mini-challenge-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -1630,7 +1806,42 @@
       }
 
       .hero h1 {
-        font-size: clamp(58px, 19vw, 92px);
+        font-size: clamp(40px, 13vw, 70px);
+      }
+
+      .hero h1 span {
+        font-size: clamp(26px, 8.4vw, 43px);
+      }
+
+      .hero-subtitle {
+        font-size: clamp(20px, 7vw, 34px);
+      }
+
+      .hero-manifesto {
+        margin-top: 18px;
+        gap: 8px;
+      }
+
+      .hero-brief {
+        padding: 13px 14px;
+        gap: 8px;
+      }
+
+      .hero-signal-grid {
+        gap: 8px;
+      }
+
+      .challenge-queue {
+        margin-top: 28px;
+      }
+
+      .mini-challenge-grid {
+        gap: 8px;
+      }
+
+      .mini-challenge {
+        min-height: 128px;
+        padding: 12px;
       }
 
       .hero-actions {
@@ -1650,7 +1861,8 @@
       .snap-grid,
       .life-grid,
       .lab-grid,
-      .contact-grid {
+      .contact-grid,
+      .mini-challenge-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1802,13 +2014,36 @@
       </video>
       <div class="wrap">
         <div class="section-mark">01</div>
-        <h1>MAGSNAP</h1>
-        <p class="hero-subtitle">可穿戴磁吸生态 / Wearable Magnetic Ecosystem</p>
-        <p class="hero-tagline">纯磁吸，无电子 / 100% Magnetic · 0% Electric</p>
-        <p class="hero-vision">Vision+：近视和老花适配已解决，目前进入测试阶段。 / Vision+ myopia and reading correction are solved and now in testing.</p>
+        <p class="eyebrow">MZ Most Wanted / Open Platform</p>
+        <h1>MagSnap 不是一个产品<span>它是寻找未来随身直播设备的平台</span></h1>
+        <p class="hero-subtitle">MZ 的真实需求，还没有被现有产品完整满足。<span>第一阶段先用 DJI、影石、拓竹等现有产品做真实测评。</span></p>
+        <div class="hero-manifesto">
+          <div class="hero-brief">
+            <strong>是什么</strong>
+            <span>MagSnap 是 MZ 为自己做玩具、做生活解决方案的公开实验。它用真实生活提出需求，再向全世界征集更好的方案。</span>
+          </div>
+          <div class="hero-brief">
+            <strong>MZ 在测试</strong>
+            <span>从手机直播开始，现在围绕 DJI Nano、影石 Insta360 GO3/GO3S、拓竹 3D 打印和更多现有产品做组合、测评和直播。</span>
+          </div>
+          <div class="hero-brief">
+            <strong>最终要找</strong>
+            <span>一套能装在 MagSnap 磁吸眼镜系统上的随身装置：能直播、能下海、能极限运动、能连接 AI。</span>
+          </div>
+          <div class="hero-brief">
+            <strong>重要声明</strong>
+            <span>MagSnap 现阶段不生产这个最终设备。在目标达成前，我们先用现有产品真实测评，寻找能解决问题的合作方。</span>
+          </div>
+        </div>
+        <div class="hero-signal-grid">
+          <p class="hero-priority">防水不是加分项，是入场门槛。适合海水、强风、高速运动、救援、灾害、冲突地区和野外行动。</p>
+          <p class="hero-vision">熊猫高人机制保留。能解决真实问题，就有机会获得奖励、合作机会或平台身份。</p>
+          <p class="hero-witness">新增问题排最前，原有问题继续保留。已解决和未解决都会标注状态。</p>
+        </div>
         <div class="hero-actions">
-          <a class="hero-cta" href="#founder">加入熊猫高人 / Join Panda Masters</a>
-          <a class="hero-cta" href="most-wanted/">查看 MagSnap 头号悬赏 / View MagSnap Most Wanted</a>
+          <a class="hero-cta primary" href="most-wanted/">查看 MagSnap 头号悬赏 / <span>View Most Wanted</span></a>
+          <a class="hero-cta" href="#founder">加入熊猫高人 / <span>Join Panda Masters</span></a>
+          <a class="hero-cta" href="submit-idea/">提交你的方案 / <span>Submit Your Solution</span></a>
         </div>
       </div>
     </section>
@@ -1817,23 +2052,74 @@
       <div class="wrap system-grid">
         <div>
           <div class="section-mark">02</div>
-          <p class="eyebrow">一个系统 / One System</p>
-          <h2>为相机、音频与外挂模块而生 / For Camera, Audio and Modules</h2>
-          <p class="body-copy">MAGSNAP 不是普通眼镜，而是一套头部磁吸外挂系统。镜架是底座，相机、音频、定位与通信模块都能快速切换。<br>MAGSNAP is not just eyewear. It is a head-mounted magnetic platform for switching camera, audio, tracker and communication modules.</p>
+          <p class="eyebrow">Most Wanted #001</p>
+          <h2>3 小时以上极端环境直播系统 / 3+ Hour Extreme Live System</h2>
+          <p class="body-copy">MagSnap 第一阶段新增的头号问题，是在海水、湿手、暴晒、强风、高速运动和高压力户外环境中使用的随身直播系统。它必须能安装或适配 MagSnap 磁吸眼镜系统，不挡视线，不影响行动，并能连接 AI 后台剪辑、整理和分发流程。<br>The first new priority is a waterproof wearable live system for seawater, wet hands, strong wind, high-speed sports and high-pressure field environments.</p>
           <div class="chips" aria-label="Compatibility">
-            <span class="chip">Insta360 GO3</span>
-            <span class="chip">GO3S</span>
-            <span class="chip">DJI Nano</span>
-            <span class="chip">DJI Mic</span>
-            <span class="chip">AirTag</span>
-            <span class="chip">Walkie Talkie</span>
+            <span class="chip">必须防水 / Waterproof</span>
+            <span class="chip">3+ Hour Live</span>
+            <span class="chip">Seawater</span>
+            <span class="chip">Extreme Sports</span>
+            <span class="chip">No Vision Block</span>
+            <span class="chip">AI Workflow</span>
           </div>
-          <p class="native-note">原生磁吸连接。<br>无需转接。<br>头部磁吸外挂系统</p>
+          <p class="native-note">不能下海，<br>就不是第一阶段答案。<br>Waterproof is the baseline.</p>
         </div>
         <div class="media-frame" role="group" aria-label="MagSnap product demo">
           <video class="system-video" autoplay muted loop playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/system-kitesurf-poster.jpg" data-inline-autoplay-video="system" data-inline-autoplay-fallback="controls" x5-playsinline="true">
             <source src="assets/site/system-kitesurf-loop.mp4" type="video/mp4">
           </video>
+        </div>
+      </div>
+      <div class="wrap challenge-queue" aria-label="Most Wanted problem queue">
+        <div class="challenge-queue-head">
+          <div>
+            <p class="eyebrow">问题队列 / Problem Queue</p>
+            <h3>新增问题排最前，原有问题继续保留。</h3>
+          </div>
+          <p class="challenge-queue-copy">Most Wanted 不是只剩一个问题。第一阶段新增的极端环境直播和 AI 内容后台排在最前面；镜片、材料、磁铁、AI 入口、内容工具等原有问题继续保留，并标记当前状态。</p>
+        </div>
+        <div class="mini-challenge-grid">
+          <div class="mini-challenge current">
+            <strong>#001 极端环境直播</strong>
+            <span>3 小时以上，防水，下海，第一视角，不挡视线。</span>
+            <em class="mini-status">Most Wanted Now</em>
+          </div>
+          <div class="mini-challenge current">
+            <strong>#002 AI 内容后台</strong>
+            <span>Mac mini 自动导入、转写、剪辑、字幕、标题和分发。</span>
+            <em class="mini-status">In Progress</em>
+          </div>
+          <div class="mini-challenge solved">
+            <strong>Vision+ 镜片</strong>
+            <span>近视和老花适配已解决，当前进入测试阶段。</span>
+            <em class="mini-status">Solved / Testing</em>
+          </div>
+          <div class="mini-challenge">
+            <strong>材料 / 磁铁 / 结构</strong>
+            <span>更轻、更稳、更可靠的连接、固定和安全方案。</span>
+            <em class="mini-status">Open</em>
+          </div>
+          <div class="mini-challenge">
+            <strong>AI 随身入口</strong>
+            <span>听见、理解、翻译、回答，并适配 MagSnap 系统。</span>
+            <em class="mini-status">Open</em>
+          </div>
+          <div class="mini-challenge">
+            <strong>实时翻译</strong>
+            <span>中文、越南文和多语言现场沟通，减少手机操作。</span>
+            <em class="mini-status">Open</em>
+          </div>
+          <div class="mini-challenge">
+            <strong>运动 / 训练系统</strong>
+            <span>适合真实运动场景的记录、反馈和训练方案。</span>
+            <em class="mini-status">Open</em>
+          </div>
+          <div class="mini-challenge">
+            <strong>内容工具</strong>
+            <span>真实生活视频、直播、测评内容的自动整理系统。</span>
+            <em class="mini-status">Open</em>
+          </div>
         </div>
       </div>
     </section>

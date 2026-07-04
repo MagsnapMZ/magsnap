@@ -442,7 +442,7 @@
       <a href="../">首页 / Home</a>
       <a href="../panda-masters/">熊猫高人 / Panda Masters</a>
       <a href="#most-wanted-001">#001 Live</a>
-      <a href="#most-wanted-002">#002 AI Backend</a>
+      <a href="#most-wanted-002">#002 AI Device</a>
       <a href="#solved">Solved</a>
       <a href="mailto:info@magsnap.me">info@magsnap.me</a>
     </nav>
@@ -455,7 +455,7 @@
         <h1>MAGSNAP MOST WANTED</h1>
         <p class="lead">新增问题排最前，原有问题继续保留。<br>New urgent problems go first. Existing problems stay on the roadmap.</p>
         <p class="plain">第一阶段最重要的是极端环境第一视角直播系统；在目标达成前，MagSnap 会围绕 DJI、影石 Insta360、拓竹 Bambu Lab 等现有产品做组合、测评和真实直播，同时继续公开镜片、材料、磁铁、AI 和内容工具等问题。</p>
-        <p class="plain">MagSnap 不是眼镜公司。眼镜只是第一个产品；Most Wanted 负责把还不存在的产品找出来、测出来、做出来。</p>
+        <p class="plain">MagSnap 是极限生活科技平台。眼镜是第一个入口；Most Wanted 负责把还不存在的产品找出来、测出来、做出来。</p>
         <p class="plain">Most Wanted 是 MagSnap 的开放创新引擎：每个还没被解决的极端环境问题都会成为公开悬赏；每个被采用的方案都会进入平台；贡献者会成为 Panda Master 或 Panda Masters Contributor。</p>
         <p class="plain">三阶段：Phase 1 Phone + Creator；Phase 2 DJI + Insta360 + AI + Panda Master；Phase 3 24/7 AI Companion + Extreme Technology Platform。</p>
         <a class="button primary" href="#solution-form">Submit A Solution / 提交解决方案</a>
@@ -498,34 +498,34 @@
       </article>
 
       <article class="challenge-card" id="most-wanted-002">
-        <p class="eyebrow">Problem #002 · AI Content Backend</p>
-        <h2>Most Wanted #002<br>Mac mini AI Content Backend</h2>
-        <span class="status-pill">Status: In Progress</span>
+        <p class="eyebrow">Problem #002 · Waterproof AI Companion</p>
+        <h2>Most Wanted #002<br>Waterproof 24/7 AI Companion</h2>
+        <span class="status-pill">Status: Most Wanted Now</span>
         <div class="roadmap-flow">
           <div class="roadmap-step">
             <p class="eyebrow">Problem</p>
-            <h3>不要手动剪辑</h3>
-            <p class="plain">MZ 只负责真实生活、测试和拍摄。Mac mini 应该负责导入、转写、剪辑、字幕、标题和分发。</p>
+            <h3>24 小时 AI 记录</h3>
+            <p class="plain">MZ 需要一个防水、长续航的随身 AI 设备，能在授权场景 24 小时持续监听并整理自己的日常对话。</p>
           </div>
           <div class="roadmap-step">
-            <p class="eyebrow">Flow</p>
-            <h3>Auto Pipeline</h3>
+            <p class="eyebrow">Baseline</p>
+            <h3>Waterproof + Long Battery</h3>
             <ul class="challenge-list">
-              <li>自动导入素材 / Auto import</li>
-              <li>自动转写 / Transcription</li>
-              <li>自动找重点 / Highlight detection</li>
-              <li>自动分发 / Distribution</li>
+              <li>24 小时持续监听 / 24-hour listening</li>
+              <li>足够长续航 / Long battery life</li>
+              <li>防水、防汗、适合海边环境 / Waterproof and sweatproof</li>
+              <li>自动整理每日心得 / AI daily reflection notes</li>
             </ul>
           </div>
           <div class="roadmap-step">
             <p class="eyebrow">Wanted</p>
-            <h3>AI Workflow</h3>
-            <p class="plain">寻找能把直播、长视频、短视频和平台分发自动化的内容系统方案。</p>
+            <h3>AI Companion Device</h3>
+            <p class="plain">寻找可测试的硬件、麦克风、功耗、电池、防水和 AI 记忆方案。</p>
           </div>
           <div class="roadmap-step">
             <p class="eyebrow">Status</p>
-            <h3>Building</h3>
-            <p class="plain">这个问题正在内部搭建，但仍开放更好的外部方案。</p>
+            <h3>Searching</h3>
+            <p class="plain">这是 Most Wanted #002 的核心目标。Mac mini 可以作为后端整理系统，但不再是 #002 本身。</p>
           </div>
         </div>
         <a class="button primary" href="#solution-form">Submit A Solution<br>提交解决方案</a>
@@ -739,8 +739,8 @@
               <option value="">Select / 选择</option>
               <option>Most Wanted #001 / Extreme Live System / 极端环境直播系统</option>
               <option>Most Wanted #001 / Waterproof POV Device / 防水第一视角设备</option>
-              <option>Most Wanted #002 / AI Content Backend / AI 内容后台</option>
-              <option>Most Wanted #002 / Auto Editing Workflow / 自动剪辑工作流</option>
+              <option>Most Wanted #002 / Waterproof 24-7 AI Companion / 防水 24 小时 AI 伴侣设备</option>
+              <option>Most Wanted #002 / Long Battery AI Recorder / 长续航 AI 记录设备</option>
               <option>Most Wanted #003 / Better Polarized Lenses / 更好的偏光镜片</option>
               <option>Most Wanted #003 / Photochromic Lenses / 变色镜片</option>
               <option>Most Wanted #003 / Better Optical Clarity / 更好的光学清晰度</option>
@@ -818,15 +818,15 @@
       });
       const contactEmail = payload.contact_detail.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i)?.[0] || "";
       const isExtremeLiveChallenge = payload.solution_area.includes("Most Wanted #001");
-      const isAIBackendChallenge = payload.solution_area.includes("Most Wanted #002");
+      const isAICompanionChallenge = payload.solution_area.includes("Most Wanted #002");
       const isLensChallenge = payload.solution_area.includes("Most Wanted #003");
       const isMagneticAccessoryChallenge = payload.solution_area.includes("Most Wanted #004");
       const isMagnetStructureChallenge = payload.solution_area.includes("Most Wanted #005");
       const isPoleLayoutChallenge = payload.solution_area.includes("Most Wanted #006");
       const intelligenceLabel = isExtremeLiveChallenge
         ? "Extreme Live System"
-        : isAIBackendChallenge
-          ? "AI Content Backend"
+        : isAICompanionChallenge
+          ? "Waterproof AI Companion"
           : isLensChallenge
             ? "Lens"
             : isMagneticAccessoryChallenge
@@ -854,8 +854,8 @@
       payload.accessory_categories = isMagneticAccessoryChallenge ? "Headlamps, Action Cameras, DJI Mic, AirTag, Radios, Flashlights, Safety Lights, Outdoor Tools, Future Magnetic Modules" : "";
       payload.issue_category = isExtremeLiveChallenge
         ? "Extreme Live Streaming"
-        : isAIBackendChallenge
-          ? "AI Content Backend"
+        : isAICompanionChallenge
+          ? "Waterproof 24/7 AI Companion"
           : isLensChallenge
             ? "Lens Performance"
             : isMagneticAccessoryChallenge
@@ -867,8 +867,8 @@
                   : "";
       payload.issue_tags = isExtremeLiveChallenge
         ? "Waterproof, Seawater, 3+ Hour Live, POV, Extreme Sports"
-        : isAIBackendChallenge
-          ? "Mac mini, Auto Import, Transcription, Editing, Distribution"
+        : isAICompanionChallenge
+          ? "Waterproof, 24-hour Listening, Long Battery, AI Memory, Daily Reflection"
           : isLensChallenge
             ? "Optical Clarity, Polarization, Saltwater Performance, Large Frame Lens"
             : isMagneticAccessoryChallenge

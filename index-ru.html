@@ -2880,16 +2880,44 @@
       }
     });
 
+    const applyFrameColor = (button) => {
+      const card = button.closest(".style-card");
+      const image = card?.querySelector("[data-style-image]");
+      if (!card || !image) return;
+      card.querySelectorAll(".frame-color-button").forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      image.src = button.dataset.styleSrc || image.src;
+      image.alt = button.dataset.styleAlt || image.alt;
+    };
+
     document.querySelectorAll(".frame-color-button").forEach((button) => {
-      button.addEventListener("click", () => {
-        const card = button.closest(".style-card");
-        const image = card?.querySelector("[data-style-image]");
-        if (!card || !image) return;
-        card.querySelectorAll(".frame-color-button").forEach((item) => item.classList.remove("active"));
-        button.classList.add("active");
-        image.src = button.dataset.styleSrc || image.src;
-        image.alt = button.dataset.styleAlt || image.alt;
-      });
+      button.addEventListener("click", () => applyFrameColor(button));
+    });
+
+    document.querySelectorAll(".style-card").forEach((card) => {
+      const buttons = Array.from(card.querySelectorAll(".frame-color-button"));
+      if (buttons.length < 2) return;
+
+      let activeIndex = Math.max(0, buttons.findIndex((button) => button.classList.contains("active")));
+      const pickNextIndex = () => {
+        let nextIndex = activeIndex;
+        while (nextIndex === activeIndex) {
+          nextIndex = Math.floor(Math.random() * buttons.length);
+        }
+        return nextIndex;
+      };
+
+      const rotateFrameColor = () => {
+        if (!document.hidden) {
+          activeIndex = pickNextIndex();
+          applyFrameColor(buttons[activeIndex]);
+        }
+        window.setTimeout(rotateFrameColor, 1000 + Math.random() * 1000);
+      };
+
+      activeIndex = pickNextIndex();
+      applyFrameColor(buttons[activeIndex]);
+      window.setTimeout(rotateFrameColor, 1000 + Math.random() * 1000);
     });
 
   </script>

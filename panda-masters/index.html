@@ -3,18 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MAGSNAP | Panda Masters</title>
-  <meta name="description" content="Panda Masters registration, photo upload and private-safe aggregate stats for MagSnap.">
-  <link rel="canonical" href="https://magsnap.me/panda-masters/">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="manifest" href="/site.webmanifest">
-  <meta name="theme-color" content="#000000">
-  <meta property="og:title" content="MAGSNAP | Panda Masters">
-  <meta property="og:description" content="Panda Masters registration, photo upload and private-safe aggregate stats for MagSnap.">
-  <meta property="og:image" content="https://magsnap.me/assets/site/panda-logo.jpg">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://magsnap.me/panda-masters/">
-  <meta name="twitter:card" content="summary_large_image">
+  <title>MZ Universe | Panda Masters</title>
+  <meta name="description" content="Panda Masters is a global problem-solving network for MZ Universe open challenges.">
   <style>
     :root {
       --black: #000;
@@ -106,34 +96,6 @@
     .nav a:hover,
     .footer-links a:hover {
       color: var(--pink);
-    }
-
-    .language-switcher {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      border: 1px solid rgba(245, 239, 230, 0.14);
-      background: rgba(255, 255, 255, 0.035);
-      padding: 4px;
-    }
-
-    .lang-button {
-      min-width: 42px;
-      border: 0;
-      background: transparent;
-      color: rgba(245, 239, 230, 0.68);
-      padding: 8px 9px;
-      font: inherit;
-      font-size: 11px;
-      font-weight: 950;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      cursor: pointer;
-    }
-
-    .lang-button.is-active {
-      background: var(--kraft);
-      color: var(--black);
     }
 
     main {
@@ -340,49 +302,6 @@
     .dashboard-card h3 {
       margin-top: 18px;
       font-size: clamp(22px, 3vw, 34px);
-    }
-
-    .challenge-card {
-      margin-top: 18px;
-      border-color: rgba(200, 169, 126, 0.36);
-      background:
-        radial-gradient(circle at 12% 10%, rgba(255, 92, 154, 0.12), transparent 32%),
-        linear-gradient(145deg, rgba(200, 169, 126, 0.08), rgba(255, 255, 255, 0.025));
-    }
-
-    .challenge-card h3 {
-      max-width: 880px;
-      color: var(--paper);
-      font-size: clamp(34px, 6vw, 72px);
-      line-height: 0.92;
-    }
-
-    .challenge-body {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.62fr);
-      gap: clamp(18px, 4vw, 36px);
-      margin-top: 20px;
-    }
-
-    .challenge-list {
-      display: grid;
-      gap: 9px;
-      margin: 16px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .challenge-list li {
-      border-left: 2px solid var(--kraft);
-      padding-left: 10px;
-      color: rgba(245, 239, 230, 0.76);
-      font-size: 13px;
-      font-weight: 850;
-      line-height: 1.35;
-    }
-
-    .challenge-actions {
-      margin-top: 18px;
     }
 
     .stat-grid {
@@ -707,10 +626,6 @@
       line-height: 1.35;
     }
 
-    #flywheel,
-    #definition,
-    #club-event,
-    #field-kit,
     #clubs,
     #email,
     #directory,
@@ -721,28 +636,19 @@
     }
 
     .survey-hero {
-      min-height: auto;
-      grid-template-columns: 1fr;
-      align-items: start;
-      padding: clamp(20px, 5vw, 40px) 0 clamp(18px, 4vw, 28px);
-      border-bottom: 0;
-    }
-
-    .survey-hero .mark,
-    .survey-hero .cta-row,
-    .survey-hero .mission-card,
-    .survey-hero .sale-badge,
-    .survey-hero .plain {
-      display: none;
+      min-height: 72svh;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.48fr);
+      align-items: end;
+      padding: clamp(28px, 6vw, 70px) 0 clamp(34px, 6vw, 56px);
     }
 
     .survey-hero h1 {
-      max-width: 760px;
-      font-size: clamp(48px, 10vw, 116px);
+      max-width: 900px;
+      font-size: clamp(48px, 9vw, 118px);
     }
 
     .survey-hero .lead {
-      max-width: 640px;
+      max-width: 760px;
       margin-top: 18px;
       color: var(--kraft);
     }
@@ -815,22 +721,12 @@
         justify-content: flex-start;
       }
 
-      .language-switcher {
-        width: 100%;
-        max-width: 260px;
-      }
-
-      .lang-button {
-        flex: 1;
-      }
-
       main {
         padding-top: 28px;
       }
 
       .hero,
       .section-head,
-      .challenge-body,
       .grid-2,
       .grid-3 {
         grid-template-columns: 1fr;
@@ -838,21 +734,6 @@
 
       .hero {
         min-height: auto;
-      }
-
-      .hero > *,
-      .section-head > * {
-        min-width: 0;
-      }
-
-      h1,
-      h2,
-      .lead,
-      .eyebrow,
-      .button {
-        max-width: 100%;
-        overflow-wrap: anywhere;
-        white-space: normal;
       }
 
       .panda-form {
@@ -906,85 +787,81 @@
 <body>
   <header class="header">
     <a class="brand" href="../">
-      <img src="../assets/site/panda-logo.jpg" alt="Official MAGSNAP Panda Logo">
-      <span>MAGSNAP</span>
+      <img src="../assets/site/panda-logo.jpg" alt="Official MZ Universe Panda Logo">
+      <span>MZ Universe</span>
     </a>
     <nav class="nav" aria-label="Panda Masters navigation">
       <a href="../">首页 / Home</a>
-      <a href="#checkin">登记 / Check-in</a>
-      <a href="#coverage">统计 / Stats</a>
-      <a href="../most-wanted/">头号悬赏 / Most Wanted</a>
+      <a href="#definition">定义 / Definition</a>
+      <a href="#mission">宗旨 / Mission</a>
+      <a href="#checkin">申请 / Apply</a>
       <a href="mailto:info@magsnap.me">info@magsnap.me</a>
     </nav>
-    <div class="language-switcher" aria-label="Language switch">
-      <button class="lang-button" type="button" data-lang-button="en">EN</button>
-      <button class="lang-button" type="button" data-lang-button="zh">中文</button>
-      <button class="lang-button" type="button" data-lang-button="vi">VI</button>
-      <button class="lang-button" type="button" data-lang-button="ru">RU</button>
-    </div>
   </header>
 
   <main>
     <section class="hero survey-hero" id="top">
       <div>
-        <div class="mark">V8</div>
-        <p class="eyebrow" data-i18n-html="heroEyebrow">Panda Masters Registry / 熊猫高人登记</p>
-        <h1 data-i18n-html="heroTitle">Join Panda Masters<br>加入熊猫高人</h1>
-        <p class="lead" data-i18n-html="heroLead">Not For Sale. For Those Who Help The Community.<br>非卖品。致那些帮助社区成长的人。</p>
-        <div class="sale-badge">Not For Sale / 暂不销售</div>
-        <p class="plain">核心 KPI：Club Coverage %、Owner Coverage %、Coach Coverage %、Core Community Coverage %、POV Creator Coverage %、Panda Masters Count、Content Generated。</p>
+        <div class="mark">V1.0</div>
+        <p class="eyebrow">Panda Masters / 全球问题解决网络</p>
+        <h1>Only The Best.<br>只寻找最好的。</h1>
+        <p class="lead">Panda Masters 不是眼镜社区。不是 Founder 社区。不是 AI 社区。Panda Masters 是一个全球问题解决网络。</p>
+        <div class="sale-badge">Global Bounty / Open Problem Solving</div>
+        <p class="plain">我们的目标：成为世界上最大的开放式悬赏与问题解决平台。<br>Our goal: become the world’s largest open bounty and problem-solving platform.</p>
+        <p class="plain">当前阶段，熊猫高人会拿市面上最 reliable 的现有产品做真实测试：以 DJI 大疆、影石 Insta360、拓竹 Bambu Lab 为首，包括但不限于运动相机、麦克风、3D 打印、固定结构、AI 可穿戴、直播设备、内容工具和极限运动装备。测试过程会在各个自媒体平台发布，用真实生活、海水、极限运动和 AI 工作流来判断谁能真正解决问题。<br>At this stage, Panda Masters field-test reliable market-ready gear from DJI, Insta360, Bambu Lab and beyond, then publish the process across social channels to find what truly works in real life, seawater, extreme sports and AI workflows.</p>
         <div class="cta-row">
-          <a class="button primary" href="#checkin">Panda Master 登记 / Check-in</a>
-          <a class="button" href="#coverage">查看覆盖 Dashboard / View Coverage</a>
+          <a class="button primary" href="#checkin">申请加入 / Apply to Join</a>
+          <a class="button" href="../open-challenges/">查看悬赏问题 / View Challenges</a>
+          <a class="button" href="../submit-idea/">提交方案 / Submit Solution</a>
         </div>
       </div>
       <aside class="mission-card">
         <div>
-          <p class="eyebrow">Mission</p>
-          <strong>Full Coverage.</strong>
+          <p class="eyebrow">One Line</p>
+          <strong>Find. Solve. Build.</strong>
         </div>
-        <p class="plain">MZ + 越南朋友，骑摩托覆盖芽庄、番朗、美奈。拜访每个主要俱乐部，见每个老板、教练、核心玩家和 POV 创作者。<br>A motorbike documentary route built for maximum coverage.</p>
+        <p class="plain">Find the best people. Solve the hardest problems. Build the future together.<br>找到最强的人，解决最难的问题，一起把未来做出来。</p>
       </aside>
     </section>
 
     <section class="section" id="flywheel">
       <div class="section-head">
         <div>
-          <p class="eyebrow">全覆盖战略 / Full Coverage Strategy</p>
-          <h2>最大覆盖。<br>故事跟上。<br>网络沉淀。</h2>
+          <p class="eyebrow">核心理念 / Core Belief</p>
+          <h2>最好的答案，<br>不在同一个地方。</h2>
         </div>
-        <p class="plain">MagSnap 不是眼镜公司。眼镜是入口，网络才是资产。越南风冲是第一块验证场。<br>The glasses are the entry ticket. The network is the asset.</p>
+        <p class="plain">世界上最好的答案，往往不在同一个公司里，也不在同一个国家里。我们寻找全球最聪明、最有创造力、最有执行力的人，然后把真实问题发布给他们。<br>The best answers rarely live inside one company or one country. We publish real problems to the smartest, most creative, most execution-driven people we can find.</p>
       </div>
       <div class="grid-3">
         <article class="card">
           <span class="number">01</span>
-          <h3>Coverage First</h3>
-          <p class="plain">每个主要俱乐部都知道 MagSnap。<br>Every major kitesurf club knows MagSnap.</p>
+          <h3>Real Problems</h3>
+          <p class="plain">不是空泛话题，而是真实产品、材料、系统、内容和训练问题。<br>No vague themes. Real product, material, system, content and training problems.</p>
         </article>
         <article class="card">
           <span class="number">02</span>
-          <h3>Story Engine</h3>
-          <p class="plain">摩旅、海岸线、俱乐部、教练、社群成员和 POV 内容。<br>Road trip, coast roads, clubs, coaches, community members and POV clips.</p>
+          <h3>Global Talent</h3>
+          <p class="plain">高手可能在任何城市、任何行业、任何语言里。Panda Masters 负责把他们连接起来。<br>Great talent can sit in any city, industry or language. Panda Masters connects them.</p>
         </article>
         <article class="card">
           <span class="number">03</span>
-          <h3>Network Map</h3>
-          <p class="plain">记录老板、教练、核心成员和创作者。<br>Map owners, coaches, core members and creators.</p>
+          <h3>Best Solutions</h3>
+          <p class="plain">我们不奖励热闹。我们奖励能让项目真正进化的解决方案。<br>We do not reward noise. We reward solutions that move the project forward.</p>
         </article>
         <article class="card">
           <span class="number">04</span>
-          <h3>Brand Follows</h3>
-          <p class="plain">覆盖先发生，品牌跟着故事扩散。<br>Coverage comes first. The brand follows the story.</p>
+          <h3>Open Bounty</h3>
+          <p class="plain">让任何问题都能被提交，让最好的方案自然脱颖而出。<br>Let problems be submitted. Let the best answers rise.</p>
         </article>
         <article class="card">
           <span class="number">05</span>
-          <h3>Expansion Bridges</h3>
-          <p class="plain">GO3S、DJI Nano、GoPro 玩家会连接更多户外场景。<br>POV users bridge to moto, fishing, cycling, sailing and travel.</p>
+          <h3>Contribution First</h3>
+          <p class="plain">学历、头衔、背景不是核心。解决问题的能力才是门票。<br>Degrees, titles and background are secondary. Problem-solving ability is the ticket.</p>
         </article>
         <article class="card">
           <span class="number">06</span>
-          <h3>No Scarcity Game</h3>
-          <p class="plain">不抽奖，不随机，不制造稀缺。合格就交付。<br>No lottery, no random draw, no scarcity game.</p>
+          <h3>Build Together</h3>
+          <p class="plain">MZ Universe 提出问题，Panda Masters 推动项目进化。<br>MZ Universe raises the problems. Panda Masters pushes projects forward.</p>
         </article>
       </div>
     </section>
@@ -993,30 +870,30 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">定义 / Definition</p>
-          <h2>不是客户。<br>是第一代社区。</h2>
+          <h2>不是社区。<br>是问题解决网络。</h2>
         </div>
-        <p class="plain">Panda Masters 是第一代社区。每个人对应一副眼镜、一个 Panda Master ID、一条现场记录。<br>One person. One glasses. One Panda Master ID.</p>
+        <p class="plain">Panda Masters 不是眼镜社区，不是 Founder 社区，也不是 AI 社区。它是一个全球问题解决网络。<br>Panda Masters is not an eyewear community, not a founder community and not an AI community. It is a global problem-solving network.</p>
       </div>
       <div class="grid-3">
         <article class="card">
           <span class="number">01</span>
-          <h3>Owners</h3>
-          <p class="plain">俱乐部老板优先。当地可见度从老板开始。<br>Owners first. Local visibility starts with the club owner.</p>
+          <h3>Not Eyewear</h3>
+          <p class="plain">MagSnap 是第一个案例，不是边界。Panda Masters 不被眼镜定义。<br>MagSnap is the first case, not the boundary.</p>
         </article>
         <article class="card">
           <span class="number">02</span>
-          <h3>Coaches</h3>
-          <p class="plain">主教练和教练优先。标准从教学现场开始。<br>Head coaches and coaches set the field standard.</p>
+          <h3>Not Founder</h3>
+          <p class="plain">不是身份俱乐部，不靠早期标签制造优越感。<br>Not a status club. No fake hierarchy from early labels.</p>
         </article>
         <article class="card">
           <span class="number">03</span>
-          <h3>Core Members</h3>
-          <p class="plain">长期成员、运动员、创作者和社群贡献者。<br>Long-term members, athletes, creators and community contributors.</p>
+          <h3>Not AI Only</h3>
+          <p class="plain">AI 是工具之一。材料、制造、训练、内容、生活系统都同样重要。<br>AI is one tool. Materials, manufacturing, training, content and life systems matter too.</p>
         </article>
         <article class="card">
           <span class="number">04</span>
-          <h3>Contributors</h3>
-          <p class="plain">能帮助风冲社群、内容、产品或现场覆盖的人。<br>People who help the community, content, product or coverage.</p>
+          <h3>Problem Solvers</h3>
+          <p class="plain">我们寻找能把问题解决掉的人。能力比履历更重要。<br>We look for people who solve the problem. Ability beats resume.</p>
         </article>
       </div>
     </section>
@@ -1024,46 +901,46 @@
     <section class="section" id="club-event">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Community Coverage Event / 社群覆盖事件</p>
-          <h2>不是发布会。<br>是覆盖行动。</h2>
+          <p class="eyebrow">寻找与奖励 / Search + Reward</p>
+          <h2>不奖励参与。<br>只奖励结果。</h2>
         </div>
-        <p class="plain">到达、召集、演示、扫码、登记、领取眼镜、拍照、POV 视频，然后去下一个俱乐部。<br>Arrive, gather, demo, scan, register, receive glasses, photo, POV video, next club.</p>
+        <p class="plain">我们不看学历、头衔、背景。我们看解决问题的能力。我们不奖励噪音，不奖励想法数量，只奖励贡献和最好的解决方案。<br>We do not reward participation, noise or idea volume. We reward contribution and the best solution.</p>
       </div>
       <div class="timeline">
-        <div class="timeline-row"><strong>01</strong><span>到达俱乐部 / Arrive at the club</span><span class="tag">Arrive</span></div>
-        <div class="timeline-row"><strong>02</strong><span>老板召集教练和核心成员 / Owner gathers coaches and core members</span><span class="tag">Gather</span></div>
-        <div class="timeline-row"><strong>03</strong><span>产品演示 / MagSnap demo</span><span class="tag">Demo</span></div>
-        <div class="timeline-row"><strong>04</strong><span>现场扫码登记 / Scan and check in</span><span class="tag">Scan</span></div>
-        <div class="timeline-row"><strong>05</strong><span>登记确认 / Confirm registration</span><span class="tag">Register</span></div>
-        <div class="timeline-row"><strong>06</strong><span>领取眼镜 / Receive glasses</span><span class="tag">Receive</span></div>
-        <div class="timeline-row"><strong>07</strong><span>照片与 POV 视频 / Photo and POV video</span><span class="tag">Content</span></div>
-        <div class="timeline-row"><strong>08</strong><span>前往下一个俱乐部 / Move to next club</span><span class="tag">Next</span></div>
+        <div class="timeline-row"><strong>01</strong><span>不是学历 / Not degrees</span><span class="tag">Ability</span></div>
+        <div class="timeline-row"><strong>02</strong><span>不是头衔 / Not titles</span><span class="tag">Proof</span></div>
+        <div class="timeline-row"><strong>03</strong><span>不是背景 / Not background</span><span class="tag">Execution</span></div>
+        <div class="timeline-row"><strong>04</strong><span>而是解决问题的能力 / The ability to solve problems</span><span class="tag">Solve</span></div>
+        <div class="timeline-row"><strong>05</strong><span>不奖励参与 / We do not reward participation</span><span class="tag">Result</span></div>
+        <div class="timeline-row"><strong>06</strong><span>不奖励噪音 / We do not reward noise</span><span class="tag">Signal</span></div>
+        <div class="timeline-row"><strong>07</strong><span>不奖励想法数量 / We do not reward idea volume</span><span class="tag">Quality</span></div>
+        <div class="timeline-row"><strong>08</strong><span>奖励最好的解决方案 / We reward the best solutions</span><span class="tag">Best</span></div>
       </div>
     </section>
 
-    <section class="section" id="field-kit">
+    <section class="section" id="mission">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Field Kit / 现场物料</p>
-          <h2>现场即内容。<br>每个俱乐部都留下证据。</h2>
+          <p class="eyebrow">宗旨 / Mission</p>
+          <h2>Only The Best.<br>只寻找最好的。</h2>
         </div>
-        <p class="plain">带地垫、二维码登记牌、Panda Masters 贴纸和合影设置。地垫文字：PANDA MASTERS / NOT FOR SALE。<br>Bring the floor mat, QR sign, stickers and group-photo setup.</p>
+        <p class="plain">如果有更好的方案，我们升级。如果有更好的材料，我们升级。如果有更好的技术，我们升级。如果有更好的系统，我们升级。永不停下。<br>If there is a better solution, material, technology or system, we upgrade. We do not stop.</p>
       </div>
       <div class="grid-3">
         <article class="card">
           <span class="number">01</span>
-          <h3>Floor Mat</h3>
-          <p class="plain">PANDA MASTERS / NOT FOR SALE。现场合影统一视觉。<br>Consistent group-photo identity.</p>
+          <h3>Better Solution</h3>
+          <p class="plain">有更好的方案，就推翻旧方案。<br>If the solution is better, the old answer loses.</p>
         </article>
         <article class="card">
           <span class="number">02</span>
-          <h3>QR Sign</h3>
-          <p class="plain">扫码登记，生成 Panda Master ID。<br>Scan, register and generate the Panda Master ID.</p>
+          <h3>Better Material</h3>
+          <p class="plain">材料更强、体验更好、寿命更长，就换。<br>Stronger, better, longer-lasting materials win.</p>
         </article>
         <article class="card">
           <span class="number">03</span>
-          <h3>Photo Set</h3>
-          <p class="plain">Owner Photo、Coach Photo、Panda Masters Photo、Group Photo。<br>Every club creates a clean visual record.</p>
+          <h3>Better System</h3>
+          <p class="plain">系统更简单、更稳定、更可执行，就升级。<br>Simpler, stabler, more executable systems win.</p>
         </article>
       </div>
     </section>
@@ -1071,58 +948,60 @@
     <section class="section" id="checkin">
       <div class="section-head">
         <div>
-          <p class="eyebrow" data-i18n-html="checkinEyebrow">Survey / Registration</p>
-          <h2 data-i18n-html="checkinTitle">Panda Master 登记</h2>
+          <p class="eyebrow">Apply / Contributor Intake</p>
+          <h2>申请成为<br>Panda Master</h2>
         </div>
-        <p class="plain" data-i18n-html="checkinLead">填写基础信息、设备、社交链接、佩戴 MagSnap 照片和反馈。<br>Submit your profile, POV device, social links, wearing photo and feedback.</p>
+        <p class="plain">告诉我们你能解决什么问题、你有什么能力、你希望参与哪类悬赏。熊猫高人将优先获得未来项目、测试和合作机会。<br>Tell us what problems you can solve, what you are good at and which challenges you want to join. Panda Masters receive priority access to future programs.</p>
       </div>
 
       <div class="form-shell">
         <div class="id-box">
-          <span data-i18n-html="pandaNumberTitle">Panda Master Number / 熊猫高人编号</span>
-          <input id="panda-master-number" class="id-input" type="text" name="panda_master_number" form="panda-master-form" inputmode="numeric" autocomplete="off" pattern="[0-9]{4}" placeholder="4-digit number / 四位数字" required>
-          <p class="form-note" data-i18n-html="pandaNumberNote">四位编号请在 MagSnap 套装内查找。<br>Find your 4-digit number inside the MagSnap kit.</p>
+          <span>Panda Master Number / 熊猫高人编号</span>
+          <input id="panda-master-number" class="id-input" type="text" name="panda_master_number" form="panda-master-form" inputmode="numeric" autocomplete="off" pattern="[0-9]{4}" placeholder="optional / 可选">
+          <p class="form-note">已有编号可以填写。没有编号也可以申请，系统会生成临时 ID。<br>Enter an existing number if you have one. If not, the system will create a temporary ID.</p>
         </div>
         <form class="panda-form" id="panda-master-form" action="#" method="post">
-          <input id="preferred-language" type="hidden" name="preferred_language" value="en">
           <div class="field">
-            <label for="pm-name" data-i18n-html="nameLabel">姓名 / Name</label>
+            <label for="pm-name">姓名 / Name</label>
             <input id="pm-name" type="text" name="name" autocomplete="name" required>
           </div>
           <div class="field">
-            <label for="pm-public-nickname" data-i18n-html="nicknameLabel">公开昵称 / Public Nickname</label>
+            <label for="pm-public-nickname">公开昵称 / Public Nickname</label>
             <input id="pm-public-nickname" type="text" name="public_nickname" placeholder="shown in public directory">
           </div>
           <div class="field">
-            <label for="pm-country" data-i18n-html="countryLabel">国家 / Country</label>
+            <label for="pm-country">国家 / Country</label>
             <input id="pm-country" type="text" name="country" autocomplete="country-name" placeholder="China / Vietnam / USA / ..." required>
           </div>
           <div class="field">
-            <label for="pm-city" data-i18n-html="cityLabel">城市 / City</label>
-            <input id="pm-city" type="text" name="city" autocomplete="address-level2" placeholder="Shanghai / Nha Trang / Tokyo" required>
+            <label for="pm-city">城市 / City</label>
+            <input id="pm-city" type="text" name="city" placeholder="city / 城市" required>
           </div>
           <div class="field">
-            <label for="pm-club" data-i18n-html="clubLabel">俱乐部 / Club</label>
-            <input id="pm-club" type="text" name="club" required>
+            <label for="pm-club">组织 / 公司 / 社群 / Organization</label>
+            <input id="pm-club" type="text" name="club" placeholder="company, lab, studio, factory, club, solo" required>
           </div>
           <div class="field">
-            <label for="pm-role" data-i18n-html="roleLabel">你更接近哪一种身份？ / Which best describes you?</label>
+            <label for="pm-role">能力角色 / Contributor Role</label>
             <select id="pm-role" name="role" required>
-              <option value="">选择最接近的一项 / Select the closest one</option>
-              <option value="Club Owner">Club Owner / 俱乐部或店主</option>
-              <option value="Coach / Instructor">Coach / Instructor / 教练</option>
-              <option value="Rider / Athlete">Rider / Athlete / 玩家或运动员</option>
-              <option value="Content Creator">Content Creator / 内容创作者</option>
-              <option value="Community Member">Community Member / 社群成员</option>
-              <option value="Product / Factory / Supplier">Product / Factory / Supplier / 产品、工厂或供应链</option>
+              <option value="">选择角色 / Select role</option>
+              <option value="Problem Solver">Problem Solver / 问题解决者</option>
+              <option value="Engineer">Engineer / 工程师</option>
+              <option value="Manufacturer">Manufacturer / 制造与供应链</option>
+              <option value="Designer">Designer / 设计师</option>
+              <option value="AI Builder">AI Builder / AI 构建者</option>
+              <option value="Material Expert">Material Expert / 材料专家</option>
+              <option value="Sports Expert">Sports Expert / 运动训练专家</option>
+              <option value="Creator">Creator / 创作者</option>
+              <option value="Operator">Operator / 运营者</option>
               <option value="Other">Other / 其他</option>
             </select>
           </div>
           <div class="field">
-            <label for="pm-email" data-i18n-html="emailLabel">邮箱 / Email</label>
+            <label for="pm-email">邮箱 / Email</label>
             <input id="pm-email" type="email" name="email" autocomplete="email" required>
           </div>
-          <div class="field" data-contact-langs="en">
+          <div class="field">
             <label for="pm-instagram">Instagram</label>
             <input id="pm-instagram" type="text" name="instagram" placeholder="@username">
           </div>
@@ -1138,31 +1017,19 @@
             <label for="pm-facebook">Facebook</label>
             <input id="pm-facebook" type="text" name="facebook" placeholder="profile / page">
           </div>
-          <div class="field" data-contact-langs="en ru">
+          <div class="field">
             <label for="pm-whatsapp">WhatsApp</label>
             <input id="pm-whatsapp" type="text" name="whatsapp" inputmode="tel" autocomplete="tel">
           </div>
-          <div class="field" data-contact-langs="zh">
-            <label for="pm-wechat">WeChat / 微信</label>
-            <input id="pm-wechat" type="text" name="wechat_or_social" placeholder="WeChat ID / 微信号">
-          </div>
-          <div class="field" data-contact-langs="vi">
-            <label for="pm-zalo">Zalo</label>
-            <input id="pm-zalo" type="text" name="wechat_or_social" placeholder="Zalo phone / ID">
-          </div>
-          <div class="field" data-contact-langs="ru">
-            <label for="pm-telegram">Telegram</label>
-            <input id="pm-telegram" type="text" name="wechat_or_social" placeholder="@username">
+          <div class="field">
+            <label for="pm-received-date">申请日期 / Application Date</label>
+            <input id="pm-received-date" type="date" name="received_date">
           </div>
           <div class="field">
-            <label for="pm-received-date">收到日期 / Received Date</label>
-            <input id="pm-received-date" type="date" name="received_date" required>
-          </div>
-          <div class="field">
-            <label for="pm-handoff-status">领取状态 / Handoff Status</label>
+            <label for="pm-handoff-status">申请状态 / Application Status</label>
             <select id="pm-handoff-status" name="handoff_status">
-              <option value="Received Glasses">Received Glasses / 已领取眼镜</option>
-              <option value="Pending Handoff">Pending Handoff / 待交付</option>
+              <option value="Application Received">Application Received / 已提交申请</option>
+              <option value="Under Review">Under Review / 审核中</option>
             </select>
           </div>
           <div class="field">
@@ -1170,33 +1037,35 @@
             <input id="pm-referred-by" type="text" name="referred_by" placeholder="MZ / club / friend">
           </div>
           <div class="field full">
-            <label data-i18n-html="sportsLabel">Sports / 运动</label>
+            <label>Domains / 可解决领域</label>
             <div class="checkbox-grid">
-              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Kitesurf">Kitesurf / 风筝冲浪</label>
-              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Wing Foil">Wing Foil</label>
-              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Sailing">Sailing / 帆船</label>
-              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Fishing">Fishing / 钓鱼</label>
-              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Motorcycle">Motorcycle / 摩托</label>
-              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Cycling">Cycling / 骑行</label>
-              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Ski">Ski / 滑雪</label>
-              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Hiking">Hiking / 徒步</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Materials">Materials / 材料</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Manufacturing">Manufacturing / 制造</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Magnets">Magnets / 磁铁结构</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Optics">Optics / 镜片光学</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="AI Systems">AI Systems / AI 系统</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Life Systems">Life Systems / 生活系统</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Content Tools">Content Tools / 内容工具</label>
+              <label class="checkbox-pill"><input type="checkbox" name="sports" value="Sports Training">Sports Training / 运动训练</label>
               <label class="checkbox-pill"><input type="checkbox" name="sports" value="Other">Other / 其他</label>
             </div>
           </div>
           <div class="field full">
-            <label data-i18n-html="equipmentLabel">Equipment / POV devices / 设备</label>
+            <label>Capabilities / 工具与能力</label>
             <div class="checkbox-grid">
-              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Insta360 GO3">Insta360 GO3</label>
-              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Insta360 GO3S">Insta360 GO3S</label>
-              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="DJI Nano">DJI Nano</label>
-              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="DJI Action">DJI Action</label>
-              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="GoPro">GoPro</label>
-              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Other POV Devices">Other POV Devices / 其他 POV 设备</label>
-              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="None">None / 暂无</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Engineering">Engineering / 工程</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="CAD / Prototyping">CAD / Prototyping / 原型</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Supplier Network">Supplier Network / 供应链</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Factory Access">Factory Access / 工厂资源</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="AI Automation">AI Automation / AI 自动化</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Content Production">Content Production / 内容生产</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Field Testing">Field Testing / 现场测试</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Training System">Training System / 训练系统</label>
+              <label class="checkbox-pill"><input type="checkbox" name="equipment" value="Other">Other / 其他</label>
             </div>
           </div>
           <div class="field full">
-            <label data-i18n-html="accessoriesLabel">Accessories / 配件</label>
+            <label>Accessories / 配件</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="checkbox" name="accessories" value="AirTag">AirTag</label>
               <label class="checkbox-pill"><input type="checkbox" name="accessories" value="Headlamp">Headlamp / 头灯</label>
@@ -1206,24 +1075,11 @@
             </div>
           </div>
           <div class="field full">
-            <label data-i18n-html="prescriptionLabel" for="pm-vision-plus-need">Vision+ Need / 视力需求</label>
-            <p class="form-note">Vision+ 已解决近视和老花适配，目前仍在测试阶段。这里只收集最基本的测试意向。<br>Vision+ has solved myopia and reading correction and is still in testing. We only collect basic test interest here.</p>
-          </div>
-          <div class="field">
-            <select id="pm-vision-plus-need" name="prescription_need">
-              <option value="">Select / 选择</option>
-              <option value="Myopia">Myopia / 近视</option>
-              <option value="Reading">Reading / 老花</option>
-              <option value="Both">Both / 近视 + 老花</option>
-              <option value="Not Needed">Not Needed / 暂不需要</option>
-            </select>
+            <label>Proof + Reach / 证明与影响力</label>
+            <p class="form-note">用于判断你的公开证明、传播能力或项目影响力，不公开个人联系方式。<br>Used to understand public proof, reach or project influence. Private contact fields stay private.</p>
           </div>
           <div class="field full">
-            <label data-i18n-html="contentTitle">Content Creator Profile / 内容创作者信息</label>
-            <p class="form-note" data-i18n-html="contentNote">用于判断 Panda Masters 的内容扩散能力，不公开个人联系方式。<br>Used to understand content reach. Private contact fields stay private.</p>
-          </div>
-          <div class="field full">
-            <label data-i18n-html="creatorStatusLabel">Do you create or post videos/photos? / 你平时会拍摄或发布视频/照片吗？</label>
+            <label>Do you publish work publicly? / 你是否公开发布作品或成果？</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="radio" name="content_creator_status" value="Never">Never / 从不</label>
               <label class="checkbox-pill"><input type="radio" name="content_creator_status" value="Sometimes">Sometimes / 偶尔</label>
@@ -1232,7 +1088,7 @@
             </div>
           </div>
           <div class="field full">
-            <label data-i18n-html="platformsLabel">Where do you post? / 你主要发布在哪些平台？</label>
+            <label>Where do you post? / 你主要发布在哪些平台？</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="TikTok">TikTok</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Instagram">Instagram</label>
@@ -1240,14 +1096,11 @@
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Facebook">Facebook</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Xiaohongshu">Xiaohongshu / 小红书</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Douyin">Douyin / 抖音</label>
-              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Bilibili">Bilibili / B站</label>
-              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="WeChat Channels">WeChat Channels / 视频号</label>
-              <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Kuaishou">Kuaishou / 快手</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_platforms" value="Other">Other / 其他</label>
             </div>
           </div>
           <div class="field full">
-            <label data-i18n-html="frequencyLabel">How often do you post? / 你多久发布一次？</label>
+            <label>How often do you publish? / 你多久公开一次成果？</label>
             <div class="checkbox-grid">
               <label class="checkbox-pill"><input type="radio" name="posting_frequency" value="Daily">Daily / 每天</label>
               <label class="checkbox-pill"><input type="radio" name="posting_frequency" value="Weekly">Weekly / 每周</label>
@@ -1256,7 +1109,7 @@
             </div>
           </div>
           <div class="field">
-            <label for="pm-follower-range" data-i18n-html="followersLabel">Approximate followers / 大概粉丝数</label>
+            <label for="pm-follower-range">Approximate followers / 大概粉丝数</label>
             <select id="pm-follower-range" name="follower_range">
               <option value="">Select / 选择</option>
               <option value="0-100">0-100</option>
@@ -1268,85 +1121,107 @@
             </select>
           </div>
           <div class="field full">
-            <label data-i18n-html="filmLabel">What do you usually film? / 你通常拍什么？</label>
+            <label>What do you usually build or prove? / 你通常做什么或证明什么？</label>
             <div class="checkbox-grid">
-              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Kitesurf">Kitesurf</label>
-              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Wing Foil">Wing Foil</label>
-              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Sailing">Sailing / 帆船</label>
-              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Motorcycle">Motorcycle / 摩托</label>
-              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Fishing">Fishing / 钓鱼</label>
-              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Travel">Travel / 旅行</label>
-              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Lifestyle">Lifestyle / 生活方式</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Prototype">Prototype / 原型</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Technical Breakdown">Technical Breakdown / 技术拆解</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Supplier Proof">Supplier Proof / 供应链证明</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="AI Workflow">AI Workflow / AI 工作流</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Field Test">Field Test / 现场测试</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Training Result">Training Result / 训练结果</label>
+              <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Content System">Content System / 内容系统</label>
               <label class="checkbox-pill"><input type="checkbox" name="filming_categories" value="Other">Other / 其他</label>
             </div>
           </div>
           <div class="field">
-            <label for="pm-photo-file" data-i18n-html="photoLabel">Upload Your MagSnap Selfie / 上传你的 MagSnap 自拍</label>
-            <input id="pm-photo-file" type="file" name="photo_file" accept="image/*,.heic,.heif">
+            <label for="pm-photo-file">Optional proof or profile image / 可选证明或头像</label>
+            <input id="pm-photo-file" type="file" name="photo_file" accept="image/*" capture="environment">
             <input id="pm-photo-url" type="hidden" name="photo_url">
             <input id="pm-photo-link" type="hidden" name="photo_link">
-            <p class="form-note" id="photo-upload-status" data-i18n-html="photoNote">Optional. Upload a MagSnap selfie or proof image if your phone supports it.<br>可选。如果手机支持，可以上传 MagSnap 自拍或证明图片。<br>If upload fails, submit the form first and send a photo link later.<br>如果上传失败，先提交表单，之后再补照片链接。</p>
+            <p class="form-note" id="photo-upload-status">可选。可以上传作品、原型、现场照片或头像。<br>Optional. Upload work proof, prototype, field photo or profile image.</p>
           </div>
           <div class="field">
-            <label for="pm-video-link" data-i18n-html="videoLabel">Video Link / 视频链接</label>
+            <label for="pm-video-link">Video Link / 视频链接</label>
             <input id="pm-video-link" type="url" name="video_link" placeholder="Drive / iCloud / social link">
           </div>
           <div class="field">
-            <label for="pm-pov-clip-link" data-i18n-html="povLabel">POV Clip Link / POV 片段链接</label>
+            <label for="pm-pov-clip-link">POV Clip Link / POV 片段链接</label>
             <input id="pm-pov-clip-link" type="url" name="pov_clip_link" placeholder="POV clip link">
           </div>
           <div class="field">
-            <label for="pm-story-note" data-i18n-html="storyLabel">Story Note / 故事备注</label>
-            <input id="pm-story-note" type="text" name="story_note" placeholder="one-line community story / 一句话社群故事">
+            <label for="pm-story-note">Story Note / 故事备注</label>
+            <input id="pm-story-note" type="text" name="story_note" placeholder="one-line rider story / 一句话故事">
           </div>
           <div class="field full">
-            <label for="pm-public-story" data-i18n-html="publicStoryLabel">Public Story / 公开故事</label>
+            <label for="pm-public-story">Public Story / 公开故事</label>
             <textarea id="pm-public-story" name="public_story" placeholder="可公开展示的一句话故事。不要填写电话、邮箱、地址或私人信息。"></textarea>
           </div>
           <div class="field full">
-            <label for="pm-problem-report" data-i18n-html="problemLabel">Problems / 当前问题</label>
-            <textarea id="pm-problem-report" name="problem_report" placeholder="你在 POV 拍摄、风冲、佩戴、固定或设备使用中遇到的问题。"></textarea>
+            <label for="pm-problem-report">Problems you can solve / 你能解决什么问题</label>
+            <textarea id="pm-problem-report" name="problem_report" placeholder="材料、镜片、磁铁、AI、生活系统、内容工具、运动训练系统，或任何真实问题。"></textarea>
           </div>
           <div class="field">
             <label for="pm-problem-tags">Problem Tags / 问题标签</label>
-            <input id="pm-problem-tags" type="text" name="problem_tags" placeholder="mount stability, comfort, saltwater">
+            <input id="pm-problem-tags" type="text" name="problem_tags" placeholder="materials, magnets, AI, training, content">
           </div>
           <div class="field">
-            <label for="pm-module-ideas" data-i18n-html="moduleLabel">New Modules / 新模块想法</label>
-            <input id="pm-module-ideas" type="text" name="module_ideas" placeholder="camera, light, radio, AI, sensor">
+            <label for="pm-module-ideas">Solutions / 方案方向</label>
+            <input id="pm-module-ideas" type="text" name="module_ideas" placeholder="prototype, supplier, workflow, system, training method">
           </div>
           <div class="field">
-            <label for="pm-product-requests">Requests / 具体需求</label>
-            <input id="pm-product-requests" type="text" name="product_requests" placeholder="comma separated / 用逗号分隔">
+            <label for="pm-product-requests">Preferred Challenges / 想参与的悬赏</label>
+            <input id="pm-product-requests" type="text" name="product_requests" placeholder="AI Life OS, MZ Brain, MagSnap, Fitness OS">
           </div>
           <div class="field full">
-            <label for="pm-crazy-concepts">Crazy Concepts / 疯狂概念</label>
-            <textarea id="pm-crazy-concepts" name="crazy_concepts" placeholder="任何看起来疯狂但可能有价值的模块、用法或场景。"></textarea>
+            <label>Vision+ Testing / Vision+ 测试信息（可选）</label>
+            <p class="form-note">Vision+ 已解决近视和老花适配，目前仍在测试阶段。这里只收集最基本的测试意向。<br>Vision+ has solved myopia and reading correction and is still in testing. We only collect basic test interest here.</p>
+          </div>
+          <div class="field">
+            <label for="pm-vision-plus-type">Vision+ Need / 视力需求</label>
+            <select id="pm-vision-plus-type" name="vision_plus_type">
+              <option value="">Select / 选择</option>
+              <option value="Myopia">Myopia / 近视</option>
+              <option value="Reading">Reading / 老花</option>
+              <option value="Both">Both / 近视 + 老花</option>
+              <option value="Not Needed">Not Needed / 暂不需要</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pm-vision-plus-note">Vision+ Note / 备注（可选）</label>
+            <input id="pm-vision-plus-note" type="text" name="vision_plus_note" placeholder="简单说明场景或担心的问题">
           </div>
           <div class="field full">
-            <label for="pm-feedback" data-i18n-html="feedbackLabel">Ideas / Feedback / 想法与反馈</label>
-            <textarea id="pm-feedback" name="feedback" placeholder="现场反馈、改进建议、下一版产品想法。"></textarea>
+            <label for="pm-crazy-concepts">Best proof / 最能证明你的东西</label>
+            <textarea id="pm-crazy-concepts" name="crazy_concepts" placeholder="作品链接、案例、样品、论文、供应链资源、训练成果、系统截图，或一句清楚的证明。"></textarea>
+          </div>
+          <div class="field full">
+            <label for="pm-file-link">FILE OR LINK (OPTIONAL) / 文件或链接（可选）</label>
+            <input id="pm-file-link" type="text" name="file_link" placeholder="Google Drive / iCloud / Dropbox / website link, or file reference">
+          </div>
+          <div class="field full">
+            <label for="pm-feedback">Contribution / 你能贡献什么</label>
+            <textarea id="pm-feedback" name="feedback" placeholder="不要堆想法数量。写你最强的能力、最好的结果、最值得验证的方案。"></textarea>
           </div>
           <div class="field full">
             <label for="pm-note">现场备注 / Field Note</label>
             <textarea id="pm-note" name="field_note" placeholder="可记录俱乐部情况、教练数量、素材位置、POV 内容和后续跟进。"></textarea>
           </div>
-          <button class="button primary" type="submit" data-i18n-html="submitButton">Submit / 提交</button>
+          <button class="button primary" type="submit">Apply / 提交申请</button>
           <div class="form-status" id="panda-form-status" aria-live="polite"></div>
-          <p class="form-note" data-i18n-html="privacyNote">联系方式仅供 MagSnap 内部跟进，不在公开页面展示。<br>Contact information is for MagSnap internal follow-up only and is not shown publicly.</p>
+          <p class="form-note">联系方式仅供 MZ Universe 内部评估和后续联系，不在公开页面展示。<br>Contact information is for MZ Universe internal review and follow-up only. It is not shown publicly.</p>
         </form>
       </div>
     </section>
 
     <section class="section" id="confirmation" aria-label="Panda Master confirmation" hidden>
       <div class="confirmation-card" id="confirmation-card" hidden>
-        <p class="eyebrow" data-i18n-html="confirmationEyebrow">Confirmation Page / 确认页</p>
-        <h2 data-i18n-html="confirmationTitle">Registration Received.<br>登记已收到。</h2>
-        <p class="plain" data-i18n-html="confirmationLead">You are now in the Panda Masters Registry. Your public profile will appear only after photo verification.<br>你已进入 Panda Masters Registry。公开资料会在照片审核后显示。</p>
+        <p class="eyebrow">Confirmation Page / 确认页</p>
+        <h2>Application Received.<br>申请已收到。</h2>
+        <p class="plain">Your Panda Masters application has been recorded for MZ Universe review. We prioritize people who can solve real problems and contribute strong results.<br>你的 Panda Masters 申请已记录，后续会按真实问题解决能力和贡献价值评估。</p>
         <dl class="confirmation-summary" id="confirmation-summary"></dl>
         <div class="cta-row">
-          <a class="button primary" href="#coverage" data-i18n-html="confirmationStats">查看统计 / View Stats</a>
-          <a class="button" href="#checkin" data-i18n-html="confirmationAnother">继续登记 / Add Another</a>
+          <a class="button primary" href="../open-challenges/">查看悬赏问题 / View Challenges</a>
+          <a class="button" href="#checkin">继续申请 / Add Another</a>
         </div>
       </div>
     </section>
@@ -1354,63 +1229,62 @@
     <section class="section" id="lab">
       <div class="section-head">
         <div>
-          <p class="eyebrow">Panda Masters Portal + Lab</p>
-          <h2>收集问题。<br>聚类想法。<br>找到节点。</h2>
+          <p class="eyebrow">MZ Universe + Panda Masters</p>
+          <h2>一个提出问题。<br>一个解决问题。</h2>
         </div>
-        <p class="plain">当前先收集结构化信息。未来 Portal 用于 Profile、Equipment、Photo / Video Upload、Ideas / Feedback、Newsletter Archive 和 Product Updates。<br>For now, the system captures structured intelligence for the future Panda Masters portal and lab.</p>
+        <p class="plain">MZ Universe 提出问题、记录实验、创造产品、探索未来。Panda Masters 连接全球高手、寻找最佳方案、解决真实问题、推动项目进化。<br>MZ Universe raises problems, records experiments, creates products and explores the future. Panda Masters connects global talent, finds the best solutions and pushes projects forward.</p>
       </div>
       <div class="grid-3">
         <article class="card">
           <span class="number">01</span>
-          <h3>Profile</h3>
-          <p class="plain">Panda Master ID、身份、城市、俱乐部和角色。<br>ID, identity, city, club and role.</p>
+          <h3>MZ Universe</h3>
+          <p class="plain">提出问题。记录实验。创造产品。探索未来。<br>Raise problems. Record experiments. Create products. Explore the future.</p>
         </article>
         <article class="card">
           <span class="number">02</span>
-          <h3>Equipment</h3>
-          <p class="plain">GO3S、DJI Nano、GoPro、DJI Action 和其他 POV 设备。<br>Track the devices that drive future growth.</p>
+          <h3>Panda Masters</h3>
+          <p class="plain">连接全球高手。寻找最佳方案。解决真实问题。推动项目进化。<br>Connect global talent. Find the best solutions. Solve real problems. Evolve the projects.</p>
         </article>
         <article class="card">
           <span class="number">03</span>
-          <h3>Uploads</h3>
-          <p class="plain">照片、视频、POV 片段、俱乐部记录和故事。<br>Photos, videos, POV clips, club records and stories.</p>
+          <h3>MagSnap</h3>
+          <p class="plain">只是第一个案例、第一个产品、第一个实验。<br>Only the first case, first product and first experiment.</p>
         </article>
         <article class="card">
           <span class="number">04</span>
-          <h3>Photo Wall</h3>
-          <p class="plain">佩戴 MagSnap 的照片会形成 Panda Masters Wall。<br>Wearing photos become the Panda Masters Wall.</p>
+          <h3>AI Life OS</h3>
+          <p class="plain">生活系统、任务系统和 AI 执行系统会继续进入悬赏网络。<br>Life systems, task systems and AI execution systems will enter the bounty network.</p>
         </article>
         <article class="card">
           <span class="number">05</span>
-          <h3>Vision+ Signal</h3>
-          <p class="plain">Vision+ 已解决近视和老花适配，目前仍在测试阶段。<br>Vision+ has solved myopia and reading correction and is now in testing.</p>
+          <h3>MZ Brain</h3>
+          <p class="plain">知识、记忆、决策和执行的个人操作系统。<br>A personal operating system for knowledge, memory, decisions and execution.</p>
         </article>
         <article class="card">
           <span class="number">06</span>
-          <h3>Lab Signals</h3>
-          <p class="plain">问题、想法、新模块、疯狂概念和具体需求。<br>Problems, ideas, modules, concepts and requests.</p>
+          <h3>AI Coach</h3>
+          <p class="plain">运动训练、反馈循环和真实表现提升。<br>Training, feedback loops and real performance improvement.</p>
         </article>
         <article class="card">
           <span class="number">07</span>
-          <h3>Newsletter</h3>
-          <p class="plain">Email 是广播系统，用于更新、测试和纪录片进展。<br>Email is the broadcast layer for updates and testing.</p>
+          <h3>Operating Systems</h3>
+          <p class="plain">Founder OS、Content OS、Music OS、Fitness OS，以及更多尚未诞生的项目。<br>Founder OS, Content OS, Music OS, Fitness OS and projects not yet born.</p>
         </article>
         <article class="card">
           <span class="number">08</span>
-          <h3>Coverage Data</h3>
-          <p class="plain">用覆盖指标和 Influence Score 找到未来增长节点。<br>Use coverage metrics and influence score to find future growth nodes.</p>
+          <h3>Long Vision</h3>
+          <p class="plain">让任何问题都能被提交，让全球最优秀的人参与解决，让贡献者获得应得的回报。<br>Let any problem be submitted, let the best people solve it, and let contributors receive what they deserve.</p>
         </article>
       </div>
-
     </section>
 
     <section class="section" id="coverage">
       <div class="section-head">
         <div>
-          <p class="eyebrow" data-i18n-html="statsEyebrow">Stats / 数据</p>
-          <h2 data-i18n-html="statsTitle">Panda Masters Stats<br>熊猫高人统计</h2>
+          <p class="eyebrow">Stats / 数据</p>
+          <h2>Panda Masters Stats<br>熊猫高人统计</h2>
         </div>
-        <p class="plain" data-i18n-html="statsPrivacy">只显示汇总统计，不显示邮箱、电话、地址、WhatsApp 等隐私信息。<br>Aggregate stats only. Private data is never shown here.</p>
+        <p class="plain">只显示汇总统计，不显示邮箱、电话、地址、WhatsApp 等隐私信息。<br>Aggregate stats only. Private data is never shown here.</p>
       </div>
       <div class="grid-3" id="coverage-grid"></div>
       <div class="insight-grid" id="intelligence-dashboard" aria-label="Panda Masters intelligence dashboard" hidden></div>
@@ -1422,7 +1296,7 @@
           <p class="eyebrow">Club Database</p>
           <h2>每个俱乐部。<br>每个老板。<br>每个主教练。</h2>
         </div>
-        <p class="plain">俱乐部数据库用于记录拜访、拍摄和覆盖状态。它是 Operation Vietnam 的现场行动日志。<br>The club database records visits, content and coverage status for Operation Vietnam.</p>
+        <p class="plain">数据库用于记录问题来源、贡献者线索、拍摄素材和跟进状态。它是 MZ Universe 的行动日志。<br>The database records problem sources, contributor leads, content assets and follow-up status for MZ Universe.</p>
       </div>
 
       <div class="form-shell">
@@ -1445,7 +1319,7 @@
           </div>
           <div class="field">
             <label for="club-country">Country / 国家</label>
-            <input id="club-country" type="text" name="country" autocomplete="country-name" placeholder="China / Vietnam / USA / ..." required>
+            <input id="club-country" type="text" name="country" value="Vietnam" required>
           </div>
           <div class="field">
             <label for="club-instagram">Instagram</label>
@@ -1476,7 +1350,7 @@
               <label class="checkbox-pill"><input type="checkbox" name="content_items" value="Owner Video">Owner Video / 老板视频</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_items" value="Group Photo">Group Photo / 合影</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_items" value="POV Clip">POV Clip / 第一视角片段</label>
-              <label class="checkbox-pill"><input type="checkbox" name="content_items" value="Club Coverage Record">Club Coverage Record / 覆盖记录</label>
+              <label class="checkbox-pill"><input type="checkbox" name="content_items" value="Problem Source Record">Problem Source Record / 问题来源记录</label>
               <label class="checkbox-pill"><input type="checkbox" name="content_items" value="Coach Interviews">Coach Interviews / 教练采访</label>
             </div>
           </div>
@@ -1500,7 +1374,7 @@
           <p class="eyebrow">Email System</p>
           <h2>Panda Masters Newsletter</h2>
         </div>
-        <p class="plain">Email 是信息广播主通道。用于 Operation Vietnam 更新、测试计划和后续产品信息。<br>Email is the primary broadcast channel for Operation Vietnam updates, testing programs and future product information.</p>
+        <p class="plain">Email 是信息广播主通道。用于 MZ Universe 更新、测试计划和后续项目协作。<br>Email is the primary broadcast channel for MZ Universe updates, testing programs and future collaboration.</p>
       </div>
 
       <div class="form-shell">
@@ -1579,8 +1453,8 @@
               <option value="Existing Applicants">Existing Applicants / 已申请用户</option>
               <option value="Address Received Users">Address Received / 已提交地址用户</option>
               <option value="Invited Users">Invited Users / 已受邀用户</option>
-              <option value="China Kitesurf List">China Kitesurf List / 中国风冲圈名单</option>
-              <option value="Operation Vietnam List">Operation Vietnam List / Operation Vietnam 名单</option>
+              <option value="China Builder List">China Builder List / 中国构建者名单</option>
+              <option value="MZ Universe List">MZ Universe List / MZ Universe 名单</option>
               <option value="Chat Export">Chat Export / 聊天记录导出</option>
               <option value="Other">Other / 其他</option>
             </select>
@@ -1637,7 +1511,7 @@
           <p class="eyebrow">Panda Masters Intelligence Database</p>
           <h2>不是 CRM。<br>是覆盖地图。</h2>
         </div>
-        <p class="plain">公开页不展示 Email、WhatsApp 等私人信息。当前页面只显示本机刚提交的登记预览，正式公开前再筛选发布。<br>Private fields stay private. This page previews local submissions only until a public view is approved.</p>
+        <p class="plain">公开页不展示 Email、WhatsApp 等私人信息。当前页面只显示本机刚提交的申请预览，正式公开前再筛选发布。<br>Private fields stay private. This page previews local submissions only until a public view is approved.</p>
       </div>
       <table class="registry-table" aria-label="Local Panda Masters registry preview">
         <thead>
@@ -1653,7 +1527,7 @@
           </tr>
         </thead>
         <tbody id="registry-preview-body">
-          <tr><td colspan="8">暂无本机登记记录。 / No local check-ins yet.</td></tr>
+          <tr><td colspan="8">暂无本机申请记录。 / No local applications yet.</td></tr>
         </tbody>
       </table>
     </section>
@@ -1664,27 +1538,26 @@
           <p class="eyebrow">Documentary System / 纪录片系统</p>
           <h2>Day 1 → Day 7</h2>
         </div>
-        <p class="plain">Operation Vietnam 不是广告。它记录摩旅、越南、风冲、老板、教练、社群成员、POV 内容、Panda Masters 和 MagSnap。<br>Operation Vietnam documents road trip, Vietnam, kitesurf, owners, coaches, community members, POV content, Panda Masters and MagSnap.</p>
+        <p class="plain">MZ Universe Lab 不是广告。它记录真实问题、实验过程、解决方案、贡献者和项目进化。<br>MZ Universe Lab documents real problems, experiments, solutions, contributors and project evolution.</p>
       </div>
       <div class="timeline">
         <div class="timeline-row"><strong>Day 1</strong><span>Nha Trang arrival. Assemble first units. Capture first beach visibility and opening story.</span><span class="tag">Nha Trang</span></div>
         <div class="timeline-row"><strong>Day 2</strong><span>Nha Trang clubs. Owner photo, owner video, group photo, POV clip and club coverage record.</span><span class="tag">Clubs</span></div>
         <div class="timeline-row"><strong>Day 3</strong><span>Road to Phan Rang. Motorbike story, coast road footage and field notes.</span><span class="tag">Road</span></div>
-        <div class="timeline-row"><strong>Day 4</strong><span>Phi Feed. Local story, Panda Master check-in, handoff and POV shoot.</span><span class="tag">Story</span></div>
+        <div class="timeline-row"><strong>Day 4</strong><span>Contributor story, problem source record and solution note.</span><span class="tag">Story</span></div>
         <div class="timeline-row"><strong>Day 5</strong><span>Coaches. Teaching use case, safety POV, coach interview clips and influence map.</span><span class="tag">Coaches</span></div>
-        <div class="timeline-row"><strong>Day 6</strong><span>Mui Ne. Club mapping, long-term local members, creators and content assets.</span><span class="tag">Mui Ne</span></div>
-        <div class="timeline-row"><strong>Day 7</strong><span>Full coverage recap. Owners, coaches, core members, POV creators, content archive and email list.</span><span class="tag">Coverage</span></div>
+        <div class="timeline-row"><strong>Day 6</strong><span>Mui Ne. Club mapping, long-term local riders, creators and content assets.</span><span class="tag">Mui Ne</span></div>
+        <div class="timeline-row"><strong>Day 7</strong><span>Full coverage recap. Owners, coaches, core riders, POV creators, content archive and email list.</span><span class="tag">Coverage</span></div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <span>MAGSNAP / Panda Masters Registry</span>
+    <span>MZ Universe / Panda Masters</span>
     <div class="footer-links">
       <a href="../">Home</a>
       <a href="../disclaimer.html">Disclaimer</a>
       <a href="mailto:info@magsnap.me">info@magsnap.me</a>
-      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">琼ICP备202600914号</a>
     </div>
   </footer>
 
@@ -1695,7 +1568,6 @@
       url: "https://script.google.com/macros/s/AKfycbzc7lGXiVYAT9jKGuU8-zdQtVUnA10nS3BvAWw-QG9umiJs_Hf6WGY53RgpGh57DoKbJw/exec",
       mode: "no-cors"
     }];
-    const PANDA_ENDPOINT = PANDA_ENDPOINTS[0].url;
     const PANDA_SUBMIT_TIMEOUT_MS = 18000;
     const PANDA_STORAGE_KEY = "magsnap_panda_masters_v1";
     const CLUB_STORAGE_KEY = "magsnap_club_database_v1";
@@ -1703,9 +1575,9 @@
     const IMPORT_QUEUE_STORAGE_KEY = "magsnap_panda_import_queue_v1";
 
     const coverageBase = [
-      { city: "Nha Trang", zh: "芽庄", clubs: 0, owners: 0, coaches: 0, coreMembers: 0, povCreators: 0 },
-      { city: "Phan Rang", zh: "番朗", clubs: 0, owners: 0, coaches: 0, coreMembers: 0, povCreators: 0 },
-      { city: "Mui Ne", zh: "美奈", clubs: 0, owners: 0, coaches: 0, coreMembers: 0, povCreators: 0 }
+      { city: "Nha Trang", zh: "芽庄", clubs: 0, owners: 0, coaches: 0, coreRiders: 0, povCreators: 0 },
+      { city: "Phan Rang", zh: "番朗", clubs: 0, owners: 0, coaches: 0, coreRiders: 0, povCreators: 0 },
+      { city: "Mui Ne", zh: "美奈", clubs: 0, owners: 0, coaches: 0, coreRiders: 0, povCreators: 0 }
     ];
 
     const form = document.getElementById("panda-master-form");
@@ -1729,465 +1601,6 @@
     const confirmationSection = document.getElementById("confirmation");
     const confirmationCard = document.getElementById("confirmation-card");
     const confirmationSummary = document.getElementById("confirmation-summary");
-    const preferredLanguageInput = document.getElementById("preferred-language");
-    const languageButtons = Array.from(document.querySelectorAll("[data-lang-button]"));
-
-    const languageStorageKey = "magsnap_panda_preferred_language";
-    let latestManualSubmissionText = "";
-    const supportedLanguages = new Set(["en", "zh", "vi", "ru"]);
-    const defaultLanguage = "base";
-    let currentLanguage = defaultLanguage;
-
-    const i18n = {
-      en: {
-        heroEyebrow: "Panda Masters Registry",
-        heroTitle: "Join Panda Masters",
-        heroLead: "Not For Sale. For Those Who Help The Community.",
-        checkinEyebrow: "Survey / Registration",
-        checkinTitle: "Panda Master Registration",
-        checkinLead: "Submit your profile, POV device, social links and feedback. Photo upload is optional.",
-        pandaNumberTitle: "Panda Master Number",
-        pandaNumberNote: "Find your 4-digit number inside the MagSnap kit.",
-        nameLabel: "Name",
-        nicknameLabel: "Public Nickname",
-        countryLabel: "Country",
-        cityLabel: "City",
-        clubLabel: "Club",
-        roleLabel: "Which best describes you?",
-        emailLabel: "Email",
-        sportsLabel: "Sport / Industry",
-        equipmentLabel: "Equipment / POV Devices",
-        accessoriesLabel: "Accessories",
-        prescriptionLabel: "Vision+ testing need",
-        myopiaLabel: "If yes, what is your myopia degree?",
-        contentTitle: "Content Creator Profile",
-        contentNote: "Used to understand content reach. Private contact fields stay private.",
-        creatorStatusLabel: "Do you create or post videos/photos?",
-        platformsLabel: "Where do you post?",
-        frequencyLabel: "How often do you post?",
-        followersLabel: "Approximate followers",
-        filmLabel: "What do you usually film?",
-        photoLabel: "Upload Your MagSnap Selfie",
-        photoNote: "Optional. Upload a MagSnap selfie or proof image if your phone supports it.<br>If upload fails, submit the form first and send a photo link later.",
-        videoLabel: "Video Link",
-        povLabel: "POV Clip Link",
-        storyLabel: "Story Note",
-        publicStoryLabel: "Public Story",
-        problemLabel: "Problems",
-        moduleLabel: "New Modules",
-        feedbackLabel: "Ideas / Feedback",
-        submitButton: "Submit",
-        privacyNote: "Contact information is for MagSnap internal follow-up only and is not shown publicly.",
-        confirmationEyebrow: "Confirmation Page",
-        confirmationTitle: "Registration Received.",
-        confirmationLead: "You are now in the Panda Masters Registry. Public profiles with photos may appear after review.",
-        confirmationStats: "View Stats",
-        confirmationAnother: "Add Another",
-        statsEyebrow: "Stats",
-        statsTitle: "Panda Masters Stats",
-        statsPrivacy: "Aggregate stats only. Private data is never shown here.",
-        numberInvalid: "Please enter a 4-digit Panda Master number.",
-        degreeInvalid: "Please select your myopia degree.",
-        photoMissing: "No photo selected. Continuing without a photo.",
-        photoPreparing: "Preparing photo...",
-        photoReady: "Photo ready",
-        photoSelected: "Photo selected",
-        photoSkipped: "Photo upload skipped. The application will still be submitted.",
-        photoFailedOptional: "Photo could not be processed on this phone. The application will still be submitted; send a photo link later if needed.",
-        submitting: "Submitting",
-        preparingPhoto: "Preparing application.",
-        submittingCheckin: "Application ready. Submitting check-in.",
-        submitSuccess: "You are now in the Panda Masters Registry.<br>Public profiles with photos may appear after review.",
-        submitTimeout: "Submission timed out. Please check the network and retry.",
-        submitFailed: "Submission failed. Please check the form and try again.",
-        submitSavedLocal: "Network submission is blocked or timed out. Your registration is saved on this phone. Please copy it and send it to MZ; MagSnap will sync it manually.",
-        copySubmission: "Copy Registration",
-        copiedSubmission: "Registration copied.",
-        yes: "Yes",
-        no: "No"
-      },
-      zh: {
-        heroEyebrow: "熊猫高人登记",
-        heroTitle: "加入熊猫高人",
-        heroLead: "非卖品。<br>致那些帮助社区成长的人。",
-        checkinEyebrow: "问卷 / 登记",
-        checkinTitle: "熊猫高人登记",
-        checkinLead: "填写基础信息、设备、社交链接和反馈。照片可选。",
-        pandaNumberTitle: "熊猫高人编号",
-        pandaNumberNote: "四位编号请在 MagSnap 套装内查找。",
-        nameLabel: "姓名",
-        nicknameLabel: "公开昵称",
-        countryLabel: "国家",
-        cityLabel: "城市",
-        clubLabel: "俱乐部",
-        roleLabel: "你更接近哪一种身份？",
-        emailLabel: "邮箱",
-        sportsLabel: "运动 / 行业",
-        equipmentLabel: "设备 / POV 设备",
-        accessoriesLabel: "配件",
-        prescriptionLabel: "Vision+ 视力需求",
-        myopiaLabel: "如果需要，请选择近视度数",
-        contentTitle: "内容创作者信息",
-        contentNote: "用于判断 Panda Masters 的内容扩散能力，不公开个人联系方式。",
-        creatorStatusLabel: "你平时会拍摄或发布视频/照片吗？",
-        platformsLabel: "你主要发布在哪些平台？",
-        frequencyLabel: "你多久发布一次？",
-        followersLabel: "大概粉丝数",
-        filmLabel: "你通常拍什么？",
-        photoLabel: "上传你的 MagSnap 自拍",
-        photoNote: "可选。如果手机支持，可以上传 MagSnap 自拍或证明图片。<br>如果上传失败，先提交表单，之后再补照片链接。",
-        videoLabel: "视频链接",
-        povLabel: "POV 片段链接",
-        storyLabel: "故事备注",
-        publicStoryLabel: "公开故事",
-        problemLabel: "当前问题",
-        moduleLabel: "新模块想法",
-        feedbackLabel: "想法与反馈",
-        submitButton: "提交",
-        privacyNote: "联系方式仅供 MagSnap 内部跟进，不在公开页面展示。",
-        confirmationEyebrow: "确认页",
-        confirmationTitle: "登记已收到。",
-        confirmationLead: "你已进入 Panda Masters Registry。带照片的公开资料会在审核后显示。",
-        confirmationStats: "查看统计",
-        confirmationAnother: "继续登记",
-        statsEyebrow: "数据",
-        statsTitle: "熊猫高人统计",
-        statsPrivacy: "只显示汇总统计，不显示邮箱、电话、地址、联系方式等隐私信息。",
-        numberInvalid: "请输入 4 位 Panda Master 编号。",
-        degreeInvalid: "请选择近视度数。",
-        photoMissing: "未选择照片，将继续提交。",
-        photoPreparing: "正在处理照片...",
-        photoReady: "照片已准备完成",
-        photoSelected: "已选择照片",
-        photoSkipped: "已跳过照片上传，申请仍会继续提交。",
-        photoFailedOptional: "这台手机无法处理该照片。申请仍会继续提交；如需要，之后再补照片链接。",
-        submitting: "正在提交",
-        preparingPhoto: "正在准备申请资料。",
-        submittingCheckin: "申请资料已准备完成，正在提交登记。",
-        submitSuccess: "你已进入 Panda Masters Registry。<br>带照片的公开资料会在审核后显示。",
-        submitTimeout: "提交超时。请检查网络后重试。",
-        submitFailed: "提交失败。请检查信息后重试。",
-        submitSavedLocal: "网络提交被阻断或超时。你的登记已保存到本机。请复制登记信息发给 MZ，MagSnap 会手动同步。",
-        copySubmission: "复制登记信息",
-        copiedSubmission: "登记信息已复制。",
-        yes: "需要",
-        no: "不需要"
-      },
-      vi: {
-        heroEyebrow: "Đăng ký Panda Masters",
-        heroTitle: "Tham gia Panda Masters",
-        heroLead: "Không bán.<br>Dành cho những người giúp cộng đồng phát triển.",
-        checkinEyebrow: "Khảo sát / Đăng ký",
-        checkinTitle: "Đăng ký Panda Master",
-        checkinLead: "Điền hồ sơ, thiết bị POV, mạng xã hội và phản hồi. Tải ảnh là tùy chọn.",
-        pandaNumberTitle: "Số Panda Master",
-        pandaNumberNote: "Tìm số 4 chữ số bên trong bộ MagSnap.",
-        nameLabel: "Tên",
-        nicknameLabel: "Biệt danh công khai",
-        countryLabel: "Quốc gia",
-        cityLabel: "Thành phố",
-        clubLabel: "Câu lạc bộ",
-        roleLabel: "Bạn giống nhóm nào nhất?",
-        emailLabel: "Email",
-        sportsLabel: "Môn chơi / Ngành",
-        equipmentLabel: "Thiết bị / Thiết bị POV",
-        accessoriesLabel: "Phụ kiện",
-        prescriptionLabel: "Nhu cầu thử Vision+",
-        myopiaLabel: "Nếu có, độ cận của bạn là bao nhiêu?",
-        contentTitle: "Thông tin nhà sáng tạo nội dung",
-        contentNote: "Dùng để hiểu khả năng lan tỏa nội dung. Thông tin liên hệ riêng tư không công khai.",
-        creatorStatusLabel: "Bạn có quay hoặc đăng video/ảnh không?",
-        platformsLabel: "Bạn thường đăng ở đâu?",
-        frequencyLabel: "Bạn đăng thường xuyên thế nào?",
-        followersLabel: "Số người theo dõi ước tính",
-        filmLabel: "Bạn thường quay nội dung gì?",
-        photoLabel: "Tải selfie với MagSnap",
-        photoNote: "Tùy chọn. Tải selfie MagSnap hoặc ảnh chứng minh nếu điện thoại hỗ trợ.<br>Nếu tải ảnh lỗi, hãy gửi biểu mẫu trước và bổ sung link ảnh sau.",
-        videoLabel: "Liên kết video",
-        povLabel: "Liên kết clip POV",
-        storyLabel: "Ghi chú câu chuyện",
-        publicStoryLabel: "Câu chuyện công khai",
-        problemLabel: "Vấn đề đang gặp",
-        moduleLabel: "Ý tưởng module mới",
-        feedbackLabel: "Ý tưởng / Phản hồi",
-        submitButton: "Gửi đăng ký",
-        privacyNote: "Thông tin liên hệ chỉ dùng để MagSnap theo dõi nội bộ, không hiển thị công khai.",
-        confirmationEyebrow: "Trang xác nhận",
-        confirmationTitle: "Đã nhận đăng ký.",
-        confirmationLead: "Bạn đã vào Panda Masters Registry. Hồ sơ có ảnh có thể xuất hiện sau khi được duyệt.",
-        confirmationStats: "Xem thống kê",
-        confirmationAnother: "Đăng ký thêm",
-        statsEyebrow: "Thống kê",
-        statsTitle: "Thống kê Panda Masters",
-        statsPrivacy: "Chỉ hiển thị thống kê tổng hợp. Dữ liệu liên hệ riêng tư không được hiển thị ở đây.",
-        numberInvalid: "Vui lòng nhập số Panda Master gồm 4 chữ số.",
-        degreeInvalid: "Vui lòng chọn độ cận của bạn.",
-        photoMissing: "Chưa chọn ảnh. Tiếp tục gửi không kèm ảnh.",
-        photoPreparing: "Đang xử lý ảnh...",
-        photoReady: "Ảnh đã sẵn sàng",
-        photoSelected: "Đã chọn ảnh",
-        photoSkipped: "Bỏ qua tải ảnh. Đơn đăng ký vẫn sẽ được gửi.",
-        photoFailedOptional: "Điện thoại này không xử lý được ảnh. Đơn đăng ký vẫn sẽ được gửi; có thể gửi link ảnh sau.",
-        submitting: "Đang gửi",
-        preparingPhoto: "Đang chuẩn bị đăng ký.",
-        submittingCheckin: "Đăng ký đã sẵn sàng. Đang gửi.",
-        submitSuccess: "Bạn đã vào Panda Masters Registry.<br>Hồ sơ có ảnh có thể xuất hiện sau khi được duyệt.",
-        submitTimeout: "Gửi quá thời gian. Vui lòng kiểm tra mạng và thử lại.",
-        submitFailed: "Gửi thất bại. Vui lòng kiểm tra biểu mẫu và thử lại.",
-        submitSavedLocal: "Kết nối gửi bị chặn hoặc quá thời gian. Đăng ký đã được lưu trên điện thoại này. Hãy sao chép và gửi cho MZ để MagSnap đồng bộ thủ công.",
-        copySubmission: "Sao chép đăng ký",
-        copiedSubmission: "Đã sao chép đăng ký.",
-        yes: "Có",
-        no: "Không"
-      },
-      ru: {
-        heroEyebrow: "Регистрация Panda Masters",
-        heroTitle: "Присоединиться к Panda Masters",
-        heroLead: "Не продается.<br>Для тех, кто помогает сообществу расти.",
-        checkinEyebrow: "Опрос / Регистрация",
-        checkinTitle: "Регистрация Panda Master",
-        checkinLead: "Заполните профиль, POV-устройства, контакты и обратную связь. Фото необязательно.",
-        pandaNumberTitle: "Номер Panda Master",
-        pandaNumberNote: "Найдите 4-значный номер внутри набора MagSnap.",
-        nameLabel: "Имя",
-        nicknameLabel: "Публичный никнейм",
-        countryLabel: "Страна",
-        cityLabel: "Город",
-        clubLabel: "Клуб",
-        roleLabel: "Что лучше описывает вас?",
-        emailLabel: "Email",
-        sportsLabel: "Спорт / Сфера",
-        equipmentLabel: "Оборудование / POV-устройства",
-        accessoriesLabel: "Аксессуары",
-        prescriptionLabel: "Потребность в Vision+",
-        myopiaLabel: "Если да, какая у вас близорукость?",
-        contentTitle: "Профиль создателя контента",
-        contentNote: "Нужно для оценки охвата контента. Личные контакты не публикуются.",
-        creatorStatusLabel: "Вы снимаете или публикуете фото/видео?",
-        platformsLabel: "Где вы публикуете?",
-        frequencyLabel: "Как часто вы публикуете?",
-        followersLabel: "Примерное число подписчиков",
-        filmLabel: "Что вы обычно снимаете?",
-        photoLabel: "Загрузите селфи с MagSnap",
-        photoNote: "Необязательно. Загрузите селфи с MagSnap или фото-подтверждение, если телефон поддерживает это.<br>Если загрузка не удалась, отправьте форму сначала и добавьте ссылку на фото позже.",
-        videoLabel: "Ссылка на видео",
-        povLabel: "Ссылка на POV-клип",
-        storyLabel: "Заметка к истории",
-        publicStoryLabel: "Публичная история",
-        problemLabel: "Проблемы",
-        moduleLabel: "Идеи новых модулей",
-        feedbackLabel: "Идеи / Обратная связь",
-        submitButton: "Отправить",
-        privacyNote: "Контакты используются только для внутренней связи MagSnap и не публикуются.",
-        confirmationEyebrow: "Страница подтверждения",
-        confirmationTitle: "Регистрация получена.",
-        confirmationLead: "Вы добавлены в Panda Masters Registry. Профили с фото могут появиться после проверки.",
-        confirmationStats: "Посмотреть статистику",
-        confirmationAnother: "Добавить еще",
-        statsEyebrow: "Статистика",
-        statsTitle: "Статистика Panda Masters",
-        statsPrivacy: "Показывается только агрегированная статистика. Личные данные не отображаются.",
-        numberInvalid: "Введите 4-значный номер Panda Master.",
-        degreeInvalid: "Выберите степень близорукости.",
-        photoMissing: "Фото не выбрано. Отправляем без фото.",
-        photoPreparing: "Подготовка фото...",
-        photoReady: "Фото готово",
-        photoSelected: "Фото выбрано",
-        photoSkipped: "Загрузка фото пропущена. Заявка все равно будет отправлена.",
-        photoFailedOptional: "Фото не удалось обработать на этом телефоне. Заявка все равно будет отправлена; ссылку на фото можно добавить позже.",
-        submitting: "Отправка",
-        preparingPhoto: "Подготовка заявки.",
-        submittingCheckin: "Заявка готова. Отправляем регистрацию.",
-        submitSuccess: "Вы добавлены в Panda Masters Registry.<br>Профили с фото могут появиться после проверки.",
-        submitTimeout: "Время отправки истекло. Проверьте сеть и повторите.",
-        submitFailed: "Отправка не удалась. Проверьте форму и попробуйте снова.",
-        submitSavedLocal: "Отправка заблокирована или истекло время ожидания. Регистрация сохранена на этом телефоне. Скопируйте данные и отправьте MZ; MagSnap синхронизирует вручную.",
-        copySubmission: "Скопировать регистрацию",
-        copiedSubmission: "Регистрация скопирована.",
-        yes: "Да",
-        no: "Нет"
-      }
-    };
-
-    const selectI18n = {
-      en: {
-        "#pm-role": { "": "Select the closest one", "Club Owner": "Club Owner / Shop Owner", "Coach / Instructor": "Coach / Instructor", "Rider / Athlete": "Rider / Athlete", "Content Creator": "Content Creator", "Community Member": "Community Member", "Product / Factory / Supplier": "Product / Factory / Supplier", Other: "Other" },
-        "#pm-handoff-status": { "Received Glasses": "Received Glasses", "Pending Handoff": "Pending Handoff" },
-        "#pm-follower-range": { "": "Select" }
-      },
-      zh: {
-        "#pm-role": { "": "选择最接近的一项", "Club Owner": "俱乐部或店主", "Coach / Instructor": "教练", "Rider / Athlete": "玩家或运动员", "Content Creator": "内容创作者", "Community Member": "社群成员", "Product / Factory / Supplier": "产品、工厂或供应链", Other: "其他" },
-        "#pm-handoff-status": { "Received Glasses": "已领取眼镜", "Pending Handoff": "待交付" },
-        "#pm-follower-range": { "": "选择" }
-      },
-      vi: {
-        "#pm-role": { "": "Chọn mục gần nhất", "Club Owner": "Chủ câu lạc bộ / cửa hàng", "Coach / Instructor": "Huấn luyện viên / người hướng dẫn", "Rider / Athlete": "Người chơi / vận động viên", "Content Creator": "Nhà sáng tạo nội dung", "Community Member": "Thành viên cộng đồng", "Product / Factory / Supplier": "Sản phẩm / nhà máy / nhà cung cấp", Other: "Khác" },
-        "#pm-handoff-status": { "Received Glasses": "Đã nhận kính", "Pending Handoff": "Chờ bàn giao" },
-        "#pm-follower-range": { "": "Chọn" }
-      },
-      ru: {
-        "#pm-role": { "": "Выберите ближайший вариант", "Club Owner": "Владелец клуба / магазина", "Coach / Instructor": "Тренер / инструктор", "Rider / Athlete": "Райдер / спортсмен", "Content Creator": "Создатель контента", "Community Member": "Участник сообщества", "Product / Factory / Supplier": "Продукт / фабрика / поставщик", Other: "Другое" },
-        "#pm-handoff-status": { "Received Glasses": "Очки получены", "Pending Handoff": "Ожидает передачи" },
-        "#pm-follower-range": { "": "Выберите" }
-      }
-    };
-
-    const controlI18n = {
-      en: {
-        'input[name="content_creator_status"][value="Never"]': "Never",
-        'input[name="content_creator_status"][value="Sometimes"]': "Sometimes",
-        'input[name="content_creator_status"][value="Regularly"]': "Regularly",
-        'input[name="content_creator_status"][value="Professional Creator"]': "Professional Creator",
-        'input[name="posting_frequency"][value="Daily"]': "Daily",
-        'input[name="posting_frequency"][value="Weekly"]': "Weekly",
-        'input[name="posting_frequency"][value="Monthly"]': "Monthly",
-        'input[name="posting_frequency"][value="Rarely"]': "Rarely"
-      },
-      zh: {
-        'input[name="content_creator_status"][value="Never"]': "从不",
-        'input[name="content_creator_status"][value="Sometimes"]': "偶尔",
-        'input[name="content_creator_status"][value="Regularly"]': "经常",
-        'input[name="content_creator_status"][value="Professional Creator"]': "专业创作者",
-        'input[name="posting_frequency"][value="Daily"]': "每天",
-        'input[name="posting_frequency"][value="Weekly"]': "每周",
-        'input[name="posting_frequency"][value="Monthly"]': "每月",
-        'input[name="posting_frequency"][value="Rarely"]': "很少"
-      },
-      vi: {
-        'input[name="content_creator_status"][value="Never"]': "Không bao giờ",
-        'input[name="content_creator_status"][value="Sometimes"]': "Thỉnh thoảng",
-        'input[name="content_creator_status"][value="Regularly"]': "Thường xuyên",
-        'input[name="content_creator_status"][value="Professional Creator"]': "Nhà sáng tạo chuyên nghiệp",
-        'input[name="posting_frequency"][value="Daily"]': "Hằng ngày",
-        'input[name="posting_frequency"][value="Weekly"]': "Hằng tuần",
-        'input[name="posting_frequency"][value="Monthly"]': "Hằng tháng",
-        'input[name="posting_frequency"][value="Rarely"]': "Hiếm khi"
-      },
-      ru: {
-        'input[name="content_creator_status"][value="Never"]': "Никогда",
-        'input[name="content_creator_status"][value="Sometimes"]': "Иногда",
-        'input[name="content_creator_status"][value="Regularly"]': "Регулярно",
-        'input[name="content_creator_status"][value="Professional Creator"]': "Профессиональный автор",
-        'input[name="posting_frequency"][value="Daily"]': "Ежедневно",
-        'input[name="posting_frequency"][value="Weekly"]': "Еженедельно",
-        'input[name="posting_frequency"][value="Monthly"]': "Ежемесячно",
-        'input[name="posting_frequency"][value="Rarely"]': "Редко"
-      }
-    };
-
-    const baseContent = {};
-
-    const getLanguageCopy = (key) => {
-      if (currentLanguage === defaultLanguage) return baseContent[key] || i18n.en[key] || "";
-      return i18n[currentLanguage]?.[key] || baseContent[key] || "";
-    };
-
-    const getPreferredLanguageValue = () => {
-      if (supportedLanguages.has(currentLanguage)) return currentLanguage;
-      const browserLanguage = window.navigator.language || "";
-      if (/^zh/i.test(browserLanguage)) return "zh";
-      if (/^vi/i.test(browserLanguage)) return "vi";
-      if (/^ru/i.test(browserLanguage)) return "ru";
-      return "en";
-    };
-
-    const setInlineHtml = (selector, html) => {
-      const element = document.querySelector(selector);
-      if (element && html) element.innerHTML = html;
-    };
-
-    const setControlLabelText = (selector, text) => {
-      const control = document.querySelector(selector);
-      const label = control?.closest("label");
-      if (!label || !text) return;
-      Array.from(label.childNodes).forEach((node) => {
-        if (node.nodeType === Node.TEXT_NODE) node.remove();
-      });
-      label.append(` ${text}`);
-    };
-
-    const setSelectOptionText = (selector, values) => {
-      const select = document.querySelector(selector);
-      if (!select || !values || !select.options) return;
-      Array.from(select.options).forEach((option) => {
-        if (!option.dataset.baseText) option.dataset.baseText = option.textContent;
-        option.textContent = values[option.value] || option.dataset.baseText;
-      });
-    };
-
-    const updateLocalizedContactFields = () => {
-      const activeLanguage = getPreferredLanguageValue();
-      document.querySelectorAll("[data-contact-langs]").forEach((field) => {
-        const languages = String(field.dataset.contactLangs || "").split(/\s+/).filter(Boolean);
-        const shouldShow = languages.includes(activeLanguage);
-        field.hidden = !shouldShow;
-        field.querySelectorAll("input, select, textarea").forEach((control) => {
-          control.disabled = !shouldShow;
-          control.required = false;
-        });
-      });
-    };
-
-    const applyLanguage = (language, persist = true) => {
-      currentLanguage = supportedLanguages.has(language) ? language : defaultLanguage;
-      if (persist) {
-        if (currentLanguage === defaultLanguage) {
-          window.localStorage.removeItem(languageStorageKey);
-        } else {
-          window.localStorage.setItem(languageStorageKey, currentLanguage);
-        }
-      }
-
-      if (preferredLanguageInput) {
-        preferredLanguageInput.value = getPreferredLanguageValue();
-      }
-      document.documentElement.lang = currentLanguage === "vi"
-        ? "vi"
-        : currentLanguage === "ru"
-          ? "ru"
-          : currentLanguage === "en"
-            ? "en"
-            : "zh-CN";
-
-      document.querySelectorAll("[data-i18n-html]").forEach((element) => {
-        const key = element.dataset.i18nHtml;
-        if (!baseContent[key]) baseContent[key] = element.innerHTML;
-        const html = getLanguageCopy(key);
-        if (html) element.innerHTML = html;
-      });
-
-      languageButtons.forEach((button) => {
-        button.classList.toggle("is-active", button.dataset.langButton === currentLanguage);
-      });
-
-      if (photoUploadStatus && !photoFileInput?.files?.length) {
-        photoUploadStatus.innerHTML = getLanguageCopy("photoNote");
-      }
-
-      setControlLabelText('input[name="prescription_need"][value="No"]', getLanguageCopy("no"));
-      setControlLabelText('input[name="prescription_need"][value="Yes"]', getLanguageCopy("yes"));
-      const selectCopy = selectI18n[currentLanguage] || {};
-      Object.entries(selectCopy).forEach(([selector, values]) => setSelectOptionText(selector, values));
-      const controlCopy = controlI18n[currentLanguage] || {};
-      Object.entries(controlCopy).forEach(([selector, text]) => setControlLabelText(selector, text));
-      updateLocalizedContactFields();
-      if (typeof validatePandaNumber === "function") validatePandaNumber();
-      if (typeof updatePrescriptionRequirement === "function") updatePrescriptionRequirement();
-    };
-
-    const getInitialLanguage = () => {
-      const params = new URLSearchParams(window.location.search);
-      const requested = params.get("lang") || params.get("language");
-      if (supportedLanguages.has(requested)) return requested;
-      const saved = window.localStorage.getItem(languageStorageKey);
-      return supportedLanguages.has(saved) ? saved : defaultLanguage;
-    };
-
-    languageButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        applyLanguage(button.dataset.langButton || defaultLanguage);
-      });
-    });
 
     const cleanText = (value) => String(value || "").trim();
 
@@ -2212,11 +1625,12 @@
       "role",
       "email",
       "instagram",
+      "tiktok",
+      "youtube",
+      "facebook",
       "whatsapp",
-      "wechat_or_social",
       "sports",
       "equipment",
-      "prescription_need",
       "content_creator_status",
       "content_platforms",
       "posting_frequency",
@@ -2225,6 +1639,14 @@
       "photo_file",
       "photo_link",
       "photo_url",
+      "vision_plus_type",
+      "vision_plus_note",
+      "problem_report",
+      "problem_tags",
+      "module_ideas",
+      "product_requests",
+      "crazy_concepts",
+      "file_link",
       "feedback"
     ]);
 
@@ -2463,15 +1885,16 @@
       const platformScore = Math.min(20, platforms.size * 5);
       const frequencyScoreMap = { Daily: 20, Weekly: 14, Monthly: 8, Rarely: 4, None: 0 };
       const roleScoreMap = {
-        "Club Owner": 20,
-        "Coach / Instructor": 16,
-        "Rider / Athlete": 16,
-        "Content Creator": 16,
-        "Community Member": 12,
-        "Product / Factory / Supplier": 12,
-        Coach: 16,
-        Athlete: 16,
+        "Problem Solver": 20,
+        Engineer: 20,
+        Manufacturer: 20,
+        "AI Builder": 18,
+        "Material Expert": 18,
+        Designer: 16,
+        "Sports Expert": 16,
+        Operator: 14,
         Creator: 16,
+        Other: 8
       };
       const frequencyScore = frequencyScoreMap[payload.posting_frequency] || 0;
       const roleScore = roleScoreMap[payload.role] || 6;
@@ -2482,11 +1905,20 @@
 
     const formatPandaId = (number) => `PM-${number}`;
 
+    const generatePandaNumber = () => {
+      const usedNumbers = new Set(readLocalRecords().map((record) => normalizePandaNumber(record.panda_master_number)));
+      for (let attempt = 0; attempt < 20; attempt += 1) {
+        const number = String(Math.floor(1000 + Math.random() * 9000));
+        if (!usedNumbers.has(number)) return number;
+      }
+      return String(Date.now()).slice(-4).padStart(4, "0");
+    };
+
     const validatePandaNumber = () => {
       const number = normalizePandaNumber(pandaNumberInput?.value);
       if (pandaNumberInput) {
         pandaNumberInput.value = number;
-        pandaNumberInput.setCustomValidity(number.length === 4 ? "" : getLanguageCopy("numberInvalid"));
+        pandaNumberInput.setCustomValidity(!number || number.length === 4 ? "" : "Please enter a 4-digit Panda Master number, or leave it blank.");
       }
       return number.length === 4 ? number : "";
     };
@@ -2578,69 +2010,6 @@
       node.classList.toggle("error", Boolean(isError));
     };
 
-    const manualSubmissionText = (payload) => {
-      const safePayload = { ...payload };
-      if (/^data:image\//.test(safePayload.photo_url || "")) safePayload.photo_url = "[embedded photo omitted]";
-      if (/^data:image\//.test(safePayload.photo_link || "")) safePayload.photo_link = "[embedded photo omitted]";
-      return [
-        "MAGSNAP PANDA MASTERS REGISTRATION",
-        `Panda Master ID: ${safePayload.panda_master_id || ""}`,
-        `Panda Master Number: ${safePayload.panda_master_number || ""}`,
-        `Name: ${safePayload.name || ""}`,
-        `Nickname: ${safePayload.public_nickname || ""}`,
-        `Country: ${safePayload.country || ""}`,
-        `City: ${safePayload.city || ""}`,
-        `Club: ${safePayload.club || ""}`,
-        `Role: ${safePayload.role || ""}`,
-        `Email: ${safePayload.email || ""}`,
-        `Contact: ${safePayload.contact_detail || safePayload.wechat_or_social || safePayload.social_link || ""}`,
-        `Sports: ${safePayload.sports || ""}`,
-        `Equipment: ${safePayload.equipment || safePayload.device || ""}`,
-        `Content Creator: ${safePayload.content_creator_status || ""}`,
-        `Feedback: ${safePayload.feedback || ""}`,
-        `Submitted At: ${safePayload.submitted_at || ""}`,
-        `Source URL: ${safePayload.source_url || ""}`
-      ].join("\n");
-    };
-
-    const showManualSubmissionFallback = (payload, error) => {
-      latestManualSubmissionText = manualSubmissionText(payload);
-      const richerFallback = window.MAGSNAP_FORM_TRANSPORT
-        ? window.MAGSNAP_FORM_TRANSPORT.fallbackHtml(payload, {
-            subject: "MAGSNAP Panda Masters Application Backup",
-            title: "MAGSNAP Panda Masters application",
-            intro: "当前网络没有完成 Panda Masters 后台提交。你的申请已保存在本机，请复制资料并通过邮件或微信发送给 MAGSNAP。"
-          })
-        : "";
-      showStatus(`
-        <strong>${getLanguageCopy("submitSavedLocal")}</strong><br>
-        ID: ${escapeHtml(payload.panda_master_id)}<br>
-        ${escapeHtml(payload.public_nickname || payload.name)} · ${escapeHtml(payload.city)} · ${escapeHtml(payload.club)}<br>
-        <button class="button primary" type="button" data-copy-manual-submission>${escapeHtml(getLanguageCopy("copySubmission"))}</button>
-        ${richerFallback}
-      `);
-    };
-
-    statusNode?.addEventListener("click", async (event) => {
-      const button = event.target.closest("[data-copy-manual-submission]");
-      if (!button || !latestManualSubmissionText) return;
-      try {
-        await window.navigator.clipboard.writeText(latestManualSubmissionText);
-        button.textContent = getLanguageCopy("copiedSubmission");
-      } catch (_error) {
-        const textarea = document.createElement("textarea");
-        textarea.value = latestManualSubmissionText;
-        textarea.setAttribute("readonly", "readonly");
-        textarea.style.position = "fixed";
-        textarea.style.left = "-9999px";
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand("copy");
-        textarea.remove();
-        button.textContent = getLanguageCopy("copiedSubmission");
-      }
-    });
-
     const readFileAsDataUrl = (file) => new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onload = () => resolve(String(reader.result || ""));
@@ -2655,99 +2024,43 @@
       image.src = src;
     });
 
-    const isSupportedMobileImage = (file) => {
-      const type = String(file?.type || "").toLowerCase();
-      const name = String(file?.name || "").toLowerCase();
-      return !type || /^image\//.test(type) || /\.(jpe?g|png|webp|gif|heic|heif|bmp|tiff?)$/.test(name);
-    };
-
-    const loadImageFromFile = async (file) => {
-      if (window.URL?.createObjectURL) {
-        const objectUrl = window.URL.createObjectURL(file);
-        try {
-          return await loadImage(objectUrl);
-        } catch (_error) {
-          // Some mobile WebViews reject object URLs; fall back to FileReader below.
-        } finally {
-          window.URL.revokeObjectURL(objectUrl);
-        }
-      }
-
-      const source = await readFileAsDataUrl(file);
-      return loadImage(source);
-    };
-
-    const renderCompressedPhoto = (image) => {
-      const attempts = [
-        { maxSide: 1400, quality: 0.78 },
-        { maxSide: 1200, quality: 0.72 },
-        { maxSide: 1000, quality: 0.7 },
-        { maxSide: 800, quality: 0.68 }
-      ];
-      const naturalWidth = image.naturalWidth || image.width;
-      const naturalHeight = image.naturalHeight || image.height;
-
-      for (const attempt of attempts) {
-        const scale = Math.min(1, attempt.maxSide / Math.max(naturalWidth, naturalHeight));
-        const width = Math.max(1, Math.round(naturalWidth * scale));
-        const height = Math.max(1, Math.round(naturalHeight * scale));
-        const canvas = document.createElement("canvas");
-        canvas.width = width;
-        canvas.height = height;
-        const context = canvas.getContext("2d");
-        if (!context) continue;
-        context.drawImage(image, 0, 0, width, height);
-        const photoUrl = canvas.toDataURL("image/jpeg", attempt.quality);
-        if (photoUrl.length <= 3000000) return photoUrl;
-      }
-      throw new Error("照片处理后仍然过大，请换一张更小的照片。<br>The processed photo is still too large. Please choose a smaller image.");
-    };
-
     const preparePhotoUpload = async () => {
       const file = photoFileInput?.files?.[0];
       if (!file) {
         if (photoUploadStatus) {
-          photoUploadStatus.innerHTML = getLanguageCopy("photoMissing");
+          photoUploadStatus.innerHTML = "未上传图片，继续提交申请。<br>No image uploaded. Continuing application.";
         }
         return {};
       }
-      if (!isSupportedMobileImage(file)) {
-        if (photoUploadStatus) {
-          photoUploadStatus.innerHTML = getLanguageCopy("photoFailedOptional");
-        }
-        return {
-          photo_file_name: file.name || "",
-          photo_original_type: file.type || "",
-          photo_original_size: file.size || 0,
-          photo_upload_status: "unsupported_optional_skipped"
-        };
+      if (!/^image\//.test(file.type || "")) {
+        throw new Error("请上传图片文件。<br>Please upload an image file.");
       }
 
       if (photoUploadStatus) {
-        photoUploadStatus.innerHTML = getLanguageCopy("photoPreparing");
+        photoUploadStatus.innerHTML = "正在处理照片 / Preparing photo...";
       }
 
-      let photoUrl = "";
-      try {
-        const image = await loadImageFromFile(file);
-        photoUrl = renderCompressedPhoto(image);
-      } catch (_error) {
-        if (photoUploadStatus) {
-          photoUploadStatus.innerHTML = getLanguageCopy("photoFailedOptional");
-        }
-        return {
-          photo_file_name: file.name || "magsnap-photo",
-          photo_original_type: file.type || "",
-          photo_original_size: file.size || 0,
-          photo_upload_status: "processing_optional_skipped",
-          photo_prepared_at: new Date().toISOString()
-        };
+      const source = await readFileAsDataUrl(file);
+      const image = await loadImage(source);
+      const maxSide = 1400;
+      const scale = Math.min(1, maxSide / Math.max(image.naturalWidth || image.width, image.naturalHeight || image.height));
+      const width = Math.max(1, Math.round((image.naturalWidth || image.width) * scale));
+      const height = Math.max(1, Math.round((image.naturalHeight || image.height) * scale));
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const context = canvas.getContext("2d");
+      context.drawImage(image, 0, 0, width, height);
+      const photoUrl = canvas.toDataURL("image/jpeg", 0.78);
+
+      if (photoUrl.length > 3000000) {
+        throw new Error("照片处理后仍然过大，请换一张更小的照片。<br>The processed photo is still too large. Please choose a smaller image.");
       }
 
       if (photoUrlInput) photoUrlInput.value = photoUrl;
       if (photoLinkInput) photoLinkInput.value = photoUrl;
       if (photoUploadStatus) {
-        photoUploadStatus.innerHTML = `${getLanguageCopy("photoReady")}: ${escapeHtml(file.name || "uploaded photo")}`;
+        photoUploadStatus.innerHTML = `照片已准备完成 / Photo ready: ${escapeHtml(file.name || "uploaded photo")}`;
       }
       return {
         photo_url: photoUrl,
@@ -2756,15 +2069,11 @@
         photo_file_type: "image/jpeg",
         photo_original_type: file.type || "",
         photo_original_size: file.size || 0,
-        photo_upload_status: "embedded_base64",
         photo_prepared_at: new Date().toISOString()
       };
     };
 
-    const updatePrescriptionRequirement = () => {
-      const visionField = form?.elements.prescription_need;
-      if (visionField) visionField.setCustomValidity("");
-    };
+    const updateConditionalRequirements = () => {};
 
     const showConfirmation = (payload) => {
       if (!confirmationCard || !confirmationSummary) return;
@@ -2773,14 +2082,10 @@
         <div><dt>Name</dt><dd>${escapeHtml(payload.name)}</dd></div>
         <div><dt>Country</dt><dd>${escapeHtml(payload.country)}</dd></div>
         <div><dt>City</dt><dd>${escapeHtml(payload.city)}</dd></div>
-        <div><dt>Club</dt><dd>${escapeHtml(payload.club)}</dd></div>
-        <div><dt>Role</dt><dd>${escapeHtml(payload.role)}</dd></div>
-        <div><dt>Influence Score</dt><dd>${escapeHtml(payload.influence_score || 0)}</dd></div>
-        <div><dt>Handoff</dt><dd>${escapeHtml(payload.handoff_status || "—")}</dd></div>
-        <div><dt>Creator Status</dt><dd>${escapeHtml(payload.content_creator_status || "—")}</dd></div>
-        <div><dt>Photo Wall</dt><dd>${escapeHtml(payload.photo_wall_ready || "No")}</dd></div>
-        <div><dt>Vision+ Signal</dt><dd>${escapeHtml(payload.prescription_need || "—")}</dd></div>
-        <div><dt>Lab Signals</dt><dd>${escapeHtml(payload.lab_signal_count || 0)}</dd></div>
+        <div><dt>Organization</dt><dd>${escapeHtml(payload.club)}</dd></div>
+        <div><dt>Contributor Role</dt><dd>${escapeHtml(payload.role)}</dd></div>
+        <div><dt>Challenge Tags</dt><dd>${escapeHtml(payload.problem_tags || "—")}</dd></div>
+        <div><dt>Contribution Signals</dt><dd>${escapeHtml(payload.lab_signal_count || 0)}</dd></div>
       `;
       if (confirmationSection) confirmationSection.hidden = false;
       confirmationCard.hidden = false;
@@ -2793,10 +2098,7 @@
     const buildPayload = (photoPayload = {}) => {
       const formData = new FormData(form);
       const payload = Object.fromEntries(formData.entries());
-      const pandaMasterNumber = validatePandaNumber();
-      if (!pandaMasterNumber) {
-        throw new Error(getLanguageCopy("numberInvalid"));
-      }
+      const pandaMasterNumber = validatePandaNumber() || generatePandaNumber();
       delete payload.photo_file;
       payload.panda_master_number = pandaMasterNumber;
       payload.panda_master_id = formatPandaId(pandaMasterNumber);
@@ -2812,7 +2114,6 @@
       payload.youtube = cleanText(payload.youtube);
       payload.facebook = cleanText(payload.facebook);
       payload.whatsapp = cleanText(payload.whatsapp);
-      payload.wechat_or_social = cleanText(payload.wechat_or_social);
       payload.received_date = cleanText(payload.received_date);
       payload.handoff_status = cleanText(payload.handoff_status);
       payload.referred_by = cleanText(payload.referred_by);
@@ -2822,19 +2123,24 @@
       payload.photo_file_type = cleanText(photoPayload.photo_file_type);
       payload.photo_original_type = cleanText(photoPayload.photo_original_type);
       payload.photo_original_size = parseNumber(photoPayload.photo_original_size);
-      payload.photo_upload_status = cleanText(photoPayload.photo_upload_status);
       payload.photo_prepared_at = cleanText(photoPayload.photo_prepared_at);
       payload.video_link = cleanText(payload.video_link);
       payload.pov_clip_link = cleanText(payload.pov_clip_link);
       payload.story_note = cleanText(payload.story_note);
       payload.public_story = cleanText(payload.public_story);
       payload.prescription_need = cleanText(payload.prescription_need);
-      payload.myopia_degree = "";
+      payload.myopia_degree = cleanText(payload.myopia_degree);
+      payload.vision_plus_type = cleanText(payload.vision_plus_type);
+      payload.vision_plus_note = cleanText(payload.vision_plus_note);
+      if (payload.vision_plus_type) {
+        payload.prescription_need = payload.vision_plus_type;
+      }
       payload.problem_report = cleanText(payload.problem_report);
       payload.problem_tags = cleanText(payload.problem_tags);
       payload.module_ideas = cleanText(payload.module_ideas);
       payload.product_requests = cleanText(payload.product_requests);
       payload.crazy_concepts = cleanText(payload.crazy_concepts);
+      payload.file_link = cleanText(payload.file_link);
       payload.feedback = cleanText(payload.feedback);
       payload.field_note = cleanText(payload.field_note);
       payload.sports = selectedValues(form, "sports").join(", ");
@@ -2845,35 +2151,9 @@
       payload.content_creator_status = cleanText(payload.content_creator_status);
       payload.posting_frequency = cleanText(payload.posting_frequency);
       payload.follower_range = cleanText(payload.follower_range);
-      payload.preferred_language = getPreferredLanguageValue();
-      const socialLinks = [
-        payload.instagram,
-        payload.tiktok,
-        payload.youtube,
-        payload.facebook,
-        payload.whatsapp,
-        payload.wechat_or_social
-      ].filter(Boolean).join(" / ");
-      const primaryUseCase = cleanText(payload.feedback || payload.public_story || payload.problem_report || payload.product_requests || "Panda Masters check-in");
-      payload.sport_or_industry = cleanText(payload.sports || [payload.role, payload.club].filter(Boolean).join(" / "));
-      payload.industry = cleanText(payload.role || payload.sport_or_industry);
-      payload.profession = payload.industry;
-      payload.device = cleanText(payload.equipment);
-      payload.device_used = payload.device;
-      payload.reason = primaryUseCase;
-      payload.use_case = primaryUseCase;
-      payload.social_link = socialLinks;
-      payload.invitation_code = payload.panda_master_number;
-      payload.invited_by = payload.referred_by;
-      payload.founder_number = payload.panda_master_number;
-      payload.registry_number = payload.panda_master_number;
-      payload.contact_email = payload.email;
-      payload.contact_method = socialLinks ? "Email / Social" : "Email";
-      payload.contact_detail = [payload.email, socialLinks].filter(Boolean).join(" / ");
-      payload.wechat_or_social = socialLinks;
-      payload.glasses_count = payload.handoff_status === "Received Glasses" ? 1 : 0;
-      payload.identity_rule = "one_person_one_glasses_one_panda_master_id";
-      payload.coverage_strategy = "maximum_coverage";
+      payload.glasses_count = 0;
+      payload.identity_rule = "best_people_best_solutions";
+      payload.coverage_strategy = "global_problem_solving_network";
       payload.photo_wall_ready = payload.photo_link ? "Yes" : "No";
       payload.influence_score = calculateInfluenceScore(payload);
       payload.lab_signal_count = [
@@ -2884,10 +2164,10 @@
         payload.crazy_concepts,
         payload.feedback
       ].filter(Boolean).length;
-      payload.operation = "Operation Vietnam";
+      payload.operation = "MZ Universe";
       payload.registry_type = "Panda Masters";
-      payload.source_form = "panda_masters_checkin";
-      payload.form_version = "panda_masters_v8_prescription_intelligence_v2_2026_06_22";
+      payload.source_form = "panda_masters_v1_application";
+      payload.form_version = "panda_masters_v1_problem_solving_network_2026_06_24";
       payload.newsletter_segment = "panda_masters";
       payload.submitted_at = new Date().toISOString();
       payload.source_url = window.location.href;
@@ -2910,7 +2190,7 @@
       payload.asset_link = cleanText(payload.asset_link);
       payload.notes = cleanText(payload.notes);
       payload.content_items = selectedValues(clubForm, "content_items").join(", ");
-      payload.operation = "Operation Vietnam";
+      payload.operation = "MZ Universe";
       payload.registry_type = "Club Database";
       payload.source_form = "club_database";
       payload.form_version = "club_database_v1_2026_06_21";
@@ -2928,7 +2208,7 @@
       payload.email = cleanText(payload.email);
       payload.city = cleanText(payload.city);
       payload.newsletter_segment = cleanText(payload.newsletter_segment) || "panda_masters";
-      payload.operation = "Operation Vietnam";
+      payload.operation = "MZ Universe";
       payload.registry_type = "Panda Masters Newsletter";
       payload.source_form = "panda_masters_newsletter";
       payload.form_version = "newsletter_v1_2026_06_21";
@@ -2939,7 +2219,7 @@
       return payload;
     };
 
-    const submitPayload = (payload) => {
+    const submitPayload = async (payload) => {
       if (window.MAGSNAP_FORM_TRANSPORT) {
         return window.MAGSNAP_FORM_TRANSPORT.submit(payload, {
           context: "panda_masters",
@@ -2948,75 +2228,30 @@
         });
       }
 
-      return new Promise((resolve, reject) => {
-      const iframeName = `panda-submit-${Date.now()}-${Math.random().toString(36).slice(2)}`;
-      const iframe = document.createElement("iframe");
-      const postForm = document.createElement("form");
-      let settled = false;
-      let submitted = false;
-      let submittedAt = 0;
-
-      iframe.name = iframeName;
-      iframe.hidden = true;
-      iframe.style.display = "none";
-
-      postForm.method = "POST";
-      postForm.action = PANDA_ENDPOINT;
-      postForm.target = iframeName;
-      postForm.hidden = true;
-
+      const body = new URLSearchParams();
       Object.entries(payload).forEach(([key, value]) => {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = key;
-        input.value = value == null ? "" : String(value);
-        postForm.appendChild(input);
+        body.append(key, value == null ? "" : String(value));
       });
 
-      const cleanup = () => {
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), PANDA_SUBMIT_TIMEOUT_MS);
+
+      try {
+        await fetch(PANDA_ENDPOINTS[0].url, {
+          method: "POST",
+          mode: "no-cors",
+          cache: "no-store",
+          body,
+          signal: controller.signal
+        });
+      } catch (error) {
+        const reason = error && error.name === "AbortError"
+          ? "提交超时。请检查网络后重试。<br>Submission timed out. Please check the network and retry."
+          : "提交失败。请检查网络后重试。<br>Submission failed. Please check the network and retry.";
+        throw new Error(reason);
+      } finally {
         window.clearTimeout(timeoutId);
-        window.removeEventListener("message", handleMessage);
-        iframe.remove();
-        postForm.remove();
-      };
-
-      const finish = (callback, value) => {
-        if (settled) return;
-        settled = true;
-        cleanup();
-        callback(value);
-      };
-
-      const handleMessage = (event) => {
-        const data = event.data;
-        if (!data || data.source !== "magsnap-founder-survey") return;
-        if (data.ok) {
-          finish(resolve, data);
-          return;
-        }
-        finish(reject, new Error(data.error || getLanguageCopy("submitFailed")));
-      };
-
-      const handleLoad = () => {
-        if (!submitted || settled) return;
-        if (Date.now() - submittedAt < 500) return;
-        finish(resolve, { ok: true, source: "magsnap-iframe-load" });
-      };
-
-      const timeoutId = window.setTimeout(() => {
-        finish(reject, new Error(getLanguageCopy("submitTimeout")));
-      }, 15000);
-
-      window.addEventListener("message", handleMessage);
-      iframe.addEventListener("load", handleLoad);
-      document.body.appendChild(iframe);
-      document.body.appendChild(postForm);
-      window.setTimeout(() => {
-        submitted = true;
-        submittedAt = Date.now();
-        postForm.submit();
-      }, 0);
-      });
+      }
     };
 
     const submissionFallbackHtml = (payload, subject, title, intro) => window.MAGSNAP_FORM_TRANSPORT
@@ -3027,7 +2262,7 @@
       const records = readLocalRecords();
       if (!registryBody) return;
       if (!records.length) {
-        registryBody.innerHTML = '<tr><td colspan="8">暂无本机登记记录。 / No local check-ins yet.</td></tr>';
+        registryBody.innerHTML = '<tr><td colspan="8">暂无本机申请记录。 / No local applications yet.</td></tr>';
         return;
       }
       registryBody.innerHTML = records.slice(0, 12).map((record) => `
@@ -3110,56 +2345,51 @@
       const sportsDistribution = topEntries(countMulti(records, "sports"), 6);
       const equipmentMap = countMulti(records, "equipment");
       const equipmentDistribution = topEntries(equipmentMap, 8);
-      const accessoryDistribution = countMulti(records, "accessories");
-      const contentAssetMap = countMulti(records, "panda_content_items");
       const photoWallCount = records.filter((record) => cleanText(record.photo_link)).length;
       const videoUploadCount = records.filter((record) => cleanText(record.video_link) || cleanText(record.pov_clip_link)).length;
-      const visionPlusAnswered = records.filter((record) => cleanText(record.prescription_need));
-      const visionPlusUserCount = records.filter((record) => /Myopia|Reading|Both/i.test(record.prescription_need || "")).length;
-      const prescriptionDemand = [
-        ["Vision+ Interest %", `${visionPlusAnswered.length ? Math.round((visionPlusUserCount / visionPlusAnswered.length) * 100) : 0}%`],
-        ...topEntries(countBy(records, (record) => cleanText(record.prescription_need)), 5)
-      ];
+      const solutionSignalCount = records.filter((record) => cleanText(record.problem_report) || cleanText(record.module_ideas) || cleanText(record.product_requests) || cleanText(record.crazy_concepts) || cleanText(record.feedback)).length;
       const rankedRecords = records
         .slice()
         .sort((a, b) => parseNumber(b.influence_score) - parseNumber(a.influence_score));
       const topInfluencers = rankedRecords
         .slice(0, 5)
         .map((record) => [`${record.name || "Unknown"} · ${record.role || ""}`, parseNumber(record.influence_score)]);
-      const topCoaches = records
-        .filter((record) => /coach/i.test(record.role || ""))
+      const topBuilders = records
+        .filter((record) => /Engineer|Manufacturer|AI Builder|Material Expert|Designer|Operator/i.test(record.role || ""))
         .slice()
         .sort((a, b) => parseNumber(b.influence_score) - parseNumber(a.influence_score))
         .slice(0, 5)
         .map((record) => [`${record.name || "Unknown"} · ${record.club || ""}`, parseNumber(record.influence_score)]);
-      const topClubOwners = rankedRecords
-        .filter((record) => record.role === "Club Owner")
+      const topManufacturers = rankedRecords
+        .filter((record) => /Manufacturer|Material Expert/i.test(record.role || ""))
         .slice(0, 5)
         .map((record) => [`${record.name || "Unknown"} · ${record.club || ""}`, parseNumber(record.influence_score)]);
       const topCreators = rankedRecords
-        .filter((record) => record.role === "Content Creator" || record.role === "Creator" || !/^never$/i.test(record.content_creator_status || "") || splitList(record.content_platforms).length)
+        .filter((record) => record.role === "Creator" || !/^never$/i.test(record.content_creator_status || "") || splitList(record.content_platforms).length)
         .slice(0, 5)
         .map((record) => [`${record.name || "Unknown"} · ${record.content_platforms || record.role || ""}`, parseNumber(record.influence_score)]);
-      const topAthletes = rankedRecords
-        .filter((record) => record.role === "Rider / Athlete" || record.role === "Athlete")
+      const topAiBuilders = rankedRecords
+        .filter((record) => record.role === "AI Builder" || /AI Systems|AI Automation/i.test(`${record.sports || ""} ${record.equipment || ""}`))
         .slice(0, 5)
         .map((record) => [`${record.name || "Unknown"} · ${record.club || ""}`, parseNumber(record.influence_score)]);
       const topClubs = topEntries(countBy(records, (record) => record.club), 5);
-      const equipmentNames = ["Insta360 GO3", "Insta360 GO3S", "DJI Nano", "DJI Action", "GoPro", "Other POV Devices", "AirTag", "Headlamp", "DJI Mic", "Radio", "Other Gear"];
-      const equipmentCounts = equipmentNames.map((name) => {
-        const source = ["AirTag", "Headlamp", "DJI Mic", "Radio", "Other Gear"].includes(name) ? accessoryDistribution : equipmentMap;
-        return [name, source[name] || 0];
-      });
-      const contentAssetNames = ["Photo", "Video", "POV Clip", "Club Record", "Story"];
-      const contentAssetCounts = contentAssetNames.map((name) => [name, contentAssetMap[name] || 0]);
-      const contentVolume = contentAssetCounts.reduce((sum, [, value]) => sum + value, 0) + photoWallCount + videoUploadCount;
+      const capabilityNames = ["Engineering", "CAD / Prototyping", "Supplier Network", "Factory Access", "AI Automation", "Content Production", "Field Testing", "Training System"];
+      const equipmentCounts = capabilityNames.map((name) => [name, equipmentMap[name] || 0]);
+      const contentAssetCounts = [
+        ["Proof Images", photoWallCount],
+        ["Video Links", videoUploadCount],
+        ["Problem Notes", records.filter((record) => cleanText(record.problem_report)).length],
+        ["Solution Directions", records.filter((record) => cleanText(record.module_ideas)).length],
+        ["Contribution Notes", records.filter((record) => cleanText(record.feedback)).length]
+      ];
+      const contentVolume = contentAssetCounts.reduce((sum, [, value]) => sum + value, 0);
       const averageInfluence = records.length
         ? Math.round(records.reduce((sum, record) => sum + parseNumber(record.influence_score), 0) / records.length)
         : 0;
       const networkKpis = [
         ["Panda Masters Count", records.length],
-        ["Content Generated", contentVolume],
-        ["POV Videos", contentAssetMap["POV Clip"] || 0],
+        ["Solution Signals", solutionSignalCount],
+        ["Proof Assets", photoWallCount + videoUploadCount],
         ["Avg Influence Score", averageInfluence]
       ];
       const labSignalCounts = [
@@ -3189,45 +2419,45 @@
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Full Coverage KPI</p>
-          <h3>Coverage Signals</h3>
+          <p class="eyebrow">Problem Network KPI</p>
+          <h3>Solution Signals</h3>
           <div class="insight-list">
             ${formatTopRows(networkKpis)}
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Sports Map</p>
-          <h3>Sports</h3>
+          <p class="eyebrow">Domain Map</p>
+          <h3>Domains</h3>
           <div class="insight-list">
-            ${formatTopRows(sportsDistribution, "暂无运动分布 / No sports data")}
+            ${formatTopRows(sportsDistribution, "暂无领域分布 / No domain data")}
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Equipment Map</p>
-          <h3>Equipment</h3>
+          <p class="eyebrow">Capability Map</p>
+          <h3>Capabilities</h3>
           <div class="insight-list">
-            ${formatTopRows(equipmentDistribution, "暂无设备数据 / No equipment data")}
+            ${formatTopRows(equipmentDistribution, "暂无能力数据 / No capability data")}
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Content Intelligence</p>
-          <h3>Content Assets</h3>
+          <p class="eyebrow">Proof Intelligence</p>
+          <h3>Proof Assets</h3>
           <div class="insight-list">
             ${formatTopRows(contentAssetCounts)}
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Panda Masters Wall</p>
-          <h3>${photoWallCount} Photos</h3>
+          <p class="eyebrow">Proof Wall</p>
+          <h3>${photoWallCount} Images</h3>
           <div class="insight-list">
-            ${formatTopRows([["Photo Wearing MagSnap", photoWallCount], ["Video Links", videoUploadCount]])}
+            ${formatTopRows([["Proof Images", photoWallCount], ["Video Links", videoUploadCount]])}
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Vision+ Intelligence</p>
-          <h3>Vision+ Demand</h3>
+          <p class="eyebrow">Solution Intelligence</p>
+          <h3>Solution Proof</h3>
           <div class="insight-list">
-            ${formatTopRows(prescriptionDemand, "暂无 Vision+ 数据 / No Vision+ data")}
+            ${formatTopRows([["Solution Signals", solutionSignalCount], ["Problem Tags", topProblems.length], ["Requested Challenges", topRequests.length]])}
           </div>
         </article>
         <article class="dashboard-card">
@@ -3266,17 +2496,17 @@
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Club Owners</p>
-          <h3>Top Owners</h3>
+          <p class="eyebrow">Manufacturing</p>
+          <h3>Top Manufacturers</h3>
           <div class="insight-list">
-            ${formatTopRows(topClubOwners, "暂无老板数据 / No owner data")}
+            ${formatTopRows(topManufacturers, "暂无制造或材料数据 / No manufacturing data")}
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Coaches</p>
-          <h3>Top Coaches</h3>
+          <p class="eyebrow">Builders</p>
+          <h3>Top Builders</h3>
           <div class="insight-list">
-            ${formatTopRows(topCoaches, "暂无教练数据 / No coach data")}
+            ${formatTopRows(topBuilders, "暂无构建者数据 / No builder data")}
           </div>
         </article>
         <article class="dashboard-card">
@@ -3287,30 +2517,30 @@
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Athletes</p>
-          <h3>Top Athletes</h3>
+          <p class="eyebrow">AI Builders</p>
+          <h3>Top AI Builders</h3>
           <div class="insight-list">
-            ${formatTopRows(topAthletes, "暂无运动员数据 / No athlete data")}
+            ${formatTopRows(topAiBuilders, "暂无 AI 构建者数据 / No AI builder data")}
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Clubs</p>
-          <h3>Top Clubs</h3>
+          <p class="eyebrow">Organizations</p>
+          <h3>Top Organizations</h3>
           <div class="insight-list">
-            ${formatTopRows(topClubs, "暂无俱乐部数据 / No club data")}
+            ${formatTopRows(topClubs, "暂无组织数据 / No organization data")}
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Equipment Intelligence</p>
-          <h3>Module Signals</h3>
+          <p class="eyebrow">Capability Intelligence</p>
+          <h3>Capability Signals</h3>
           <div class="insight-list">
             ${formatTopRows(equipmentCounts)}
           </div>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Club Network</p>
+          <p class="eyebrow">Problem Source Network</p>
           <h3>${clubRecords.length} Records</h3>
-          <p class="plain">Club database records support the Vietnam coverage map, content collection and future field visits.</p>
+          <p class="plain">Problem source records support challenge discovery, contributor mapping and future field research.</p>
         </article>
       `;
     };
@@ -3323,20 +2553,18 @@
       ];
       const countries = new Set(records.map((record) => cleanText(record.country)).filter(Boolean));
       const clubs = new Set(records.map((record) => cleanText(record.club)).filter(Boolean));
-      const roleCount = records.filter((record) => /Club Owner|Shop Owner|Coach|Instructor|Rider|Athlete|Content Creator|Creator|Community Member|Product|Factory|Supplier|Core Member|Long-term Local Member|Community Contributor/i.test(record.role || "")).length;
-      const go3sUsers = records.filter((record) => splitList(record.equipment).some((item) => /GO3S/i.test(item))).length;
-      const nanoUsers = records.filter((record) => splitList(record.equipment).some((item) => /DJI Nano/i.test(item))).length;
+      const problemSolvers = records.filter((record) => /Problem Solver|Engineer|Manufacturer|AI Builder|Material Expert|Designer|Sports Expert|Operator|Creator/i.test(record.role || "")).length;
+      const builders = records.filter((record) => /Engineer|Manufacturer|AI Builder|Material Expert|Designer|Operator/i.test(record.role || "")).length;
+      const solutionSignals = records.filter((record) => cleanText(record.problem_report) || cleanText(record.module_ideas) || cleanText(record.product_requests) || cleanText(record.crazy_concepts) || cleanText(record.feedback)).length;
       const photoUploaded = records.filter((record) => cleanText(record.photo_link)).length;
-      const languageLabels = { en: "EN", zh: "中文", vi: "VI", ru: "RU" };
-      const languageDistribution = topEntries(countBy(records, (record) => languageLabels[cleanText(record.preferred_language)] || ""), 4);
       const percentage = (count, total) => total ? Math.round((count / total) * 100) : 0;
-      const visionPlusAnswered = records.filter((record) => cleanText(record.prescription_need));
-      const visionPlusUsers = records.filter((record) => /Myopia|Reading|Both/i.test(record.prescription_need || "")).length;
-      const topVisionPlusNeeds = topEntries(countBy(records, (record) => cleanText(record.prescription_need)), 3);
       const creatorAnswered = records.filter((record) => cleanText(record.content_creator_status));
       const creatorCount = records.filter((record) => /Sometimes|Regularly|Professional Creator/i.test(record.content_creator_status || "")).length;
       const regularCreators = records.filter((record) => /Regularly|Professional Creator/i.test(record.content_creator_status || "")).length;
       const topPlatforms = topEntries(countMulti(records, "content_platforms"), 4);
+      const topDomains = topEntries(countMulti(records, "sports"), 4);
+      const topCapabilities = topEntries(countMulti(records, "equipment"), 4);
+      const topProblemTags = topEntries(countMulti(records, "problem_tags"), 4);
       const tenKFollowers = records.filter((record) => record.follower_range === "10,000+").length;
       const formatSummary = (items, emptyText) => items.length
         ? items.map(([label, value]) => `${label}: ${value}`).join(" · ")
@@ -3346,7 +2574,7 @@
         <article class="dashboard-card">
           <p class="eyebrow">Total Panda Masters</p>
           <h3>${records.length}</h3>
-          <p class="plain">登记总数 / Total registry records</p>
+          <p class="plain">申请总数 / Total application records</p>
         </article>
         <article class="dashboard-card">
           <p class="eyebrow">Countries</p>
@@ -3354,44 +2582,44 @@
           <p class="plain">国家数量 / Country count</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Clubs</p>
+          <p class="eyebrow">Organizations</p>
           <h3>${clubs.size}</h3>
-          <p class="plain">俱乐部数量 / Club count</p>
+          <p class="plain">组织、公司、社群或个人节点 / Organization nodes</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Coaches / Owners / Contributors</p>
-          <h3>${roleCount}</h3>
-          <p class="plain">教练、老板、贡献者 / Key community roles</p>
+          <p class="eyebrow">Problem Solvers</p>
+          <h3>${problemSolvers}</h3>
+          <p class="plain">问题解决者角色 / Problem-solving roles</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">GO3S Users</p>
-          <h3>${go3sUsers}</h3>
-          <p class="plain">Insta360 GO3S users</p>
+          <p class="eyebrow">Builders</p>
+          <h3>${builders}</h3>
+          <p class="plain">工程、制造、AI、材料、设计和运营 / Builder roles</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">DJI Nano Users</p>
-          <h3>${nanoUsers}</h3>
-          <p class="plain">DJI Nano users</p>
+          <p class="eyebrow">Solution Signals</p>
+          <h3>${solutionSignals}</h3>
+          <p class="plain">已提交问题、方案或贡献线索 / Problems, solutions or contribution notes</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Photo Uploaded</p>
+          <p class="eyebrow">Proof Uploaded</p>
           <h3>${photoUploaded}</h3>
-          <p class="plain">已提交佩戴照片 / Wearing photos</p>
+          <p class="plain">作品、原型、现场照片或头像 / Proof or profile images</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Language / 语言</p>
-          <h3>${formatSummary(languageDistribution, "No data")}</h3>
-          <p class="plain">Preferred language distribution</p>
+          <p class="eyebrow">Top Domains</p>
+          <h3>${topDomains[0] ? escapeHtml(topDomains[0][0]) : "—"}</h3>
+          <p class="plain">${escapeHtml(formatSummary(topDomains, "暂无领域数据 / No domain data"))}</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Vision+ Interest %</p>
-          <h3>${percentage(visionPlusUsers, visionPlusAnswered.length)}%</h3>
-          <p class="plain">近视或老花测试意向 / Myopia or reading test interest</p>
+          <p class="eyebrow">Top Capabilities</p>
+          <h3>${topCapabilities[0] ? escapeHtml(topCapabilities[0][0]) : "—"}</h3>
+          <p class="plain">${escapeHtml(formatSummary(topCapabilities, "暂无能力数据 / No capability data"))}</p>
         </article>
         <article class="dashboard-card">
-          <p class="eyebrow">Vision+ Need Types</p>
-          <h3>${topVisionPlusNeeds.length ? topVisionPlusNeeds.map(([label]) => escapeHtml(label)).join(" / ") : "—"}</h3>
-          <p class="plain">${escapeHtml(formatSummary(topVisionPlusNeeds, "暂无 Vision+ 数据 / No Vision+ data"))}</p>
+          <p class="eyebrow">Top Problems</p>
+          <h3>${topProblemTags[0] ? escapeHtml(topProblemTags[0][0]) : "—"}</h3>
+          <p class="plain">${escapeHtml(formatSummary(topProblemTags, "暂无问题标签 / No problem tags"))}</p>
         </article>
         <article class="dashboard-card">
           <p class="eyebrow">Creators %</p>
@@ -3520,16 +2748,15 @@
       renderImportQueue();
       renderCoverage();
       renderIntelligenceDashboard();
-      applyLanguage(getInitialLanguage(), false);
       validatePandaNumber();
-      updatePrescriptionRequirement();
+      updateConditionalRequirements();
     });
 
     pandaNumberInput?.addEventListener("input", validatePandaNumber);
 
     form?.addEventListener("change", (event) => {
       if (event.target?.name === "prescription_need" || event.target?.name === "myopia_degree") {
-        updatePrescriptionRequirement();
+        updateConditionalRequirements();
       }
       if (event.target === photoFileInput) {
         if (photoUrlInput) photoUrlInput.value = "";
@@ -3537,8 +2764,8 @@
         const file = photoFileInput?.files?.[0];
         if (photoUploadStatus) {
           photoUploadStatus.innerHTML = file
-            ? `${getLanguageCopy("photoSelected")}: ${escapeHtml(file.name || "mobile photo")}`
-            : getLanguageCopy("photoNote");
+            ? `已选择照片 / Photo selected: ${escapeHtml(file.name || "mobile photo")}`
+            : "可选。可以上传作品、原型、现场照片或头像。<br>Optional. Upload work proof, prototype, field photo or profile image.";
         }
       }
     });
@@ -3548,25 +2775,26 @@
       const submitButton = form.querySelector("[type='submit']");
       const originalText = submitButton?.textContent;
       validatePandaNumber();
-      updatePrescriptionRequirement();
+      updateConditionalRequirements();
       if (!form.reportValidity()) return;
 
       if (submitButton) {
         submitButton.disabled = true;
-        submitButton.textContent = getLanguageCopy("submitting");
+        submitButton.textContent = "正在提交 / Submitting";
       }
 
       let payload;
       try {
-        showStatus(getLanguageCopy("preparingPhoto"));
+        showStatus("正在准备申请资料。<br>Preparing application.");
         const photoPayload = await preparePhotoUpload();
         payload = buildPayload(photoPayload);
         writeLocalRecord(payload, "pending_backend");
-        showStatus(getLanguageCopy("submittingCheckin"));
+        showStatus("申请资料已准备完成，正在提交。<br>Application ready. Submitting.");
         await submitPayload(payload);
         writeLocalRecord(payload, "backend_saved");
         showStatus(`
-          <strong>${getLanguageCopy("submitSuccess")}</strong><br>
+          <strong>Panda Masters application received. / Panda Masters 申请已收到。</strong><br>
+          We will review your problem-solving profile and contribution signals.<br>
           ID: ${escapeHtml(payload.panda_master_id)}<br>
           ${escapeHtml(payload.public_nickname || payload.name)} · ${escapeHtml(payload.city)} · ${escapeHtml(payload.club)}
         `);
@@ -3574,26 +2802,22 @@
         form.reset();
         if (form.elements.received_date) form.elements.received_date.value = todayString();
         resetPandaNumber();
-        updatePrescriptionRequirement();
+        updateConditionalRequirements();
         if (photoUploadStatus) {
-          photoUploadStatus.innerHTML = getLanguageCopy("photoNote");
+          photoUploadStatus.innerHTML = "可选。可以上传作品、原型、现场照片或头像。<br>Optional. Upload work proof, prototype, field photo or profile image.";
         }
         renderRegistry();
         renderDirectory();
         renderCoverage();
         renderIntelligenceDashboard();
       } catch (error) {
-        if (payload) {
-          writeLocalRecord(payload, "local_saved_pending_manual_sync");
-          showManualSubmissionFallback(payload, error);
-          showConfirmation(payload);
-          renderRegistry();
-          renderDirectory();
-          renderCoverage();
-          renderIntelligenceDashboard();
-        } else {
-          showStatus(error.message, true);
-        }
+        if (payload) writeLocalRecord(payload, "backend_failed");
+        showStatus(`${error.message}${payload ? submissionFallbackHtml(
+          payload,
+          "MAGSNAP Panda Masters Application Backup",
+          "MAGSNAP Panda Masters application",
+          "当前网络没有完成 Panda Masters 后台提交。你的申请已保存在本机，请复制资料并通过邮件或微信发送给 MAGSNAP。"
+        ) : ""}`, true);
       } finally {
         if (submitButton) {
           submitButton.disabled = false;
@@ -3620,6 +2844,7 @@
         writeStorageRecord(CLUB_STORAGE_KEY, payload, "backend_saved", "club_record_id");
         setFormStatus(clubStatusNode, `<strong>Club Record Saved / 已保存</strong><br>${escapeHtml(payload.club_name)} · ${escapeHtml(payload.location)}`);
         clubForm.reset();
+        if (clubForm.elements.country) clubForm.elements.country.value = "Vietnam";
         if (clubForm.elements.visit_date) clubForm.elements.visit_date.value = todayString();
         renderCoverage();
         renderIntelligenceDashboard();

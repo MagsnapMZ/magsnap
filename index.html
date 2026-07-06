@@ -1219,6 +1219,112 @@
       text-transform: uppercase;
     }
 
+    .next-ecosystem {
+      background:
+        radial-gradient(circle at 82% 38%, rgba(255, 92, 154, 0.1), transparent 30%),
+        linear-gradient(180deg, #050403 0%, #0a0806 100%);
+      min-height: auto;
+      padding-top: clamp(24px, 4vw, 42px);
+      padding-bottom: clamp(24px, 4vw, 42px);
+    }
+
+    .ai-watch-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(245, 239, 230, 0.14);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
+        rgba(0, 0, 0, 0.34);
+      padding: clamp(14px, 2.4vw, 20px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) clamp(86px, 12vw, 124px);
+      gap: 14px;
+      align-items: center;
+    }
+
+    .ai-watch-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .ai-watch-kicker {
+      margin: 0 0 8px;
+      color: var(--kraft);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .alpha-badge {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255, 92, 154, 0.38);
+      color: var(--pink);
+      padding: 5px 8px;
+      font-size: 9px;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .ai-watch-title {
+      margin: 0;
+      color: var(--paper);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .ai-watch-text {
+      margin: 10px 0 0;
+      color: rgba(245, 239, 230, 0.68);
+      font-size: clamp(12px, 1.1vw, 14px);
+      font-weight: 760;
+      line-height: 1.5;
+    }
+
+    .ai-watch-cta {
+      display: inline-flex;
+      width: fit-content;
+      margin-top: 12px;
+      border: 1px solid rgba(200, 169, 126, 0.42);
+      color: var(--kraft);
+      padding: 8px 10px;
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .ai-watch-media {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      margin: 0;
+      border: 1px solid rgba(245, 239, 230, 0.13);
+      background: rgba(255, 255, 255, 0.035);
+      overflow: hidden;
+    }
+
+    .ai-watch-media img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: 50% 56%;
+      filter: saturate(0.86) contrast(1.04);
+    }
+
+    .ai-watch-title span {
+      display: block;
+      color: var(--kraft);
+      font-size: 0.58em;
+    }
+
     .founder {
       background: #f3eadf;
       color: #080706;
@@ -1881,6 +1987,7 @@
       .parts-grid,
       .ecosystem-header,
       .ecosystem-columns,
+      .ai-watch-card,
       .snap-grid,
       .life-grid,
       .lab-grid,
@@ -1964,6 +2071,32 @@
       .style-copy {
         margin-top: 10px;
         font-size: 13px;
+      }
+
+      .next-ecosystem {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      .ai-watch-card {
+        grid-template-columns: minmax(0, 1fr) 76px;
+        gap: 10px;
+        padding: 12px;
+      }
+
+      .ai-watch-title {
+        font-size: 22px;
+      }
+
+      .ai-watch-text {
+        font-size: 11px;
+        line-height: 1.42;
+      }
+
+      .alpha-badge,
+      .ai-watch-cta {
+        font-size: 8px;
+        padding: 5px 7px;
       }
 
       .eco-item {
@@ -2145,7 +2278,7 @@
             <em class="mini-status">Most Wanted Now</em>
           </div>
           <div class="mini-challenge solved">
-            <strong>Vision+ 镜片</strong>
+            <strong>Vision Plus 镜片</strong>
             <span>近视和老花适配已解决，当前进入测试阶段。</span>
             <em class="mini-status">Solved / Testing</em>
           </div>
@@ -2310,6 +2443,24 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section next-ecosystem" id="next-ecosystem" aria-label="MagSnap AI Apple Watch private alpha">
+      <div class="wrap">
+        <article class="ai-watch-card">
+          <div class="ai-watch-copy">
+            <p class="ai-watch-kicker">NEXT ECOSYSTEM / 生态预览</p>
+            <span class="alpha-badge">PRIVATE ALPHA</span>
+            <h2 class="ai-watch-title">MagSnap AI<span>Apple Watch Edition</span></h2>
+            <p class="ai-watch-text">真实 Apple Watch 原型已运行。未来可对接语音、天气、导航、翻译、记忆、运动与日常辅助。</p>
+            <p class="ai-watch-text">Running on real Apple Watch hardware. The next MagSnap ecosystem step.</p>
+            <span class="ai-watch-cta">Coming to Early Testers.</span>
+          </div>
+          <figure class="ai-watch-media" aria-label="MagSnap AI prototype running on Apple Watch">
+            <img src="assets/site/ai/magsnap-ai-watch-prototype.jpg" alt="MagSnap AI prototype running on an Apple Watch">
+          </figure>
+        </article>
       </div>
     </section>
 

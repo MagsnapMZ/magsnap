@@ -1175,22 +1175,22 @@
             <input id="pm-product-requests" type="text" name="product_requests" placeholder="AI Life OS, MZ Brain, MagSnap, Fitness OS">
           </div>
           <div class="field full">
-            <label>Vision+ Testing / Vision+ 测试信息（可选）</label>
-            <p class="form-note">Vision+ 已解决近视和老花适配，目前仍在测试阶段。这里只收集最基本的测试意向。<br>Vision+ has solved myopia and reading correction and is still in testing. We only collect basic test interest here.</p>
+            <label>Vision Plus / 视力增强测试（可选）</label>
+            <p class="form-note">包含近视和老花。这里只收集测试意向与实际度数，不使用固定度数选项。<br>For myopia and presbyopia. Enter your actual degree instead of choosing a fixed range.</p>
           </div>
           <div class="field">
-            <label for="pm-vision-plus-type">Vision+ Need / 视力需求</label>
+            <label for="pm-vision-plus-type">Vision Plus Need / 视力需求</label>
             <select id="pm-vision-plus-type" name="vision_plus_type">
               <option value="">Select / 选择</option>
               <option value="Myopia">Myopia / 近视</option>
-              <option value="Reading">Reading / 老花</option>
+              <option value="Presbyopia">Presbyopia / 老花</option>
               <option value="Both">Both / 近视 + 老花</option>
               <option value="Not Needed">Not Needed / 暂不需要</option>
             </select>
           </div>
           <div class="field">
-            <label for="pm-vision-plus-note">Vision+ Note / 备注（可选）</label>
-            <input id="pm-vision-plus-note" type="text" name="vision_plus_note" placeholder="简单说明场景或担心的问题">
+            <label for="pm-vision-plus-note">Degree / 近视或老花度数</label>
+            <input id="pm-vision-plus-note" type="text" name="vision_plus_note" placeholder="例如：近视 300；老花 +150；双眼不同请写清楚">
           </div>
           <div class="field full">
             <label for="pm-crazy-concepts">Best proof / 最能证明你的东西</label>
@@ -1201,8 +1201,11 @@
             <input id="pm-file-link" type="text" name="file_link" placeholder="Google Drive / iCloud / Dropbox / website link, or file reference">
           </div>
           <div class="field full">
-            <label for="pm-feedback">Contribution / 你能贡献什么</label>
-            <textarea id="pm-feedback" name="feedback" placeholder="不要堆想法数量。写你最强的能力、最好的结果、最值得验证的方案。"></textarea>
+            <label>Test Participation / 确认参与测试</label>
+            <label class="checkbox-pill" for="pm-feedback">
+              <input id="pm-feedback" type="checkbox" name="feedback" value="Confirmed participation in MagSnap testing" required>
+              我确认同意参与 MagSnap 测试 / I agree to participate in MagSnap testing.
+            </label>
           </div>
           <div class="field full">
             <label for="pm-note">现场备注 / Field Note</label>
@@ -2135,6 +2138,9 @@
       payload.myopia_degree = cleanText(payload.myopia_degree);
       payload.vision_plus_type = cleanText(payload.vision_plus_type);
       payload.vision_plus_note = cleanText(payload.vision_plus_note);
+      if (!payload.myopia_degree && payload.vision_plus_note) {
+        payload.myopia_degree = payload.vision_plus_note;
+      }
       if (payload.vision_plus_type) {
         payload.prescription_need = payload.vision_plus_type;
       }

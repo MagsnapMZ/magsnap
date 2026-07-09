@@ -2949,6 +2949,54 @@
       }
     });
 
+    const labModal = document.getElementById("lab-modal");
+    const labModalVideo = document.getElementById("lab-modal-video");
+    const labModalTitle = document.getElementById("lab-modal-title");
+    const labModalCopy = document.getElementById("lab-modal-copy");
+
+    const closeLabModal = () => {
+      if (!labModal || !labModalVideo) return;
+      labModal.hidden = true;
+      document.body.style.overflow = "";
+      labModalVideo.pause();
+      labModalVideo.removeAttribute("src");
+      labModalVideo.removeAttribute("poster");
+      labModalVideo.muted = false;
+      labModalVideo.load();
+    };
+
+    document.querySelectorAll(".lab-thumb[data-lab-src]").forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!labModal || !labModalVideo || !labModalTitle || !labModalCopy) return;
+        labModalTitle.textContent = button.dataset.labTitle || "MAGSNAP LAB";
+        labModalCopy.textContent = button.dataset.labCopy || "";
+        if (button.dataset.labPoster) {
+          labModalVideo.poster = button.dataset.labPoster;
+        }
+        labModalVideo.muted = button.dataset.labMuted === "true";
+        labModalVideo.src = button.dataset.labSrc || "";
+        labModal.hidden = false;
+        document.body.style.overflow = "hidden";
+        labModalVideo.load();
+        if (button.dataset.labAutoplay !== "false") {
+          const playback = labModalVideo.play();
+          if (playback && typeof playback.catch === "function") {
+            playback.catch(() => {});
+          }
+        }
+      });
+    });
+
+    labModal?.querySelectorAll("[data-lab-close]").forEach((element) => {
+      element.addEventListener("click", closeLabModal);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && labModal && !labModal.hidden) {
+        closeLabModal();
+      }
+    });
+
     const applyFrameColor = (button) => {
       const card = button.closest(".style-card");
       const image = card?.querySelector("[data-style-image]");

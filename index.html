@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>MAGSNAP | MZ Most Wanted Platform</title>
-  <meta name="description" content="MAGSNAP 是创始人 MZ 为自己和玩家打造的，在极限环境中的头部磁吸开放平台。">
+  <title>MAGSNAP | Only Magnetic. No Electric.</title>
+  <meta name="description" content="MAGSNAP is the world's first magnetic ecosystem for extreme sports. Frames, lenses, modules and Vision+ in one wearable magnetic platform.">
   <link rel="canonical" href="https://magsnap.me/">
   <link rel="alternate" hreflang="zh-CN" href="https://magsnap.me/index-zh.html">
   <link rel="alternate" hreflang="en" href="https://magsnap.me/index-en.html">
@@ -14,8 +14,8 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#000000">
-  <meta property="og:title" content="MAGSNAP | MZ Most Wanted Platform">
-  <meta property="og:description" content="MagSnap 因一个真实的使用场景而诞生。因为市面上没有能够真正解决问题的产品，所以我们决定把它做出来。">
+  <meta property="og:title" content="MAGSNAP | Only Magnetic. No Electric.">
+  <meta property="og:description" content="The world's first magnetic ecosystem for extreme sports.">
   <meta property="og:image" content="https://magsnap.me/assets/site/style-group-sand.jpg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://magsnap.me/">
@@ -2146,6 +2146,298 @@
 
 
     }
+
+    .minimal-home {
+      background: #000;
+    }
+
+    .minimal-home .wrap {
+      width: min(calc(100% - 40px), var(--max));
+    }
+
+    .minimal-section {
+      min-height: auto;
+      padding: clamp(70px, 10vw, 132px) 0;
+      border-bottom: 1px solid rgba(245, 239, 230, 0.1);
+    }
+
+    .minimal-kicker {
+      margin: 0 0 14px;
+      color: var(--kraft);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .minimal-heading {
+      max-width: 880px;
+      margin: 0;
+      color: var(--paper);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(42px, 7.4vw, 108px);
+      line-height: 0.9;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .minimal-copy {
+      max-width: 620px;
+      margin: 18px 0 0;
+      color: rgba(245, 239, 230, 0.64);
+      font-size: clamp(15px, 1.6vw, 19px);
+      font-weight: 760;
+      line-height: 1.5;
+    }
+
+    .minimal-hero {
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      padding: clamp(92px, 12vw, 140px) 0 clamp(38px, 6vw, 72px);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(245, 239, 230, 0.1);
+    }
+
+    .minimal-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.58) 46%, rgba(0, 0, 0, 0.18) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.1) 44%, rgba(0, 0, 0, 0.92) 100%);
+      pointer-events: none;
+    }
+
+    .minimal-hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.72;
+      filter: saturate(0.78) contrast(1.06);
+    }
+
+    .minimal-hero .wrap {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 24px;
+    }
+
+    .minimal-hero h1 {
+      max-width: 900px;
+      margin: 0;
+      color: var(--paper);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(54px, 9vw, 134px);
+      line-height: 0.88;
+      text-transform: uppercase;
+    }
+
+    .minimal-hero p {
+      max-width: 650px;
+      margin: 0;
+      color: rgba(245, 239, 230, 0.76);
+      font-size: clamp(18px, 2vw, 26px);
+      font-weight: 830;
+      line-height: 1.28;
+    }
+
+    .minimal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .minimal-btn {
+      min-height: 48px;
+      border: 1px solid rgba(245, 239, 230, 0.18);
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--paper);
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .minimal-btn.primary {
+      border-color: var(--kraft);
+      background: var(--kraft);
+      color: #090806;
+    }
+
+    .why-statement {
+      max-width: 760px;
+      color: var(--paper);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(34px, 6vw, 86px);
+      line-height: 1.02;
+      text-transform: uppercase;
+    }
+
+    .minimal-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: clamp(28px, 5vw, 54px);
+    }
+
+    .product-grid,
+    .proof-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .minimal-card {
+      border: 1px solid rgba(245, 239, 230, 0.12);
+      background: rgba(255, 255, 255, 0.035);
+      min-height: 250px;
+      padding: 18px;
+      display: grid;
+      align-content: space-between;
+      gap: 18px;
+    }
+
+    .minimal-card img,
+    .minimal-card video {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      filter: saturate(0.82) contrast(1.06);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .minimal-card h3 {
+      margin: 0;
+      color: var(--paper);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(22px, 2.5vw, 34px);
+      line-height: 0.96;
+      text-transform: uppercase;
+    }
+
+    .minimal-card p {
+      margin: 10px 0 0;
+      color: rgba(245, 239, 230, 0.58);
+      font-size: 13px;
+      font-weight: 760;
+      line-height: 1.42;
+    }
+
+    .ecosystem-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(300px, 1.14fr);
+      gap: clamp(28px, 5vw, 70px);
+      align-items: center;
+    }
+
+    .module-row {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .module-chip {
+      min-height: 110px;
+      border: 1px solid rgba(245, 239, 230, 0.11);
+      background: rgba(255, 255, 255, 0.032);
+      display: grid;
+      place-items: center;
+      align-content: center;
+      gap: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .module-chip img {
+      width: 54px;
+      height: 54px;
+      border-radius: 10px;
+      object-fit: cover;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .module-chip span {
+      color: rgba(245, 239, 230, 0.72);
+      font-size: 10px;
+      font-weight: 950;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .founder-panel {
+      border: 1px solid rgba(200, 169, 126, 0.26);
+      background:
+        radial-gradient(circle at 78% 18%, rgba(255, 92, 154, 0.1), transparent 28%),
+        rgba(255, 255, 255, 0.035);
+      padding: clamp(24px, 5vw, 52px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 28px;
+      align-items: end;
+    }
+
+    .founder-number {
+      color: var(--kraft);
+      font-family: "Arial Black", Impact, sans-serif;
+      font-size: clamp(64px, 12vw, 160px);
+      line-height: 0.82;
+    }
+
+    .minimal-footer-note {
+      color: rgba(245, 239, 230, 0.56);
+      font-size: 12px;
+      font-weight: 820;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 940px) {
+      .product-grid,
+      .proof-grid,
+      .ecosystem-strip,
+      .founder-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .module-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .minimal-home .wrap {
+        width: min(calc(100% - 32px), var(--max));
+      }
+
+      .minimal-section {
+        padding: 58px 0;
+      }
+
+      .minimal-hero h1 {
+        font-size: clamp(42px, 14.5vw, 64px);
+      }
+
+      .minimal-actions {
+        flex-direction: column;
+      }
+
+      .minimal-btn {
+        width: 100%;
+      }
+
+      .product-grid,
+      .proof-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .minimal-card {
+        min-height: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2155,434 +2447,146 @@
       <span>MAGSNAP</span>
     </a>
     <nav class="nav" aria-label="Sections">
-      <a href="#style">款式 / Style</a>
-      <a href="#system">系统 / System</a>
-      <a href="#snap">生态 / Ecosystem</a>
-      <a href="#founder">熊猫高人 / Panda Masters</a>
-      <a href="most-wanted/">头号悬赏 / Most Wanted</a>
-    </nav>
-    <nav class="language-nav" aria-label="Homepage language">
-      <a href="index-zh.html">中文</a>
-      <a href="index-en.html">EN</a>
-      <a href="index-vi.html">VI</a>
-      <a href="index-ru.html">RU</a>
+      <a href="#why">Why</a>
+      <a href="#products">Products</a>
+      <a href="#proof">Proof</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#founder">Founder Network</a>
     </nav>
   </header>
 
-  <main>
-    <section class="section hero" id="hero" aria-label="MAGSNAP hero video">
-      <video class="hero-video" autoplay muted loop playsinline webkit-playsinline="true" preload="auto" poster="assets/site/hero-poster.jpg" data-inline-autoplay-video="hero">
+  <main class="minimal-home">
+    <section class="minimal-hero" id="hero" aria-label="MAGSNAP hero video">
+      <video class="minimal-hero-video" autoplay muted loop playsinline webkit-playsinline="true" preload="auto" poster="assets/site/hero-poster.jpg" data-inline-autoplay-video="hero">
         <source src="assets/site/hero-pov.mp4" type="video/mp4">
       </video>
       <div class="wrap">
-        <div class="section-mark">01</div>
-        <p class="eyebrow">MZ Most Wanted / Open Platform</p>
-        <h1>MagSnap</h1>
-        <p class="hero-subtitle">是创始人 MZ 为自己和玩家打造的，在极限环境中的头部磁吸开放平台。<span>第一阶段先解决舒适佩戴、极限环境适配和磁吸平台基础功能。</span><span>然后融合全球优秀品牌与 AI，走向无线直播、实时互动和自动内容生成。</span></p>
-        <div class="hero-manifesto">
-          <div class="hero-brief">
-            <strong>开国宣言</strong>
-            <span>MagSnap 因一个真实的使用场景而诞生。<br>因为市面上没有能够真正解决问题的产品。<br>所以，我们决定把它做出来。</span>
-          </div>
-          <div class="hero-brief">
-            <strong>第一阶段｜打造 MagSnap 基础平台</strong>
-            <span>解决真实使用场景中的核心需求。<br>打造舒适佩戴、适应极限环境的太阳眼镜，并建立 MagSnap 头部磁吸开放平台。<br>持续测试，持续迭代，不断优化产品体验。</span>
-          </div>
-          <div class="hero-brief">
-            <strong>第二阶段｜融合全球优秀品牌与 AI</strong>
-            <span>融合大疆、影石、拓竹、苹果等全球优秀品牌的产品与生态。<br>通过真实使用、公开测评和持续迭代，打造 AI 自动拍摄、直播、剪辑、上传、分享的一体化工作流。</span>
-          </div>
-          <div class="hero-brief">
-            <strong>第三阶段｜打造 AI 时代的头部开放平台</strong>
-            <span>实现极限环境下的无线直播、实时 AI 互动、多设备协同与自动内容生成。<br>通过开放平台、全球共创和持续迭代，创造真正解决真实问题的下一代产品。</span>
-          </div>
-        </div>
-        <div class="hero-signal-grid">
-          <p class="hero-priority">防水不是加分项，是入场门槛。适合海水、强风、高速运动、救援、灾害、冲突地区和野外行动。</p>
-          <p class="hero-vision">熊猫高人机制保留。能解决真实问题，就有机会获得奖励、合作机会或平台身份。</p>
-          <p class="hero-witness">新增问题排最前，原有问题继续保留。已解决和未解决都会标注状态。</p>
-          <p class="hero-witness">MagSnap 整合 DJI、Insta360、Bambu Lab 等世界上最好的现有技术。</p>
-        </div>
-        <div class="hero-actions">
-          <a class="hero-cta primary" href="most-wanted/">查看 MagSnap 头号悬赏 / <span>View Most Wanted</span></a>
-          <a class="hero-cta" href="#founder">加入熊猫高人 / <span>Join Panda Masters</span></a>
+        <p class="minimal-kicker">MAGSNAP / Wearable Magnetic Ecosystem</p>
+        <h1>Only Magnetic.<br>No Electric.</h1>
+        <p>The world’s first magnetic ecosystem for extreme sports.</p>
+        <div class="minimal-actions">
+          <a class="minimal-btn primary" href="#founder">Join Founder Network</a>
+          <a class="minimal-btn" href="#products">Explore Products</a>
         </div>
       </div>
     </section>
 
-    <section class="section next-ecosystem" id="next-ecosystem" aria-label="MagSnap AI Apple Watch private alpha">
+    <section class="minimal-section" id="why">
       <div class="wrap">
-        <article class="ai-watch-card">
-          <div class="ai-watch-copy">
-            <p class="ai-watch-kicker">NEXT ECOSYSTEM / 生态预览</p>
-            <span class="alpha-badge">PRIVATE ALPHA</span>
-            <h2 class="ai-watch-title">MagSnap AI<span>Apple Watch Edition</span></h2>
-            <p class="ai-watch-text">真实 Apple Watch 原型已运行。未来可对接语音、天气、导航、翻译、记忆、运动与日常辅助。</p>
-            <p class="ai-watch-text">Running on real Apple Watch hardware. The next MagSnap ecosystem step.</p>
-            <span class="ai-watch-cta">Coming to Early Testers.</span>
-          </div>
-          <figure class="ai-watch-media" aria-label="MagSnap AI prototype running on Apple Watch">
-            <img src="assets/site/ai/magsnap-ai-watch-prototype.jpg" alt="MagSnap AI prototype running on an Apple Watch">
-          </figure>
-        </article>
+        <p class="minimal-kicker">Why MagSnap</p>
+        <div class="why-statement">MagSnap was born from a real problem.<br>Nothing on the market solved it.<br>So we built it ourselves.</div>
       </div>
     </section>
 
-    <section class="section style" id="style">
+    <section class="minimal-section" id="products">
       <div class="wrap">
-        <div class="section-mark">02</div>
-        <p class="eyebrow">Three Frame Styles / 三种镜架</p>
-        <h2>Three Frame Styles.<br>Same Magnetic System.</h2>
-        <p class="style-copy">三种镜架风格。<br>同一个磁吸系统。</p>
-        <div class="style-row">
-          <article class="style-card">
-            <img data-style-image src="assets/site/frames/frame-a-black.png" alt="TYPE A MagSnap frame with black frame option">
-            <div class="style-label"><strong>A / 甲</strong><span>Action / 运动款</span></div>
-            <div class="style-detail">大视野镜框，为 POV、户外和高强度运动准备。<em>Large field-of-view frame for POV, outdoor and high-intensity use.</em></div>
-            <div class="style-colors" aria-label="TYPE A frame colors">
-              <button class="color-chip frame-color-button active" type="button" data-style-src="assets/site/frames/frame-a-black.png" data-style-alt="TYPE A MagSnap frame with black frame option">黑 / Black</button>
-              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-a-white.png" data-style-alt="TYPE A MagSnap frame with white frame option">白 / White</button>
-              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-a-clear.png" data-style-alt="TYPE A MagSnap frame with clear frame option">透明 / Clear</button>
-              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-a-white-black.png" data-style-alt="TYPE A MagSnap frame with white-black frame option">外白内黑 / White-Black</button>
-            </div>
+        <p class="minimal-kicker">Products</p>
+        <h2 class="minimal-heading">One Platform.<br>Four Core Products.</h2>
+        <div class="minimal-grid product-grid">
+          <article class="minimal-card">
+            <img src="assets/site/frames/frame-a-black.png" alt="MagSnap frame">
+            <h3>Frames</h3>
+            <p>Magnetic eyewear bases built for POV, water and outdoor movement.</p>
           </article>
-          <article class="style-card">
-            <img data-style-image src="assets/site/frames/frame-b-black.png" alt="TYPE B MagSnap frame with black frame option">
-            <div class="style-label"><strong>B / 乙</strong><span>Street / 街头款</span></div>
-            <div class="style-detail">原生 MagSnap 风格，适合日常、骑行和创作者佩戴。<em>The original MagSnap look for daily wear, cycling and creators.</em></div>
-            <div class="style-colors" aria-label="TYPE B frame colors">
-              <button class="color-chip frame-color-button active" type="button" data-style-src="assets/site/frames/frame-b-black.png" data-style-alt="TYPE B MagSnap frame with black frame option">黑 / Black</button>
-              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-b-white.png" data-style-alt="TYPE B MagSnap frame with white frame option">白 / White</button>
-              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-b-clear.png" data-style-alt="TYPE B MagSnap frame with clear frame option">透明 / Clear</button>
-              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-b-white-black.png" data-style-alt="TYPE B MagSnap frame with white-black frame option">外白内黑 / White-Black</button>
-            </div>
+          <article class="minimal-card">
+            <img src="assets/site/style-clear-smoke.jpg" alt="MagSnap lens option">
+            <h3>Lenses</h3>
+            <p>CSPL polarized lenses, with Vision+ support for prescription needs.</p>
           </article>
-          <article class="style-card">
-            <img data-style-image src="assets/site/frames/frame-c-black.jpg" alt="TYPE C MagSnap frame with black frame option">
-            <div class="style-label"><strong>C / 丙</strong><span>Optical / 光学款</span></div>
-            <div class="style-detail">尺寸更克制，为未来近视镜片和光学版本准备。<em>A more compact frame prepared for future prescription lens options.</em></div>
-            <div class="style-colors" aria-label="TYPE C frame colors">
-              <button class="color-chip frame-color-button active" type="button" data-style-src="assets/site/frames/frame-c-black.jpg" data-style-alt="TYPE C MagSnap frame with black frame option">黑 / Black</button>
-              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-c-white.jpg" data-style-alt="TYPE C MagSnap frame with white frame option">白 / White</button>
-              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-c-clear.jpg" data-style-alt="TYPE C MagSnap frame with clear frame option">透明 / Clear</button>
-              <button class="color-chip frame-color-button" type="button" data-style-src="assets/site/frames/frame-c-white-black.jpg" data-style-alt="TYPE C MagSnap frame with white-black frame option">外白内黑 / White-Black</button>
-            </div>
+          <article class="minimal-card">
+            <img src="assets/site/ecosystem-icons/device-dji-nano.png?v=3" alt="MagSnap module direction">
+            <h3>Modules</h3>
+            <p>Magnetic mounting paths for cameras, lights, audio and trackers.</p>
+          </article>
+          <article class="minimal-card">
+            <img src="assets/site/frames/frame-c-black.jpg" alt="MagSnap Vision Plus frame">
+            <h3>Vision+</h3>
+            <p>Future-ready optical support for myopia and presbyopia users.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section system" id="system">
-      <div class="wrap system-grid">
+    <section class="minimal-section" id="proof">
+      <div class="wrap">
+        <p class="minimal-kicker">Proof</p>
+        <h2 class="minimal-heading">Tested In The Real World.</h2>
+        <div class="minimal-grid proof-grid">
+          <article class="minimal-card">
+            <video autoplay muted loop playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/lab-thumbs/seawater-test.jpg" data-inline-autoplay-video="proof-seawater">
+              <source src="assets/site/lab-thumbs/seawater-test.mp4" type="video/mp4">
+            </video>
+            <h3>Salt Water Tested</h3>
+            <p>Built and tested around beaches, seawater and strong sun.</p>
+          </article>
+          <article class="minimal-card">
+            <video autoplay muted loop playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/lab-thumbs/magnetic-strength.jpg" data-inline-autoplay-video="proof-force">
+              <source src="assets/site/lab-thumbs/magnetic-strength.mp4" type="video/mp4">
+            </video>
+            <h3>Magnetic Force</h3>
+            <p>The magnetic interface is tested under pull and retention loads.</p>
+          </article>
+          <article class="minimal-card">
+            <video autoplay muted loop playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/lab-thumbs/magsnap-impact-test.jpg" data-inline-autoplay-video="proof-impact">
+              <source src="assets/site/lab-thumbs/magsnap-impact-test.mp4" type="video/mp4">
+            </video>
+            <h3>Drop Tested</h3>
+            <p>Impact tests help improve structure, safety and retention.</p>
+          </article>
+          <article class="minimal-card">
+            <img src="assets/site/hero-kitesurf-poster.jpg" alt="MagSnap real user kitesurf testing">
+            <h3>Real Users</h3>
+            <p>Designed with riders, creators and field testers, not only renders.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="minimal-section" id="ecosystem">
+      <div class="wrap ecosystem-strip">
         <div>
-          <div class="section-mark">03</div>
+          <p class="minimal-kicker">Ecosystem</p>
+          <h2 class="minimal-heading">Not Sunglasses.<br>A Magnetic Platform.</h2>
+          <p class="minimal-copy">MagSnap is not just a pair of sunglasses. It is a magnetic platform for cameras, lights, audio, tracking and future AI devices.</p>
         </div>
-        <div class="media-frame" role="group" aria-label="MagSnap product demo">
-          <video class="system-video" autoplay muted loop playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/system-kitesurf-poster.jpg" data-inline-autoplay-video="system" data-inline-autoplay-fallback="controls" x5-playsinline="true">
-            <source src="assets/site/system-kitesurf-loop.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <div class="wrap challenge-queue" aria-label="Most Wanted problem queue">
-        <div class="mini-challenge-grid">
-          <div class="mini-challenge current">
-            <strong>#001 极端环境直播</strong>
-            <span>3 小时以上，防水，下海，第一视角，不挡视线。</span>
-            <em class="mini-status">Most Wanted Now</em>
-          </div>
-          <div class="mini-challenge current">
-            <strong>#002 防水 AI 伴侣设备</strong>
-            <span>24 小时持续记录 MZ 的日常对话，防水，长续航，可连接 AI。</span>
-            <em class="mini-status">Most Wanted Now</em>
-          </div>
-          <div class="mini-challenge solved">
-            <strong>Vision Plus 镜片</strong>
-            <span>近视和老花适配已解决，当前进入测试阶段。</span>
-            <em class="mini-status">Solved / Testing</em>
-          </div>
-          <div class="mini-challenge">
-            <strong>更好的镜片 / 供应商寻找</strong>
-            <span>正在寻找更好的镜片供应商；当前测试：1 变色镜片、2 防海水镀膜炫光镜片、3 夜视黄色镜片。</span>
-            <em class="mini-status">Supplier Search / Testing</em>
-          </div>
-          <div class="mini-challenge">
-            <strong>材料 / 磁铁 / 结构</strong>
-            <span>更轻、更稳、更可靠的连接、固定和安全方案。</span>
-            <em class="mini-status">Open</em>
-          </div>
+        <div class="module-row" aria-label="MagSnap ecosystem directions">
+          <div class="module-chip"><img src="assets/site/ecosystem-icons/device-dji-nano.png?v=3" alt="DJI"><span>DJI</span></div>
+          <div class="module-chip"><img src="assets/site/ecosystem-icons/device-go3-go3s.png?v=3" alt="Insta360"><span>Insta360</span></div>
+          <div class="module-chip"><img src="assets/site/ai/magsnap-ai-watch-prototype.jpg" alt="Apple Watch"><span>Apple Watch</span></div>
+          <div class="module-chip"><img src="assets/site/ecosystem-icons/device-airtag.png?v=3" alt="AirTag"><span>AirTag</span></div>
+          <div class="module-chip"><img src="assets/site/ecosystem-icons/device-dji-mic.png?v=3" alt="Mic"><span>Mic</span></div>
+          <div class="module-chip"><img src="assets/site/ecosystem-icons/device-headlamp.png?v=3" alt="Light"><span>Light</span></div>
         </div>
       </div>
     </section>
 
-    <section class="section snap ecosystem" id="snap">
+    <section class="minimal-section" id="founder">
       <div class="wrap">
-        <div class="ecosystem-header">
+        <article class="founder-panel">
           <div>
-            <div class="section-mark">04</div>
-            <p class="eyebrow">生态 / Ecosystem</p>
-            <h2>磁吸生态索引 / Compact Magnetic Index</h2>
-          </div>
-        </div>
-
-        <div class="ecosystem-panel">
-          <div class="ecosystem-columns">
-            <div class="ecosystem-group" aria-label="Compatible devices">
-              <p class="ecosystem-kicker">兼容设备 / Compatible Devices</p>
-              <div class="icon-grid">
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-go3-go3s.png?v=3" alt="GO3 and GO3S icon">
-                  <span class="eco-name">GO3 / GO3S</span>
-                  <span class="eco-meta">已验证 / Verified</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-dji-nano.png?v=3" alt="DJI Nano icon">
-                  <span class="eco-name">DJI Nano</span>
-                  <span class="eco-meta">已验证 / Verified</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-dji-mic.png?v=3" alt="DJI Mic icon">
-                  <span class="eco-name">DJI Mic</span>
-                  <span class="eco-meta">已验证 / Verified</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-318-walkie.png?v=3" alt="318 Walkie-Talkie icon">
-                  <span class="eco-name">318 Walkie-Talkie</span>
-                  <span class="eco-meta">可改装 / DIY</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-airtag.png?v=3" alt="AirTag icon">
-                  <span class="eco-name">AirTag</span>
-                  <span class="eco-meta">定位 / Tracker</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-headlamp.png?v=3" alt="Headlamp icon">
-                  <span class="eco-name">Headlamp</span>
-                  <span class="eco-meta">灯光 / Light</span>
-                </div>
-                <div class="eco-item soon">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/device-ai-module.png?v=3" alt="AI Module icon">
-                  <span class="eco-name">AI Module</span>
-                  <span class="eco-meta">即将推出 / Coming Soon</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="ecosystem-group" id="box" aria-label="Accessories">
-              <p class="ecosystem-kicker">配件 / Accessories</p>
-              <div class="icon-grid">
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-magsnap-frame.png?v=3" alt="MagSnap Frame icon">
-                  <span class="eco-name">MagSnap Frame</span>
-                  <span class="eco-meta">底座 / Base</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-face-hugger-nose-pad.png?v=3" alt="Face Hugger Nose Pad icon">
-                  <span class="eco-name">Face Hugger Nose Pad</span>
-                  <span class="eco-meta">支撑 / Support</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-safe-strap.png?v=3" alt="Safe Strap icon">
-                  <span class="eco-name">Safe Strap</span>
-                  <span class="eco-meta">防丢 / Tether</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-magdock.png?v=3" alt="MagDock icon">
-                  <span class="eco-name">MagDock</span>
-                  <span class="eco-meta">基座 / Mount</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-zenloop.png?v=3" alt="ZenLoop icon">
-                  <span class="eco-name">ZenLoop</span>
-                  <span class="eco-meta">挂绳 / Cord</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-magwipe.png?v=3" alt="MagWipe icon">
-                  <span class="eco-name">MagWipe</span>
-                  <span class="eco-meta">镜布 / Cloth</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-optical-test-card.png?v=3" alt="Optical Test Card icon">
-                  <span class="eco-name">Optical Test Card</span>
-                  <span class="eco-meta">验证 / Verify</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-n52-core-set.png?v=3" alt="N52 DIY Magnet Set icon">
-                  <span class="eco-name">N52 DIY Magnet Set</span>
-                  <span class="eco-meta">改装 / DIY</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-founder-sticker.png?v=3" alt="Panda Masters Sticker icon">
-                  <span class="eco-name">Panda Masters Sticker</span>
-                  <span class="eco-meta">熊猫高人 / Panda Masters</span>
-                </div>
-                <div class="eco-item">
-                  <img class="eco-icon" src="assets/site/ecosystem-icons/accessory-magsnap-box.png?v=3" alt="MagSnap Box icon">
-                  <span class="eco-name">MagSnap Box</span>
-                  <span class="eco-meta">包装 / Package</span>
-                </div>
-              </div>
+            <p class="minimal-kicker">Founder Network</p>
+            <h2 class="minimal-heading">First 1,000.<br>Built With Real Users.</h2>
+            <p class="minimal-copy">The first Founder Network is reserved for players, creators and testers who can help shape the MagSnap magnetic ecosystem.</p>
+            <div class="minimal-actions">
+              <a class="minimal-btn primary" href="panda-masters/">Join Founder Network</a>
             </div>
           </div>
-
-          <div class="ecosystem-group" id="lab" aria-label="MagSnap Lab videos">
-            <p class="ecosystem-kicker">测试实验 / MAGSNAP LAB</p>
-            <div class="lab-thumb-grid">
-              <button class="lab-thumb" type="button" data-lab-title="磁力拉扯测试 / Magnetic Strength Test" data-lab-copy="测试磁吸固定后的拉扯保持力。 / Measures holding force under pull and retention load." data-lab-src="assets/site/lab-thumbs/magnetic-strength.mp4" data-lab-poster="assets/site/lab-thumbs/magnetic-strength.jpg">
-                <video class="lab-thumb-media" autoplay muted loop playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/lab-thumbs/magnetic-strength.jpg" data-inline-autoplay-video="lab-strength" aria-hidden="true">
-                  <source src="assets/site/lab-thumbs/magnetic-strength.mp4" type="video/mp4">
-                </video>
-                <span>磁力拉扯测试 / Magnetic Strength Test</span>
-              </button>
-              <button class="lab-thumb" type="button" data-lab-title="磁力高斯测试 / Magnetic Gauss Test" data-lab-copy="测试核心磁力强度与吸附稳定性。 / Measures magnetic strength and attachment stability." data-lab-src="assets/site/lab-thumbs/magnetic-gauss.mp4" data-lab-poster="assets/site/lab-thumbs/magnetic-gauss.jpg">
-                <video class="lab-thumb-media" autoplay muted loop playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/lab-thumbs/magnetic-gauss.jpg" data-inline-autoplay-video="lab-gauss" aria-hidden="true">
-                  <source src="assets/site/lab-thumbs/magnetic-gauss.mp4" type="video/mp4">
-                </video>
-                <span>磁力高斯测试 / Magnetic Gauss Test</span>
-              </button>
-              <button class="lab-thumb" type="button" data-lab-title="海水暴晒测试 / Seawater Test" data-lab-copy="模拟海水、暴晒与户外环境下的持续使用测试。 / Long-term exposure test under seawater, sun and outdoor conditions." data-lab-src="assets/site/lab-thumbs/seawater-test.mp4" data-lab-poster="assets/site/lab-thumbs/seawater-test.jpg">
-                <video class="lab-thumb-media" autoplay muted loop playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/lab-thumbs/seawater-test.jpg" data-inline-autoplay-video="lab-seawater" aria-hidden="true">
-                  <source src="assets/site/lab-thumbs/seawater-test.mp4" type="video/mp4">
-                </video>
-                <span><strong>海水暴晒测试 / Seawater Test</strong><small>模拟海水、暴晒与户外环境下的持续使用测试。 / Long-term exposure test under seawater, sun and outdoor conditions.</small></span>
-              </button>
-              <button class="lab-thumb" type="button" data-lab-title="碰撞测试 / Impact Test" data-lab-copy="真实碰撞场景下测试磁吸结构稳定性与眼镜抗冲击表现。 / Testing magnetic stability and impact resistance in real collision scenarios." data-lab-src="assets/site/lab-thumbs/magsnap-impact-test.mp4" data-lab-poster="assets/site/lab-thumbs/magsnap-impact-test.jpg" data-lab-muted="true" data-lab-autoplay="false">
-                <video class="lab-thumb-media" muted playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/lab-thumbs/magsnap-impact-test.jpg" aria-hidden="true">
-                  <source src="assets/site/lab-thumbs/magsnap-impact-test.mp4" type="video/mp4">
-                </video>
-                <span><strong>碰撞测试 / Impact Test</strong><small>真实碰撞场景下测试磁吸结构稳定性与眼镜抗冲击表现。 / Testing magnetic stability and impact resistance in real collision scenarios.</small></span>
-              </button>
-              <div class="lab-product-label">产品视频 / Product Videos</div>
-              <button class="lab-thumb" type="button" data-lab-title="筒子里有什么？ / What's In The Tube?" data-lab-copy="第一批 MagSnap 套装内容展示。 / Everything included in the first MagSnap kit." data-lab-src="assets/site/lab-thumbs/whats-in-the-tube.mp4" data-lab-poster="assets/site/lab-thumbs/whats-in-the-tube.jpg" data-lab-autoplay="false">
-                <video class="lab-thumb-media" muted playsinline webkit-playsinline="true" preload="metadata" poster="assets/site/lab-thumbs/whats-in-the-tube.jpg" aria-hidden="true">
-                  <source src="assets/site/lab-thumbs/whats-in-the-tube.mp4" type="video/mp4">
-                </video>
-                <span><strong>筒子里有什么？ / What's In The Tube?</strong><small>第一批 MagSnap 套装内容展示。 / Everything included in the first MagSnap kit.</small></span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section founder-apply" id="founder">
-      <div class="wrap">
-        <div class="founder-apply-card">
-          <div class="founder-layout">
-            <div class="founder-intro">
-              <div class="section-mark">05</div>
-              <p class="eyebrow">邀请制熊猫高人 / Invite-Only Panda Masters</p>
-              <h2>加入熊猫高人 / Join Panda Masters</h2>
-              <p class="founder-subtitle">仅向真实玩家、测试者、创作者和早期共创者开放。<br>Invite-only access for real players, testers, creators and early contributors.</p>
-              <div class="founder-stats" aria-label="Panda Masters numbers">
-                <div class="founder-stat">
-                  <strong>1000</strong>
-                  <span>熊猫高人总名额：1000 人。<br>Panda Masters cap: 1,000 people.</span>
-                </div>
-                <div class="founder-stat">
-                  <strong>1–2</strong>
-                  <span>每位通过审核的熊猫高人，可推荐 1–2 位高质量玩家。<br>Each approved Panda Master may invite 1–2 qualified people.</span>
-                </div>
-              </div>
-              <div class="founder-points">
-                <div class="founder-point"><strong>首批熊猫高人采用邀请制。</strong> 名额只开放给能测试、改进并共同塑造 MagSnap 磁吸系统的人。<br>Invite-only Panda Masters. Reserved for people who can help test, improve and shape the MagSnap magnetic system.</div>
-                <div class="founder-point"><strong>当前阶段，熊猫高人正在寻找和测评市面上最 reliable 的解决方案。</strong> 我们会实际拿 DJI 大疆、影石 Insta360、拓竹 Bambu Lab 为首的器材做真实测试，包括但不限于运动相机、麦克风、3D 打印、固定结构、AI 可穿戴、直播设备、内容工具和极限运动装备，并把测试过程发布到各个自媒体平台。<br>At this stage, Panda Masters field-test the most reliable market-ready solutions, starting with DJI, Insta360 and Bambu Lab gear, including but not limited to cameras, microphones, 3D printing, mounts, AI wearables, livestream tools and extreme-sports equipment, then publish the results across social channels.</div>
-                <div class="founder-point"><strong>每位熊猫高人可再邀请 1–2 人。</strong> 下一轮只接纳合适的真实玩家。<br>Each approved Panda Master may invite one or two qualified people to the next wave.</div>
-                <div class="founder-point"><strong>满 1000 人后永久锁定。</strong> 首批熊猫高人确认完成后不再开放。<br>Panda Masters access closes permanently once the first 1,000 Panda Masters are confirmed.</div>
-                <div class="founder-point"><strong>所有人都可表达兴趣。</strong> 但熊猫高人身份只授予受邀请、通过审核、并能真实贡献的人。<br>Anyone can express interest, but Panda Masters status is selective and contribution-based.</div>
-              </div>
-            </div>
-
-            <div class="founder-form-wrap">
-              <div class="founder-form-title">申请熊猫高人 / Panda Masters Apply</div>
-              <p class="founder-form-lead">所有人都可以表达申请意向。只有受邀请、通过审核并能真实贡献的人会成为熊猫高人。<br>Anyone can express interest. Only invited and qualified contributors become Panda Masters.</p>
-              <div class="founder-apply-actions">
-                <div class="founder-invite-note" id="founder-invite-note" aria-live="polite"></div>
-                <button class="founder-btn founder-toggle" id="founder-toggle" type="button" data-survey-url="/panda-masters/">打开熊猫高人登记 / Open Panda Masters</button>
-              </div>
-              <div class="founder-form-collapsible" id="founder-form-collapsible" hidden>
-                <form class="founder-form" id="founder-form" action="#" method="post">
-                  <div class="founder-field">
-                    <label for="founder-name">姓名 / Name</label>
-                    <input id="founder-name" type="text" name="name" placeholder="姓名 / Name" autocomplete="name" required>
-                  </div>
-                  <div class="founder-field">
-                    <label for="founder-email">邮箱 / Email</label>
-                    <input id="founder-email" type="email" name="email" placeholder="邮箱 / Email" autocomplete="email" required>
-                  </div>
-                  <div class="founder-field">
-                    <label for="founder-country">国家 / Country</label>
-                    <input id="founder-country" type="text" name="country" placeholder="国家 / Country" autocomplete="country-name" required>
-                  </div>
-                  <div class="founder-field">
-                    <label for="founder-city">城市 / City</label>
-                    <input id="founder-city" type="text" name="city" placeholder="城市 / City" autocomplete="address-level2" required>
-                  </div>
-                  <div class="founder-field">
-                    <label for="founder-sport">运动或行业 / Sport or Industry</label>
-                    <input id="founder-sport" type="text" name="sport_or_industry" placeholder="运动类型 / 行业 / Sport or Industry" required>
-                  </div>
-                  <div class="founder-field">
-                    <label for="founder-device">你使用的设备 / Device You Use</label>
-                    <input id="founder-device" type="text" name="device" placeholder="设备型号 / Device You Use" required>
-                  </div>
-                  <div class="founder-field">
-                    <label for="founder-social">联系方式 / Contact</label>
-                    <input id="founder-social" type="text" name="social_link" placeholder="微信 / WhatsApp / Instagram / Website">
-                  </div>
-                  <div class="founder-field">
-                    <label for="founder-code">Invitation Code / 邀请码<br>4-digit code if you have one / 如有四位邀请码请填写</label>
-                    <input id="founder-code" type="text" name="invitation_code" placeholder="e.g. 0171">
-                  </div>
-                  <div class="founder-field span-2">
-                    <label for="founder-invited-by">Who invited you? / 谁邀请了你？</label>
-                    <input id="founder-invited-by" type="text" name="invited_by" placeholder="Optional / 选填">
-                  </div>
-                  <div class="founder-field span-2">
-                    <label for="founder-reason">你为什么想测试 MagSnap？ / Why do you want to test MagSnap?</label>
-                    <textarea id="founder-reason" name="reason" placeholder="使用场景 / 运动类型 / 反馈能力 / Why you fit the first wave." required></textarea>
-                  </div>
-                  <label class="checkbox-row founder-field span-2" for="founder-share">
-                    <input id="founder-share" type="checkbox" name="share_feedback">
-                    <span>你是否愿意分享反馈、照片或视频？ / Are you willing to share feedback, photos or videos?</span>
-                  </label>
-                  <button class="founder-btn span-2" type="submit">申请熊猫高人 / Apply for Panda Masters</button>
-                  <div class="form-status" id="founder-form-status" aria-live="polite"></div>
-                </form>
-                <p class="form-note">邀请制。我们会先审核邀请来源和使用场景。 / Invite-only. We review the invitation source and use case before reply.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+          <div class="founder-number" aria-label="First 1000 founders">1000</div>
+        </article>
       </div>
     </section>
   </main>
 
-  <div class="lab-modal" id="lab-modal" hidden>
-    <div class="lab-modal-backdrop" data-lab-close></div>
-    <div class="lab-modal-card" role="dialog" aria-modal="true" aria-labelledby="lab-modal-title">
-      <div class="lab-modal-head">
-        <div>
-          <div class="lab-modal-title" id="lab-modal-title">MAGSNAP LAB</div>
-          <div class="lab-modal-copy" id="lab-modal-copy"></div>
-        </div>
-        <button class="lab-modal-close" type="button" aria-label="Close lab video" data-lab-close>&times;</button>
-      </div>
-      <video class="lab-modal-video" id="lab-modal-video" controls playsinline webkit-playsinline="true" preload="metadata"></video>
-    </div>
-  </div>
-
   <footer class="site-footer" id="disclaimer-link">
     <div class="footer-inner">
-      <span>MAGSNAP / 可穿戴磁吸生态 · Wearable Magnetic Ecosystem</span>
+      <span>MAGSNAP / Only Magnetic. No Electric.</span>
       <div class="footer-links">
         <a href="disclaimer.html#safety">安全 / Safety</a>
         <a href="disclaimer.html#warranty">保修 / Warranty</a>
         <a href="disclaimer.html#disclaimer">免责 / Disclaimer</a>
         <a href="disclaimer.html#privacy">隐私 / Privacy</a>
-        <a href="panda-masters/">熊猫高人 / Panda Masters</a>
+        <a href="panda-masters/">Founder Network</a>
         <a href="most-wanted/">头号悬赏 / Most Wanted</a>
-        <a href="registry/">注册 / Registry</a>
-        <a href="panda-masters/">Panda Masters</a>
         <a href="mailto:info@magsnap.me">info@magsnap.me</a>
         <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">琼ICP备202600914号</a>
       </div>
